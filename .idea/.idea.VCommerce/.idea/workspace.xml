@@ -9,9 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="First first commit">
-      <change beforePath="$PROJECT_DIR$/VCommerce.sln" beforeDir="false" afterPath="$PROJECT_DIR$/VCommerce.sln" afterDir="false" />
-    </list>
+    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="First first commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,12 +27,12 @@
     &quot;assignee&quot;: &quot;nicholasalvesx&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:nicholasalvesx/VCommerce.git&quot;,
-    &quot;accountId&quot;: &quot;81f24410-53ba-40bd-bdb2-26c55814c24c&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/nicholasalvesx/VCommerce.git",
+    "accountId": "81f24410-53ba-40bd-bdb2-26c55814c24c"
   }
-}</component>
+}]]></component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="Toolset" />
@@ -44,7 +42,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2vAgwosuUrCqwJpJ4a4OrA30M78" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -141,6 +141,7 @@
       <workItem from="1743705116279" duration="5906000" />
       <workItem from="1743766032367" duration="159000" />
       <workItem from="1743772532333" duration="3580000" />
+      <workItem from="1743777251614" duration="697000" />
     </task>
     <task id="LOCAL-00001" summary="First first commit">
       <option name="closed" value="true" />
@@ -162,6 +163,7 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="First first commit" />
     <option name="LAST_COMMIT_MESSAGE" value="First first commit" />
   </component>
