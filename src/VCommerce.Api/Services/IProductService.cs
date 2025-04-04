@@ -5,7 +5,7 @@ namespace VCommerce.Api.Services;
 public interface IProductService
 {
     Task<IEnumerable<ProductDTO>> GetProducts();
-    Task<IEnumerable<ProductDTO>> GetProductById(int id);
+    Task<ProductDTO> GetProductById(int id);
     Task AddProduct(ProductDTO product);
     Task UpdateProduct(ProductDTO product);
     Task DeleteProduct(int id);

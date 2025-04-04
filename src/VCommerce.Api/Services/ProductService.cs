@@ -22,10 +22,10 @@ public class ProductService : IProductService
         return _mapper.Map<IEnumerable<ProductDTO>>(productEntities);
     }
 
-    public async Task<IEnumerable<ProductDTO>> GetProductById(int id)
+    public async Task<ProductDTO> GetProductById(int id)
     {
         var productEntities = await _productRepository.GetProductById(id);
-        return _mapper.Map<IEnumerable<ProductDTO>>(productEntities);
+        return _mapper.Map<ProductDTO>(productEntities);
     }
 
     public async Task AddProduct(ProductDTO product)

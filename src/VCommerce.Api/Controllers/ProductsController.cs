@@ -29,12 +29,13 @@ public class ProductsController : ControllerBase
     [HttpGet("{id:int}", Name = "GetProduct")]
     public async Task<ActionResult<ProductDTO>> Get(int id)
     {
-        var productDto = await _productService.GetProductById(id);
-        if (productDto == null!)
+        var product = await _productService.GetProductById(id);
+
+        if (product == null!)
         {
             return BadRequest("No products found");            
         }
-        return Ok(productDto);
+        return Ok(product);
     }
 
     [HttpPost]
