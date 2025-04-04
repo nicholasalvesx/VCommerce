@@ -3,5 +3,12 @@ bin/
 obj/
 .idea
 
+*.log
+
+*.user
+*.suo
+*.csproj.user
+*.sln.docstates
+
 publish/
 out/
