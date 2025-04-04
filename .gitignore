@@ -1,7 +1,7 @@
 
 bin/
 obj/
-.idea/
+.idea
 
 *.log
 
@@ -9,11 +9,6 @@ obj/
 *.suo
 *.csproj.user
 *.sln.docstates
-
-*.pdb
-
-project.lock.json
-*.lock.json
 
 publish/
 out/
