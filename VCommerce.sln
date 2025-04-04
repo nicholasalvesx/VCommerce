@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCommerce.Api", "src/VCommerce.Api\VCommerce.Api.csproj", "{6BFDF945-60F4-4E06-B884-706323927E74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCommerce.Mvc", "VCommerce.Mvc\VCommerce.Mvc.csproj", "{E3B38B6B-9D69-4DF3-8A83-53AEB779413A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCommerce.Mvc", "src/VCommerce.Mvc\VCommerce.Mvc.csproj", "{E3B38B6B-9D69-4DF3-8A83-53AEB779413A}"
 EndProject
 
 Global
