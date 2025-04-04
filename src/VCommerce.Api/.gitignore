@@ -1,0 +1,13 @@
+
+bin/
+obj/
+
+*.log
+
+*.user
+*.suo
+*.csproj.user
+*.sln.docstates
+
+publish/
+out/
