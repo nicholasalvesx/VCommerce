@@ -17,7 +17,7 @@ public class TokenService : ITokenService
 
     public JwtSecurityToken GenerateAcessToken(IEnumerable<Claim> claims, IConfiguration configuration)
     {
-        var key = _configuration.GetSection("JWT").GetValue<string>("SecretKey");
+        var key = _configuration["JWT:SecretKey"];
         if (key == null)
         {
             throw new InvalidOperationException("JWT secret key is invalid");
@@ -27,7 +27,7 @@ public class TokenService : ITokenService
         
         var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(privateKey),
             SecurityAlgorithms.HmacSha256);
-
+        
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
@@ -64,7 +64,7 @@ public class TokenService : ITokenService
 
     public ClaimsPrincipal GetPrincipalFromExpiredToken(string token, IConfiguration configuration)
     {
-        var secretKey = _configuration.GetSection("JWT:SecretKey").GetValue<string>("SecretKey");
+        var secretKey = _configuration["JWT:SecretKey"];
         if (secretKey == null)
         {
             throw new InvalidOperationException("JWT secret key is invalid");

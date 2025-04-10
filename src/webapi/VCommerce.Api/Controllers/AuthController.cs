@@ -62,7 +62,7 @@ public class AuthController : ControllerBase
             
             var refreshToken = _tokenService.GenerateRefreshToken();
             
-            _ = int.TryParse(_configuration["JWT:RefreshTokenValidityInMinutes"]
+            _ = int.TryParse(_configuration["JWT:TokenValidityInMinutes"]
                 ,out var tokenExpirationInMinutes);
             
             user.RefreshTokenExpiry = DateTime.UtcNow.AddMinutes(tokenExpirationInMinutes);
