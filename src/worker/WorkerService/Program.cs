@@ -26,33 +26,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
-builder.Services.AddScoped<Worker>();
+builder.Services.AddHostedService<Worker>();
 
 var host = builder.Build();
-
-try
-{
-    using var scope = host.Services.CreateScope();
-    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-
-    logger.LogInformation("Starting database migrations and seeds...");
-    
-    var identityMigrator = scope.ServiceProvider.GetRequiredService<Worker>();
-    await identityMigrator.StartAsync(CancellationToken.None);
-    logger.LogInformation("Identity migrations and seeds completed");
-}
-catch (Exception ex)
-{
-    var logger = host.Services.GetRequiredService<ILogger<Program>>();
-    logger.LogError(ex, "Error during application initialization. Details: {Message}", 
-        ex.Message);
-            
-    if (ex.InnerException != null)
-    {
-        logger.LogError("Inner exception: {Message}", ex.InnerException.Message);
-    }
-            
-    throw;
-}
 
 await host.RunAsync();
