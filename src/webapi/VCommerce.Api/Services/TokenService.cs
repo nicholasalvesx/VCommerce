@@ -51,7 +51,7 @@ public class TokenService : ITokenService
     }
 
     public string GenerateRefreshToken()
-    {
+    { 
         var randomBytes = new byte[128];
 
         using var randomNumberGenerator = RandomNumberGenerator.Create();
@@ -91,4 +91,5 @@ public class TokenService : ITokenService
         
         return tokenPrincipal;
     }
+    
 }
