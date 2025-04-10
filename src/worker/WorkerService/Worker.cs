@@ -51,7 +51,7 @@ public class Worker : IHostedService
                 var result = await userManager.CreateAsync(leader, "S3cur3P@ssw0rd2024!");
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(leader, "Administrator");
+                    await userManager.AddToRoleAsync(leader, "Admin");
                     _logger.LogInformation("Usuário administrador criado com sucesso");
                 }
                 else
