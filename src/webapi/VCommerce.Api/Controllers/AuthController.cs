@@ -170,6 +170,7 @@ public class AuthController : ControllerBase
         }
         
         user.RefreshToken = null;
+        
         await _userManager.UpdateAsync(user);
         return NoContent();
     }
