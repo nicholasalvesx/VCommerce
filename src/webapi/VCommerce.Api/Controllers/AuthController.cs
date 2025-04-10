@@ -157,8 +157,7 @@ public class AuthController : ControllerBase
             refreshToken = newRefreshToken
         });
     }
-
-    [Authorize]
+    
     [HttpPost]
     [Route("revok/{userName}")]
     public async Task<IActionResult> Revoke(string userName)
