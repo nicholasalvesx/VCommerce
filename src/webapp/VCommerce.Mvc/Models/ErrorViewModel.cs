@@ -1,8 +1,9 @@
-namespace VCommerce.Mvc.Models;
-
-public class ErrorViewModel
+namespace VCommerce.Mvc.Models
 {
-    public string? RequestId { get; set; }
-
-    public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    public class ErrorViewModel
+    {
+        public string? RequestId { get; set; }
+        public string? ErrorMessage { get; set; }
+        //public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    }
 }

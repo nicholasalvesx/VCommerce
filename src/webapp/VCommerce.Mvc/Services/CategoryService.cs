@@ -1,39 +1,42 @@
+﻿using System.Net.Http.Headers;
 using System.Text.Json;
 using VCommerce.Mvc.Models;
-using VCommerce.Mvc.Services.Interfaces;
-
-namespace VCommerce.Mvc.Services;
+using VCommerce.Mvc.Services.Contracts;
+namespace VShop.Web.Services;
 
 public class CategoryService : ICategoryService
 {
-    private readonly IHttpClientFactory _httpClientFactory;
-    private const string apiEndpoint = "api/v1/categories";
-    private readonly JsonSerializerOptions _jsonSerializerOptions;
-    private IEnumerable<CategoryViewModel>? _categories;
+    private readonly IHttpClientFactory _clientFactory;
+    private readonly JsonSerializerOptions _options;
+    private const string apiEndpoint = "/api/v1/categories/";
 
-    public CategoryService(IHttpClientFactory httpClientFactory, JsonSerializerOptions jsonSerializerOptions)
+    public CategoryService(IHttpClientFactory clientFactory)
     {
-        _httpClientFactory = httpClientFactory;
-        _jsonSerializerOptions = jsonSerializerOptions;
+        _clientFactory = clientFactory;
+        _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
     }
 
-    public async Task<IEnumerable<CategoryViewModel>> GetCategories()
+    public async Task<IEnumerable<CategoryViewModel>> GetAllCategories(string? token)
     {
-        var client = _httpClientFactory.CreateClient("Api");
+        var client = _clientFactory.CreateClient("ProductApi");
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+        IEnumerable<CategoryViewModel> categories;
 
         using (var response = await client.GetAsync(apiEndpoint))
         {
+
             if (response.IsSuccessStatusCode)
             {
-                var apiReponse = await response.Content.ReadAsStreamAsync();
-                
-                _categories = JsonSerializer.Deserialize<IEnumerable<CategoryViewModel>>(apiReponse, _jsonSerializerOptions);
+                var apiResponse = await response.Content.ReadAsStreamAsync();
+                categories = await JsonSerializer
+                          .DeserializeAsync<IEnumerable<CategoryViewModel>>(apiResponse, _options);
             }
             else
             {
-                return null!;
+                throw new HttpRequestException(response.ReasonPhrase);
             }
         }
-        return _categories!;
+        return categories;
     }
 }

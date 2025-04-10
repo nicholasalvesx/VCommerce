@@ -1,5 +1,6 @@
 using VCommerce.Mvc.Services;
-using VCommerce.Mvc.Services.Interfaces;
+using VCommerce.Mvc.Services.Contracts;
+using VShop.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,9 @@ builder.Services.AddHttpClient("Api", a => a.BaseAddress = new Uri(builder.Confi
 builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-//builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<ICouponService, CouponService>();
 
 var app = builder.Build();
 

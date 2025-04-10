@@ -14,4 +14,33 @@
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\Error.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\_Layout.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\_ViewStart.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Views\Cart\CartNotFound.cshtml" />
+      <AdditionalFiles Include="Views\Cart\Checkout.cshtml" />
+      <AdditionalFiles Include="Views\Cart\CheckoutCompleted.cshtml" />
+      <AdditionalFiles Include="Views\Cart\Index.cshtml" />
+      <AdditionalFiles Include="Views\Cart\RemoveItem.cshtml" />
+      <AdditionalFiles Include="Views\Home\Index.cshtml" />
+      <AdditionalFiles Include="Views\Home\ProductDetails.cshtml" />
+      <AdditionalFiles Include="Views\Products\CreateProduct.cshtml" />
+      <AdditionalFiles Include="Views\Products\DeleteProduct.cshtml" />
+      <AdditionalFiles Include="Views\Products\Index.cshtml" />
+      <AdditionalFiles Include="Views\Products\UpdateProduct.cshtml" />
+      <AdditionalFiles Include="Views\Shared\Error.cshtml" />
+      <AdditionalFiles Include="Views\Shared\_Layout.cshtml" />
+      <AdditionalFiles Include="Views\Shared\_LoginPartial.cshtml" />
+      <AdditionalFiles Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+      <AdditionalFiles Include="Views\_ViewImports.cshtml" />
+      <AdditionalFiles Include="Views\_ViewStart.cshtml" />
+    </ItemGroup>
+
 </Project>
