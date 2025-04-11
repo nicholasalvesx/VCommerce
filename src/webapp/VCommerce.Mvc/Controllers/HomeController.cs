@@ -2,24 +2,18 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Mvc.Models;
-using VCommerce.Mvc.Services.Contracts;
+using VCommerce.Mvc.Services;
 using IProductService = VCommerce.Mvc.Services.Contracts.IProductService;
 
 namespace VCommerce.Mvc.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
     private readonly IProductService _productService;
-    private readonly ICartService _cartService;
 
-    public HomeController(ILogger<HomeController> logger,
-        IProductService productService,
-        ICartService cartService)
+    public HomeController(ProductService productService)
     {
-        _logger = logger;
         _productService = productService;
-        _cartService = cartService;
     }
 
     public async Task<IActionResult> Index()
@@ -45,43 +39,6 @@ public class HomeController : Controller
             return View("Error");
 
         return View(product);
-    }
-
-    [HttpPost]
-    [ActionName("ProductDetails")]
-    [Authorize]
-    public async Task<ActionResult<ProductViewModel>> ProductDetailsPost
-        (ProductViewModel productVm)
-    {
-        var token = await HttpContext.GetTokenAsync("access_token");
-
-        CartViewModel cart = new()
-        {
-            CartHeader = new CartHeaderViewModel
-            {
-                UserId = User.Claims.Where(u => u.Type == "sub")?.FirstOrDefault()?.Value!
-            }
-        };
-
-        CartItemViewModel cartItem = new() 
-        {
-            Quantity = productVm.Quantity,
-            ProductId = productVm.Id,
-            Product = await _productService.FindProductById(productVm.Id, token)
-        };
-
-        List<CartItemViewModel> cartItemsVM = new List<CartItemViewModel>();
-        cartItemsVM.Add(cartItem);
-        cart.CartItems = cartItemsVM;
-
-        var result = await _cartService.AddItemToCartAsync(cart, token);
-
-        if (result is not null)
-        {
-            return RedirectToAction(nameof(Index));
-        }
-
-        return View(productVm);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

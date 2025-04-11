@@ -21,14 +21,14 @@
       <_ContentIncludedByDefault Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
       <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml" />
       <_ContentIncludedByDefault Remove="Views\_ViewStart.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Cart\CartNotFound.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Cart\Checkout.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Cart\CheckoutCompleted.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Cart\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Cart\RemoveItem.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
-      <AdditionalFiles Include="Views\Cart\CartNotFound.cshtml" />
-      <AdditionalFiles Include="Views\Cart\Checkout.cshtml" />
-      <AdditionalFiles Include="Views\Cart\CheckoutCompleted.cshtml" />
-      <AdditionalFiles Include="Views\Cart\Index.cshtml" />
-      <AdditionalFiles Include="Views\Cart\RemoveItem.cshtml" />
       <AdditionalFiles Include="Views\Home\Index.cshtml" />
       <AdditionalFiles Include="Views\Home\ProductDetails.cshtml" />
       <AdditionalFiles Include="Views\Products\CreateProduct.cshtml" />
