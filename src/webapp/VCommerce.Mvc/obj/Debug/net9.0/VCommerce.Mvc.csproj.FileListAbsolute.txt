@@ -272,3 +272,5 @@
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/su5d0k4jkd-rkkog0v3vw.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-v76xcu7l8s.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/Newtonsoft.Json.dll
+/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/4edjr2tnmw-4s2nveoemp.gz
+/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/7epyrhkr66-0z08shflf1.gz

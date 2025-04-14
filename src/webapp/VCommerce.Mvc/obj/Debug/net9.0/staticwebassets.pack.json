@@ -13,8 +13,16 @@
       "PackagePath": "staticwebassets/css/dashboard.css"
     },
     {
+      "Id": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/login.css",
+      "PackagePath": "staticwebassets/css/login.css"
+    },
+    {
       "Id": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/product.css",
       "PackagePath": "staticwebassets/css/product.css"
+    },
+    {
+      "Id": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/register.css",
+      "PackagePath": "staticwebassets/css/register.css"
     },
     {
       "Id": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/site.css",

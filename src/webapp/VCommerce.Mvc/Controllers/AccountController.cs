@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using VCommerce.Mvc.Models;
 using VCommerce.Mvc.Services.Contracts;
 
@@ -17,7 +18,7 @@ public class AccountController : Controller
     }
 
     [HttpGet]
-    public IActionResult Login(string returnUrl = null)
+    public IActionResult Login(string? returnUrl = null)
     {
         ViewData["ReturnUrl"] = returnUrl;
         return View(new LoginViewModel { ReturnUrl = returnUrl });
@@ -33,23 +34,29 @@ public class AccountController : Controller
 
             if (result.Succeeded)
             {
-                var claims = new List<Claim>
+                if (result.Token != null)
                 {
-                    new Claim(ClaimTypes.Email, model.Email),
-                    new Claim("JwtToken", result.Token)
-                };
+                    if (model.Email != null)
+                    {
+                        var claims = new List<Claim>
+                        {
+                            new Claim(ClaimTypes.Email, model.Email),
+                            new Claim("JwtToken", result.Token)
+                        };
 
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var authProperties = new AuthenticationProperties
-                {
-                    IsPersistent = model.RememberMe,
-                    ExpiresUtc = DateTimeOffset.UtcNow.AddHours(8)
-                };
+                        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                        var authProperties = new AuthenticationProperties
+                        {
+                            IsPersistent = model.RememberMe,
+                            ExpiresUtc = DateTimeOffset.UtcNow.AddHours(8)
+                        };
 
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
+                        await HttpContext.SignInAsync(
+                            CookieAuthenticationDefaults.AuthenticationScheme,
+                            new ClaimsPrincipal(claimsIdentity),
+                            authProperties);
+                    }
+                }
 
                 if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                 {
@@ -66,13 +73,17 @@ public class AccountController : Controller
     }
 
     [HttpGet]
-    public IActionResult Register(string returnUrl = null)
+    [Route("register")]
+    [AllowAnonymous]
+    public IActionResult Register(string returnUrl = null!)
     {
         ViewData["ReturnUrl"] = returnUrl;
-        return View(new RegisterViewModel { ReturnUrl = returnUrl });
+        return View();
     }
 
     [HttpPost]
+    [Route("register")]
+    [AllowAnonymous]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
@@ -113,7 +124,7 @@ public class AccountController : Controller
             ModelState.AddModelError(string.Empty, "Erro ao registrar. Verifique seus dados e tente novamente.");
         }
 
-        return View(model);
+        return View();
     }
 
     [HttpPost]

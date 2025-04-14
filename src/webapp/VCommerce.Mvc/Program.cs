@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Identity;
+using VCommerce.Api.Data;
+using VCommerce.Api.Models;
 using VCommerce.Mvc.Configuration;
 using VCommerce.Mvc.Services;
 using VCommerce.Mvc.Services.Contracts;
@@ -16,20 +19,21 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+builder.Logging.AddConsole(options =>
+{
+    options.LogToStandardErrorThreshold = LogLevel.Debug;
+});
+
+builder.Services.AddControllersWithViews()
+    .AddSessionStateTempDataProvider();
+builder.Services.AddRazorPages()
+    .AddSessionStateTempDataProvider();
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-})
-.AddCookie(options =>
-{
-    options.Cookie.Name = "VCommerce.Auth";
-    options.LoginPath = "/Account/Login";
-    options.LogoutPath = "/Account/Logout";
-    options.AccessDeniedPath = "/Account/AccessDenied";
-    options.ExpireTimeSpan = TimeSpan.FromHours(8);
-    options.SlidingExpiration = true;
 });
 
 builder.Services.AddHttpClient("Api", client =>
@@ -38,6 +42,23 @@ builder.Services.AddHttpClient("Api", client =>
     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 })
 .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+
+//
+// builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+//     {
+//         options.SignIn.RequireConfirmedPhoneNumber = false;
+//         options.SignIn.RequireConfirmedEmail = true;
+//         options.User.RequireUniqueEmail = true;
+//         options.Password.RequireDigit = false;
+//         options.Password.RequiredLength = 4;
+//         options.Password.RequireNonAlphanumeric = false;
+//         options.Password.RequireUppercase = false;
+//         options.Password.RequireLowercase = false;
+//     })
+//     .AddEntityFrameworkStores<AppDbContext>()
+//     .AddDefaultTokenProviders();
+
+builder.Services.AddDistributedMemoryCache();
 
 builder.Services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 builder.Services.AddHttpContextAccessor();
@@ -49,10 +70,14 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (builder.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseExceptionHandler("/error/500");
+    app.UseStatusCodePagesWithRedirects("/error/{0}");
     app.UseHsts();
 }
 
