@@ -16,7 +16,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ProductDTO>>> Get()
+    public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts()
     {
         var productsDto = await _productService.GetProducts();
         if (productsDto == null!)
@@ -27,7 +27,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("{id:int}", Name = "GetProduct")]
-    public async Task<ActionResult<ProductDTO>> Get(int id)
+    public async Task<ActionResult<ProductDTO>> GetProductById(int id)
     {
         var product = await _productService.GetProductById(id);
 
@@ -39,7 +39,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<ProductDTO>> Post(ProductDTO productDto)
+    public async Task<ActionResult<ProductDTO>> CreateProduct(ProductDTO productDto)
     {
         if (productDto == null!)
         {
@@ -52,7 +52,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public async Task<ActionResult<ProductDTO>> Put(int id, ProductDTO productDto)
+    public async Task<ActionResult<ProductDTO>> UpdateProduct(int id, ProductDTO productDto)
     {
         if (id != productDto.Id)
         {
@@ -68,7 +68,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    public async Task<ActionResult<ProductDTO>> Delete(int id)
+    public async Task<ActionResult<ProductDTO>> DeleteProduct(int id)
     {
         var productDto = await _productService.GetProductById(id);
         if (productDto == null!)

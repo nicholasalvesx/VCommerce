@@ -10,8 +10,6 @@ using VCommerce.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 var secretKey = builder.Configuration["JWT:SecretKey"] 
                 ?? throw new ArgumentException("Invalid secret key");
 

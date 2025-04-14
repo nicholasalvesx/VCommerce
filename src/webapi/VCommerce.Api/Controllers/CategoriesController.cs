@@ -16,7 +16,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<CategoryDTO>>> Get()
+    public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories()
     {
         var categoriesDto = await _categoryService.GetCategories();
         if (categoriesDto == null!)
@@ -38,7 +38,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet("{id:int}", Name = "GetCategory")]
-    public async Task<ActionResult<CategoryDTO>> GetCategory(int id)
+    public async Task<ActionResult<CategoryDTO>> GetCategoryById(int id)
     {
         var categoryDto = await _categoryService.GetCategoryById(id);
         if (categoryDto == null!)
@@ -49,7 +49,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<CategoryDTO>> Post(CategoryDTO categoryDto)
+    public async Task<ActionResult<CategoryDTO>> CreteCategory(CategoryDTO categoryDto)
     {
         if (categoryDto == null!)
         {
@@ -62,7 +62,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public async Task<ActionResult<CategoryDTO>> Put(int id, CategoryDTO categoryDto)
+    public async Task<ActionResult<CategoryDTO>> UpdateCategory(int id, CategoryDTO categoryDto)
     {
         if (id != categoryDto.CategoryId)
         {
@@ -79,7 +79,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    public async Task<ActionResult<CategoryDTO>> Delete(int id)
+    public async Task<ActionResult<CategoryDTO>> DeleteCategory(int id)
     {
         var categoryDto = await _categoryService.GetCategoryById(id);
         if (categoryDto == null!)
