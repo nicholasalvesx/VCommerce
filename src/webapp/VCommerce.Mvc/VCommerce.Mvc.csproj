@@ -27,6 +27,7 @@
       <_ContentIncludedByDefault Remove="Views\Cart\CheckoutCompleted.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Cart\Index.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Cart\RemoveItem.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Account\Register.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
