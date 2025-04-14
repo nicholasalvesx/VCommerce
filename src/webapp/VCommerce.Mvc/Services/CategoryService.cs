@@ -18,7 +18,7 @@ public class CategoryService : ICategoryService
 
     public async Task<IEnumerable<CategoryViewModel>> GetAllCategories(string? token)
     {
-        var client = _clientFactory.CreateClient("ProductApi");
+        var client = _clientFactory.CreateClient("Api");
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         IEnumerable<CategoryViewModel> categories;

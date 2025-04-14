@@ -43,7 +43,7 @@ public class ProductService : IProductService
 
     public async Task<ProductViewModel?> FindProductById(int id, string? token)
     {
-        var client = _clientFactory.CreateClient("ProductApi");
+        var client = _clientFactory.CreateClient("Api");
         PutTokenInHeaderAuthorization(token, client);
 
         using (var response = await client.GetAsync(apiEndpoint + id))
@@ -64,7 +64,7 @@ public class ProductService : IProductService
 
     public async Task<ProductViewModel> CreateProduct(ProductViewModel productVm, string? token)
     {
-        var client = _clientFactory.CreateClient("ProductApi");
+        var client = _clientFactory.CreateClient("Api");
         PutTokenInHeaderAuthorization(token, client);
 
         StringContent content = new StringContent(JsonSerializer.Serialize(productVm),
@@ -88,7 +88,7 @@ public class ProductService : IProductService
 
     public async Task<ProductViewModel> UpdateProduct(ProductViewModel productVm, string? token)
     {
-        var client = _clientFactory.CreateClient("ProductApi");
+        var client = _clientFactory.CreateClient("Api");
         PutTokenInHeaderAuthorization(token, client);
 
         ProductViewModel productUpdated = new ProductViewModel();
@@ -111,7 +111,7 @@ public class ProductService : IProductService
 
     public async Task<bool> DeleteProductById(int id, string? token)
     {
-        var client = _clientFactory.CreateClient("ProductApi");
+        var client = _clientFactory.CreateClient("Api");
         PutTokenInHeaderAuthorization(token, client);
 
         using (var response = await client.DeleteAsync(apiEndpoint + id))
