@@ -95,10 +95,10 @@ public class AccountController : Controller
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Email, model.Email),
-                    new Claim(ClaimTypes.GivenName, model.FirstName),
-                    new Claim(ClaimTypes.Surname, model.LastName),
-                    new Claim("JwtToken", result.Token)
+                    new Claim(ClaimTypes.Email, model.Email!),
+                    new Claim(ClaimTypes.GivenName, model.FirstName!),
+                    new Claim(ClaimTypes.Surname, model.LastName!),
+                    new Claim("JwtToken", result.Token!)
                 };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

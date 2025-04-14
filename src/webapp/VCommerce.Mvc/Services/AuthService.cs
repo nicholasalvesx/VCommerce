@@ -12,7 +12,7 @@ public class AuthService : IAuthService
 
     public AuthService(IHttpClientFactory httpClientFactory, IHttpContextAccessor httpContextAccessor)
     {
-        _httpClient = httpClientFactory.CreateClient("IdentityApi");
+        _httpClient = httpClientFactory.CreateClient("Api");
         _httpContextAccessor = httpContextAccessor;
     }
 
@@ -75,7 +75,7 @@ public class AuthService : IAuthService
 
     public void Logout()
     {
-        _httpContextAccessor.HttpContext?.Session.Remove("JWTToken");
+        _httpContextAccessor.HttpContext?.Session.Remove("JWT:SecretKey");
     }
 }
     
