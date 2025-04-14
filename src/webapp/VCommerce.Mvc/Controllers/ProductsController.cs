@@ -6,7 +6,6 @@ using VCommerce.Mvc.Services.Contracts;
 
 namespace VCommerce.Mvc.Controllers;
 
-[Route("[controller]")]
 public class ProductsController : Controller
 {
     private readonly IProductService _productService;

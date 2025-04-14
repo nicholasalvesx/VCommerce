@@ -2,7 +2,8 @@
 using System.Text.Json;
 using VCommerce.Mvc.Models;
 using VCommerce.Mvc.Services.Contracts;
-namespace VShop.Web.Services;
+
+namespace VCommerce.Mvc.Services;
 
 public class CategoryService : ICategoryService
 {

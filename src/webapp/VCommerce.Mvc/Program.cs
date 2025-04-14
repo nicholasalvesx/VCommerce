@@ -3,7 +3,6 @@ using System.Net.Http.Headers;
 using VCommerce.Mvc.Configuration;
 using VCommerce.Mvc.Services;
 using VCommerce.Mvc.Services.Contracts;
-using VShop.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
