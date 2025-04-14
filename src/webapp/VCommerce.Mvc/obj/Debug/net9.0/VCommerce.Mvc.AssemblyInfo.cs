@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VCommerce.Mvc")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d9b074aae32dd26ed3afeaf6e1e02e3bd7f7420")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f1679f38150332ceb1139ba52a4b016691e0052")]
 [assembly: System.Reflection.AssemblyProductAttribute("VCommerce.Mvc")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VCommerce.Mvc")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
