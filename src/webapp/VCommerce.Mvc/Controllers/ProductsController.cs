@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using VCommerce.Mvc.Models;
-using VCommerce.Mvc.Roles;
 using VCommerce.Mvc.Services.Contracts;
 
 namespace VCommerce.Mvc.Controllers;
 
-[Authorize(Roles = Role.Admin)]
+[Route("[controller]")]
 public class ProductsController : Controller
 {
     private readonly IProductService _productService;
@@ -78,7 +76,7 @@ public class ProductsController : Controller
         {
             var result = await _productService.UpdateProduct(productVm, await GetAccessToken());
 
-            if (result is not null)
+            if (result != null!)
                 return RedirectToAction(nameof(Index));
         }
         return View(productVm);

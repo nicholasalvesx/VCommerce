@@ -10,7 +10,7 @@ public class ProductService : IProductService
 {
     private readonly IHttpClientFactory _clientFactory;
     private readonly JsonSerializerOptions _options;
-    private const string apiEndpoint = "/api/v1/products";
+    private const string apiEndpoint = "/api/v1/products/";
     private ProductViewModel _productVm;
     private IEnumerable<ProductViewModel>? _productsVm;
 

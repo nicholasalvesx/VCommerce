@@ -81,9 +81,9 @@
         <div class="dashboard-section">
             <div class="section-header">
                 <h2>Products</h2>
-                <a href="/Products/Create" class="btn btn-primary">Add New Product</a>
+                <a asp-controller="Products" asp-action="CreateProduct" class="btn btn-primary">Add New Product</a>
             </div>
-            
+                
             <div class="container row">
                 @foreach (var product in Model.Take(8))
                 {
