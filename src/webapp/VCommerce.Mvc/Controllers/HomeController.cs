@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Mvc.Models;
-using VCommerce.Mvc.Services;
-using IProductService = VCommerce.Mvc.Services.Contracts.IProductService;
+using VCommerce.Mvc.Services.Contracts;
 
 namespace VCommerce.Mvc.Controllers;
 
@@ -11,7 +10,7 @@ public class HomeController : Controller
 {
     private readonly IProductService _productService;
 
-    public HomeController(ProductService productService)
+    public HomeController(IProductService productService)
     {
         _productService = productService;
     }

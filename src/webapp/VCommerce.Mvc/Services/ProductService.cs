@@ -22,7 +22,7 @@ public class ProductService : IProductService
 
     public async Task<IEnumerable<ProductViewModel>?> GetAllProducts(string? token)
     {
-        var client = _clientFactory.CreateClient("ProductApi");
+        var client = _clientFactory.CreateClient("Api");
         PutTokenInHeaderAuthorization(token, client);
 
         using (var response = await client.GetAsync(apiEndpoint))
@@ -41,9 +41,7 @@ public class ProductService : IProductService
         return _productsVm;
     }
 
-   
-
-    public async Task<ProductViewModel> FindProductById(int id, string? token)
+    public async Task<ProductViewModel?> FindProductById(int id, string? token)
     {
         var client = _clientFactory.CreateClient("ProductApi");
         PutTokenInHeaderAuthorization(token, client);
@@ -58,19 +56,18 @@ public class ProductService : IProductService
             }
             else
             {
-                //throw new HttpRequestException(response.ReasonPhrase);
                 return null;
             }
         }
-        return _productVm;
+        return _productVm!;
     }
 
-    public async Task<ProductViewModel> CreateProduct(ProductViewModel productVM, string? token)
+    public async Task<ProductViewModel> CreateProduct(ProductViewModel productVm, string? token)
     {
         var client = _clientFactory.CreateClient("ProductApi");
         PutTokenInHeaderAuthorization(token, client);
 
-        StringContent content = new StringContent(JsonSerializer.Serialize(productVM),
+        StringContent content = new StringContent(JsonSerializer.Serialize(productVm),
                                                   Encoding.UTF8, "application/json");
 
         using (var response = await client.PostAsync(apiEndpoint, content))
@@ -78,26 +75,25 @@ public class ProductService : IProductService
             if (response.IsSuccessStatusCode)
             {
                 var apiResponse = await response.Content.ReadAsStreamAsync();
-                productVM = await JsonSerializer
+                productVm = await JsonSerializer
                            .DeserializeAsync<ProductViewModel>(apiResponse, _options);
             }
             else
             {
                 return null;
-                //throw new HttpRequestException(response.ReasonPhrase);
             }
         }
-        return productVM;
+        return productVm!;
     }
 
-    public async Task<ProductViewModel> UpdateProduct(ProductViewModel productVM, string? token)
+    public async Task<ProductViewModel> UpdateProduct(ProductViewModel productVm, string? token)
     {
         var client = _clientFactory.CreateClient("ProductApi");
         PutTokenInHeaderAuthorization(token, client);
 
         ProductViewModel productUpdated = new ProductViewModel();
         
-        using (var response = await client.PutAsJsonAsync(apiEndpoint, productVM))
+        using (var response = await client.PutAsJsonAsync(apiEndpoint, productVm))
         {
             if (response.IsSuccessStatusCode)
             {
@@ -108,7 +104,6 @@ public class ProductService : IProductService
             else
             {
                 return null;
-                //throw new HttpRequestException(response.ReasonPhrase);
             }
         }
         return productUpdated;
@@ -123,7 +118,6 @@ public class ProductService : IProductService
         {
             if (response.IsSuccessStatusCode)
             {
-                //var apiResponse = await response.Content.ReadAsStreamAsync();
                 return true;
             }
         }
