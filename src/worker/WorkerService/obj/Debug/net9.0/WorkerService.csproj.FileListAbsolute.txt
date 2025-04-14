@@ -64,3 +64,4 @@
 /home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/obj/Debug/net9.0/WorkerService.pdb
 /home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/obj/Debug/net9.0/WorkerService.genruntimeconfig.cache
 /home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/obj/Debug/net9.0/ref/WorkerService.dll
+/home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/bin/Debug/net9.0/libman.json
