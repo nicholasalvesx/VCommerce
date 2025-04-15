@@ -19,34 +19,29 @@ public class AuthService : IAuthService
     public async Task<AuthResult> LoginAsync(LoginViewModel loginModel)
     {
         var loginContent = new StringContent(
-            JsonSerializer.Serialize(new { userName = loginModel.UserName, password = loginModel.Password }),
+            JsonSerializer.Serialize(new { userName = loginModel.Name, password = loginModel.Password }),
             Encoding.UTF8,
             "application/json");
 
         var response = await _httpClient.PostAsync("/api/v1/auth/login", loginContent);
 
-        if (response.IsSuccessStatusCode)
-        {
-            var content = await response.Content.ReadAsStringAsync();
-            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            var result = JsonSerializer.Deserialize<AuthResult>(content, options);
+        if (!response.IsSuccessStatusCode) return new AuthResult { Succeeded = false };
+        var content = await response.Content.ReadAsStringAsync();
+        var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+        var result = JsonSerializer.Deserialize<AuthResult>(content, options);
 
-            if (result != null && !string.IsNullOrEmpty(result.Token))
-            {
-                _httpContextAccessor.HttpContext?.Session.SetString("JWTToken", result.Token);
-                return result;
-            }
-        }
+        if (result == null || string.IsNullOrEmpty(result.Token)) return new AuthResult { Succeeded = false };
+        _httpContextAccessor.HttpContext?.Session.SetString("JWTToken", result.Token);
+        return result;
 
-        return new AuthResult { Succeeded = false };
     }
 
-    public async Task<AuthResult> RegisterAsync(RegisterViewModel registerModel)
+    public async Task<AuthResult?> RegisterAsync(RegisterViewModel registerModel)
     {
         var registerContent = new StringContent(
             JsonSerializer.Serialize(new
             {
-                firstName = registerModel.FirstName,
+                name = registerModel.Name,
                 lastName = registerModel.LastName,
                 email = registerModel.Email,
                 password = registerModel.Password,
@@ -56,21 +51,30 @@ public class AuthService : IAuthService
             "application/json");
 
         var response = await _httpClient.PostAsync("/api/v1/auth/register", registerContent);
-
-        if (!response.IsSuccessStatusCode) 
-            return new AuthResult { Succeeded = false };
-        
         var content = await response.Content.ReadAsStringAsync();
+        Console.WriteLine("Resposta da API: " + content);
+
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-        var result = JsonSerializer.Deserialize<AuthResult>(content, options);
 
-        if (result == null || string.IsNullOrEmpty(result.Token)) 
+        try
+        {
+            var result = JsonSerializer.Deserialize<AuthResult>(content, options);
+            if (result == null || !result.Succeeded)
+                return new AuthResult { Succeeded = false };
+
+            if (!string.IsNullOrEmpty(result.Token))
+            {
+                _httpContextAccessor.HttpContext?.Session.SetString("JWTToken", result.Token);
+            }
+
+            return result;
+        }
+        catch (JsonException)
+        {
             return new AuthResult { Succeeded = false };
-        
-        return result;
-
+        }
     }
-
+    
     public void Logout()
     {
         _httpContextAccessor.HttpContext?.Session.Remove("JWT:SecretKey");

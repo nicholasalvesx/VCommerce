@@ -6,7 +6,7 @@ public class RegisterViewModel
 {
     [Required(ErrorMessage = "O nome é obrigatório")]
     [StringLength(50, ErrorMessage = "O nome deve ter entre {2} e {1} caracteres", MinimumLength = 2)]
-    public string? FirstName { get; set; }
+    public string? Name { get; set; }
 
     [Required(ErrorMessage = "O sobrenome é obrigatório")]
     [StringLength(50, ErrorMessage = "O sobrenome deve ter entre {2} e {1} caracteres", MinimumLength = 2)]

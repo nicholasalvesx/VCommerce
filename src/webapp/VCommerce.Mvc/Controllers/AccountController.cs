@@ -34,11 +34,11 @@ public class AccountController : Controller
         {
             var result = await _authService.LoginAsync(model);
 
-            if (result is { Succeeded: true, Token: not null } && model.UserName != null)
+            if (result is { Succeeded: true, Token: not null } && model.Name != null)
             {
                 var claims = new List<Claim>
                 {
-                    new(ClaimTypes.Email, model.UserName),
+                    new(ClaimTypes.Email, model.Name),
                     new("JwtToken", result.Token)
                 };
 
@@ -86,7 +86,7 @@ public class AccountController : Controller
 
         var result = await _authService.RegisterAsync(model);
 
-        if (result.Succeeded)
+        if (result is { Succeeded: true })
         {
             TempData["SuccessMessage"] = "Cadastro realizado com sucesso! Faça login para continuar.";
             return RedirectToAction("Login", "Account");
