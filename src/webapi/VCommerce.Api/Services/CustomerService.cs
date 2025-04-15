@@ -18,7 +18,7 @@ public class CustomerService : ICustomerService
 
     public async Task<IEnumerable<CustomerDTO>> GetCustomers()
     {
-        var customers = _customerRepository.GetCustomers();
+        var customers = await _customerRepository.GetCustomers();
         return _mapper.Map<IEnumerable<CustomerDTO>>(customers);
     }
 

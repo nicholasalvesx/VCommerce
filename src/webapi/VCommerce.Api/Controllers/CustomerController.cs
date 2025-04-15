@@ -5,7 +5,7 @@ using VCommerce.Api.Services;
 namespace VCommerce.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/v1/customers")]
 public class CustomerController : ControllerBase
 {
     private readonly ICustomerService _customerService;
