@@ -12,5 +12,12 @@ public class Customer
     public string? Password { get; set; }
     
     public string? ConfirmPassword { get; set; }
-    
+
+    public Customer(string? email, string? name, string? password, string? confirmPassword)
+    {
+        Email = email;
+        Name = name;
+        Password = password;
+        ConfirmPassword = confirmPassword;
+    }
 }

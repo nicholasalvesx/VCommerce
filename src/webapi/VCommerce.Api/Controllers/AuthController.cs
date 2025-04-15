@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Api.DTOs;
 using VCommerce.Api.Models;
+using VCommerce.Api.Repositores;
 using VCommerce.Api.Services;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
@@ -15,15 +16,17 @@ public class AuthController : ControllerBase
 {
     private readonly ITokenService _tokenService;
     private readonly UserManager<ApplicationUser> _userManager;
+    private readonly ICustomerRepository _customerRepository;
     private readonly IConfiguration _configuration;
 
     public AuthController(ITokenService tokenService, 
         UserManager<ApplicationUser> userManager,
-        IConfiguration configuration)
+        IConfiguration configuration, ICustomerRepository customerRepository)
     {
         _tokenService = tokenService;
         _userManager = userManager;
         _configuration = configuration;
+        _customerRepository = customerRepository;
     }
 
     [HttpPost]
@@ -73,8 +76,21 @@ public class AuthController : ControllerBase
 
     [HttpPost]
     [Route("register")]
-    public async Task<IActionResult> Register(RegisterDTO dto)
+    public async Task<IActionResult> Register(RegisterDTO dto, CustomerDTO customerDto)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var cliente = new Customer(
+            customerDto.Email,
+            customerDto.Name,
+            customerDto.Password,
+            customerDto.ConfirmPassword);
+        
+        await _customerRepository.CreateCustomer(cliente);
+        
         if (dto.UserName != null)
         {
             var userExists = await _userManager.FindByNameAsync(dto.UserName);
@@ -90,6 +106,11 @@ public class AuthController : ControllerBase
             Email = dto.Email,
             EmailConfirmed = true
         };
+
+        if (dto.Password != dto.ConfirmPassword)
+        {
+            return BadRequest("Passwords do not match");
+        }
         
         var result = await _userManager.CreateAsync(user, dto.Password!);
 
