@@ -1,34 +1,121 @@
 ﻿@model VCommerce.Mvc.Models.ProductViewModel
 
-<form method="post">
-    <input asp-for="Id" hidden/>
-    <h3 class="mb-5">Detalhes do Produto</h3>
-    <div class="row">
-        <div class="col-md-4">
-            <img class="img-fluid" src="/images/@Model.ImageURL">       
-        </div>
-        <div class="col-md-4">
-            <h3>@Model.Name</h3>
-            <p class="mb-4">@Model.Description</p>
-            <p class="mb-4 text-black">
-                <b>
-                    @Model.Price.ToString("C")&nbsp;(@Model.Stock items )
-                </b>
-            </p>
-            <p>
-            <div class="row text-black">
-                  <label class="col-md-2 control-label">Quantidade</label>
-                  <input asp-for="Quantity" class="form-control"/>
-                  <span asp-validation-for="Quantity" class="text-danger"></span>
-            </div>
-             <div class= "row" style="padding-top:20px">
-                <div class="col-5 col-md-5 mb-5">
-                    <a asp-action="Index" class="btn btn-outline-info">Back to List</a>
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<link rel="stylesheet" href="/css/details.css" asp-append-version="true" />
+
+<div class="content-header">
+    <h1 class="content-title">Detalhes do Produto</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="/Products/Index">Produtos</a></li>
+        <li class="breadcrumb-item active">@Model.Name</li>
+    </ol>
+</div>
+
+<div class="dashboard-section">
+    <form method="post">
+        <input asp-for="Id" hidden />
+
+        <div class="product-details-container">
+            <div class="product-image-container">
+                <div class="product-image-wrapper">
+                    <img src="/images/@Model.ImageURL" alt="@Model.Name" class="product-image" onerror="this.src='/images/product-placeholder.jpg'">
+
+                    @if (Model.Stock <= 0)
+                    {
+                        <div class="product-badge out-of-stock">Esgotado</div>
+                    }
+                    else if (Model.Stock <= 5)
+                    {
+                        <div class="product-badge low-stock">Últimas unidades</div>
+                    }
                 </div>
-                <div class="col-5 col-md-5">
-                    <button type="submit" class="btn btn-outline-success">Add to Cart</button>
+
+                <div class="product-thumbnails">
+                    <div class="thumbnail active">
+                        <img src="/images/@Model.ImageURL" alt="@Model.Name" onerror="this.src='/images/product-placeholder.jpg'">
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-info-container">
+                <h2 class="product-title">@Model.Name</h2>
+
+                <div class="product-meta">
+                    <span class="product-category">@Model.CategoryName</span>
+                    <span class="product-id">Código: #@Model.Id</span>
+                </div>
+
+                <div class="product-price">
+                    <span class="price-value">@Model.Price.ToString("C")</span>
+                    @if (Model.Stock > 0)
+                    {
+                        <span class="stock-info">
+                            <i class="fas fa-check-circle"></i> Em estoque (@Model.Stock unidades)
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="stock-info out-of-stock">
+                            <i class="fas fa-times-circle"></i> Fora de estoque
+                        </span>
+                    }
+                </div>
+
+                <div class="product-description">
+                    <h3>Descrição</h3>
+                    <p>@Model.Description</p>
+                </div>
+
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <label for="Quantity">Quantidade</label>
+                        <div class="quantity-input">
+                            <button type="button" class="quantity-btn minus" onclick="decrementQuantity()">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <input asp-for="Quantity" min="1" max="@Model.Stock" value="1" class="form-control" />
+                            <button type="button" class="quantity-btn plus" onclick="incrementQuantity()">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <span asp-validation-for="Quantity" class="text-danger"></span>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left"></i> Voltar
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function incrementQuantity() {
+            var input = document.getElementById('Quantity');
+            var max = parseInt(input.getAttribute('max'));
+            var currentValue = parseInt(input.value);
+
+            if (currentValue < max) {
+                input.value = currentValue + 1;
+            }
+        }
+
+        function decrementQuantity() {
+            var input = document.getElementById('Quantity');
+            var currentValue = parseInt(input.value);
+
+            if (currentValue > 1) {
+                input.value = currentValue - 1;
+            }
+        }
+    </script>
+}

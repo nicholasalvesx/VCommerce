@@ -9,10 +9,12 @@ namespace VCommerce.Mvc.Controllers;
 public class HomeController : Controller
 {
     private readonly IProductService _productService;
+    private readonly ILogger _logger;
 
-    public HomeController(IProductService productService)
+    public HomeController(IProductService productService, ILogger logger)
     {
         _productService = productService;
+        _logger = logger;
     }
 
     [HttpGet]
@@ -30,16 +32,46 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    [Authorize]
-    public async Task<ActionResult<ProductViewModel>> ProductDetails(int id)
+    public async Task<IActionResult> ProductDetails(int id)
     {
-        var token = await HttpContext.GetTokenAsync("access_token");
-        var product = await _productService.FindProductById(id,token);
+        try
+        {
+            if (id <= 0)
+            {
+                TempData["Error"] = "ID do produto inválido.";
+                return RedirectToAction(nameof(Index));
+            }
 
-        if (product is null)
+            var token = await HttpContext.GetTokenAsync("access_token");
+            if (string.IsNullOrEmpty(token))
+            {
+                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("ProductDetails", new { id }) });
+            }
+
+            var product = await _productService.FindProductById(id, token);
+
+            if (product is null)
+            {
+                TempData["Error"] = "Produto não encontrado.";
+                return View();
+            }
+
+            product.Quantity = 1;
+
+            return View(product);
+        }
+        catch (HttpRequestException ex)
+        {
+            _logger.LogError(ex, "Erro ao comunicar com a API de produtos. ID: {ProductId}", id);
+            TempData["Error"] = "Não foi possível conectar ao serviço de produtos. Tente novamente mais tarde.";
             return View("Error");
-
-        return View(product);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Erro inesperado ao buscar detalhes do produto. ID: {ProductId}", id);
+            TempData["Error"] = "Ocorreu um erro inesperado. Por favor, tente novamente.";
+            return View("Error");
+        }
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

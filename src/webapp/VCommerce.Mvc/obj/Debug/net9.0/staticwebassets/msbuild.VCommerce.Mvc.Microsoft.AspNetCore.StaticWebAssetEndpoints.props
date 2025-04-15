@@ -24,6 +24,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-eJmx/Z30OsywFbtXOD8KBJfK9b8nEw2/xv\u002BgpUywsvg="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"16864"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022eJmx/Z30OsywFbtXOD8KBJfK9b8nEw2/xv\u002BgpUywsvg=\u0022"},{"Name":"Last-Modified","Value":"Tue, 15 Apr 2025 13:35:02 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/VCommerce.Mvc/css/details.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\details.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-2SQNBPFwZ5X6jK0l0\u002Bg2o6TFxln3CFcDipOrmKT7/qI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3624"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222SQNBPFwZ5X6jK0l0\u002Bg2o6TFxln3CFcDipOrmKT7/qI=\u0022"},{"Name":"Last-Modified","Value":"Tue, 15 Apr 2025 20:10:16 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/VCommerce.Mvc/css/details.j1zrhwgvss.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\details.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"j1zrhwgvss"},{"Name":"integrity","Value":"sha256-2SQNBPFwZ5X6jK0l0\u002Bg2o6TFxln3CFcDipOrmKT7/qI="},{"Name":"label","Value":"_content/VCommerce.Mvc/css/details.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3624"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222SQNBPFwZ5X6jK0l0\u002Bg2o6TFxln3CFcDipOrmKT7/qI=\u0022"},{"Name":"Last-Modified","Value":"Tue, 15 Apr 2025 20:10:16 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VCommerce.Mvc/css/login.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\login.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
