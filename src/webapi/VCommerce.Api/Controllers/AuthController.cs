@@ -76,45 +76,59 @@ public class AuthController : ControllerBase
 
     [HttpPost]
     [Route("register")]
-    public async Task<IActionResult> Register(RegisterDTO dto, CustomerDTO customerDto)
+    public async Task<IActionResult> Register([FromBody] CustomerDTO customerDto)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
 
+        if (customerDto.Email != null)
+        {
+            var userExists = await _userManager.FindByEmailAsync(customerDto.Email);
+            if (userExists != null)
+            {
+                return BadRequest(new AuthResult
+                {
+                    Succeeded = false,
+                    Token = null,
+                    Expiration = DateTime.UtcNow
+                });
+            }
+        }
+
+        if (customerDto.Password != customerDto.ConfirmPassword)
+        {
+            return BadRequest("Passwords do not match");
+        }
+
         var cliente = new Customer(
             customerDto.Email,
             customerDto.Name,
             customerDto.Password,
-            customerDto.ConfirmPassword);
-        
+            customerDto.ConfirmPassword,
+            customerDto.LastName
+        );
+
         await _customerRepository.CreateCustomer(cliente);
-        
-        if (dto.UserName != null)
-        {
-            var userExists = await _userManager.FindByNameAsync(dto.UserName);
-            if (userExists != null)
-            {
-                return BadRequest("User already exists");
-            }
-        }
 
         var user = new ApplicationUser
         {
-            UserName = dto.UserName,
-            Email = dto.Email,
+            UserName = customerDto.Name,
+            Email = customerDto.Email,
+            NormalizedUserName = customerDto.Name,
+            NormalizedEmail = customerDto.Email,
             EmailConfirmed = true
         };
 
-        if (dto.Password != dto.ConfirmPassword)
-        {
-            return BadRequest("Passwords do not match");
-        }
-        
-        var result = await _userManager.CreateAsync(user, dto.Password!);
+        var result = await _userManager.CreateAsync(user, customerDto.Password!);
 
-        return !result.Succeeded ? StatusCode(500, result.Errors) : Ok("User created!");
+        return !result.Succeeded ? StatusCode(500, result.Errors) : Ok(new AuthResult
+        {
+            Succeeded = true,
+            Token = null,
+            Expiration = DateTime.UtcNow.AddHours(1)
+        });
     }
 
     [HttpPost]

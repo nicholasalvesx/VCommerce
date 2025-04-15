@@ -9,15 +9,18 @@ public class Customer
     
     public string? Name { get; set; }
 
+    public string? LastName { get; set; }
+
     public string? Password { get; set; }
     
     public string? ConfirmPassword { get; set; }
 
-    public Customer(string? email, string? name, string? password, string? confirmPassword)
+    public Customer(string? email, string? name, string? password, string? confirmPassword, string? lastName)
     {
         Email = email;
         Name = name;
         Password = password;
         ConfirmPassword = confirmPassword;
+        LastName = lastName;
     }
 }
