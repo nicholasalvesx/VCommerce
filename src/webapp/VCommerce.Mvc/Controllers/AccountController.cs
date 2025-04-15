@@ -32,31 +32,25 @@ public class AccountController : Controller
         {
             var result = await _authService.LoginAsync(model);
 
-            if (result.Succeeded)
+            if (result.Succeeded && result.Token != null && model.Email != null)
             {
-                if (result.Token != null)
+                var claims = new List<Claim>
                 {
-                    if (model.Email != null)
-                    {
-                        var claims = new List<Claim>
-                        {
-                            new Claim(ClaimTypes.Email, model.Email),
-                            new Claim("JwtToken", result.Token)
-                        };
+                    new Claim(ClaimTypes.Email, model.Email),
+                    new Claim("JwtToken", result.Token)
+                };
 
-                        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                        var authProperties = new AuthenticationProperties
-                        {
-                            IsPersistent = model.RememberMe,
-                            ExpiresUtc = DateTimeOffset.UtcNow.AddHours(8)
-                        };
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = model.RememberMe,
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddHours(8)
+                };
 
-                        await HttpContext.SignInAsync(
-                            CookieAuthenticationDefaults.AuthenticationScheme,
-                            new ClaimsPrincipal(claimsIdentity),
-                            authProperties);
-                    }
-                }
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity),
+                    authProperties);
 
                 if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                 {

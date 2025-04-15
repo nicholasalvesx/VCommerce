@@ -39,18 +39,16 @@ public class ProductsController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateProduct(ProductViewModel productVm)
     {
-        if (ModelState.IsValid)
-        {
-            var result = await _productService.CreateProduct(productVm, await GetAccessToken());
+        if (!ModelState.IsValid) return View(productVm);
+        
+        var result = await _productService.CreateProduct(productVm, await GetAccessToken());
 
-            if (result != null)
-                return RedirectToAction(nameof(Index));
-        }
-        else
-        {
-            ViewBag.CategoryId = new SelectList(await
-                                 _categoryService.GetAllCategories(await GetAccessToken()), "CategoryId", "Name");
-        }
+        if (result.Id > 0)
+            return RedirectToAction(nameof(Index));
+        
+        ViewBag.CategoryId = new SelectList(await
+            _categoryService.GetAllCategories(await GetAccessToken()), "CategoryId", "Name");
+
         return View(productVm);
     }
 
