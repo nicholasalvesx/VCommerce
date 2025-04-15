@@ -38,71 +38,62 @@ public class AuthController : ControllerBase
         
         var user = await _userManager.FindByNameAsync(dto.UserName!);
 
-        if (user != null && await _userManager.CheckPasswordAsync(user, dto.Password!))
+        if (user == null || !await _userManager.CheckPasswordAsync(user, dto.Password!)) return Unauthorized();
+        var userRoles = await _userManager.GetRolesAsync(user);
+            
+        var authClaims = new List<Claim>
         {
-            var userRoles = await _userManager.GetRolesAsync(user);
+            new(ClaimTypes.Name, user.UserName!),
+            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        };
             
-            var authClaims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.UserName!),
-                new Claim(ClaimTypes.Email, user.Email!),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            };
+        authClaims.AddRange(userRoles.Select(userRole => new Claim(ClaimTypes.Role, userRole)));
 
-            foreach (var userRole in userRoles)
-            {
-                authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-            }
+        var token = _tokenService.GenerateAcessToken(authClaims, _configuration);
             
-            var token = _tokenService.GenerateAcessToken(authClaims, _configuration);
+        var refreshToken = _tokenService.GenerateRefreshToken();
             
-            var refreshToken = _tokenService.GenerateRefreshToken();
+        _ = int.TryParse(_configuration["JWT:TokenValidityInMinutes"]
+            ,out var tokenExpirationInMinutes);
             
-            _ = int.TryParse(_configuration["JWT:TokenValidityInMinutes"]
-                ,out var tokenExpirationInMinutes);
+        user.RefreshTokenExpiry = DateTime.UtcNow.AddMinutes(tokenExpirationInMinutes);
             
-            user.RefreshTokenExpiry = DateTime.UtcNow.AddMinutes(tokenExpirationInMinutes);
+        user.RefreshToken = refreshToken;
             
-            user.RefreshToken = refreshToken;
+        await _userManager.UpdateAsync(user);
             
-            await _userManager.UpdateAsync(user);
-            
-           return Ok(new
-           {
-               Token = new JwtSecurityTokenHandler().WriteToken(token),
-               RefreshToken = refreshToken,
-               ExpirationToken = token.ValidTo
-           }); 
-        }
+        return Ok(new
+        {
+            Token = new JwtSecurityTokenHandler().WriteToken(token),
+            RefreshToken = refreshToken,
+            ExpirationToken = token.ValidTo
+        });
 
-        return Unauthorized();
     }
 
     [HttpPost]
     [Route("register")]
     public async Task<IActionResult> Register(RegisterDTO dto)
     {
-        var userExists = await _userManager.FindByNameAsync(dto.UserName!);
-        if (userExists != null)
+        if (dto.UserName != null)
         {
-            return BadRequest("User already exists");
+            var userExists = await _userManager.FindByNameAsync(dto.UserName);
+            if (userExists != null)
+            {
+                return BadRequest("User already exists");
+            }
         }
 
-        ApplicationUser user = new ApplicationUser
+        var user = new ApplicationUser
         {
-            UserName = dto.UserName!,
-            Email = dto.Email!,
-            EmailConfirmed = true,
+            UserName = dto.UserName,
+            Email = dto.Email,
+            EmailConfirmed = true
         };
         
         var result = await _userManager.CreateAsync(user, dto.Password!);
 
-        if (!result.Succeeded)
-        {
-            return StatusCode(500, result.Errors);
-        }
-        
-        return Ok("User created!");
+        return !result.Succeeded ? StatusCode(500, result.Errors) : Ok("User created!");
     }
 
     [HttpPost]
