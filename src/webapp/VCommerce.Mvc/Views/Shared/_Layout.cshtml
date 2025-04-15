@@ -1,58 +1,209 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]VShop</title>
+    <title>@ViewData["Title"] - VCommerce</title>
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/site.css" asp-append-version="true" />
-    <link rel="stylesheel" href="~/font-awesome/css/fontawesome.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/dashboard.css" asp-append-version="true" />
+    
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                <img src="/assets/vcommerce.jpg" height="80" width="80" class="img-fluid" asp-append-version="true" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Products</a>
-                        </li>
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Management</a>
-                            </li>
-                        }
-                    </ul>
-                    <ul>
-                        <partial name="_LoginPartial" />
-                    </ul>
+    <div class="dashboard-container">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <i class="fas fa-store"></i>
+                        <h3>VCommerce</h3>
+                    </div>
+                    <button id="sidebar-toggle" class="sidebar-toggle d-md-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
+                
+                <div class="sidebar-user">
+                    <img src="/images/user-avatar.jpg" alt="User Avatar" class="user-avatar" onerror="this.src='/images/default-avatar.png'">
+                    <div class="user-info">
+                        <h4>@User.Identity.Name</h4>
+                        <span>@(User.IsInRole("Admin") ? "Administrador" : "Cliente")</span>
+                    </div>
+                </div>
+                
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h5 class="nav-section-title">PRINCIPAL</h5>
+                        <ul class="sidebar-menu">
+                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Home" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                                <a href="/Home/Index">
+                                    <i class="fas fa-home"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Products" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                                <a href="/Products/Index">
+                                    <i class="fas fa-box"></i>
+                                    <span>Produtos</span>
+                                </a>
+                            </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Customers" ? "active" : "")">
+                                    <a href="/Customers/Index">
+                                        <i class="fas fa-users"></i>
+                                        <span>Clientes</span>
+                                    </a>
+                                </li>
+                                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Orders" ? "active" : "")">
+                                    <a href="/Orders/Index">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <span>Pedidos</span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    
+                    <div class="nav-section">
+                        <h5 class="nav-section-title">CONFIGURAÇÕES</h5>
+                        <ul class="sidebar-menu">
+                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Account" && ViewContext.RouteData.Values["Action"].ToString() == "Profile" ? "active" : "")">
+                                <a href="/Account/Profile">
+                                    <i class="fas fa-user-cog"></i>
+                                    <span>Perfil</span>
+                                </a>
+                            </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Settings" ? "active" : "")">
+                                    <a href="/Settings/Index">
+                                        <i class="fas fa-cog"></i>
+                                        <span>Configurações</span>
+                                    </a>
+                                </li>
+                            }
+                            <li>
+                                <a href="/Account/Logout">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Sair</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+        }
+
+        <main class="main-content @(User.Identity.IsAuthenticated ? "" : "no-sidebar")">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <header class="header">
+                    <div class="header-left">
+                        <button id="mobile-toggle" class="mobile-toggle d-md-none">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <div class="search-container">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" placeholder="Pesquisar..." class="search-input" />
+                        </div>
+                    </div>
+                    
+                    <div class="header-right">
+                        <div class="header-actions">
+                            <button class="action-button">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge">3</span>
+                            </button>
+                            <button class="action-button">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="badge">2</span>
+                            </button>
+                            <div class="dropdown">
+                                <button class="dropdown-toggle">
+                                    <img src="/images/user-avatar.jpg" alt="User" class="user-avatar-small" onerror="this.src='/images/default-avatar.png'">
+                                    <span class="d-none d-md-inline">@User.Identity.Name</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="/Account/Profile" class="dropdown-item">
+                                        <i class="fas fa-user"></i> Perfil
+                                    </a>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <a href="/Settings/Index" class="dropdown-item">
+                                            <i class="fas fa-cog"></i> Configurações
+                                        </a>
+                                    }
+                                    <div class="dropdown-divider"></div>
+                                    <a href="/Account/Logout" class="dropdown-item">
+                                        <i class="fas fa-sign-out-alt"></i> Sair
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            }
+
+            <div class="content @(User.Identity.IsAuthenticated ? "" : "no-header")">
+                @RenderBody()
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
+            
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer-content">
+                        <div class="copyright">
+                            &copy; @DateTime.Now.Year - VCommerce - Todos os direitos reservados
+                        </div>
+                        <div class="footer-links">
+                            <a href="/terms">Termos</a>
+                            <a href="/privacy">Privacidade</a>
+                            <a href="/help">Ajuda</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - VShop.Web 
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/site.js" asp-append-version="true"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $('#mobile-toggle, #sidebar-toggle').on('click', function() {
+                $('.sidebar').toggleClass('show');
+                $('.main-content').toggleClass('sidebar-open');
+            });
+            
+            $('.dropdown-toggle').on('click', function() {
+                $(this).next('.dropdown-menu').toggleClass('show');
+            });
+            
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('.dropdown').length) {
+                    $('.dropdown-menu').removeClass('show');
+                }
+            });
+            
+            $(document).on('click', function(e) {
+                if ($(window).width() < 768) {
+                    if (!$(e.target).closest('.sidebar').length && !$(e.target).closest('#mobile-toggle').length) {
+                        $('.sidebar').removeClass('show');
+                        $('.main-content').removeClass('sidebar-open');
+                    }
+                }
+            });
+        });
+    </script>
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

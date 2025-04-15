@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using VCommerce.Api.Data;
 using VCommerce.Api.Models;
 using VCommerce.Mvc.Configuration;
@@ -43,20 +44,20 @@ builder.Services.AddHttpClient("Api", client =>
 })
 .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-//
-// builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-//     {
-//         options.SignIn.RequireConfirmedPhoneNumber = false;
-//         options.SignIn.RequireConfirmedEmail = true;
-//         options.User.RequireUniqueEmail = true;
-//         options.Password.RequireDigit = false;
-//         options.Password.RequiredLength = 4;
-//         options.Password.RequireNonAlphanumeric = false;
-//         options.Password.RequireUppercase = false;
-//         options.Password.RequireLowercase = false;
-//     })
-//     .AddEntityFrameworkStores<AppDbContext>()
-//     .AddDefaultTokenProviders();
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+    {
+        options.SignIn.RequireConfirmedAccount = false;
+        options.Password.RequireDigit = true;
+        options.Password.RequireLowercase = true;
+        options.Password.RequireUppercase = true;
+        options.Password.RequireNonAlphanumeric = true;
+        options.Password.RequiredLength = 6;
+    })
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddDistributedMemoryCache();
 

@@ -11,7 +11,7 @@ public class ProductService : IProductService
     private readonly IHttpClientFactory _clientFactory;
     private readonly JsonSerializerOptions _options;
     private const string apiEndpoint = "/api/v1/products/";
-    private ProductViewModel _productVm;
+    private ProductViewModel? _productVm;
     private IEnumerable<ProductViewModel>? _productsVm;
 
     public ProductService(IHttpClientFactory clientFactory)
@@ -59,39 +59,38 @@ public class ProductService : IProductService
                 return null;
             }
         }
-        return _productVm!;
+        return _productVm;
     }
 
-    public async Task<ProductViewModel> CreateProduct(ProductViewModel productVm, string? token)
+    public async Task<ProductViewModel?> CreateProduct(ProductViewModel? productVm, string? token)
     {
         var client = _clientFactory.CreateClient("Api");
         PutTokenInHeaderAuthorization(token, client);
 
-        StringContent content = new StringContent(JsonSerializer.Serialize(productVm),
+        var content = new StringContent(JsonSerializer.Serialize(productVm),
                                                   Encoding.UTF8, "application/json");
 
-        using (var response = await client.PostAsync(apiEndpoint, content))
+        using var response = await client.PostAsync(apiEndpoint, content);
+        if (response.IsSuccessStatusCode)
         {
-            if (response.IsSuccessStatusCode)
-            {
-                var apiResponse = await response.Content.ReadAsStreamAsync();
-                productVm = await JsonSerializer
-                           .DeserializeAsync<ProductViewModel>(apiResponse, _options);
-            }
-            else
-            {
-                return null;
-            }
+            var apiResponse = await response.Content.ReadAsStreamAsync();
+            productVm = await JsonSerializer
+                .DeserializeAsync<ProductViewModel>(apiResponse, _options);
         }
-        return productVm!;
+        else
+        {
+            return null;
+        }
+
+        return productVm;
     }
 
-    public async Task<ProductViewModel> UpdateProduct(ProductViewModel productVm, string? token)
+    public async Task<ProductViewModel?> UpdateProduct(ProductViewModel productVm, string? token)
     {
         var client = _clientFactory.CreateClient("Api");
         PutTokenInHeaderAuthorization(token, client);
 
-        ProductViewModel productUpdated = new ProductViewModel();
+        ProductViewModel? productUpdated;
         
         using (var response = await client.PutAsJsonAsync(apiEndpoint, productVm))
         {

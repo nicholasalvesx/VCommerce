@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using VCommerce.Api.Models;
 using VCommerce.Mvc.Models;
 using VCommerce.Mvc.Services.Contracts;
 
@@ -32,12 +34,12 @@ public class AccountController : Controller
         {
             var result = await _authService.LoginAsync(model);
 
-            if (result.Succeeded && result.Token != null && model.Email != null)
+            if (result is { Succeeded: true, Token: not null } && model.UserName != null)
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Email, model.Email),
-                    new Claim("JwtToken", result.Token)
+                    new(ClaimTypes.Email, model.UserName),
+                    new("JwtToken", result.Token)
                 };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -81,44 +83,20 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid) 
+            return View(model);
+
+        var result = await _authService.RegisterAsync(model);
+
+        if (result.Succeeded)
         {
-            var result = await _authService.RegisterAsync(model);
-
-            if (result.Succeeded)
-            {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Email, model.Email!),
-                    new Claim(ClaimTypes.GivenName, model.FirstName!),
-                    new Claim(ClaimTypes.Surname, model.LastName!),
-                    new Claim("JwtToken", result.Token!)
-                };
-
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var authProperties = new AuthenticationProperties
-                {
-                    IsPersistent = true,
-                    ExpiresUtc = DateTimeOffset.UtcNow.AddHours(8)
-                };
-
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
-
-                if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
-                {
-                    return Redirect(model.ReturnUrl);
-                }
-
-                return RedirectToAction("Index", "Home");
-            }
-
-            ModelState.AddModelError(string.Empty, "Erro ao registrar. Verifique seus dados e tente novamente.");
+            TempData["SuccessMessage"] = "Cadastro realizado com sucesso! Faça login para continuar.";
+            return RedirectToAction("Login", "Account");
         }
-
-        return View();
+        
+        ModelState.AddModelError(string.Empty, "Erro ao registrar. Verifique seus dados e tente novamente.");
+        
+        return View(model);
     }
 
     [HttpPost]

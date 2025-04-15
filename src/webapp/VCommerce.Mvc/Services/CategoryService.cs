@@ -17,12 +17,12 @@ public class CategoryService : ICategoryService
         _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
     }
 
-    public async Task<IEnumerable<CategoryViewModel>> GetAllCategories(string? token)
+    public async Task<IEnumerable<CategoryViewModel>?> GetAllCategories(string? token)
     {
         var client = _clientFactory.CreateClient("Api");
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-        IEnumerable<CategoryViewModel> categories;
+        IEnumerable<CategoryViewModel>? categories;
 
         using (var response = await client.GetAsync(apiEndpoint))
         {

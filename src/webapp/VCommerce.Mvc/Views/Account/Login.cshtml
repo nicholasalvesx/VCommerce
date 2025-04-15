@@ -6,10 +6,10 @@
 
 <link rel="stylesheet" href="/css/login.css" asp-append-version="true" />
 
-<div class="login-container">
-    <div class="login-card">
+<div class="auth-container">
+    <div class="auth-card">
         <div class="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
             </svg>
@@ -17,26 +17,30 @@
 
         <h1>Bem-vindo de volta</h1>
         <p class="subheading">Entre na sua conta para continuar</p>
-        
+
         <form method="post" asp-controller="Account" asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ReturnUrl" />
             @Html.AntiForgeryToken()
 
             <div class="form-group">
-                <input asp-for="Email" type="email" placeholder="Email" required />
-                <span asp-validation-for="Email" class="text-danger"></span>
+                <input asp-for="UserName" type="text" placeholder="Nome de usuário" required />
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input asp-for="Password" type="password" placeholder="Senha" required />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
+
             <div class="remember-forgot">
                 <label class="remember-me">
                     <input asp-for="RememberMe" type="checkbox" />
                     <span>Lembrar-me</span>
                 </label>
+                <a href="/Account/ForgotPassword" class="forgot-password">Esqueceu a senha?</a>
             </div>
+
             <button type="submit" class="cta-button">Entrar</button>
         </form>
 
@@ -46,7 +50,7 @@
 
         <div class="links">
             <a href="/terms">Termos</a>
-            <a href="/privacy">Política de Privacidade</a>
+            <a href="/privacy">Privacidade</a>
             <a href="/help">Ajuda</a>
         </div>
     </div>

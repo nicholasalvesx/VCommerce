@@ -1,65 +1,92 @@
 ﻿@model IEnumerable<VCommerce.Mvc.Models.ProductViewModel>
-<div>
-    <h2>Products</h2>
+
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<div class="content-header">
+    <h1 class="content-title">Produtos</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Produtos</li>
+    </ol>
 </div>
-<hr />
-<div class="row">
-    <div class="col-md-12">
-        <div>
-            <div class="pull-left">
-                <a asp-action="CreateProduct" class="btn btn-primary">
-                    <span title="Create New" class="fas fa-plus"></span> New Product
-                </a>
+
+<div class="dashboard-section">
+    <div class="section-header">
+        <div class="section-title">
+            <h2>Lista de Produtos</h2>
+            <p>Gerencie seu catálogo de produtos</p>
+        </div>
+        <div class="section-actions">
+            <a asp-action="CreateProduct" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Novo Produto
+            </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>Preço</th>
+                        <th>Estoque</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="product-info">
+                                    <img src="/images/@item.ImageURL" alt="@item.Name" class="product-thumbnail" onerror="this.src='/images/product-placeholder.jpg'">
+                                    <div>
+                                        <h5 class="product-name">@item.Name</h5>
+                                        <p class="product-description">@(item.Description?.Length > 50 ? item.Description.Substring(0, 50) + "..." : item.Description)</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>@item.CategoryName</td>
+                            <td>@item.Price.ToString("C")</td>
+                            <td>
+                                    <span class="@(item.Stock > 10 ? "text-success" : (item.Stock > 0 ? "text-warning" : "text-danger"))">
+                                        @item.Stock unidades
+                                    </span>
+                            </td>
+                            <td>
+                                @if (item.Stock > 0)
+                                {
+                                    <span class="status-badge completed">Disponível</span>
+                                }
+                                else
+                                {
+                                    <span class="status-badge cancelled">Esgotado</span>
+                                }
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <a asp-action="UpdateProduct" asp-route-id="@item.Id" class="btn btn-sm btn-warning" title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a asp-action="DeleteProduct" asp-route-id="@item.Id" class="btn btn-sm btn-danger" title="Excluir">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info" title="Visualizar">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</div>
-<br />
-<div class="panel panel-default">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                 <th>
-                    @Html.DisplayNameFor(model => model.CategoryName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CategoryName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        <a asp-action="UpdateProduct" asp-route-id="@item.Id" title="Edita" class="btn btn-warning">
-                            <span class="fas fa-edit"></span>
-                        </a>
-                        <a asp-action="DeleteProduct" asp-route-id="@item.Id" title="Deleta" class="btn btn-danger">
-                            <span class="fas fa-trash-alt"></span>
-                        </a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
 </div>

@@ -37,7 +37,7 @@ public class ProductsController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateProduct(ProductViewModel productVm)
+    public async Task<IActionResult> CreateProduct(ProductViewModel? productVm)
     {
         if (!ModelState.IsValid) return View(productVm);
         
@@ -53,17 +53,14 @@ public class ProductsController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> UpdateProduct(int id)
+    public async Task<IActionResult> UpdateProduct(int id)  
     {
         ViewBag.CategoryId = new SelectList(await
                            _categoryService.GetAllCategories(await GetAccessToken()), "CategoryId", "Name");
 
         var result = await _productService.FindProductById(id, await GetAccessToken());
 
-        if (result is null)
-            return View("Error");
-
-        return View(result);
+        return result is null ? View("Error") : View(result);
     }
 
     [HttpPost]
@@ -84,10 +81,7 @@ public class ProductsController : Controller
     {
         var result = await _productService.FindProductById(id, await GetAccessToken());
 
-        if (result is null)
-            return View("Error");
-
-        return View(result);
+        return result is null ? View("Error") : View(result);
     }
 
     [HttpPost, ActionName("DeleteProduct")]

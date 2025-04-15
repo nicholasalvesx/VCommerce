@@ -19,7 +19,7 @@ public class AuthService : IAuthService
     public async Task<AuthResult> LoginAsync(LoginViewModel loginModel)
     {
         var loginContent = new StringContent(
-            JsonSerializer.Serialize(new { email = loginModel.Email, password = loginModel.Password }),
+            JsonSerializer.Serialize(new { userName = loginModel.UserName, password = loginModel.Password }),
             Encoding.UTF8,
             "application/json");
 
@@ -57,20 +57,18 @@ public class AuthService : IAuthService
 
         var response = await _httpClient.PostAsync("/api/v1/auth/register", registerContent);
 
-        if (response.IsSuccessStatusCode)
-        {
-            var content = await response.Content.ReadAsStringAsync();
-            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            var result = JsonSerializer.Deserialize<AuthResult>(content, options);
+        if (!response.IsSuccessStatusCode) 
+            return new AuthResult { Succeeded = false };
+        
+        var content = await response.Content.ReadAsStringAsync();
+        var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+        var result = JsonSerializer.Deserialize<AuthResult>(content, options);
 
-            if (result != null && !string.IsNullOrEmpty(result.Token))
-            {
-                _httpContextAccessor.HttpContext?.Session.SetString("JWTToken", result.Token);
-                return result;
-            }
-        }
+        if (result == null || string.IsNullOrEmpty(result.Token)) 
+            return new AuthResult { Succeeded = false };
+        
+        return result;
 
-        return new AuthResult { Succeeded = false };
     }
 
     public void Logout()

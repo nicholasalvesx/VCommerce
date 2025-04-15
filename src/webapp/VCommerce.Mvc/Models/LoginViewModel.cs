@@ -4,9 +4,8 @@ namespace VCommerce.Mvc.Models;
 
 public class LoginViewModel
 {
-        [Required(ErrorMessage = "O email é obrigatório")]
-        [EmailAddress(ErrorMessage = "Email inválido")]
-        public string? Email { get; set; }
+        [Required(ErrorMessage = "O UserName é obrigatório")]
+        public string? UserName { get; set; }
 
         [Required(ErrorMessage = "A senha é obrigatória")]
         [DataType(DataType.Password)]

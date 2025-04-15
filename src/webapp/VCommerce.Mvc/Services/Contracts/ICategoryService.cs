@@ -4,5 +4,5 @@ namespace VCommerce.Mvc.Services.Contracts;
 
 public interface ICategoryService
 {
-    Task<IEnumerable<CategoryViewModel>> GetAllCategories(string? token);
+    Task<IEnumerable<CategoryViewModel>?> GetAllCategories(string? token);
 }

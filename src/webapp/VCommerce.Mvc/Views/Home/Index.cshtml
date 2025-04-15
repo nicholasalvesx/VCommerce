@@ -1,205 +1,426 @@
 ﻿@model IEnumerable<VCommerce.Mvc.Models.ProductViewModel>
 @{
-    ViewData["Title"] = "Homepage";
+    ViewData["Title"] = "Dashboard";
 }
 
 <link rel="stylesheet" href="/css/product.css" asp-append-version="true" />
 <link rel="stylesheet" href="/css/dashboard.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <div class="dashboard-container">
-    <div class="sidebar">
+    <aside class="sidebar">
         <div class="sidebar-header">
-            <h3>VCommerce</h3>
-        </div>
-        <ul class="sidebar-menu">
-            <li class="active"><a href="/Home/Index"><i class="fas fa-home"></i> Dashboard</a></li>
-            <li><a href="/Products/Index"><i class="fas fa-box"></i> Products</a></li>
-            <li><a href="/Customers/Index"><i class="fas fa-users"></i> Customers</a></li>
-            <li><a href="/Settings/Index"><i class="fas fa-cog"></i> Settings</a></li>
-        </ul>
-    </div>
-    <div class="main-content">
-        <nav class="top-nav">
-            <div class="search-container">
-                <input type="text" placeholder="Search..." />
-                <button type="submit"><i class="fas fa-search"></i></button>
+            <div class="logo">
+                <i class="fas fa-store"></i>
+                <h3>VCommerce</h3>
             </div>
+            <button id="sidebar-toggle" class="sidebar-toggle d-md-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div class="sidebar-user">
+            <img src="/images/user-avatar.jpg" alt="User Avatar" class="user-avatar" onerror="this.src='/images/default-avatar.png'">
             <div class="user-info">
-                <span class="notifications"><i class="fas fa-bell"></i></span>
-                <span class="user-name">Admin User</span>
-                <img src="/images/user-avatar.jpg" class="user-avatar" alt="User Avatar" />
+                <h4>Admin User</h4>
+                <span>Administrator</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <h5 class="nav-section-title">MAIN</h5>
+                <ul class="sidebar-menu">
+                    <li class="active">
+                        <a href="/Home/Index">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Products/Index">
+                            <i class="fas fa-box"></i>
+                            <span>Products</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Customers/Index">
+                            <i class="fas fa-users"></i>
+                            <span>Customers</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <h5 class="nav-section-title">SETTINGS</h5>
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="/Settings/Profile">
+                            <i class="fas fa-user-cog"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Settings/Index">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Account/Logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </nav>
+    </aside>
 
-        <div class="summary-cards">
-            <div class="card summary-card">
-                <div class="card-body">
-                    <div class="summary-icon bg-primary">
-                        <i class="fas fa-shopping-bag"></i>
-                    </div>
-                    <div class="summary-details">
-                        <h3>@Model.Count()</h3>
-                        <p>Total Products</p>
-                    </div>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header - Redesenhado -->
+        <header class="header">
+            <div class="header-left">
+                <button id="mobile-toggle" class="mobile-toggle d-md-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search..." class="search-input" />
                 </div>
             </div>
-            <div class="card summary-card">
-                <div class="card-body">
-                    <div class="summary-icon bg-success">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <div class="summary-details">
-                        <h3>@Model.Sum(p => p.Price).ToString("C")</h3>
-                        <p>Total Inventory Value</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card summary-card">
-                <div class="card-body">
-                    <div class="summary-icon bg-warning">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="summary-details">
-                        <h3>125</h3>
-                        <p>Total Customers</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card summary-card">
-                <div class="card-body">
-                    <div class="summary-icon bg-info">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="summary-details">
-                        <h3>32</h3>
-                        <p>Orders Today</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="dashboard-section">
-            <div class="section-header">
-                <h2>Products</h2>
-                <a asp-controller="Products" asp-action="CreateProduct" class="btn btn-primary">Add New Product</a>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-button">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="action-button">
+                        <i class="fas fa-envelope"></i>
+                        <span class="badge">5</span>
+                    </button>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle">
+                            <img src="/images/user-avatar.jpg" alt="User" class="user-avatar-small" onerror="this.src='/images/default-avatar.png'">
+                            <span class="d-none d-md-inline">Admin User</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="/Settings/Profile" class="dropdown-item">
+                                <i class="fas fa-user"></i> Profile
+                            </a>
+                            <a href="/Settings/Index" class="dropdown-item">
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/Account/Logout" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-                
-            <div class="container row">
-                @foreach (var product in Model.Take(8))
-                {
-                    <div class="col-md-3 mb-2">
-                        <a href="/Home/ProductDetails/@product.Id">
-                            <div class="card product-card">
-                                <div class="card-badge">
+        </header>
+
+        <!-- Page Content -->
+        <div class="content">
+            <div class="content-header">
+                <h1 class="content-title">Dashboard</h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="summary-cards">
+                <div class="card summary-card">
+                    <div class="card-body">
+                        <div class="summary-icon bg-primary">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="summary-details">
+                            <h3>@Model.Count()</h3>
+                            <p>Total Products</p>
+                            <div class="summary-progress">
+                                <span class="progress-indicator">+5% from last month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card summary-card">
+                    <div class="card-body">
+                        <div class="summary-icon bg-success">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="summary-details">
+                            <h3>@Model.Sum(p => p.Price).ToString("C")</h3>
+                            <p>Total Inventory Value</p>
+                            <div class="summary-progress">
+                                <span class="progress-indicator">+12% from last month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card summary-card">
+                    <div class="card-body">
+                        <div class="summary-icon bg-warning">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="summary-details">
+                            <h3>125</h3>
+                            <p>Total Customers</p>
+                            <div class="summary-progress">
+                                <span class="progress-indicator">+8% from last month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card summary-card">
+                    <div class="card-body">
+                        <div class="summary-icon bg-info">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="summary-details">
+                            <h3>32</h3>
+                            <p>Orders Today</p>
+                            <div class="summary-progress">
+                                <span class="progress-indicator">+15% from yesterday</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <h2>Products</h2>
+                        <p>Manage your product inventory</p>
+                    </div>
+                    <div class="section-actions">
+                        <a asp-controller="Products" asp-action="CreateProduct" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add New Product
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-grid">
+                    @foreach (var product in Model.Take(8))
+                    {
+                        <div class="product-card">
+                            <a href="/Home/ProductDetails/@product.Id" class="product-link">
+                                <div class="product-image">
                                     @if (product.Price > 100)
                                     {
-                                        <span class="badge bg-danger">Premium</span>
+                                        <span class="product-badge premium">Premium</span>
                                     }
                                     else if (product.Price < 50)
                                     {
-                                        <span class="badge bg-success">Sale</span>
+                                        <span class="product-badge sale">Sale</span>
                                     }
+                                    <img src="/images/@product.ImageURL" alt="@product.Name" onerror="this.src='/images/product-placeholder.jpg'">
                                 </div>
-                                <img class="img-thumbnail" src="/images/@product.ImageURL">
-                                <div class="card-body">
-                                    <h5 class="card-title mb-2">
-                                        @product.Name   
-                                    </h5>
-                                    <p class="cart-text text-black">
-                                        <b>@product.Price.ToString("C")</b>
-                                    </p>
+                                <div class="product-info">
+                                    <h3 class="product-name">@product.Name</h3>
+                                    <div class="product-meta">
+                                        <span class="product-price">@product.Price.ToString("C")</span>
+                                        <span class="product-category">Category</span>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+
+                <div class="view-all">
+                    <a href="/Products/Index" class="btn btn-outline-primary">View All Products</a>
+                </div>
+            </div>
+
+            <!-- Recent Orders Section -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <h2>Recent Orders</h2>
+                        <p>Latest customer orders</p>
+                    </div>
+                    <div class="section-actions">
+                        <a href="/Orders/Index" class="btn btn-outline-primary">
+                            <i class="fas fa-list"></i> All Orders
                         </a>
                     </div>
-                }
-            </div>
-            <div class="view-all">
-                <a href="/Products/Index" class="btn btn-outline-primary">View All Products</a>
-            </div>
-        </div>
+                </div>
 
-        <div class="dashboard-section">
-            <div class="section-header">
-                <h2>Recent Orders</h2>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Customer</th>
-                                <th>Date</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>#ORD-2023-001</td>
-                                <td>John Doe</td>
-                                <td>@DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy")</td>
-                                <td>$245.99</td>
-                                <td><span class="badge bg-success">Completed</span></td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-info">View</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#ORD-2023-002</td>
-                                <td>Jane Smith</td>
-                                <td>@DateTime.Now.AddDays(-2).ToString("dd/MM/yyyy")</td>
-                                <td>$145.50</td>
-                                <td><span class="badge bg-warning">Processing</span></td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-info">View</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#ORD-2023-003</td>
-                                <td>Robert Johnson</td>
-                                <td>@DateTime.Now.AddDays(-2).ToString("dd/MM/yyyy")</td>
-                                <td>$89.99</td>
-                                <td><span class="badge bg-info">Shipped</span></td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-info">View</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#ORD-2023-004</td>
-                                <td>Emily Davis</td>
-                                <td>@DateTime.Now.AddDays(-3).ToString("dd/MM/yyyy")</td>
-                                <td>$320.75</td>
-                                <td><span class="badge bg-danger">Cancelled</span></td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-info">View</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#ORD-2023-005</td>
-                                <td>Michael Wilson</td>
-                                <td>@DateTime.Now.AddDays(-3).ToString("dd/MM/yyyy")</td>
-                                <td>$175.25</td>
-                                <td><span class="badge bg-success">Completed</span></td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-info">View</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><a href="#" class="order-link">#ORD-2023-001</a></td>
+                                    <td>
+                                        <div class="customer-info">
+                                            <img src="/images/user-1.jpg" alt="John Doe" class="customer-avatar" onerror="this.src='/images/default-avatar.png'">
+                                            <span>John Doe</span>
+                                        </div>
+                                    </td>
+                                    <td>@DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy")</td>
+                                    <td>$245.99</td>
+                                    <td><span class="status-badge completed">Completed</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a href="#" class="btn btn-sm btn-info" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-sm btn-secondary" title="Print">
+                                                <i class="fas fa-print"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="order-link">#ORD-2023-002</a></td>
+                                    <td>
+                                        <div class="customer-info">
+                                            <img src="/images/user-2.jpg" alt="Jane Smith" class="customer-avatar" onerror="this.src='/images/default-avatar.png'">
+                                            <span>Jane Smith</span>
+                                        </div>
+                                    </td>
+                                    <td>@DateTime.Now.AddDays(-2).ToString("dd/MM/yyyy")</td>
+                                    <td>$145.50</td>
+                                    <td><span class="status-badge processing">Processing</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a href="#" class="btn btn-sm btn-info" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-sm btn-secondary" title="Print">
+                                                <i class="fas fa-print"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="order-link">#ORD-2023-003</a></td>
+                                    <td>
+                                        <div class="customer-info">
+                                            <img src="/images/user-3.jpg" alt="Robert Johnson" class="customer-avatar" onerror="this.src='/images/default-avatar.png'">
+                                            <span>Robert Johnson</span>
+                                        </div>
+                                    </td>
+                                    <td>@DateTime.Now.AddDays(-2).ToString("dd/MM/yyyy")</td>
+                                    <td>$89.99</td>
+                                    <td><span class="status-badge shipped">Shipped</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a href="#" class="btn btn-sm btn-info" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-sm btn-secondary" title="Print">
+                                                <i class="fas fa-print"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="order-link">#ORD-2023-004</a></td>
+                                    <td>
+                                        <div class="customer-info">
+                                            <img src="/images/user-4.jpg" alt="Emily Davis" class="customer-avatar" onerror="this.src='/images/default-avatar.png'">
+                                            <span>Emily Davis</span>
+                                        </div>
+                                    </td>
+                                    <td>@DateTime.Now.AddDays(-3).ToString("dd/MM/yyyy")</td>
+                                    <td>$320.75</td>
+                                    <td><span class="status-badge cancelled">Cancelled</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a href="#" class="btn btn-sm btn-info" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-sm btn-secondary" title="Print">
+                                                <i class="fas fa-print"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="order-link">#ORD-2023-005</a></td>
+                                    <td>
+                                        <div class="customer-info">
+                                            <img src="/images/user-5.jpg" alt="Michael Wilson" class="customer-avatar" onerror="this.src='/images/default-avatar.png'">
+                                            <span>Michael Wilson</span>
+                                        </div>
+                                    </td>
+                                    <td>@DateTime.Now.AddDays(-3).ToString("dd/MM/yyyy")</td>
+                                    <td>$175.25</td>
+                                    <td><span class="status-badge completed">Completed</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a href="#" class="btn btn-sm btn-info" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-sm btn-secondary" title="Print">
+                                                <i class="fas fa-print"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </div>
 
 @section Scripts {
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
-            console.log("Dashboard loaded");
+            // Toggle sidebar on mobile
+            $('#mobile-toggle, #sidebar-toggle').on('click', function() {
+                $('.sidebar').toggleClass('show');
+                $('.main-content').toggleClass('sidebar-open');
+            });
+
+            // Dropdown toggle
+            $('.dropdown-toggle').on('click', function() {
+                $(this).next('.dropdown-menu').toggleClass('show');
+            });
+
+            // Close dropdown when clicking outside
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('.dropdown').length) {
+                    $('.dropdown-menu').removeClass('show');
+                }
+            });
+
+            // Close sidebar when clicking outside on mobile
+            $(document).on('click', function(e) {
+                if ($(window).width() < 768) {
+                    if (!$(e.target).closest('.sidebar').length && !$(e.target).closest('#mobile-toggle').length) {
+                        $('.sidebar').removeClass('show');
+                        $('.main-content').removeClass('sidebar-open');
+                    }
+                }
+            });
         });
     </script>
 }

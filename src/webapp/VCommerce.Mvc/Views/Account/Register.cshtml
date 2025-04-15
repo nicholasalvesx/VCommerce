@@ -4,12 +4,10 @@
     ViewData["Title"] = "Cadastro";
 }
 
-<link rel="stylesheet" href="/css/register.css" asp-append-version="true" />
-
-<div class="register-container">
-    <div class="register-card">
+<div class="auth-container">
+    <div class="auth-card">
         <div class="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
                 <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                 <circle cx="8.5" cy="7" r="4"></circle>
                 <line x1="20" y1="8" x2="20" y2="14"></line>
@@ -19,7 +17,7 @@
 
         <h1>Criar uma conta</h1>
         <p class="subheading">Preencha os dados abaixo para se cadastrar</p>
-     
+
         <form method="post" asp-controller="Account" asp-action="Register">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ReturnUrl" />
