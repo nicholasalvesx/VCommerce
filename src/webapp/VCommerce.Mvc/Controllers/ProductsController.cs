@@ -43,7 +43,7 @@ public class ProductsController : Controller
         
         var result = await _productService.CreateProduct(productVm, await GetAccessToken());
 
-        if (result.Id > 0)
+        if (result!.Id > 0)
             return RedirectToAction(nameof(Index));
         
         ViewBag.CategoryId = new SelectList(await

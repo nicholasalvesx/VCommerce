@@ -69,7 +69,6 @@ public class AccountController : Controller
     }
 
     [HttpGet]
-    [Route("register")]
     [AllowAnonymous]
     public IActionResult Register(string returnUrl = null!)
     {
@@ -78,7 +77,6 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-    [Route("register")]
     [AllowAnonymous]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Register(RegisterViewModel model)

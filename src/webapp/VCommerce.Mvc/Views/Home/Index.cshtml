@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <div class="dashboard-container">
-    <!-- Sidebar - Agora fixo -->
     <aside class="sidebar">
         <div class="sidebar-header">
             <div class="logo">
@@ -21,16 +20,16 @@
         </div>
 
         <div class="sidebar-user">
-            <img src="/images/user-avatar.jpg" alt="User Avatar" class="user-avatar" onerror="this.src='/images/default-avatar.png'">
+            <i class="fas fa-user-ninja"></i>
             <div class="user-info">
                 <h4>Admin User</h4>
-                <span>Administrator</span>
+                <span>Adminstrador</span>
             </div>
         </div>
 
         <nav class="sidebar-nav">
             <div class="nav-section">
-                <h5 class="nav-section-title">MAIN</h5>
+                <h5 class="nav-section-title">PRINCIPAL</h5>
                 <ul class="sidebar-menu">
                     <li class="active">
                         <a href="/Home/Index">
@@ -51,16 +50,22 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/Orders/Index">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span>Orders</span>
+                        <a href="/Account/Login">
+                            <i class="fas fa-user"></i>
+                            <span>Login</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Account/Register">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Register</span>
                         </a>
                     </li>
                 </ul>
             </div>
 
             <div class="nav-section">
-                <h5 class="nav-section-title">SETTINGS</h5>
+                <h5 class="nav-section-title">CONFIGURAÇÔES</h5>
                 <ul class="sidebar-menu">
                     <li>
                         <a href="/Settings/Profile">
@@ -85,9 +90,7 @@
         </nav>
     </aside>
 
-    <!-- Main Content -->
     <main class="main-content">
-        <!-- Header - Redesenhado -->
         <header class="header">
             <div class="header-left">
                 <button id="mobile-toggle" class="mobile-toggle d-md-none">
@@ -111,7 +114,7 @@
                     </button>
                     <div class="dropdown">
                         <button class="dropdown-toggle">
-                            <img src="/images/user-avatar.jpg" alt="User" class="user-avatar-small" onerror="this.src='/images/default-avatar.png'">
+                            <i class="fas fa-user-ninja"></i>
                             <span class="d-none d-md-inline">Admin User</span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
@@ -132,17 +135,15 @@
             </div>
         </header>
 
-        <!-- Page Content -->
         <div class="content">
             <div class="content-header">
                 <h1 class="content-title">Dashboard</h1>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </div>
 
-            <!-- Summary Cards -->
             <div class="summary-cards">
                 <div class="card summary-card">
                     <div class="card-body">
@@ -151,9 +152,9 @@
                         </div>
                         <div class="summary-details">
                             <h3>@Model.Count()</h3>
-                            <p>Total Products</p>
+                            <p>Total de produtos</p>
                             <div class="summary-progress">
-                                <span class="progress-indicator">+5% from last month</span>
+                                <span class="progress-indicator">+5% desde o mes passado</span>
                             </div>
                         </div>
                     </div>
@@ -165,9 +166,9 @@
                         </div>
                         <div class="summary-details">
                             <h3>@Model.Sum(p => p.Price).ToString("C")</h3>
-                            <p>Total Inventory Value</p>
+                            <p>Todos os valores do inventario</p>
                             <div class="summary-progress">
-                                <span class="progress-indicator">+12% from last month</span>
+                                <span class="progress-indicator">+12% desde o ano passado</span>
                             </div>
                         </div>
                     </div>
@@ -179,9 +180,9 @@
                         </div>
                         <div class="summary-details">
                             <h3>125</h3>
-                            <p>Total Customers</p>
+                            <p>Todos os clientes</p>
                             <div class="summary-progress">
-                                <span class="progress-indicator">+8% from last month</span>
+                                <span class="progress-indicator">+8% desde o mes passado</span>
                             </div>
                         </div>
                     </div>
@@ -193,25 +194,24 @@
                         </div>
                         <div class="summary-details">
                             <h3>32</h3>
-                            <p>Orders Today</p>
+                            <p>Pedidos hoje</p>
                             <div class="summary-progress">
-                                <span class="progress-indicator">+15% from yesterday</span>
+                                <span class="progress-indicator">+15% ontem</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Products Section -->
+            
             <div class="dashboard-section">
                 <div class="section-header">
                     <div class="section-title">
-                        <h2>Products</h2>
-                        <p>Manage your product inventory</p>
+                        <h2>Produtos</h2>
+                        <p>Gerencie seu inventario de produtos</p>
                     </div>
                     <div class="section-actions">
                         <a asp-controller="Products" asp-action="CreateProduct" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Add New Product
+                            <i class="fas fa-plus"></i> Adicione um novo produto
                         </a>
                     </div>
                 </div>
@@ -230,13 +230,12 @@
                                     {
                                         <span class="product-badge sale">Sale</span>
                                     }
-                                    <img src="/images/@product.ImageURL" alt="@product.Name" onerror="this.src='/images/product-placeholder.jpg'">
+                                    <i class="fas fa-shirt"></i>
                                 </div>
                                 <div class="product-info">
                                     <h3 class="product-name">@product.Name</h3>
                                     <div class="product-meta">
                                         <span class="product-price">@product.Price.ToString("C")</span>
-                                        <span class="product-category">Category</span>
                                     </div>
                                 </div>
                             </a>
@@ -245,20 +244,19 @@
                 </div>
 
                 <div class="view-all">
-                    <a href="/Products/Index" class="btn btn-outline-primary">View All Products</a>
+                    <a href="/Products/Index" class="btn btn-outline-primary">Veja todos seus produtos</a>
                 </div>
             </div>
 
-            <!-- Recent Orders Section -->
             <div class="dashboard-section">
                 <div class="section-header">
                     <div class="section-title">
-                        <h2>Recent Orders</h2>
-                        <p>Latest customer orders</p>
+                        <h2>Pedidos recentes</h2>
+                        <p>Pedidos recentes dos clientes</p>
                     </div>
                     <div class="section-actions">
                         <a href="/Orders/Index" class="btn btn-outline-primary">
-                            <i class="fas fa-list"></i> All Orders
+                            <i class="fas fa-list"></i> Todos os pedidos
                         </a>
                     </div>
                 </div>
@@ -282,7 +280,7 @@
                                     <td><a href="#" class="order-link">#ORD-2023-001</a></td>
                                     <td>
                                         <div class="customer-info">
-                                            <img src="/images/user-1.jpg" alt="John Doe" class="customer-avatar" onerror="this.src='/images/default-avatar.png'">
+                                            <i class="fas fa-user"></i>
                                             <span>John Doe</span>
                                         </div>
                                     </td>
@@ -304,7 +302,7 @@
                                     <td><a href="#" class="order-link">#ORD-2023-002</a></td>
                                     <td>
                                         <div class="customer-info">
-                                            <img src="/images/user-2.jpg" alt="Jane Smith" class="customer-avatar" onerror="this.src='/images/default-avatar.png'">
+                                            <i class="fas fa-user"></i>
                                             <span>Jane Smith</span>
                                         </div>
                                     </td>
@@ -326,7 +324,7 @@
                                     <td><a href="#" class="order-link">#ORD-2023-003</a></td>
                                     <td>
                                         <div class="customer-info">
-                                            <img src="/images/user-3.jpg" alt="Robert Johnson" class="customer-avatar" onerror="this.src='/images/default-avatar.png'">
+                                            <i class="fas fa-user"></i>
                                             <span>Robert Johnson</span>
                                         </div>
                                     </td>
@@ -348,7 +346,7 @@
                                     <td><a href="#" class="order-link">#ORD-2023-004</a></td>
                                     <td>
                                         <div class="customer-info">
-                                            <img src="/images/user-4.jpg" alt="Emily Davis" class="customer-avatar" onerror="this.src='/images/default-avatar.png'">
+                                            <i class="fas fa-user"></i>
                                             <span>Emily Davis</span>
                                         </div>
                                     </td>
@@ -370,7 +368,7 @@
                                     <td><a href="#" class="order-link">#ORD-2023-005</a></td>
                                     <td>
                                         <div class="customer-info">
-                                            <img src="/images/user-5.jpg" alt="Michael Wilson" class="customer-avatar" onerror="this.src='/images/default-avatar.png'">
+                                            <i class="fas fa-user"></i>
                                             <span>Michael Wilson</span>
                                         </div>
                                     </td>
@@ -401,25 +399,21 @@
 @section Scripts {
     <script>
         $(document).ready(function() {
-            // Toggle sidebar on mobile
             $('#mobile-toggle, #sidebar-toggle').on('click', function() {
                 $('.sidebar').toggleClass('show');
                 $('.main-content').toggleClass('sidebar-open');
             });
 
-            // Dropdown toggle
             $('.dropdown-toggle').on('click', function() {
                 $(this).next('.dropdown-menu').toggleClass('show');
             });
 
-            // Close dropdown when clicking outside
             $(document).on('click', function(e) {
                 if (!$(e.target).closest('.dropdown').length) {
                     $('.dropdown-menu').removeClass('show');
                 }
             });
 
-            // Close sidebar when clicking outside on mobile
             $(document).on('click', function(e) {
                 if ($(window).width() < 768) {
                     if (!$(e.target).closest('.sidebar').length && !$(e.target).closest('#mobile-toggle').length) {
