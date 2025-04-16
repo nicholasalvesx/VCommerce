@@ -30,40 +30,40 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid) 
+            return View(model);
+        
+        var result = await _authService.LoginAsync(model);
+
+        if (result is { Succeeded: true, Token: not null } && model.Name != null)
         {
-            var result = await _authService.LoginAsync(model);
-
-            if (result is { Succeeded: true, Token: not null } && model.Name != null)
+            var claims = new List<Claim>
             {
-                var claims = new List<Claim>
-                {
-                    new(ClaimTypes.Email, model.Name),
-                    new("JwtToken", result.Token)
-                };
+                new(ClaimTypes.Name, model.Name),
+                new("JwtToken", result.Token)
+            };
 
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var authProperties = new AuthenticationProperties
-                {
-                    IsPersistent = model.RememberMe,
-                    ExpiresUtc = DateTimeOffset.UtcNow.AddHours(8)
-                };
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = model.RememberMe,
+                ExpiresUtc = DateTimeOffset.UtcNow.AddHours(8)
+            };
 
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity),
+                authProperties);
 
-                if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
-                {
-                    return Redirect(model.ReturnUrl);
-                }
-
-                return RedirectToAction("Index", "Home");
+            if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+            {
+                return Redirect(model.ReturnUrl);
             }
 
-            ModelState.AddModelError(string.Empty, "Tentativa de login inválida. Verifique seu email e senha.");
+            return RedirectToAction("Index", "Home");
         }
+
+        ModelState.AddModelError(string.Empty, "Tentativa de login inválida. Verifique seu email e senha.");
 
         return View(model);
     }

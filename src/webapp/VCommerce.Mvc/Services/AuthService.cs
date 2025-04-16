@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using VCommerce.Api.DTOs;
 using VCommerce.Mvc.Models;
 using VCommerce.Mvc.Services.Contracts;
 
@@ -19,23 +20,38 @@ public class AuthService : IAuthService
     public async Task<AuthResult> LoginAsync(LoginViewModel loginModel)
     {
         var loginContent = new StringContent(
-            JsonSerializer.Serialize(new { userName = loginModel.Name, password = loginModel.Password }),
-            Encoding.UTF8,
-            "application/json");
-
+            JsonSerializer.Serialize(new LoginDTO
+            {   
+                Name = loginModel.Name,
+                Password = loginModel.Password
+            }), Encoding.UTF8,
+        "application/json");
+        
         var response = await _httpClient.PostAsync("/api/v1/auth/login", loginContent);
 
-        if (!response.IsSuccessStatusCode) return new AuthResult { Succeeded = false };
+        if (!response.IsSuccessStatusCode)
+            return new AuthResult { Succeeded = false };
+
         var content = await response.Content.ReadAsStringAsync();
-        var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-        var result = JsonSerializer.Deserialize<AuthResult>(content, options);
+        var jsonDoc = JsonDocument.Parse(content);
+        var root = jsonDoc.RootElement;
 
-        if (result == null || string.IsNullOrEmpty(result.Token)) return new AuthResult { Succeeded = false };
-        _httpContextAccessor.HttpContext?.Session.SetString("JWTToken", result.Token);
-        return result;
+        var token = root.GetProperty("token").GetString();
+        var expiration = root.GetProperty("expirationToken").GetDateTime();
 
+        if (string.IsNullOrEmpty(token))
+            return new AuthResult { Succeeded = false };
+
+        _httpContextAccessor.HttpContext?.Session.SetString("JWTToken", token);
+
+        return new AuthResult
+        {
+            Succeeded = true,
+            Token = token,
+            Expiration = expiration
+        };
     }
-
+    
     public async Task<AuthResult?> RegisterAsync(RegisterViewModel registerModel)
     {
         var registerContent = new StringContent(

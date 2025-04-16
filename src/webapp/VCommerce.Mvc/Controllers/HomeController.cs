@@ -9,9 +9,9 @@ namespace VCommerce.Mvc.Controllers;
 public class HomeController : Controller
 {
     private readonly IProductService _productService;
-    private readonly ILogger _logger;
+    private readonly ILogger<HomeController> _logger;
 
-    public HomeController(IProductService productService, ILogger logger)
+    public HomeController(IProductService productService, ILogger<HomeController> logger)
     {
         _productService = productService;
         _logger = logger;
