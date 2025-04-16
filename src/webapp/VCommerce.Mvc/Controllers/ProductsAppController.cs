@@ -6,11 +6,11 @@ using VCommerce.Mvc.Services.Contracts;
 
 namespace VCommerce.Mvc.Controllers;
 
-public class ProductsController : Controller
+public class ProductsAppController : Controller
 {
     private readonly IProductService _productService;
     private readonly ICategoryService _categoryService;
-    public ProductsController(IProductService productService,
+    public ProductsAppController(IProductService productService,
                             ICategoryService categoryService)
     {
         _productService = productService;

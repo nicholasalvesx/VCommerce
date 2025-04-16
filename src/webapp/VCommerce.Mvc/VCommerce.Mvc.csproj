@@ -33,10 +33,10 @@
     <ItemGroup>
       <AdditionalFiles Include="Views\Home\Index.cshtml" />
       <AdditionalFiles Include="Views\Home\ProductDetails.cshtml" />
-      <AdditionalFiles Include="Views\Products\CreateProduct.cshtml" />
-      <AdditionalFiles Include="Views\Products\DeleteProduct.cshtml" />
-      <AdditionalFiles Include="Views\Products\Index.cshtml" />
-      <AdditionalFiles Include="Views\Products\UpdateProduct.cshtml" />
+      <AdditionalFiles Include="Views\ProductsApp\CreateProduct.cshtml" />
+      <AdditionalFiles Include="Views\ProductsApp\DeleteProduct.cshtml" />
+      <AdditionalFiles Include="Views\ProductsApp\Index.cshtml" />
+      <AdditionalFiles Include="Views\ProductsApp\UpdateProduct.cshtml" />
       <AdditionalFiles Include="Views\Shared\Error.cshtml" />
       <AdditionalFiles Include="Views\Shared\_Layout.cshtml" />
       <AdditionalFiles Include="Views\Shared\_LoginPartial.cshtml" />

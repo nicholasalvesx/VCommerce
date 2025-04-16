@@ -32,27 +32,27 @@ build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcm9kdWN0RGV0YWlscy5j
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/Products/CreateProduct.cshtml]
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/ProductsApp/CreateProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdHMvQ3JlYXRlUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdHNBcHAvQ3JlYXRlUHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/Products/DeleteProduct.cshtml]
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/ProductsApp/DeleteProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdHMvRGVsZXRlUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdHNBcHAvRGVsZXRlUHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/Products/Index.cshtml]
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/ProductsApp/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdHMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdHNBcHAvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/Products/UpdateProduct.cshtml]
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/ProductsApp/UpdateProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdHMvVXBkYXRlUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdHNBcHAvVXBkYXRlUHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
