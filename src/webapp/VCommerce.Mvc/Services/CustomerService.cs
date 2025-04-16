@@ -62,10 +62,9 @@ public class CustomerService : ICustomerService
         return _customerVm;
     }
 
-    public async Task<CustomerViewModel?> CreateCustomer(CustomerViewModel? customerVm, string? token)
+    public async Task<CustomerViewModel?> CreateCustomer(CustomerViewModel? customerVm)
     {
         var customer = _clientFactory.CreateClient("Api");
-        PutTokenInHeaderAuthorization(token, customer);
 
         var content = new StringContent(JsonSerializer.Serialize(customerVm),
             Encoding.UTF8, "application/json");

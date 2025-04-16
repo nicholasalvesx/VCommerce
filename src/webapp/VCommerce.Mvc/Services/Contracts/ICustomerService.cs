@@ -6,7 +6,7 @@ public interface ICustomerService
 {
     Task<IEnumerable<CustomerViewModel>?> GetAllCustomers(string? token);
     Task<CustomerViewModel?> FindCustomerById(int id, string? token);
-    Task<CustomerViewModel?> CreateCustomer(CustomerViewModel? customerVm, string? token);
+    Task<CustomerViewModel?> CreateCustomer(CustomerViewModel? customerVm);
     Task<CustomerViewModel?> UpdateCustomer(CustomerViewModel customerVm, string? token);
     Task<bool> DeleteCustomerById(int id, string? token);
 }

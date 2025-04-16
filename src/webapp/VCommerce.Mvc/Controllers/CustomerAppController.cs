@@ -34,7 +34,7 @@ public class CustomerAppController : Controller
         if (!ModelState.IsValid)
             return View(model);
 
-        var result = await _customerService.CreateCustomer(model, await GetAccessToken());
+        var result = await _customerService.CreateCustomer(model);
         
         return View(result);
     }
