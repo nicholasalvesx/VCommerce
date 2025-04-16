@@ -39,32 +39,32 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<ProductDTO>> CreateProduct(ProductDTO productDto)
+    public async Task<ActionResult<ProductDTO>> CreateProduct(ProductDTO product)
     {
-        if (productDto == null!)
+        if (product == null!)
         {
             return BadRequest();
         }
         
-        await _productService.AddProduct(productDto);
+        await _productService.AddProduct(product);
         
-        return CreatedAtRoute("GetProduct", new { id = productDto.Id }, productDto);
+        return CreatedAtRoute("GetProduct", new { id = product.Id }, product);
     }
 
     [HttpPut("{id:int}")]
-    public async Task<ActionResult<ProductDTO>> UpdateProduct(int id, ProductDTO productDto)
+    public async Task<ActionResult<ProductDTO>> UpdateProduct(int id, ProductDTO product)
     {
-        if (id != productDto.Id)
+        if (id != product.Id)
         {
             return BadRequest();
         }
 
-        if (productDto == null!)
+        if (product == null!)
         {
             return BadRequest();
         }
-        await _productService.UpdateProduct(productDto);
-        return Ok(productDto);
+        await _productService.UpdateProduct(product);
+        return Ok(product);
     }
 
     [HttpDelete("{id:int}")]
