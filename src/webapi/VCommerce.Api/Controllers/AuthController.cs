@@ -31,17 +31,19 @@ public class AuthController : ControllerBase
 
     [HttpPost]
     [Route("login")]
-    public async Task<IActionResult> Login(LoginDTO dto)
+    public async Task<IActionResult> Login([FromBody] LoginDTO dto)
     {
-        var userExists = await _userManager.FindByNameAsync(dto.UserName!);
+        var userExists = await _userManager.FindByNameAsync(dto.Name!);
         if (userExists == null)
         {
             return BadRequest("User does not exist");
         }
         
-        var user = await _userManager.FindByNameAsync(dto.UserName!);
+        var user = await _userManager.FindByNameAsync(dto.Name!);
 
-        if (user == null || !await _userManager.CheckPasswordAsync(user, dto.Password!)) return Unauthorized();
+        if (user == null || !await _userManager.CheckPasswordAsync(user, dto.Password!)) 
+            return Unauthorized();
+        
         var userRoles = await _userManager.GetRolesAsync(user);
             
         var authClaims = new List<Claim>
@@ -65,7 +67,7 @@ public class AuthController : ControllerBase
             
         await _userManager.UpdateAsync(user);
             
-        return Ok(new
+        return Ok(new 
         {
             Token = new JwtSecurityTokenHandler().WriteToken(token),
             RefreshToken = refreshToken,
