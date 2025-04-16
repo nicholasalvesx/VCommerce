@@ -30,13 +30,10 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreteCustomer(CustomerDTO customerDto)
+    public async Task<IActionResult> CreteCustomer(CustomerDTO? customerDto)
     {
-        var customer = await _customerService.GetCustomerById(customerDto.Id);
-        if (customer == null!)
-        {
-            return NotFound("Customer not found");
-        }
+        if (customerDto != null)
+            return BadRequest("Customer already exists");
         
         await _customerService.AddCustomer(customerDto);
         return Ok(customerDto);

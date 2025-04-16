@@ -28,11 +28,14 @@ public class CustomerService : ICustomerService
         return _mapper.Map<CustomerDTO>(customer);
     }
 
-    public async Task AddCustomer(CustomerDTO customer)
+    public async Task AddCustomer(CustomerDTO? customer)
     {
         var customerEntity = _mapper.Map<Customer>(customer);
+        
         await _customerRepository.CreateCustomer(customerEntity);
-        customer.Id = customerEntity.Id; 
+        
+        if (customer != null) 
+            customer.Id = customerEntity.Id;
     }
 
     public async Task UpdateCustomer(CustomerDTO customer)
