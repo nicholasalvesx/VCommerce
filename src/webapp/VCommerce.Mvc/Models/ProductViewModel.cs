@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace VCommerce.Mvc.Models;
 
@@ -24,7 +25,8 @@ public class ProductViewModel
 
     [Range(1, 100)]
     public int Quantity { get; set; } = 1;
-
+    
+    [JsonIgnore]
     [Display(Name="Category")]
     public int CategoryId { get; set; }
 }

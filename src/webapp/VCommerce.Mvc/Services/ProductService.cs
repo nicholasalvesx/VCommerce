@@ -10,7 +10,6 @@ public class ProductService : IProductService
 {
     private readonly IHttpClientFactory _clientFactory;
     private readonly JsonSerializerOptions _options;
-    private const string apiEndpoint = "/api/v1/products/";
     private ProductViewModel? _productVm;
     private IEnumerable<ProductViewModel>? _productsVm;
 
@@ -25,7 +24,7 @@ public class ProductService : IProductService
         var client = _clientFactory.CreateClient("Api");
         PutTokenInHeaderAuthorization(token, client);
 
-        using (var response = await client.GetAsync(apiEndpoint))
+        using (var response = await client.GetAsync("/api/v1/products"))
         {
             if (response.IsSuccessStatusCode)
             {
@@ -46,7 +45,7 @@ public class ProductService : IProductService
         var client = _clientFactory.CreateClient("Api");
         PutTokenInHeaderAuthorization(token, client);
 
-        using (var response = await client.GetAsync(apiEndpoint + id))
+        using (var response = await client.GetAsync("/api/v1/products/" + id))
         {
             if (response.IsSuccessStatusCode)
             {
@@ -70,7 +69,7 @@ public class ProductService : IProductService
         var content = new StringContent(JsonSerializer.Serialize(productVm),
                                                   Encoding.UTF8, "application/json");
 
-        using var response = await client.PostAsync(apiEndpoint, content);
+        using var response = await client.PostAsync("/api/v1/products/", content);
         if (response.IsSuccessStatusCode)
         {
             var apiResponse = await response.Content.ReadAsStreamAsync();
@@ -92,7 +91,7 @@ public class ProductService : IProductService
 
         ProductViewModel? productUpdated;
         
-        using (var response = await client.PutAsJsonAsync(apiEndpoint, productVm))
+        using (var response = await client.PutAsJsonAsync("/api/v1/products/", productVm))
         {
             if (response.IsSuccessStatusCode)
             {
@@ -113,7 +112,7 @@ public class ProductService : IProductService
         var client = _clientFactory.CreateClient("Api");
         PutTokenInHeaderAuthorization(token, client);
 
-        using (var response = await client.DeleteAsync(apiEndpoint + id))
+        using (var response = await client.DeleteAsync("/api/v1/products/" + id))
         {
             if (response.IsSuccessStatusCode)
             {

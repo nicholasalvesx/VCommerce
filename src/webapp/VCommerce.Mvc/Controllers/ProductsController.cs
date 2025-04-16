@@ -39,7 +39,8 @@ public class ProductsController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateProduct(ProductViewModel? productVm)
     {
-        if (!ModelState.IsValid) return View(productVm);
+        if (!ModelState.IsValid) 
+            return View(productVm);
         
         var result = await _productService.CreateProduct(productVm, await GetAccessToken());
 
