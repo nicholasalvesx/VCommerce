@@ -99,3 +99,19 @@ build_metadata.AdditionalFiles.CssScope =
 [/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/CustomerApp/CreateCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXJBcHAvQ3JlYXRlQ3VzdG9tZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/CustomerApp/DeleteCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXJBcHAvRGVsZXRlQ3VzdG9tZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/CustomerApp/EditCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXJBcHAvRWRpdEN1c3RvbWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/CustomerApp/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXJBcHAvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

@@ -1,0 +1,110 @@
+@model VCommerce.Mvc.Models.CustomerViewModel
+
+@{
+    ViewData["Title"] = "Novo Cliente";
+}
+
+<div class="content-header">
+    <h1 class="content-title">Novo Cliente</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Clientes</a></li>
+        <li class="breadcrumb-item active">Novo Cliente</li>
+    </ol>
+</div>
+
+<div class="dashboard-section">
+    <div class="section-header">
+        <div class="section-title">
+            <h2>Informações do Cliente</h2>
+            <p>Preencha os dados para cadastrar um novo cliente</p>
+        </div>
+    </div>
+    
+    <form asp-action="CreateCustomer" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+        <div class="form-grid">
+            <div class="form-group">
+                <label asp-for="Name">Nome</label>
+                <input asp-for="Name" class="form-control" placeholder="Digite o nome" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName">Sobrenome</label>
+                <input asp-for="LastName" class="form-control" placeholder="Digite o sobrenome" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-group-full">
+                <label asp-for="Email">Email</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Digite o email" />
+                </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-group-full">
+                <label asp-for="Password">Senha</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Digite a senha" />
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group form-group-full">
+                <label for="ConfirmPassword">Confirmar Senha</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input id="ConfirmPassword" name="ConfirmPassword" type="password" class="form-control" placeholder="Confirme a senha" />
+                </div>
+                <span id="password-error" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submit-btn">
+                <i class="fas fa-save"></i> Salvar Cliente
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            $('#ConfirmPassword').on('keyup', function() {
+                var password = $('#Password').val();
+                var confirmPassword = $(this).val();
+                
+                if (password !== confirmPassword) {
+                    $('#password-error').text('As senhas não coincidem');
+                    $('#submit-btn').prop('disabled', true);
+                } else {
+                    $('#password-error').text('');
+                    $('#submit-btn').prop('disabled', false);
+                }
+            });
+            
+            $('#Password').on('keyup', function() {
+                var password = $(this).val();
+                var confirmPassword = $('#ConfirmPassword').val();
+                
+                if (confirmPassword && password !== confirmPassword) {
+                    $('#password-error').text('As senhas não coincidem');
+                    $('#submit-btn').prop('disabled', true);
+                } else if (confirmPassword) {
+                    $('#password-error').text('');
+                    $('#submit-btn').prop('disabled', false);
+                }
+            });
+        });
+    </script>
+}

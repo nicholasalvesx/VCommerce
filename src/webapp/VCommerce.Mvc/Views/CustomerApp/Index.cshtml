@@ -1,0 +1,96 @@
+@model IEnumerable<VCommerce.Mvc.Models.CustomerViewModel>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<div class="content-header">
+    <h1 class="content-title">Clientes</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Clientes</li>
+    </ol>
+</div>
+
+<div class="dashboard-section">
+    <div class="section-header">
+        <div class="section-title">
+            <h2>Lista de Clientes</h2>
+            <p>Gerencie os clientes cadastrados</p>
+        </div>
+        <div class="section-actions">
+            <a asp-action="CreateCustomer" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Novo Cliente
+            </a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Sobrenome</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Any())
+                        {
+                            @foreach (var customer in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="customer-info">
+                                            <div class="customer-avatar">
+                                                <span class="avatar-initials">@customer.Name?[..1]</span>
+                                            </div>
+                                            <span>@customer.Name</span>
+                                        </div>
+                                    </td>
+                                    <td>@customer.LastName</td>
+                                    <td>@customer.Email</td>
+                                    <td>
+                                        <span class="status-badge completed">Ativo</span>
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a asp-action="EditCustomer" asp-route-id="@customer.Id" class="btn btn-sm btn-warning" title="Editar">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a asp-action="DeleteCustomer" asp-route-id="@customer.Id" class="btn btn-sm btn-danger" title="Excluir">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-sm btn-info" title="Visualizar">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <div class="empty-state">
+                                        <i class="fas fa-users empty-icon"></i>
+                                        <h4>Nenhum cliente encontrado</h4>
+                                        <p>Não há clientes cadastrados no sistema.</p>
+                                        <a asp-action="CreateCustomer" class="btn btn-primary">
+                                            <i class="fas fa-plus"></i> Adicionar Cliente
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

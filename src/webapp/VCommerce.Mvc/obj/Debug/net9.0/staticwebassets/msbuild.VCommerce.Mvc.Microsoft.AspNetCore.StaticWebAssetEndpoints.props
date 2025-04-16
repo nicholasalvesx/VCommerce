@@ -12,6 +12,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"m3747myd3y"},{"Name":"integrity","Value":"sha256-8tuk2ONAs9cmsjwX\u002BSRMsQHzjxSp3WYG0fkxtyZVMw4="},{"Name":"label","Value":"_content/VCommerce.Mvc/assets/vcommerce.jpg"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"608864"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00228tuk2ONAs9cmsjwX\u002BSRMsQHzjxSp3WYG0fkxtyZVMw4=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 18:15:26 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/VCommerce.Mvc/css/customer.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-x0QAw4fU98bfHwNezG3gMPIRw8y3WHr0rmeSxiyEyvE="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2810"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022x0QAw4fU98bfHwNezG3gMPIRw8y3WHr0rmeSxiyEyvE=\u0022"},{"Name":"Last-Modified","Value":"Wed, 16 Apr 2025 20:29:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/VCommerce.Mvc/css/customer.lt5v8hacih.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\customer.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"lt5v8hacih"},{"Name":"integrity","Value":"sha256-x0QAw4fU98bfHwNezG3gMPIRw8y3WHr0rmeSxiyEyvE="},{"Name":"label","Value":"_content/VCommerce.Mvc/css/customer.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2810"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022x0QAw4fU98bfHwNezG3gMPIRw8y3WHr0rmeSxiyEyvE=\u0022"},{"Name":"Last-Modified","Value":"Wed, 16 Apr 2025 20:29:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VCommerce.Mvc/css/dashboard.455udpcw93.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\dashboard.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
