@@ -28,21 +28,25 @@ public class CustomerController : ControllerBase
         var customer = await _customerService.GetCustomerById(id);
         return Ok(customer);
     }
-
+    
     [HttpPost]
-    public async Task<IActionResult> CreteCustomer(CustomerDTO? customerDto)
+    public async Task<IActionResult> CreteCustomer([FromBody] CustomerDTO? customerDto)
     {
-        if (customerDto != null)
-            return BadRequest("Customer already exists");
-        
+        if (customerDto == null)
+            return BadRequest("Customer data is required");
+
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
         await _customerService.AddCustomer(customerDto);
         return Ok(customerDto);
     }
 
+
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateCustomer(int id, CustomerDTO customerDto)
     {
-        if (id != customerDto.Id && customerDto == null!)
+        if (id != customerDto.Id)
         {
             return BadRequest();
         }
