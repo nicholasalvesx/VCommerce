@@ -50,7 +50,7 @@ public class ProductsAppController : Controller
         ViewBag.CategoryId = new SelectList(await
             _categoryService.GetAllCategories(await GetAccessToken()), "CategoryId", "Name");
 
-        return View(productVm);
+        return RedirectToAction(nameof(Index));
     }
 
     [HttpGet]
@@ -74,7 +74,8 @@ public class ProductsAppController : Controller
             if (result != null!)
                 return RedirectToAction(nameof(Index));
         }
-        return View(productVm);
+
+        return RedirectToAction(nameof(Index));
     }
 
     [HttpGet]

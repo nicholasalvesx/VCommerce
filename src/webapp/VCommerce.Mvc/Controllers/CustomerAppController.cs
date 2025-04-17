@@ -34,17 +34,15 @@ public class CustomerAppController : Controller
         if (!ModelState.IsValid)
             return View(model);
 
-        var result = await _customerService.CreateCustomer(model);
+        await _customerService.CreateCustomer(model);
         
-        return View(result);
+        return RedirectToAction(nameof(Index));
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<CustomerViewModel>>> EditCustomer(int id)
+    public Task<ActionResult<IEnumerable<CustomerViewModel>>> EditCustomer(int id)
     {
-        var reuslt = await _customerService.FindCustomerById(id, await GetAccessToken());
-        return reuslt is null ? 
-            View("Error") : View(reuslt);
+        return Task.FromResult<ActionResult<IEnumerable<CustomerViewModel>>>(View());
     }
 
     [HttpPost]
@@ -52,13 +50,10 @@ public class CustomerAppController : Controller
     {
         if (!ModelState.IsValid) 
             return View(model);
-
-        if (model == null) return 
-            View(model);
         
         var result = await _customerService.UpdateCustomer(model, await GetAccessToken());
 
-        if (result != null!)
+        if (result == null)
             return RedirectToAction(nameof(Index));
         
         return View(model);

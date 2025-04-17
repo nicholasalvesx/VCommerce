@@ -84,7 +84,7 @@ public class CustomerService : ICustomerService
         return customerVm;
     }
 
-    public async Task<CustomerViewModel?> UpdateCustomer(CustomerViewModel customerVm, string? token)
+    public async Task<CustomerViewModel?> UpdateCustomer(CustomerViewModel? customerVm, string? token)
     {
         var customer = _clientFactory.CreateClient("Api");
         PutTokenInHeaderAuthorization(token, customer);
@@ -112,12 +112,8 @@ public class CustomerService : ICustomerService
         PutTokenInHeaderAuthorization(token, customer);
 
         using var response = await customer.DeleteAsync("/api/v1/customers/" + id);
-        if (response.IsSuccessStatusCode)
-        {
-            return true;
-        }
-
-        return false;
+        
+        return response.IsSuccessStatusCode;
     }   
     
     private static void PutTokenInHeaderAuthorization(string? token, HttpClient client)
