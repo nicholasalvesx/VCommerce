@@ -77,6 +77,19 @@ public class CustomerAppController : Controller
         return RedirectToAction("Index");
     }
     
+    [HttpGet]
+    public async Task<IActionResult> Profile(int id)
+    {
+        var profile = await _customerService.FindCustomerById(id, await GetAccessToken());
+
+        if (profile is null)
+        {
+            return NotFound("Any user has not been logged in");
+        }
+        
+        return View();
+    }   
+    
     private async Task<string?> GetAccessToken()
     {
         return await HttpContext.GetTokenAsync("access_token");

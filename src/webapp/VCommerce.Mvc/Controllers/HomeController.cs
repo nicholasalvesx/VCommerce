@@ -6,6 +6,7 @@ using VCommerce.Mvc.Services.Contracts;
 
 namespace VCommerce.Mvc.Controllers;
 
+[Authorize]
 public class HomeController : Controller
 {
     private readonly IProductService _productService;
@@ -16,19 +17,15 @@ public class HomeController : Controller
         _productService = productService;
         _logger = logger;
     }
-
+    
+    [Authorize]
     [HttpGet]
     [AllowAnonymous]
     public async Task<IActionResult> Index()
     {
         var products = await _productService.GetAllProducts(string.Empty);
 
-        if (products is null)
-        {
-            return View("Error");
-        }
-
-        return View(products);
+        return products is null ? View("Error") : View(products);
     }
 
     [HttpGet]
@@ -60,6 +57,7 @@ public class HomeController : Controller
 
             return View(product);
         }
+        
         catch (HttpRequestException ex)
         {
             _logger.LogError(ex, "Erro ao comunicar com a API de produtos. ID: {ProductId}", id);

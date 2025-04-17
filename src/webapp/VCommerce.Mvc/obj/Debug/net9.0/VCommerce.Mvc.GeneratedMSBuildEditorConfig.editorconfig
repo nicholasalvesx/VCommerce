@@ -115,3 +115,7 @@ build_metadata.AdditionalFiles.CssScope =
 [/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/CustomerApp/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXJBcHAvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
+
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/CustomerApp/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXJBcHAvUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

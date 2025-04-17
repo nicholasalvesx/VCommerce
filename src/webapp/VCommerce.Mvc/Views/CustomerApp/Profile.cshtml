@@ -1,0 +1,604 @@
+@model VCommerce.Mvc.Models.CustomerViewModel
+
+@{
+    ViewData["Title"] = "Meu Perfil";
+}
+
+<link rel="stylesheet" href="/css/profile.css" asp-append-version="true" />
+
+<div class="content-header">
+    <h1 class="content-title">Meu Perfil</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+        <li class="breadcrumb-item active">Meu Perfil</li>
+    </ol>
+</div>
+
+<div class="profile-container">
+    
+    <div class="profile-sidebar">
+        <div class="profile-user">
+            <div class="profile-avatar">
+                <span class="avatar-initials">@(User.Identity?.Name?.Substring(0, 1))</span>
+            </div>
+            <div class="profile-user-info">
+                <h3>@User.Identity?.Name</h3>
+                <p>Cliente desde @DateTime.Now.AddYears(-1).ToString("MMM yyyy")</p>
+            </div>
+        </div>
+
+        <nav class="profile-nav">
+            <a href="#personal-info" class="profile-nav-item active">
+                <i class="fas fa-user"></i> Informações Pessoais
+            </a>
+            <a href="#security" class="profile-nav-item">
+                <i class="fas fa-lock"></i> Segurança
+            </a>
+            <a href="#orders" class="profile-nav-item">
+                <i class="fas fa-shopping-bag"></i> Meus Pedidos
+            </a>
+            <a href="#addresses" class="profile-nav-item">
+                <i class="fas fa-map-marker-alt"></i> Endereços
+            </a>
+            <a href="#preferences" class="profile-nav-item">
+                <i class="fas fa-cog"></i> Preferências
+            </a>
+        </nav>
+    </div>
+
+    <div class="profile-content">
+        <section id="personal-info" class="profile-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Informações Pessoais</h2>
+                    <p>Gerencie seus dados pessoais</p>
+                </div>
+                <div class="section-actions">
+                    <button type="button" id="edit-profile-btn" class="btn btn-outline-primary">
+                        <i class="fas fa-edit"></i> Editar Perfil
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div id="profile-view">
+                        <div class="info-grid">
+                            <div class="info-group">
+                                <label>Nome</label>
+                                <p>@Model.Name</p>
+                            </div>
+
+                            <div class="info-group">
+                                <label>Sobrenome</label>
+                                <p>@Model.LastName</p>
+                            </div>
+
+                            <div class="info-group">
+                                <label>Email</label>
+                                <p>@Model.Email</p>
+                            </div>
+
+                            <div class="info-group">
+                                <label>Telefone</label>
+                                <p>(11) 98765-4321</p>
+                            </div>
+
+                            <div class="info-group">
+                                <label>Data de Nascimento</label>
+                                <p>01/01/1990</p>
+                            </div>
+
+                            <div class="info-group">
+                                <label>CPF</label>
+                                <p>123.456.789-00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="profile-edit" style="display: none;">
+                        <form id="profile-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="Name">Nome</label>
+                                    <input type="text" id="Name" name="Name" class="form-control" value="@Model.Name"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="LastName">Sobrenome</label>
+                                    <input type="text" id="LastName" name="LastName" class="form-control" value="@Model.LastName"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Email">Email</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="email" id="Email" name="Email" class="form-control" value="@Model.Email"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Phone">Telefone</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-phone"></i>
+                                        <input type="tel" id="Phone" name="Phone" class="form-control" value="(11) 98765-4321"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="BirthDate">Data de Nascimento</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-calendar"></i>
+                                        <input type="date" id="BirthDate" name="BirthDate" class="form-control" value="1990-01-01"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="CPF">CPF</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-id-card"></i>
+                                        <input type="text" id="CPF" name="CPF" class="form-control" value="123.456.789-00"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Salvar Alterações
+                                </button>
+                                <button type="button" id="cancel-edit-btn" class="btn btn-outline-secondary">
+                                    <i class="fas fa-times"></i> Cancelar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="security" class="profile-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Segurança</h2>
+                    <p>Gerencie sua senha e configurações de segurança</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <form id="security-form">
+                        <div class="form-grid">
+                            <div class="form-group form-group-full">
+                                <label for="CurrentPassword">Senha Atual</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="CurrentPassword" name="CurrentPassword" class="form-control" placeholder="Digite sua senha atual"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="NewPassword">Nova Senha</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="NewPassword" name="NewPassword" class="form-control" placeholder="Digite a nova senha"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ConfirmPassword">Confirmar Nova Senha</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" class="form-control" placeholder="Confirme a nova senha"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="password-requirements">
+                            <h4>Requisitos de Senha</h4>
+                            <ul>
+                                <li>Mínimo de 8 caracteres</li>
+                                <li>Pelo menos uma letra maiúscula</li>
+                                <li>Pelo menos uma letra minúscula</li>
+                                <li>Pelo menos um número</li>
+                                <li>Pelo menos um caractere especial</li>
+                            </ul>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Alterar Senha
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h3 class="card-title">Sessões Ativas</h3>
+                    <p class="card-description">Dispositivos onde sua conta está conectada atualmente</p>
+
+                    <div class="sessions-list">
+                        <div class="session-item current">
+                            <div class="session-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <div class="session-info">
+                                <h4>Windows - Chrome</h4>
+                                <p>São Paulo, Brasil - Atual</p>
+                            </div>
+                            <div class="session-actions">
+                                <span class="session-badge">Atual</span>
+                            </div>
+                        </div>
+
+                        <div class="session-item">
+                            <div class="session-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="session-info">
+                                <h4>iPhone - Safari</h4>
+                                <p>São Paulo, Brasil - 2 dias atrás</p>
+                            </div>
+                            <div class="session-actions">
+                                <button class="btn btn-sm btn-outline-danger">Encerrar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <button class="btn btn-outline-danger">
+                            <i class="fas fa-sign-out-alt"></i> Encerrar Todas as Sessões
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="orders" class="profile-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Meus Pedidos</h2>
+                    <p>Histórico e status dos seus pedidos</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="orders-filter">
+                        <div class="filter-group">
+                            <label>Filtrar por:</label>
+                            <select class="form-control">
+                                <option>Todos os pedidos</option>
+                                <option>Últimos 30 dias</option>
+                                <option>Últimos 6 meses</option>
+                                <option>2023</option>
+                                <option>2022</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Status:</label>
+                            <select class="form-control">
+                                <option>Todos</option>
+                                <option>Em processamento</option>
+                                <option>Enviado</option>
+                                <option>Entregue</option>
+                                <option>Cancelado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Pedido</th>
+                                <th>Data</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#" class="order-link">#ORD-2023-001</a>
+                                </td>
+                                <td>15/04/2023</td>
+                                <td>R$ 245,99</td>
+                                <td><span class="status-badge completed">Entregue</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="#" class="btn btn-sm btn-info" title="Detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-secondary" title="Nota Fiscal">
+                                            <i class="fas fa-file-invoice"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="order-link">#ORD-2023-002</a>
+                                </td>
+                                <td>28/03/2023</td>
+                                <td>R$ 145,50</td>
+                                <td><span class="status-badge shipped">Enviado</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="#" class="btn btn-sm btn-info" title="Detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-primary" title="Rastrear">
+                                            <i class="fas fa-truck"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="order-link">#ORD-2023-003</a>
+                                </td>
+                                <td>10/02/2023</td>
+                                <td>R$ 89,99</td>
+                                <td><span class="status-badge cancelled">Cancelado</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="#" class="btn btn-sm btn-info" title="Detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination-container">
+                        <ul class="pagination">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Próximo</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="addresses" class="profile-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Meus Endereços</h2>
+                    <p>Gerencie seus endereços de entrega</p>
+                </div>
+                <div class="section-actions">
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Adicionar Endereço
+                    </button>
+                </div>
+            </div>
+
+            <div class="addresses-grid">
+                <div class="address-card default">
+                    <div class="address-badge">Principal</div>
+                    <div class="address-content">
+                        <h3>Casa</h3>
+                        <p>João Silva</p>
+                        <p>Rua das Flores, 123</p>
+                        <p>Jardim Primavera</p>
+                        <p>São Paulo - SP, 01234-567</p>
+                        <p>Brasil</p>
+                        <p>Tel: (11) 98765-4321</p>
+                    </div>
+                    <div class="address-actions">
+                        <button class="btn btn-sm btn-outline-primary">Editar</button>
+                        <button class="btn btn-sm btn-outline-danger" disabled>Remover</button>
+                    </div>
+                </div>
+
+                <div class="address-card">
+                    <div class="address-content">
+                        <h3>Trabalho</h3>
+                        <p>João Silva</p>
+                        <p>Av. Paulista, 1000</p>
+                        <p>Bela Vista</p>
+                        <p>São Paulo - SP, 01310-100</p>
+                        <p>Brasil</p>
+                        <p>Tel: (11) 3456-7890</p>
+                    </div>
+                    <div class="address-actions">
+                        <button class="btn btn-sm btn-outline-secondary">Definir como Principal</button>
+                        <button class="btn btn-sm btn-outline-primary">Editar</button>
+                        <button class="btn btn-sm btn-outline-danger">Remover</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="preferences" class="profile-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Preferências</h2>
+                    <p>Gerencie suas preferências de conta</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <form id="preferences-form">
+                        <div class="preferences-group">
+                            <h3>Notificações</h3>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Emails de Promoções</h4>
+                                    <p>Receba ofertas exclusivas e descontos especiais</p>
+                                </div>
+                                <div class="preference-control">
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Atualizações de Pedidos</h4>
+                                    <p>Receba notificações sobre o status dos seus pedidos</p>
+                                </div>
+                                <div class="preference-control">
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Newsletter</h4>
+                                    <p>Receba novidades sobre produtos e tendências</p>
+                                </div>
+                                <div class="preference-control">
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="preferences-group">
+                            <h3>Privacidade</h3>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Histórico de Navegação</h4>
+                                    <p>Permitir que armazenemos seu histórico de navegação para recomendações personalizadas</p>
+                                </div>
+                                <div class="preference-control">
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Compartilhamento de Dados</h4>
+                                    <p>Permitir que compartilhemos seus dados com parceiros para melhorar sua experiência</p>
+                                </div>
+                                <div class="preference-control">
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Salvar Preferências
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('.profile-nav-item').on('click', function(e) {
+                e.preventDefault();
+
+                $('.profile-nav-item').removeClass('active');
+                $(this).addClass('active');
+
+                var targetId = $(this).attr('href');
+
+                $('.profile-section').hide();
+                $(targetId).show();
+
+                $('html, body').animate({
+                    scrollTop: $(targetId).offset().top - 20
+                }, 500);
+            });
+            
+            $('.profile-section').not(':first').hide();
+            
+            $('#edit-profile-btn').on('click', function() {
+                $('#profile-view').hide();
+                $('#profile-edit').show();
+                $(this).hide();
+            });
+
+            $('#cancel-edit-btn').on('click', function() {
+                $('#profile-edit').hide();
+                $('#profile-view').show();
+                $('#edit-profile-btn').show();
+            });
+
+            $('#profile-form').on('submit', function(e) {
+                e.preventDefault();
+
+                $('#profile-view .info-group:nth-child(1) p').text($('#Name').val());
+                $('#profile-view .info-group:nth-child(2) p').text($('#LastName').val());
+                $('#profile-view .info-group:nth-child(3) p').text($('#Email').val());
+                $('#profile-view .info-group:nth-child(4) p').text($('#Phone').val());
+                $('#profile-view .info-group:nth-child(5) p').text(
+                    new Date($('#BirthDate').val()).toLocaleDateString('pt-BR')
+                );
+                $('#profile-view .info-group:nth-child(6) p').text($('#CPF').val());
+
+                $('#profile-edit').hide();
+                $('#profile-view').show();
+                $('#edit-profile-btn').show();
+
+                alert('Perfil atualizado com sucesso!');
+            });
+
+            $('#security-form').on('submit', function(e) {
+                e.preventDefault();
+
+                var currentPassword = $('#CurrentPassword').val();
+                var newPassword = $('#NewPassword').val();
+                var confirmPassword = $('#ConfirmPassword').val();
+
+                if (!currentPassword || !newPassword || !confirmPassword) {
+                    alert('Por favor, preencha todos os campos.');
+                    return;
+                }
+
+                if (newPassword !== confirmPassword) {
+                    alert('As senhas não coincidem.');
+                    return;
+                }
+                $('#CurrentPassword').val('');
+                $('#NewPassword').val('');
+                $('#ConfirmPassword').val('');
+
+                alert('Senha alterada com sucesso!');
+            });
+
+            $('#preferences-form').on('submit', function(e) {
+                e.preventDefault();
+
+                alert('Preferências salvas com sucesso!');
+            });
+        });
+    </script>
+}

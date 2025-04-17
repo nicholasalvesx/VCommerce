@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets/css/product.css"
     },
     {
+      "Id": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/profile.css",
+      "PackagePath": "staticwebassets/css/profile.css"
+    },
+    {
       "Id": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/register.css",
       "PackagePath": "staticwebassets/css/register.css"
     },
