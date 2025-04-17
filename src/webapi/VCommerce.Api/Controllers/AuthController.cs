@@ -125,7 +125,8 @@ public class AuthController : ControllerBase
 
         var result = await _userManager.CreateAsync(user, customerDto.Password!);
 
-        return !result.Succeeded ? StatusCode(500, result.Errors) : Ok(new AuthResult
+        return !result.Succeeded ? StatusCode(500, result.Errors) : 
+            Ok(new AuthResult
         {
             Succeeded = true,
             Token = null,
