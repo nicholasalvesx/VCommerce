@@ -6,7 +6,6 @@ using VCommerce.Mvc.Services.Contracts;
 
 namespace VCommerce.Mvc.Controllers;
 
-[Authorize]
 public class HomeController : Controller
 {
     private readonly IProductService _productService;

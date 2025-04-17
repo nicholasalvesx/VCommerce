@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using VCommerce.Mvc.Models;
@@ -6,6 +7,7 @@ using VCommerce.Mvc.Services.Contracts;
 
 namespace VCommerce.Mvc.Controllers;
 
+[Authorize]
 public class ProductsAppController : Controller
 {
     private readonly IProductService _productService;

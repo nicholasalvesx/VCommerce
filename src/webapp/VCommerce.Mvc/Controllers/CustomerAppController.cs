@@ -7,6 +7,7 @@ using VCommerce.Mvc.Services.Contracts;
 
 namespace VCommerce.Mvc.Controllers;
 
+[Authorize]
 public class CustomerAppController : Controller
 {
     private readonly ICustomerService _customerService;
@@ -103,11 +104,6 @@ public class CustomerAppController : Controller
         if (string.IsNullOrEmpty(token))
         {
             token = await HttpContext.GetTokenAsync("access_token");
-        }
-    
-        if (string.IsNullOrEmpty(token))
-        {
-            return RedirectToAction("Login", "Account");
         }
     
         var customer = await _customerService.FindCustomerById(userId.Value, token);
