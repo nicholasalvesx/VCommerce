@@ -1,4 +1,6 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Mvc.Models;
 using VCommerce.Mvc.Services.Contracts;
@@ -77,18 +79,46 @@ public class CustomerAppController : Controller
         return RedirectToAction("Index");
     }
     
-    [HttpGet]
-    public async Task<IActionResult> Profile(int id)
+    [Authorize]
+    public async Task<IActionResult> Profile()
     {
-        var profile = await _customerService.FindCustomerById(id, await GetAccessToken());
-
-        if (profile is null)
-        {
-            return NotFound("Any user has not been logged in");
-        }
+        var userId = HttpContext.Session.GetInt32("UserId");
         
-        return View();
-    }   
+        if (!userId.HasValue)
+        {
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!string.IsNullOrEmpty(userIdClaim) && int.TryParse(userIdClaim, out var id))
+            {
+                userId = id;
+            }
+        }
+    
+        if (!userId.HasValue)
+        {
+            return RedirectToAction("Login", "Account");
+        }
+    
+        var token = HttpContext.Session.GetString("JWTToken");
+    
+        if (string.IsNullOrEmpty(token))
+        {
+            token = await HttpContext.GetTokenAsync("access_token");
+        }
+    
+        if (string.IsNullOrEmpty(token))
+        {
+            return RedirectToAction("Login", "Account");
+        }
+    
+        var customer = await _customerService.FindCustomerById(userId.Value, token);
+    
+        if (customer == null)
+        {
+            return RedirectToAction("Login", "Account");
+        }
+    
+        return View(customer);
+    }
     
     private async Task<string?> GetAccessToken()
     {

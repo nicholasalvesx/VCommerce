@@ -114,7 +114,7 @@ public class CustomerService : ICustomerService
         using var response = await customer.DeleteAsync("/api/v1/customers/" + id);
         
         return response.IsSuccessStatusCode;
-    }   
+    }
     
     private static void PutTokenInHeaderAuthorization(string? token, HttpClient client)
     {

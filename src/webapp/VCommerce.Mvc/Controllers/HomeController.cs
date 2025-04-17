@@ -82,7 +82,10 @@ public class HomeController : Controller
     public async Task<IActionResult> Login()
     {
         var accessToken = await HttpContext.GetTokenAsync("access_token");
-        return RedirectToAction(nameof(Index));
+        
+        return string.IsNullOrEmpty(accessToken) ? 
+            RedirectToAction("Login", "Account") : 
+            RedirectToAction(nameof(Index));
     }
     public IActionResult Logout()
     {

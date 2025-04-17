@@ -25,7 +25,7 @@ public class AuthService : IAuthService
                 Name = loginModel.Name,
                 Password = loginModel.Password
             }), Encoding.UTF8,
-        "application/json");
+            "application/json");
         
         var response = await _httpClient.PostAsync("/api/v1/auth/login", loginContent);
 
