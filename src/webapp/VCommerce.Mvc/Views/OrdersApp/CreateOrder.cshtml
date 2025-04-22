@@ -1,0 +1,457 @@
+@model VCommerce.Mvc.Models.OrderViewModel
+
+@{
+    ViewData["Title"] = "Novo Pedido";
+}
+
+<div class="content-header">
+    <h1 class="content-title">Novo Pedido</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Pedidos</a></li>
+        <li class="breadcrumb-item active">Novo Pedido</li>
+    </ol>
+</div>
+
+<div class="dashboard-section">
+    <div class="section-header">
+        <div class="section-title">
+            <h2>Criar Novo Pedido</h2>
+            <p>Preencha as informações para criar um novo pedido</p>
+        </div>
+    </div>
+
+    <form asp-action="Create" method="post">
+        <div class="create-order-container">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Cliente</h3>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="customerId">Selecionar Cliente</label>
+                            <select id="customerId" name="CustomerId" class="form-control" required>
+                                <option value="">Selecione um cliente...</option>
+                                <option value="1">João Silva</option>
+                                <option value="2">Maria Oliveira</option>
+                                <option value="3">Carlos Santos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="customerDetails" style="display: none;">
+                        <div class="customer-info mt-3">
+                            <div class="customer-avatar">
+                                <span class="avatar-initials" id="customerInitials">J</span>
+                            </div>
+                            <div class="customer-details">
+                                <h4 id="customerName">João Silva</h4>
+                                <p id="customerEmail">joao.silva@email.com</p>
+                                <p id="customerPhone">(11) 98765-4321</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Endereço de Entrega</h3>
+                    <div id="customerAddresses" style="display: none;">
+                        <div class="form-group">
+                            <label>Selecionar Endereço</label>
+                            <select id="shippingAddressId" class="form-control">
+                                <option value="">Selecione um endereço...</option>
+                                <option value="1">Casa - Rua das Flores, 123</option>
+                                <option value="2">Trabalho - Av. Paulista, 1000</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label asp-for="ShippingAddress.RecipientName">Nome do Destinatário</label>
+                            <input asp-for="ShippingAddress.RecipientName" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-9">
+                            <label asp-for="ShippingAddress.Street">Rua</label>
+                            <input asp-for="ShippingAddress.Street" class="form-control" required />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="ShippingAddress.Number">Número</label>
+                            <input asp-for="ShippingAddress.Number" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="ShippingAddress.Complement">Complemento</label>
+                            <input asp-for="ShippingAddress.Complement" class="form-control" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="ShippingAddress.Neighborhood">Bairro</label>
+                            <input asp-for="ShippingAddress.Neighborhood" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="ShippingAddress.City">Cidade</label>
+                            <input asp-for="ShippingAddress.City" class="form-control" required />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="ShippingAddress.State">Estado</label>
+                            <input asp-for="ShippingAddress.State" class="form-control" required />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="ShippingAddress.ZipCode">CEP</label>
+                            <input asp-for="ShippingAddress.ZipCode" class="form-control" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Endereço de Cobrança</h3>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="sameAsShipping" checked>
+                        <label class="form-check-label" for="sameAsShipping">Mesmo que o endereço de entrega</label>
+                    </div>
+                    <div id="billingAddressFields" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label asp-for="BillingAddress.RecipientName">Nome do Destinatário</label>
+                                <input asp-for="BillingAddress.RecipientName" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-9">
+                                <label asp-for="BillingAddress.Street">Rua</label>
+                                <input asp-for="BillingAddress.Street" class="form-control" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label asp-for="BillingAddress.Number">Número</label>
+                                <input asp-for="BillingAddress.Number" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label asp-for="BillingAddress.Complement">Complemento</label>
+                                <input asp-for="BillingAddress.Complement" class="form-control" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label asp-for="BillingAddress.Neighborhood">Bairro</label>
+                                <input asp-for="BillingAddress.Neighborhood" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label asp-for="BillingAddress.City">Cidade</label>
+                                <input asp-for="BillingAddress.City" class="form-control" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label asp-for="BillingAddress.State">Estado</label>
+                                <input asp-for="BillingAddress.State" class="form-control" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label asp-for="BillingAddress.ZipCode">CEP</label>
+                                <input asp-for="BillingAddress.ZipCode" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Itens do Pedido</h3>
+                    <div class="product-search mb-3">
+                        <div class="form-row">
+                            <div class="form-group col-md-10">
+                                <input type="text" id="productSearch" class="form-control" placeholder="Buscar produto por nome ou SKU...">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <button type="button" id="searchProductBtn" class="btn btn-primary btn-block">
+                                    <i class="fas fa-search"></i> Buscar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="orderItemsTable">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Preço Unitário</th>
+                                    <th>Quantidade</th>
+                                    <th>Total</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="noItemsMessage" class="alert alert-info">
+                        Nenhum item adicionado ao pedido. Use a busca acima para adicionar produtos.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Informações de Pagamento</h3>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="PaymentMethod">Método de Pagamento</label>
+                            <select asp-for="PaymentMethod" class="form-control" required>
+                                <option value="">Selecione...</option>
+                                <option value="Cartão de Crédito">Cartão de Crédito</option>
+                                <option value="Boleto Bancário">Boleto Bancário</option>
+                                <option value="PIX">PIX</option>
+                                <option value="Transferência Bancária">Transferência Bancária</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="PaymentStatus">Status do Pagamento</label>
+                            <select asp-for="PaymentStatus" class="form-control" required>
+                                <option value="Aguardando Pagamento">Aguardando Pagamento</option>
+                                <option value="Pago">Pago</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PaymentDetails">Detalhes do Pagamento</label>
+                        <input asp-for="PaymentDetails" class="form-control" placeholder="Ex: 4 últimos dígitos do cartão, ID da transação, etc." />
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Totais do Pedido</h3>
+                    <div class="order-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">Subtotal:</span>
+                            <span class="summary-value" id="subtotalValue">R$ 0,00</span>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label asp-for="ShippingAmount">Valor do Frete</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">R$</span>
+                                    </div>
+                                    <input asp-for="ShippingAmount" class="form-control" id="shippingAmount" value="0.00" required />
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label asp-for="DiscountAmount">Valor do Desconto</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">R$</span>
+                                    </div>
+                                    <input asp-for="DiscountAmount" class="form-control" id="discountAmount" value="0.00" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="summary-item grand-total">
+                            <span class="summary-label">Total:</span>
+                            <span class="summary-value" id="totalValue">R$ 0,00</span>
+                            <input type="hidden" asp-for="TotalAmount" id="totalAmount" value="0.00" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Status do Pedido</h3>
+                    <div class="form-group">
+                        <label asp-for="Status">Status</label>
+                        <select asp-for="Status" class="form-control" required>
+                            <option value="Pendente">Pendente</option>
+                            <option value="Em Processamento">Em Processamento</option>
+                            <option value="Enviado">Enviado</option>
+                            <option value="Entregue">Entregue</option>
+                            <option value="Cancelado">Cancelado</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Notas e Observações</h3>
+                    <div class="form-group">
+                        <label asp-for="Notes">Observações</label>
+                        <textarea asp-for="Notes" class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Criar Pedido
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#customerId').on('change', function() {
+                var customerId = $(this).val();
+                if (customerId) {
+                    $('#customerDetails').show();
+                    $('#customerAddresses').show();
+                } else {
+                    $('#customerDetails').hide();
+                    $('#customerAddresses').hide();
+                }
+            });
+
+            $('#shippingAddressId').on('change', function() {
+                var addressId = $(this).val();
+                if (addressId) {
+                    if (addressId === "1") {
+                        $('[name="ShippingAddress.RecipientName"]').val("João Silva");
+                        $('[name="ShippingAddress.Street"]').val("Rua das Flores");
+                        $('[name="ShippingAddress.Number"]').val("123");
+                        $('[name="ShippingAddress.Complement"]').val("Apto 101");
+                        $('[name="ShippingAddress.Neighborhood"]').val("Jardim Primavera");
+                        $('[name="ShippingAddress.City"]').val("São Paulo");
+                        $('[name="ShippingAddress.State"]').val("SP");
+                        $('[name="ShippingAddress.ZipCode"]').val("01234-567");
+                    } else {
+                        $('[name="ShippingAddress.RecipientName"]').val("João Silva");
+                        $('[name="ShippingAddress.Street"]').val("Av. Paulista");
+                        $('[name="ShippingAddress.Number"]').val("1000");
+                        $('[name="ShippingAddress.Complement"]').val("Sala 1010");
+                        $('[name="ShippingAddress.Neighborhood"]').val("Bela Vista");
+                        $('[name="ShippingAddress.City"]').val("São Paulo");
+                        $('[name="ShippingAddress.State"]').val("SP");
+                        $('[name="ShippingAddress.ZipCode"]').val("01310-100");
+                    }
+                }
+            });
+
+            $('#sameAsShipping').on('change', function() {
+                if ($(this).is(':checked')) {
+                    $('#billingAddressFields').hide();
+                } else {
+                    $('#billingAddressFields').show();
+                }
+            });
+            
+            $('#searchProductBtn').on('click', function() {
+                var searchTerm = $('#productSearch').val();
+                if (searchTerm) {
+                    addProductToOrder({
+                        id: Math.floor(Math.random() * 1000),
+                        name: "Produto " + searchTerm,
+                        sku: "SKU-" + Math.floor(Math.random() * 10000),
+                        price: (Math.random() * 100 + 10).toFixed(2),
+                        imageUrl: "/placeholder.svg?height=50&width=50"
+                    });
+                    
+                    $('#productSearch').val('');
+                }
+            });
+
+            function addProductToOrder(product) {
+                var rowHtml = `
+                    <tr data-product-id="${product.id}">
+                        <td>
+                            <div class="product-info">
+                                <div class="product-image">
+                                    <img src="${product.imageUrl}" alt="${product.name}">
+                                </div>
+                                <div class="product-details">
+                                    <h4>${product.name}</h4>
+                                    <p>SKU: ${product.sku}</p>
+                                </div>
+                            </div>
+                            <input type="hidden" name="OrderItems[${getItemCount()}].ProductId" value="${product.id}">
+                            <input type="hidden" name="OrderItems[${getItemCount()}].ProductName" value="${product.name}">
+                            <input type="hidden" name="OrderItems[${getItemCount()}].ProductSku" value="${product.sku}">
+                            <input type="hidden" name="OrderItems[${getItemCount()}].ProductImageUrl" value="${product.imageUrl}">
+                        </td>
+                        <td>
+                            <input type="number" name="OrderItems[${getItemCount()}].UnitPrice" class="form-control unit-price" value="${product.price}" step="0.01" min="0">
+                        </td>
+                        <td>
+                            <input type="number" name="OrderItems[${getItemCount()}].Quantity" class="form-control quantity" value="1" min="1">
+                        </td>
+                        <td>
+                            <span class="item-total">R$ ${product.price}</span>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-danger remove-item">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                
+                $('#orderItemsTable tbody').append(rowHtml);
+                $('#noItemsMessage').hide();
+                
+                updateOrderTotals();
+            }
+
+            function getItemCount() {
+                return $('#orderItemsTable tbody tr').length;
+            }
+            $(document).on('change', '.unit-price, .quantity', function() {
+                updateOrderTotals();
+            });
+
+            $(document).on('click', '.remove-item', function() {
+                $(this).closest('tr').remove();
+                
+                if (getItemCount() === 0) {
+                    $('#noItemsMessage').show();
+                }
+                
+                updateOrderTotals();
+            });
+
+            $('#shippingAmount, #discountAmount').on('change', function() {
+                updateOrderTotals();
+            });
+
+            function updateOrderTotals() {
+                let subtotal = 0;
+                $('#orderItemsTable tbody tr').each(function(index) {
+                    const unitPrice = parseFloat($(this).find('.unit-price').val()) || 0;
+                    const quantity = parseInt($(this).find('.quantity').val()) || 0;
+                    const itemTotal = unitPrice * quantity;
+                    
+                    $(this).find('.item-total').text('R$ ' + itemTotal.toFixed(2));
+                    subtotal += itemTotal;
+                    
+                    $(this).find('input[name^="OrderItems["]').each(function() {
+                        const name = $(this).attr('name');
+                        const newName = name.replace(/OrderItems\[\d+\]/, `OrderItems[${index}]`);
+                        $(this).attr('name', newName);
+                    });
+                });
+
+                const shippingAmount = parseFloat($('#shippingAmount').val()) || 0;
+                const discountAmount = parseFloat($('#discountAmount').val()) || 0;
+
+                const totalAmount = subtotal + shippingAmount - discountAmount;
+                
+                $('#subtotalValue').text('R$ ' + subtotal.toFixed(2));
+                $('#totalValue').text('R$ ' + totalAmount.toFixed(2));
+                $('#totalAmount').val(totalAmount.toFixed(2));
+            }
+        });
+    </script>
+}

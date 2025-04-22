@@ -1,0 +1,97 @@
+@model VCommerce.Mvc.Models.OrderViewModel
+
+@{
+    ViewData["Title"] = "Excluir Pedido";
+}
+
+<div class="content-header">
+    <h1 class="content-title">Excluir Pedido</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Pedidos</a></li>
+        <li class="breadcrumb-item active">Excluir Pedido</li>
+    </ol>
+</div>
+
+<div class="dashboard-section">
+    <div class="section-header">
+        <div class="section-title">
+            <h2>Confirmação de Exclusão</h2>
+            <p>Tem certeza que deseja excluir este pedido?</p>
+        </div>
+    </div>
+
+    <div class="delete-confirmation">
+        <div class="order-summary">
+            <div class="order-header">
+                <div class="order-number">
+                    <h3>Pedido #@Model.OrderNumber</h3>
+                    <p>Realizado em @Model.OrderDate.ToString("dd/MM/yyyy HH:mm")</p>
+                </div>
+                <div class="order-status">
+                    @{
+                        string statusClass = Model.Status?.ToLower() switch
+                        {
+                            "pendente" => "pending",
+                            "em processamento" => "processing",
+                            "enviado" => "shipped",
+                            "entregue" => "completed",
+                            "cancelado" => "cancelled",
+                            _ => "pending"
+                        };
+                    }
+                    <span class="status-badge @statusClass">@Model.Status</span>
+                </div>
+            </div>
+            
+            <div class="customer-info">
+                <div class="customer-avatar">
+                    <span class="avatar-initials">@(Model.CustomerName?.Substring(0, 1))</span>
+                </div>
+                <div class="customer-details">
+                    <h4>@Model.CustomerName</h4>
+                    <p>@Model.CustomerEmail</p>
+                    <p>@Model.CustomerPhone</p>
+                </div>
+            </div>
+            
+            <div class="order-items">
+                <h4>Itens do Pedido</h4>
+                <div class="items-list">
+                    @foreach (var item in Model.OrderItems)
+                    {
+                        <div class="item">
+                            <div class="item-name">@item.ProductName x @item.Quantity</div>
+                            <div class="item-price">R$ @((item.UnitPrice * item.Quantity).ToString("N2"))</div>
+                        </div>
+                    }
+                </div>
+                <div class="order-total">
+                    <div class="total-label">Total:</div>
+                    <div class="total-value">R$ @Model.TotalAmount.ToString("N2")</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="warning-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <h4>Atenção!</h4>
+                <p>Esta ação não pode ser desfeita. Todos os dados relacionados a este pedido serão permanentemente excluídos, incluindo histórico de pagamentos e informações de entrega.</p>
+                <p>Considere alterar o status do pedido para "Cancelado" em vez de excluí-lo, para manter o histórico de transações.</p>
+            </div>
+        </div>
+        
+        <form asp-action="DeleteConfirmed" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-actions">
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-trash-alt"></i> Confirmar Exclusão
+                </button>
+                <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

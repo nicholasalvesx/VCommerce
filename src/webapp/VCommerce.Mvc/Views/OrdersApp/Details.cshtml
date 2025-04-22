@@ -1,0 +1,294 @@
+@model VCommerce.Mvc.Models.OrderViewModel
+
+@{
+    ViewData["Title"] = "Detalhes do Pedido";
+}
+
+<div class="content-header">
+    <h1 class="content-title">Detalhes do Pedido</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Pedidos</a></li>
+        <li class="breadcrumb-item active">Detalhes do Pedido</li>
+    </ol>
+</div>
+
+<div class="dashboard-section">
+    <div class="section-header">
+        <div class="section-title">
+            <h2>Pedido #@Model.OrderNumber</h2>
+            <p>Detalhes completos do pedido</p>
+        </div>
+        <div class="section-actions">
+            <a href="@Url.Action("EditOrder", "OrdersApp", new { id = Model.Id })" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Editar Pedido
+            </a>
+            <a href="@Url.Action("DeleteOrder", "OrdersApp", new { id = Model.Id })" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Excluir Pedido
+            </a>
+            <button class="btn btn-secondary" onclick="window.print()">
+                <i class="fas fa-print"></i> Imprimir
+            </button>
+        </div>
+    </div>
+
+    <div class="order-details-container">
+        <div class="card order-summary">
+            <div class="card-body">
+                <div class="order-header">
+                    <div class="order-info">
+                        <h3>Resumo do Pedido</h3>
+                        <div class="order-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Pedido:</span>
+                                <span class="meta-value">#@Model.OrderNumber</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Data:</span>
+                                <span class="meta-value">@Model.OrderDate.ToString("dd/MM/yyyy HH:mm")</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Status:</span>
+                                @{
+                                    string statusClass = Model.Status.ToLower() switch
+                                    {
+                                        "pendente" => "pending",
+                                        "em processamento" => "processing",
+                                        "enviado" => "shipped",
+                                        "entregue" => "completed",
+                                        "cancelado" => "cancelled",
+                                        _ => "pending"
+                                    };
+                                }
+                                <span class="status-badge @statusClass">@Model.Status</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-status-update">
+                        <label for="statusUpdate">Atualizar Status:</label>
+                        <div class="status-update-controls">
+                            <select id="statusUpdate" class="form-control">
+                                <option value="pending" @(Model.Status.ToLower() == "pendente" ? "selected" : "")>Pendente</option>
+                                <option value="processing" @(Model.Status.ToLower() == "em processamento" ? "selected" : "")>Em Processamento</option>
+                                <option value="shipped" @(Model.Status.ToLower() == "enviado" ? "selected" : "")>Enviado</option>
+                                <option value="delivered" @(Model.Status.ToLower() == "entregue" ? "selected" : "")>Entregue</option>
+                                <option value="cancelled" @(Model.Status.ToLower() == "cancelado" ? "selected" : "")>Cancelado</option>
+                            </select>
+                            <button id="updateStatus" class="btn btn-primary">Atualizar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-totals">
+                    <div class="total-item">
+                        <span class="total-label">Subtotal:</span>
+                        <span class="total-value">R$ @((Model.TotalAmount - Model.ShippingAmount).ToString("N2"))</span>
+                    </div>
+                    <div class="total-item">
+                        <span class="total-label">Frete:</span>
+                        <span class="total-value">R$ @Model.ShippingAmount.ToString("N2")</span>
+                    </div>
+                    <div class="total-item">
+                        <span class="total-label">Desconto:</span>
+                        <span class="total-value">- R$ @Model.DiscountAmount.ToString("N2")</span>
+                    </div>
+                    <div class="total-item grand-total">
+                        <span class="total-label">Total:</span>
+                        <span class="total-value">R$ @Model.TotalAmount.ToString("N2")</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card customer-card">
+            <div class="card-body">
+                <h3>Informações do Cliente</h3>
+                <div class="customer-details">
+                    <div class="customer-avatar">
+                        <span class="avatar-initials">@(Model.CustomerName?.Substring(0, 1))</span>
+                    </div>
+                    <div class="customer-info">
+                        <h4>@Model.CustomerName</h4>
+                        <div class="customer-contact">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>@Model.CustomerEmail</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>@Model.CustomerPhone</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="addresses-container">
+            <div class="card address-card">
+                <div class="card-body">
+                    <h3>Endereço de Entrega</h3>
+                    <div class="address-details">
+                        <p><strong>@Model.ShippingAddress.RecipientName</strong></p>
+                        <p>@Model.ShippingAddress.Street, @Model.ShippingAddress.Number</p>
+                        <p>@Model.ShippingAddress.Complement</p>
+                        <p>@Model.ShippingAddress.Neighborhood - @Model.ShippingAddress.City/@Model.ShippingAddress.State</p>
+                        <p>CEP: @Model.ShippingAddress.ZipCode</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card address-card">
+                <div class="card-body">
+                    <h3>Endereço de Cobrança</h3>
+                    <div class="address-details">
+                        <p><strong>@Model.BillingAddress.RecipientName</strong></p>
+                        <p>@Model.BillingAddress.Street, @Model.BillingAddress.Number</p>
+                        <p>@Model.BillingAddress.Complement</p>
+                        <p>@Model.BillingAddress.Neighborhood - @Model.BillingAddress.City/@Model.BillingAddress.State</p>
+                        <p>CEP: @Model.BillingAddress.ZipCode</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card order-items-card">
+            <div class="card-body">
+                <h3>Itens do Pedido</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Preço</th>
+                                <th>Quantidade</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.OrderItems)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="product-info">
+                                            <div class="product-image">
+                                                <img src="@item.ProductImageUrl" alt="@item.ProductName">
+                                            </div>
+                                            <div class="product-details">
+                                                <h4>@item.ProductName</h4>
+                                                <p>SKU: @item.ProductSku</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>R$ @item.UnitPrice.ToString("N2")</td>
+                                    <td>@item.Quantity</td>
+                                    <td>R$ @((item.UnitPrice * item.Quantity).ToString("N2"))</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card order-history-card">
+            <div class="card-body">
+                <h3>Histórico do Pedido</h3>
+                <div class="order-timeline">
+                    @foreach (var history in Model.OrderHistory)
+                    {
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">@history.Date.ToString("dd/MM/yyyy HH:mm")</div>
+                                <div class="timeline-title">@history.Status</div>
+                                <div class="timeline-description">@history.Description</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Informações de Pagamento -->
+        <div class="card payment-card">
+            <div class="card-body">
+                <h3>Informações de Pagamento</h3>
+                <div class="payment-details">
+                    <div class="payment-method">
+                        <div class="method-icon">
+                            @if (Model.PaymentMethod.ToLower().Contains("cartão"))
+                            {
+                                <i class="fas fa-credit-card"></i>
+                            }
+                            else if (Model.PaymentMethod.ToLower().Contains("boleto"))
+                            {
+                                <i class="fas fa-barcode"></i>
+                            }
+                            else if (Model.PaymentMethod.ToLower().Contains("pix"))
+                            {
+                                <i class="fas fa-qrcode"></i>
+                            }
+                            else
+                            {
+                                <i class="fas fa-money-bill-wave"></i>
+                            }
+                        </div>
+                        <div class="method-info">
+                            <h4>@Model.PaymentMethod</h4>
+                            <p>@Model.PaymentDetails</p>
+                        </div>
+                    </div>
+                    <div class="payment-status">
+                        <span class="status-badge @(Model.PaymentStatus.ToLower() == "pago" ? "completed" : "pending")">
+                            @Model.PaymentStatus
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card notes-card">
+            <div class="card-body">
+                <h3>Notas e Observações</h3>
+                <div class="notes-container">
+                    <div class="notes-content">
+                        @if (!string.IsNullOrEmpty(Model.Notes))
+                        {
+                            <p>@Model.Notes</p>
+                        }
+                        else
+                        {
+                            <p class="no-notes">Nenhuma observação registrada para este pedido.</p>
+                        }
+                    </div>
+                    <div class="add-note">
+                        <textarea id="newNote" class="form-control" placeholder="Adicionar uma nova observação..."></textarea>
+                        <button id="addNote" class="btn btn-primary mt-2">Adicionar Nota</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#updateStatus').on('click', function() {
+                var newStatus = $('#statusUpdate').val();
+                alert('Status atualizado para: ' + $('#statusUpdate option:selected').text());
+            });
+            
+            $('#addNote').on('click', function() {
+                var newNote = $('#newNote').val();
+                if (newNote.trim() !== '') {
+                    alert('Nota adicionada com sucesso!');
+                    $('#newNote').val('');
+                } else {
+                    alert('Por favor, digite uma nota válida.');
+                }
+            });
+        });
+    </script>
+}

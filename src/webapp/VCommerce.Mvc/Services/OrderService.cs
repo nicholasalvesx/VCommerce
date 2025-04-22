@@ -62,7 +62,7 @@ public class OrderService : IOrderService
         return _orderVm;
     }
 
-    public async Task<OrderViewModel?> CreateOrder(OrderViewModel model)
+    public async Task<OrderViewModel?> CreateOrder(OrderViewModel model, string accessToken)
     {
         {
             var order = _clientFactory.CreateClient("Api");
