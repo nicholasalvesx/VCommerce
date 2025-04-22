@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "+U2MXtLJE4EKst0a4w5EbYi5ECJ3pbFcjRUziHZ0xqY=",
+  "Source": "VCommerce.Api",
+  "BasePath": "_content/VCommerce.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

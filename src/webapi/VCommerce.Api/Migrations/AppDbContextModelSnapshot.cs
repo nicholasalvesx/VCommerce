@@ -154,6 +154,33 @@ namespace VCommerce.Api.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("VCommerce.Api.DTOs.OrderItemDTO", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderItemDTO");
+                });
+
             modelBuilder.Entity("VCommerce.Api.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -268,6 +295,33 @@ namespace VCommerce.Api.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("VCommerce.Api.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("VCommerce.Api.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -352,6 +406,26 @@ namespace VCommerce.Api.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("VCommerce.Api.DTOs.OrderItemDTO", b =>
+                {
+                    b.HasOne("VCommerce.Api.Models.Order", null)
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("VCommerce.Api.Models.Order", b =>
+                {
+                    b.HasOne("VCommerce.Api.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
             modelBuilder.Entity("VCommerce.Api.Models.Product", b =>
                 {
                     b.HasOne("VCommerce.Api.Models.Category", "Category")
@@ -366,6 +440,11 @@ namespace VCommerce.Api.Migrations
             modelBuilder.Entity("VCommerce.Api.Models.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("VCommerce.Api.Models.Order", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }
