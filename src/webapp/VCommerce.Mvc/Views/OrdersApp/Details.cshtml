@@ -7,7 +7,7 @@
 <div class="content-header">
     <h1 class="content-title">Detalhes do Pedido</h1>
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
         <li class="breadcrumb-item"><a asp-action="Index">Pedidos</a></li>
         <li class="breadcrumb-item active">Detalhes do Pedido</li>
     </ol>
@@ -68,12 +68,12 @@
                         <label for="statusUpdate">Atualizar Status:</label>
                         <div class="status-update-controls">
                             <select id="statusUpdate" class="form-control">
-                                <option value="pending" @(Model.Status.ToLower() == "pendente" ? "selected" : "")>Pendente</option>
-                                <option value="processing" @(Model.Status.ToLower() == "em processamento" ? "selected" : "")>Em Processamento</option>
-                                <option value="shipped" @(Model.Status.ToLower() == "enviado" ? "selected" : "")>Enviado</option>
-                                <option value="delivered" @(Model.Status.ToLower() == "entregue" ? "selected" : "")>Entregue</option>
-                                <option value="cancelled" @(Model.Status.ToLower() == "cancelado" ? "selected" : "")>Cancelado</option>
+                                <option value="pending" selected="@(Model.Status.ToLower() == "pendente")">Pendente</option>
+                                <option value="processing" selected="@(Model.Status.ToLower() == "em processamento")">Em Processamento</option>
+                                <option value="shipped" selected="@(Model.Status.ToLower() == "enviado")">Enviado</option>
+                                <option value="delivered" selected="@(Model.Status.ToLower() == "entregue")">Entregue</option>
                             </select>
+                            
                             <button id="updateStatus" class="btn btn-primary">Atualizar</button>
                         </div>
                     </div>

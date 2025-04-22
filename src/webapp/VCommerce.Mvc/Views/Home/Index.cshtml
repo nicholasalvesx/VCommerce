@@ -50,6 +50,12 @@
                             <span>Customers</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/OrdersApp/Index">
+                            <i class="fas fa-handshake"></i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 
@@ -228,151 +234,6 @@
 
                 <div class="view-all">
                     <a href="/ProductsApp/Index" class="btn btn-outline-primary">Veja todos seus produtos</a>
-                </div>
-            </div>
-
-            <div class="dashboard-section">
-                <div class="section-header">
-                    <div class="section-title">
-                        <h2>Pedidos recentes</h2>
-                        <p>Pedidos recentes dos clientes</p>
-                    </div>
-                    <div class="section-actions">
-                        <a href="/Orders/Index" class="btn btn-outline-primary">
-                            <i class="fas fa-list"></i> Todos os pedidos
-                        </a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Order ID</th>
-                                    <th>Customer</th>
-                                    <th>Date</th>
-                                    <th>Amount</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td><a href="#" class="order-link">#ORD-2023-001</a></td>
-                                    <td>
-                                        <div class="customer-info">
-                                            <i class="fas fa-user"></i>
-                                            <span>John Doe</span>
-                                        </div>
-                                    </td>
-                                    <td>@DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy")</td>
-                                    <td>$245.99</td>
-                                    <td><span class="status-badge completed">Completed</span></td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <a href="#" class="btn btn-sm btn-info" title="View">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-sm btn-secondary" title="Print">
-                                                <i class="fas fa-print"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#" class="order-link">#ORD-2023-002</a></td>
-                                    <td>
-                                        <div class="customer-info">
-                                            <i class="fas fa-user"></i>
-                                            <span>Jane Smith</span>
-                                        </div>
-                                    </td>
-                                    <td>@DateTime.Now.AddDays(-2).ToString("dd/MM/yyyy")</td>
-                                    <td>$145.50</td>
-                                    <td><span class="status-badge processing">Processing</span></td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <a href="#" class="btn btn-sm btn-info" title="View">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-sm btn-secondary" title="Print">
-                                                <i class="fas fa-print"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#" class="order-link">#ORD-2023-003</a></td>
-                                    <td>
-                                        <div class="customer-info">
-                                            <i class="fas fa-user"></i>
-                                            <span>Robert Johnson</span>
-                                        </div>
-                                    </td>
-                                    <td>@DateTime.Now.AddDays(-2).ToString("dd/MM/yyyy")</td>
-                                    <td>$89.99</td>
-                                    <td><span class="status-badge shipped">Shipped</span></td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <a href="#" class="btn btn-sm btn-info" title="View">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-sm btn-secondary" title="Print">
-                                                <i class="fas fa-print"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#" class="order-link">#ORD-2023-004</a></td>
-                                    <td>
-                                        <div class="customer-info">
-                                            <i class="fas fa-user"></i>
-                                            <span>Emily Davis</span>
-                                        </div>
-                                    </td>
-                                    <td>@DateTime.Now.AddDays(-3).ToString("dd/MM/yyyy")</td>
-                                    <td>$320.75</td>
-                                    <td><span class="status-badge cancelled">Cancelled</span></td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <a href="#" class="btn btn-sm btn-info" title="View">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-sm btn-secondary" title="Print">
-                                                <i class="fas fa-print"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#" class="order-link">#ORD-2023-005</a></td>
-                                    <td>
-                                        <div class="customer-info">
-                                            <i class="fas fa-user"></i>
-                                            <span>Michael Wilson</span>
-                                        </div>
-                                    </td>
-                                    <td>@DateTime.Now.AddDays(-3).ToString("dd/MM/yyyy")</td>
-                                    <td>$175.25</td>
-                                    <td><span class="status-badge completed">Completed</span></td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <a href="#" class="btn btn-sm btn-info" title="View">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-sm btn-secondary" title="Print">
-                                                <i class="fas fa-print"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

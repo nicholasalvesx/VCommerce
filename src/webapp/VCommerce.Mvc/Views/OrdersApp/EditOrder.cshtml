@@ -1,18 +1,366 @@
-@model TModel
+@model VCommerce.Mvc.Models.OrderViewModel
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Editar Pedido";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+<div class="content-header">
+    <h1 class="content-title">Editar Pedido</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Pedidos</a></li>
+        <li class="breadcrumb-item active">Editar Pedido</li>
+    </ol>
 </div>
-</body>
-</html>
+
+<div class="dashboard-section">
+    <div class="section-header">
+        <div class="section-title">
+            <h2>Pedido #@Model.OrderNumber</h2>
+            <p>Editar informações do pedido</p>
+        </div>
+    </div>
+
+    <form asp-action="EditOrder" method="post">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="OrderNumber" />
+        <input type="hidden" asp-for="OrderDate" />
+
+        <div class="edit-order-container">
+            <!-- Status do Pedido -->
+            <div class="card">
+                <div class="card-body">
+                    <h3>Status do Pedido</h3>
+                    <div class="form-group">
+                        <label asp-for="Status">Status</label>
+                        <select asp-for="Status" class="form-control">
+                            <option value="Pendente">Pendente</option>
+                            <option value="Em Processamento">Em Processamento</option>
+                            <option value="Enviado">Enviado</option>
+                            <option value="Entregue">Entregue</option>
+                            <option value="Cancelado">Cancelado</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <h3>Informações do Cliente</h3>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="CustomerName">Nome do Cliente</label>
+                            <input asp-for="CustomerName" class="form-control" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="CustomerEmail">Email</label>
+                            <input asp-for="CustomerEmail" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CustomerPhone">Telefone</label>
+                        <input asp-for="CustomerPhone" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Endereço de Entrega</h3>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label asp-for="ShippingAddress.RecipientName">Nome do Destinatário</label>
+                            <input asp-for="ShippingAddress.RecipientName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-9">
+                            <label asp-for="ShippingAddress.Street">Rua</label>
+                            <input asp-for="ShippingAddress.Street" class="form-control" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="ShippingAddress.Number">Número</label>
+                            <input asp-for="ShippingAddress.Number" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="ShippingAddress.Complement">Complemento</label>
+                            <input asp-for="ShippingAddress.Complement" class="form-control" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="ShippingAddress.Neighborhood">Bairro</label>
+                            <input asp-for="ShippingAddress.Neighborhood" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="ShippingAddress.City">Cidade</label>
+                            <input asp-for="ShippingAddress.City" class="form-control" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="ShippingAddress.State">Estado</label>
+                            <input asp-for="ShippingAddress.State" class="form-control" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="ShippingAddress.ZipCode">CEP</label>
+                            <input asp-for="ShippingAddress.ZipCode" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Endereço de Cobrança</h3>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="sameAsShipping">
+                        <label class="form-check-label" for="sameAsShipping">Mesmo que o endereço de entrega</label>
+                    </div>
+                    <div id="billingAddressFields">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label asp-for="BillingAddress.RecipientName">Nome do Destinatário</label>
+                                <input asp-for="BillingAddress.RecipientName" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-9">
+                                <label asp-for="BillingAddress.Street">Rua</label>
+                                <input asp-for="BillingAddress.Street" class="form-control" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label asp-for="BillingAddress.Number">Número</label>
+                                <input asp-for="BillingAddress.Number" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label asp-for="BillingAddress.Complement">Complemento</label>
+                                <input asp-for="BillingAddress.Complement" class="form-control" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label asp-for="BillingAddress.Neighborhood">Bairro</label>
+                                <input asp-for="BillingAddress.Neighborhood" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label asp-for="BillingAddress.City">Cidade</label>
+                                <input asp-for="BillingAddress.City" class="form-control" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label asp-for="BillingAddress.State">Estado</label>
+                                <input asp-for="BillingAddress.State" class="form-control" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label asp-for="BillingAddress.ZipCode">CEP</label>
+                                <input asp-for="BillingAddress.ZipCode" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Itens do Pedido</h3>
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="orderItemsTable">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Preço Unitário</th>
+                                    <th>Quantidade</th>
+                                    <th>Total</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.OrderItems.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="product-info">
+                                                <div class="product-image">
+                                                    <img src="@Model.OrderItems[i].ProductImageUrl" alt="@Model.OrderItems[i].ProductName">
+                                                </div>
+                                                <div class="product-details">
+                                                    <h4>@Model.OrderItems[i].ProductName</h4>
+                                                    <p>SKU: @Model.OrderItems[i].ProductSku</p>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" asp-for="OrderItems[i].Id" />
+                                            <input type="hidden" asp-for="OrderItems[i].ProductId" />
+                                            <input type="hidden" asp-for="OrderItems[i].ProductName" />
+                                            <input type="hidden" asp-for="OrderItems[i].ProductSku" />
+                                            <input type="hidden" asp-for="OrderItems[i].ProductImageUrl" />
+                                        </td>
+                                        <td>
+                                            <input type="number" asp-for="OrderItems[i].UnitPrice" class="form-control unit-price" step="0.01" min="0" />
+                                        </td>
+                                        <td>
+                                            <input type="number" asp-for="OrderItems[i].Quantity" class="form-control quantity" min="1" />
+                                        </td>
+                                        <td>
+                                            <span class="item-total">R$ @((Model.OrderItems[i].UnitPrice * Model.OrderItems[i].Quantity).ToString("N2"))</span>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-danger remove-item">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary" id="addItemBtn">
+                        <i class="fas fa-plus"></i> Adicionar Item
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Informações de Pagamento</h3>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="PaymentMethod">Método de Pagamento</label>
+                            <select asp-for="PaymentMethod" class="form-control">
+                                <option value="Cartão de Crédito">Cartão de Crédito</option>
+                                <option value="Boleto Bancário">Boleto Bancário</option>
+                                <option value="PIX">PIX</option>
+                                <option value="Transferência Bancária">Transferência Bancária</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="PaymentStatus">Status do Pagamento</label>
+                            <select asp-for="PaymentStatus" class="form-control">
+                                <option value="Aguardando Pagamento">Aguardando Pagamento</option>
+                                <option value="Pago">Pago</option>
+                                <option value="Reembolsado">Reembolsado</option>
+                                <option value="Cancelado">Cancelado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PaymentDetails">Detalhes do Pagamento</label>
+                        <input asp-for="PaymentDetails" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Totais do Pedido</h3>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label asp-for="ShippingAmount">Valor do Frete</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">R$</span>
+                                </div>
+                                <input asp-for="ShippingAmount" class="form-control" id="shippingAmount" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="DiscountAmount">Valor do Desconto</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">R$</span>
+                                </div>
+                                <input asp-for="DiscountAmount" class="form-control" id="discountAmount" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="TotalAmount">Valor Total</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">R$</span>
+                                </div>
+                                <input asp-for="TotalAmount" class="form-control" id="totalAmount" readonly />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Notas e Observações</h3>
+                    <div class="form-group">
+                        <label asp-for="Notes">Observações</label>
+                        <textarea asp-for="Notes" class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Salvar Alterações
+                </button>
+                <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-secondary">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#sameAsShipping').on('change', function() {
+                if ($(this).is(':checked')) {
+                    $('#billingAddressFields').hide();
+                    $('[name="BillingAddress.RecipientName"]').val($('[name="ShippingAddress.RecipientName"]').val());
+                    $('[name="BillingAddress.Street"]').val($('[name="ShippingAddress.Street"]').val());
+                    $('[name="BillingAddress.Number"]').val($('[name="ShippingAddress.Number"]').val());
+                    $('[name="BillingAddress.Complement"]').val($('[name="ShippingAddress.Complement"]').val());
+                    $('[name="BillingAddress.Neighborhood"]').val($('[name="ShippingAddress.Neighborhood"]').val());
+                    $('[name="BillingAddress.City"]').val($('[name="ShippingAddress.City"]').val());
+                    $('[name="BillingAddress.State"]').val($('[name="ShippingAddress.State"]').val());
+                    $('[name="BillingAddress.ZipCode"]').val($('[name="ShippingAddress.ZipCode"]').val());
+                } else {
+                    $('#billingAddressFields').show();
+                }
+            });
+
+            $(document).on('change', '.unit-price, .quantity', function() {
+                updateOrderTotals();
+            });
+
+            $(document).on('click', '.remove-item', function() {
+                $(this).closest('tr').remove();
+                updateOrderTotals();
+            });
+
+            $('#addItemBtn').on('click', function() {
+                alert('Funcionalidade de adicionar item será implementada aqui.');
+            });
+
+            function updateOrderTotals() {
+                let subtotal = 0;
+
+                $('#orderItemsTable tbody tr').each(function() {
+                    const unitPrice = parseFloat($(this).find('.unit-price').val()) || 0;
+                    const quantity = parseInt($(this).find('.quantity').val()) || 0;
+                    const itemTotal = unitPrice * quantity;
+                    
+                    $(this).find('.item-total').text('R$ ' + itemTotal.toFixed(2));
+                    subtotal += itemTotal;
+                });
+
+                const shippingAmount = parseFloat($('#shippingAmount').val()) || 0;
+                const discountAmount = parseFloat($('#discountAmount').val()) || 0;
+
+                const totalAmount = subtotal + shippingAmount - discountAmount;
+                
+                $('#totalAmount').val(totalAmount.toFixed(2));
+            }
+
+            updateOrderTotals();
+        });
+    </script>
+}

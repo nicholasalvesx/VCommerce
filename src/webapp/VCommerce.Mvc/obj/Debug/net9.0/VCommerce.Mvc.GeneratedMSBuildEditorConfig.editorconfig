@@ -119,3 +119,23 @@ build_metadata.AdditionalFiles.CssScope =
 [/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/CustomerApp/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXJBcHAvUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/OrdersApp/CreateOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXJzQXBwL0NyZWF0ZU9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/OrdersApp/DeleteOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXJzQXBwL0RlbGV0ZU9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/OrdersApp/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXJzQXBwL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/OrdersApp/EditOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXJzQXBwL0VkaXRPcmRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/OrdersApp/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXJzQXBwL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
