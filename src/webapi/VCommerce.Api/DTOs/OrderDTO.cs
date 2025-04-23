@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using VCommerce.Api.Models;
 
 namespace VCommerce.Api.DTOs;
 
@@ -17,5 +18,5 @@ public class OrderDTO
     [Range(0.01, double.MaxValue, ErrorMessage = "Total must be greater than zero")]
     public decimal TotalAmount { get; set; }
 
-    public List<OrderItemDTO>? Items { get; set; }
+    public List<OrderItem>? Items { get; set; }
 }

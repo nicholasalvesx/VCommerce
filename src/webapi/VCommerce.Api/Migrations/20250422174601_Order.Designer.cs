@@ -12,8 +12,8 @@ using VCommerce.Api.Data;
 namespace VCommerce.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250418001343_OrderFeature")]
-    partial class OrderFeature
+    [Migration("20250422174601_Order")]
+    partial class Order
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -157,33 +157,6 @@ namespace VCommerce.Api.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("VCommerce.Api.DTOs.OrderItemDTO", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("UnitPrice")
-                        .HasColumnType("numeric");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("OrderItemDTO");
-                });
-
             modelBuilder.Entity("VCommerce.Api.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -325,6 +298,33 @@ namespace VCommerce.Api.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("VCommerce.Api.Models.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderItem");
+                });
+
             modelBuilder.Entity("VCommerce.Api.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -409,15 +409,6 @@ namespace VCommerce.Api.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VCommerce.Api.DTOs.OrderItemDTO", b =>
-                {
-                    b.HasOne("VCommerce.Api.Models.Order", null)
-                        .WithMany("Items")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("VCommerce.Api.Models.Order", b =>
                 {
                     b.HasOne("VCommerce.Api.Models.Customer", "Customer")
@@ -427,6 +418,15 @@ namespace VCommerce.Api.Migrations
                         .IsRequired();
 
                     b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("VCommerce.Api.Models.OrderItem", b =>
+                {
+                    b.HasOne("VCommerce.Api.Models.Order", null)
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("VCommerce.Api.Models.Product", b =>

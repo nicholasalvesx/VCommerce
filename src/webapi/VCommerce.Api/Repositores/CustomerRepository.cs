@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using VCommerce.Api.Data;
+using VCommerce.Api.DTOs;
 using VCommerce.Api.Models;
 
 namespace VCommerce.Api.Repositores;
@@ -40,7 +41,7 @@ public class CustomerRepository : ICustomerRepository
     public async Task<Customer?> DeleteCustomer(int id)
     {
         var customer = await GetCustomerById(id);
-        _context.Customers.Remove(customer);
+        _context.Customers.Remove(customer ?? throw new InvalidOperationException());
         await _context.SaveChangesAsync();
         return customer;
     }

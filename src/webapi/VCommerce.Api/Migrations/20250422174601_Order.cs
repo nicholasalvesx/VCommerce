@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace VCommerce.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class OrderFeature : Migration
+    public partial class Order : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,7 +35,7 @@ namespace VCommerce.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderItemDTO",
+                name: "OrderItem",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -47,9 +47,9 @@ namespace VCommerce.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderItemDTO", x => x.Id);
+                    table.PrimaryKey("PK_OrderItem", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrderItemDTO_Orders_OrderId",
+                        name: "FK_OrderItem_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id",
@@ -57,8 +57,8 @@ namespace VCommerce.Api.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItemDTO_OrderId",
-                table: "OrderItemDTO",
+                name: "IX_OrderItem_OrderId",
+                table: "OrderItem",
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
@@ -71,7 +71,7 @@ namespace VCommerce.Api.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "OrderItemDTO");
+                name: "OrderItem");
 
             migrationBuilder.DropTable(
                 name: "Orders");

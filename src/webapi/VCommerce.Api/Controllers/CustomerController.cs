@@ -33,7 +33,7 @@ public class CustomerController : ControllerBase
     public async Task<IActionResult> CreteCustomer([FromBody] CustomerDTO? customerDto)
     {
         if (customerDto == null)
-            return BadRequest("Customer data is required");
+            return BadRequest("Cliente nao existe");
 
         if (!ModelState.IsValid)
             return BadRequest(ModelState);

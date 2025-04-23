@@ -1,3 +1,4 @@
+using VCommerce.Api.DTOs;
 using VCommerce.Api.Models;
 
 namespace VCommerce.Api.Repositores;

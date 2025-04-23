@@ -1,5 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Api.DTOs;
@@ -81,52 +82,44 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Register([FromBody] CustomerDTO customerDto)
     {
         if (!ModelState.IsValid)
-        {
             return BadRequest(ModelState);
-        }
-
-        if (customerDto.Email != null)
-        {
-            var userExists = await _userManager.FindByEmailAsync(customerDto.Email);
-            if (userExists != null)
-            {
-                return BadRequest(new AuthResult
-                {
-                    Succeeded = false,
-                    Token = null,
-                    Expiration = DateTime.UtcNow
-                });
-            }
-        }
-
-        if (customerDto.Password != customerDto.ConfirmPassword)
-        {
-            return BadRequest("Passwords do not match");
-        }
-
+        
         var cliente = new Customer(
             customerDto.Email,
             customerDto.Name,
             customerDto.Password,
             customerDto.ConfirmPassword,
             customerDto.LastName
-        );
-
+            );
+        
         await _customerRepository.CreateCustomer(cliente);
-
+        
         var user = new ApplicationUser
         {
-            UserName = customerDto.Name,
             Email = customerDto.Email,
-            NormalizedUserName = customerDto.Name,
-            NormalizedEmail = customerDto.Email,
+            Name = customerDto.Name,
+            LastName = customerDto.LastName,
+            UserName = Regex.Replace(customerDto.Name!, "[^a-zA-Z0-9]", ""),
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
             EmailConfirmed = true
         };
+        
+        
+        if (customerDto.Password != customerDto.ConfirmPassword)
+        {
+            return BadRequest(new { message = "As senhas não coincidem." });
+        }
 
         var result = await _userManager.CreateAsync(user, customerDto.Password!);
-
-        return !result.Succeeded ? StatusCode(500, result.Errors) : 
-            Ok(new AuthResult
+        if (!result.Succeeded)
+        {
+            await _customerRepository.DeleteCustomer(customerDto.Id);
+            
+            return BadRequest(result.Errors);
+        }
+        
+        return Ok(new AuthResult
         {
             Succeeded = true,
             Token = null,
