@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using VCommerce.Api.Models;
 using VCommerce.Mvc.Models;
 using VCommerce.Mvc.Services.Contracts;
 
@@ -11,82 +12,51 @@ namespace VCommerce.Mvc.Controllers;
 public class AccountController : Controller
 {
     private readonly IAuthService _authService;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public AccountController(IAuthService authService)
+    public AccountController(IAuthService authService,
+        SignInManager<ApplicationUser> signInManager,
+        UserManager<ApplicationUser> userManager)
     {
         _authService = authService;
+        _signInManager = signInManager;
+        _userManager = userManager;
     }
 
     [HttpGet]
     public IActionResult Login(string? returnUrl = null)
     {
         ViewData["ReturnUrl"] = returnUrl;
-        return View(new LoginViewModel { ReturnUrl = returnUrl });
+        return View();
     }
 
-[HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl = null)
-{
-    ViewData["ReturnUrl"] = returnUrl;
-
-    if (!ModelState.IsValid) 
-        return View(model);
-    
-    var result = await _authService.LoginAsync(model);
-        
-    if (result.Succeeded)
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Login(LoginViewModel model)
     {
-        var claims = new List<Claim>
+        if (!ModelState.IsValid)
+            return View(ModelState);
+
+        var user = await _userManager.FindByNameAsync(model.Name!);
+        if (user == null)
         {
-            new(ClaimTypes.Name, model.Name!),
-        };
-            
-        if (result.UserId > 0)
-        {
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, result.UserId.ToString()));
+            ModelState.AddModelError(string.Empty, "Tentativa de login invalida");
+            return View(model);
         }
-            
-        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        var principal = new ClaimsPrincipal(identity);
-            
-        var authProperties = new AuthenticationProperties
+
+        var passwordValid = await _userManager.CheckPasswordAsync(user, model.Password!);
+        if (!passwordValid)
         {
-            IsPersistent = model.RememberMe,
-            ExpiresUtc = result.Expiration,
-            AllowRefresh = true
-        };
-            
-        authProperties.StoreTokens([
-            new AuthenticationToken
-            {
-                Name = "access_token",
-                Value = result.Token!
-            },
-            new AuthenticationToken
-            {
-                Name = "expires_at",
-                Value = result.Expiration.ToString("o")
-            }
-        ]);
-            
-        await HttpContext.SignInAsync(
-            CookieAuthenticationDefaults.AuthenticationScheme,
-            principal,
-            authProperties);
-            
-        if (Url.IsLocalUrl(returnUrl))
-        {
-            return Redirect(returnUrl);
+            await _userManager.AccessFailedAsync(user);
+            ModelState.AddModelError(string.Empty, "Tentativa de login invalida");
+            return View(model);
         }
-            
+
+        await _signInManager.SignInAsync(user, model.RememberMe);
+
         return RedirectToAction("Index", "Home");
     }
-        
-    ModelState.AddModelError(string.Empty, "Tentativa de login inválida.");
-
-    return View(model);
-}
 
     [HttpGet]
     [AllowAnonymous]
@@ -101,20 +71,37 @@ public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl =
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
-        if (!ModelState.IsValid) 
+        if (!ModelState.IsValid)
             return View(model);
 
-        var result = await _authService.RegisterAsync(model);
-
-        if (result is { Succeeded: true })
+        var userExists = await _userManager.FindByEmailAsync(model.Email!);
+        if (userExists != null)
         {
-            TempData["SuccessMessage"] = "Cadastro realizado com sucesso! Faça login para continuar.";
-            return RedirectToAction("Login", "Account");
+            ModelState.AddModelError(string.Empty, "Usuario ja existe");
+            return View(model);
         }
         
-        ModelState.AddModelError(string.Empty, "Erro ao registrar. Verifique seus dados e tente novamente.");
+        var customerResponse = await _authService.RegisterAsync(model);
+        if (customerResponse is { Succeeded: false })
+        {
+            ModelState.AddModelError(string.Empty, "Tentativa de registro invalida");
+            return View(model);
+        }
         
-        return View(model);
+        var createdUser = await _userManager.FindByEmailAsync(model.Email!);
+        if (createdUser == null)
+        {
+            ModelState.AddModelError(string.Empty, "Erro ao encontrar usuário criado.");
+            return View(model);
+        }
+
+        await _userManager.AddToRoleAsync(createdUser, "Admin");
+
+        TempData["MSG_S"] = "Cadastro efetuado";
+        ModelState.Clear();
+        
+        return RedirectToAction("Login", "Account");
+        
     }
 
     [HttpPost]
@@ -124,5 +111,13 @@ public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl =
         _authService.Logout();
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         return RedirectToAction("Index", "Home");
+    }
+
+    private void AddErrors(IdentityResult result)
+    {
+        foreach (var error in result.Errors)
+        {
+            ModelState.AddModelError(string.Empty, error.Description);
+        }
     }
 }

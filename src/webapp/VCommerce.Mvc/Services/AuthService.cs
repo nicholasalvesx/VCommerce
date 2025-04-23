@@ -1,8 +1,8 @@
 using System.Text;
 using System.Text.Json;
-using VCommerce.Api.DTOs;
 using VCommerce.Mvc.Models;
 using VCommerce.Mvc.Services.Contracts;
+using AuthResult = VCommerce.Mvc.Models.AuthResult;
 
 namespace VCommerce.Mvc.Services;
 
@@ -20,12 +20,11 @@ public class AuthService : IAuthService
     public async Task<AuthResult> LoginAsync(LoginViewModel loginModel)
     {
         var loginContent = new StringContent(
-            JsonSerializer.Serialize(new LoginDTO
-            {   
-                Name = loginModel.Name,
-                Password = loginModel.Password
-            }), Encoding.UTF8,
-            "application/json");
+            JsonSerializer.Serialize(new
+            {
+                userName = loginModel.Name,
+                password = loginModel.Password
+            }), Encoding.UTF8, "application/json");
         
         var response = await _httpClient.PostAsync("/api/v1/auth/login", loginContent);
 
@@ -75,7 +74,7 @@ public class AuthService : IAuthService
         try
         {
             var result = JsonSerializer.Deserialize<AuthResult>(content, options);
-            if (result == null || !result.Succeeded)
+            if (result is not { Succeeded: true })
                 return new AuthResult { Succeeded = false };
 
             if (!string.IsNullOrEmpty(result.Token))
@@ -94,6 +93,8 @@ public class AuthService : IAuthService
     public void Logout()
     {
         _httpContextAccessor.HttpContext?.Session.Remove("JWT:SecretKey");
+        
+        _httpContextAccessor.HttpContext?.Session.Clear();
     }
 }
     

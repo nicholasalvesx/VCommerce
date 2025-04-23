@@ -61,64 +61,63 @@ public class CustomerService : ICustomerService
         }
         return _customerVm;
     }
-
     public async Task<CustomerViewModel?> CreateCustomer(CustomerViewModel? customerVm)
-    {
-        var customer = _clientFactory.CreateClient("Api");
-
-        var content = new StringContent(JsonSerializer.Serialize(customerVm),
-            Encoding.UTF8, "application/json");
-
-        using var response = await customer.PostAsync("/api/v1/customers/", content);
-        if (response.IsSuccessStatusCode)
         {
-            var apiResponse = await response.Content.ReadAsStreamAsync();
-            customerVm = await JsonSerializer
-                .DeserializeAsync<CustomerViewModel>(apiResponse, _options);
-        }
-        else
-        {
-            return null;
-        }
+            var customer = _clientFactory.CreateClient("Api");
 
-        return customerVm;
-    }
+            var content = new StringContent(JsonSerializer.Serialize(customerVm),
+                Encoding.UTF8, "application/json");
 
-    public async Task<CustomerViewModel?> UpdateCustomer(CustomerViewModel? customerVm, string? token)
-    {
-        var customer = _clientFactory.CreateClient("Api");
-        PutTokenInHeaderAuthorization(token, customer);
+            using var response = await customer.PostAsync("/api/v1/customers/", content);
+            if (response.IsSuccessStatusCode)
+            {
+                var apiResponse = await response.Content.ReadAsStreamAsync();
+                customerVm = await JsonSerializer
+                    .DeserializeAsync<CustomerViewModel>(apiResponse, _options);
+            }
+            else
+            {
+                return null;
+            }
 
-        CustomerViewModel? customerUpdated;
-
-        using var response = await customer.PutAsJsonAsync("/api/v1/customers/", customerVm);
-        if (response.IsSuccessStatusCode)
-        {
-            var apiResponse = await response.Content.ReadAsStreamAsync();
-            customerUpdated = await JsonSerializer
-                .DeserializeAsync<CustomerViewModel>(apiResponse, _options);
-        }
-        else
-        {
-            return null;
+            return customerVm;
         }
 
-        return customerUpdated;
-    }
+        public async Task<CustomerViewModel?> UpdateCustomer(CustomerViewModel? customerVm, string? token)
+        {
+            var customer = _clientFactory.CreateClient("Api");
+            PutTokenInHeaderAuthorization(token, customer);
 
-    public async Task<bool> DeleteCustomerById(int id, string? token)
-    {
-        var customer = _clientFactory.CreateClient("Api");
-        PutTokenInHeaderAuthorization(token, customer);
+            CustomerViewModel? customerUpdated;
 
-        using var response = await customer.DeleteAsync("/api/v1/customers/" + id);
+            using var response = await customer.PutAsJsonAsync("/api/v1/customers/", customerVm);
+            if (response.IsSuccessStatusCode)
+            {
+                var apiResponse = await response.Content.ReadAsStreamAsync();
+                customerUpdated = await JsonSerializer
+                    .DeserializeAsync<CustomerViewModel>(apiResponse, _options);
+            }
+            else
+            {
+                return null;
+            }
+
+            return customerUpdated;
+        }
+
+        public async Task<bool> DeleteCustomerById(int id, string? token)
+        {
+            var customer = _clientFactory.CreateClient("Api");
+            PutTokenInHeaderAuthorization(token, customer);
+
+            using var response = await customer.DeleteAsync("/api/v1/customers/" + id);
         
-        return response.IsSuccessStatusCode;
-    }
+            return response.IsSuccessStatusCode;
+        }
     
-    private static void PutTokenInHeaderAuthorization(string? token, HttpClient client)
-    {
-        client.DefaultRequestHeaders.Authorization =
-            new AuthenticationHeaderValue("Bearer", token);
-    }
+        private static void PutTokenInHeaderAuthorization(string? token, HttpClient client)
+        {
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);
+        }
 }
