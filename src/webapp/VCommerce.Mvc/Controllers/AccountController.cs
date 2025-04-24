@@ -130,13 +130,12 @@ public class AccountController : Controller
             return View(model);
         }
 
-        await _userManager.AddToRoleAsync(createdUser, "Admin");
+        await _userManager.AddToRoleAsync(createdUser, "Client");
 
         TempData["MSG_S"] = "Cadastro efetuado";
         ModelState.Clear();
         
         return RedirectToAction("Login", "Account");
-        
     }
 
     [HttpPost]
