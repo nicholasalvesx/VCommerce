@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Mvc.Models;
@@ -103,7 +104,7 @@ public class CustomerAppController : Controller
     
         if (string.IsNullOrEmpty(token))
         {
-            token = await HttpContext.GetTokenAsync("access_token");
+            token = await HttpContext.GetTokenAsync("token");
         }
     
         var customer = await _customerService.FindCustomerById(userId.Value, token);
@@ -118,6 +119,6 @@ public class CustomerAppController : Controller
     
     private async Task<string?> GetAccessToken()
     {
-        return await HttpContext.GetTokenAsync("access_token");
+        return await HttpContext.GetTokenAsync("acess_token");
     }
 }

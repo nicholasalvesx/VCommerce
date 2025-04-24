@@ -100,6 +100,6 @@ public class ProductsAppController : Controller
     }
     private async Task<string?> GetAccessToken()
     {
-        return await HttpContext.GetTokenAsync("access_token");
+        return await HttpContext.GetTokenAsync("acess_token");
     }
 }

@@ -125,6 +125,6 @@ public class ProductService : IProductService
     private static void PutTokenInHeaderAuthorization(string? token, HttpClient client)
     {
         client.DefaultRequestHeaders.Authorization =
-                   new AuthenticationHeaderValue("Bearer", token);
+                   new AuthenticationHeaderValue("acess_token", token);
     }
 }

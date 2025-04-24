@@ -23,8 +23,8 @@
         <div class="sidebar-user">
             <i class="fas fa-user-ninja"></i>
             <div class="user-info">
-                <h4>Admin User</h4>
-                <span>Adminstrador</span>
+                <h4>@User.Identity?.Name</h4>
+                <span>@(User.IsInRole("Admin") ? "Administrador" : "Cliente")</span>
             </div>
         </div>
 
@@ -104,7 +104,7 @@
                     <div class="dropdown">
                         <button class="dropdown-toggle">
                             <i class="fas fa-user-ninja"></i>
-                            <span class="d-none d-md-inline">Admin User</span>
+                            <span class="d-none d-md-inline">@User.Identity.Name</span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="dropdown-menu">

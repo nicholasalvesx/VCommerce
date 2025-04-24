@@ -1,5 +1,7 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -12,32 +14,35 @@ namespace VCommerce.Mvc.Controllers;
 public class AccountController : Controller
 {
     private readonly IAuthService _authService;
-    private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly UserManager<ApplicationUser> _userManager;
 
     public AccountController(IAuthService authService,
-        SignInManager<ApplicationUser> signInManager,
         UserManager<ApplicationUser> userManager)
     {
         _authService = authService;
-        _signInManager = signInManager;
         _userManager = userManager;
     }
 
     [HttpGet]
-    public IActionResult Login(string? returnUrl = null)
+    public async Task<IActionResult> Login(string returnUrl = null!)
     {
+        await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+
         ViewData["ReturnUrl"] = returnUrl;
+        
         return View();
     }
 
     [HttpPost]
+    [AllowAnonymous]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
         if (!ModelState.IsValid)
-            return View(ModelState);
+            return View(model);
 
+        var result = await _authService.LoginAsync(model);
+        
         var user = await _userManager.FindByNameAsync(model.Name!);
         if (user == null)
         {
@@ -53,8 +58,38 @@ public class AccountController : Controller
             return View(model);
         }
 
-        await _signInManager.SignInAsync(user, model.RememberMe);
+        if (!result.Succeeded)
+        {
+            ModelState.AddModelError(string.Empty, "Nao foi possivel realizar o login");
+            return View(model);
+        }
+        
+        var roles = await _userManager.GetRolesAsync(user);
 
+        var claims = new List<Claim>
+        {
+            new(ClaimTypes.Name, user.UserName!),
+            new(ClaimTypes.NameIdentifier, user.Id)
+        };
+
+        foreach (var role in roles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
+
+        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+        var authProperties = new AuthenticationProperties
+        {
+            IsPersistent = true,
+            ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
+        };
+
+        await HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(claimsIdentity),
+            authProperties);
+        
         return RedirectToAction("Index", "Home");
     }
 
@@ -109,15 +144,7 @@ public class AccountController : Controller
     public async Task<IActionResult> Logout()
     {
         _authService.Logout();
-        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        await HttpContext.SignOutAsync(JwtBearerDefaults.AuthenticationScheme);
         return RedirectToAction("Index", "Home");
-    }
-
-    private void AddErrors(IdentityResult result)
-    {
-        foreach (var error in result.Errors)
-        {
-            ModelState.AddModelError(string.Empty, error.Description);
-        }
     }
 }

@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Mvc.Models;
 using VCommerce.Mvc.Services.Contracts;
 
 namespace VCommerce.Mvc.Controllers;
 
+[Authorize]
 public class OrdersAppController : Controller
 {
     private readonly IOrderService _orderService;
@@ -204,8 +206,8 @@ public class OrdersAppController : Controller
         return BadRequest("Erro ao adicionar nota ao pedido.");
     }
 
-    private async Task<string> GetAccessToken()
+    private async Task<string?> GetAccessToken()
     {
-        return await HttpContext.GetTokenAsync("access_token") ?? string.Empty;
+        return await HttpContext.GetTokenAsync("acess_token");
     }
 }

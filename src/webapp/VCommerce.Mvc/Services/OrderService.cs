@@ -62,7 +62,7 @@ public class OrderService : IOrderService
         return _orderVm;
     }
 
-    public async Task<OrderViewModel?> CreateOrder(OrderViewModel model, string accessToken)
+    public async Task<OrderViewModel?> CreateOrder(OrderViewModel model, string? accessToken)
     {
         {
             var order = _clientFactory.CreateClient("Api");
@@ -120,6 +120,6 @@ public class OrderService : IOrderService
         private static void PutTokenInHeaderAuthorization(string? token, HttpClient client)
         {
             client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", token);
+                new AuthenticationHeaderValue("acess_token", token);
         }
 }

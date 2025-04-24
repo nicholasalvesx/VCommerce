@@ -12,7 +12,6 @@ public class CustomerService : ICustomerService
     private readonly JsonSerializerOptions _options;
     private CustomerViewModel? _customerVm;
     private IEnumerable<CustomerViewModel>? _customersVm;
-
     
     public CustomerService(IHttpClientFactory clientFactory)
     {
@@ -118,6 +117,6 @@ public class CustomerService : ICustomerService
         private static void PutTokenInHeaderAuthorization(string? token, HttpClient client)
         {
             client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", token);
+                new AuthenticationHeaderValue("acess_token", token);
         }
 }

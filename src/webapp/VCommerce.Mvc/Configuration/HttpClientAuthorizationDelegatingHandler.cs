@@ -16,8 +16,12 @@ public class HttpClientAuthorizationDelegatingHandler : DelegatingHandler
         if (!string.IsNullOrEmpty(token))
         {
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            Console.WriteLine("Token enviado no Authorization: " + token);
+
         }
 
         return await base.SendAsync(request, cancellationToken);
+        
+        
     }
 }

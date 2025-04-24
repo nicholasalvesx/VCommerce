@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Mvc.Models;
@@ -6,15 +7,18 @@ using VCommerce.Mvc.Services.Contracts;
 
 namespace VCommerce.Mvc.Controllers;
 
+[Authorize]
 public class HomeController : Controller
 {
+    private readonly IAuthService _authService;
     private readonly IProductService _productService;
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(IProductService productService, ILogger<HomeController> logger)
+    public HomeController(IProductService productService, ILogger<HomeController> logger, IAuthService authService)
     {
         _productService = productService;
         _logger = logger;
+        _authService = authService;
     }
     
     [Authorize]
@@ -86,8 +90,10 @@ public class HomeController : Controller
             RedirectToAction("Login", "Account") : 
             RedirectToAction(nameof(Index));
     }
-    public IActionResult Logout()
+    public async Task<IActionResult> Logout()
     {
-        return SignOut("Cookies", "oidc");
+        _authService.Logout();
+        await HttpContext.SignOutAsync(JwtBearerDefaults.AuthenticationScheme);
+        return RedirectToAction("Index", "Home");
     }
 }

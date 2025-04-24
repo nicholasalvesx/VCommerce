@@ -22,7 +22,7 @@ public class AuthService : IAuthService
         var loginContent = new StringContent(
             JsonSerializer.Serialize(new
             {
-                userName = loginModel.Name,
+                name = loginModel.Name,
                 password = loginModel.Password
             }), Encoding.UTF8, "application/json");
         
@@ -32,6 +32,8 @@ public class AuthService : IAuthService
             return new AuthResult { Succeeded = false };
 
         var content = await response.Content.ReadAsStringAsync();
+        Console.WriteLine("Resposta da API: " + content);
+        
         var jsonDoc = JsonDocument.Parse(content);
         var root = jsonDoc.RootElement;
 
@@ -76,12 +78,7 @@ public class AuthService : IAuthService
             var result = JsonSerializer.Deserialize<AuthResult>(content, options);
             if (result is not { Succeeded: true })
                 return new AuthResult { Succeeded = false };
-
-            if (!string.IsNullOrEmpty(result.Token))
-            {
-                _httpContextAccessor.HttpContext?.Session.SetString("JWTToken", result.Token);
-            }
-
+            
             return result;
         }
         catch (JsonException)

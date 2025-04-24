@@ -1,97 +1,88 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - VCommerce</title>
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="/css/dashboard.css" asp-append-version="true" />
-    
-    @await RenderSectionAsync("Styles", required: false)
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/dashboard.css" />
 </head>
 <body>
     <div class="dashboard-container">
-        @if (User.Identity.IsAuthenticated)
+        @{
+            var isAuthenticated = HttpContextAccessor.HttpContext?.Session.GetString("name") != null;
+            var userName = HttpContextAccessor.HttpContext?.Session.GetString("name");
+        }
+
+        @if (isAuthenticated)
         {
+            <!-- Sidebar -->
             <aside class="sidebar">
                 <div class="sidebar-header">
                     <div class="logo">
                         <i class="fas fa-store"></i>
                         <h3>VCommerce</h3>
                     </div>
-                    <button id="sidebar-toggle" class="sidebar-toggle d-md-none">
+                    <button id="sidebar-toggle" class="sidebar-toggle">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
-                
+
                 <div class="sidebar-user">
-                    <img src="/images/user-avatar.jpg" alt="User Avatar" class="user-avatar" onerror="this.src='/images/default-avatar.png'">
+                    <i class="fas fa-user-ninja"></i>
                     <div class="user-info">
-                        <h4>@User.Identity.Name</h4>
-                        <span>@(User.IsInRole("Admin") ? "Administrador" : "Cliente")</span>
+                        <h4>@User</h4>
+                        <span>Administrador</span>
                     </div>
                 </div>
-                
+
                 <nav class="sidebar-nav">
                     <div class="nav-section">
                         <h5 class="nav-section-title">PRINCIPAL</h5>
                         <ul class="sidebar-menu">
-                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Home" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                            <li class="@(Context.Request.Path == "/" || Context.Request.Path == "/Home/Index" ? "active" : "")">
                                 <a href="/Home/Index">
                                     <i class="fas fa-home"></i>
                                     <span>Dashboard</span>
                                 </a>
                             </li>
-                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Products" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
-                                <a href="/Products/Index">
+                            <li class="@(Context.Request.Path.StartsWithSegments("/ProductsApp") ? "active" : "")">
+                                <a href="/ProductsApp/Index">
                                     <i class="fas fa-box"></i>
-                                    <span>Produtos</span>
+                                    <span>Products</span>
                                 </a>
                             </li>
-                            @if (User.IsInRole("Admin"))
-                            {
-                                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Customers" ? "active" : "")">
-                                    <a href="/Customers/Index">
-                                        <i class="fas fa-users"></i>
-                                        <span>Clientes</span>
-                                    </a>
-                                </li>
-                                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Orders" ? "active" : "")">
-                                    <a href="/Orders/Index">
-                                        <i class="fas fa-shopping-cart"></i>
-                                        <span>Pedidos</span>
-                                    </a>
-                                </li>
-                            }
+                            <li class="@(Context.Request.Path.StartsWithSegments("/CustomerApp") ? "active" : "")">
+                                <a href="/CustomerApp/Index">
+                                    <i class="fas fa-users"></i>
+                                    <span>Customers</span>
+                                </a>
+                            </li>
+                            <li class="@(Context.Request.Path.StartsWithSegments("/OrdersApp") ? "active" : "")">
+                                <a href="/OrdersApp/Index">
+                                    <i class="fas fa-handshake"></i>
+                                    <span>Orders</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
-                    
+
                     <div class="nav-section">
-                        <h5 class="nav-section-title">CONFIGURAÇÕES</h5>
+                        <h5 class="nav-section-title">CONFIGURAÇÔES</h5>
                         <ul class="sidebar-menu">
-                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Account" && ViewContext.RouteData.Values["Action"].ToString() == "Profile" ? "active" : "")">
-                                <a href="/Account/Profile">
+                            <li class="@(Context.Request.Path == "/CustomerApp/Profile" ? "active" : "")">
+                                <a href="/CustomerApp/Profile">
                                     <i class="fas fa-user-cog"></i>
-                                    <span>Perfil</span>
+                                    <span>Profile</span>
                                 </a>
                             </li>
-                            @if (User.IsInRole("Admin"))
-                            {
-                                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Settings" ? "active" : "")">
-                                    <a href="/Settings/Index">
-                                        <i class="fas fa-cog"></i>
-                                        <span>Configurações</span>
-                                    </a>
-                                </li>
-                            }
                             <li>
                                 <a href="/Account/Logout">
                                     <i class="fas fa-sign-out-alt"></i>
-                                    <span>Sair</span>
+                                    <span>Logout</span>
                                 </a>
                             </li>
                         </ul>
@@ -100,46 +91,42 @@
             </aside>
         }
 
-        <main class="main-content @(User.Identity.IsAuthenticated ? "" : "no-sidebar")">
-            @if (User.Identity.IsAuthenticated)
+        <!-- Main Content -->
+        <div class="main-content @(isAuthenticated ? "" : "no-sidebar")">
+            @if (isAuthenticated)
             {
-                <header class="header">
+                <!-- Header -->
+                <div class="header">
                     <div class="header-left">
-                        <button id="mobile-toggle" class="mobile-toggle d-md-none">
+                        <button class="mobile-toggle">
                             <i class="fas fa-bars"></i>
                         </button>
                         <div class="search-container">
                             <i class="fas fa-search search-icon"></i>
-                            <input type="text" placeholder="Pesquisar..." class="search-input" />
+                            <input type="text" class="search-input" placeholder="Pesquisar..." />
                         </div>
                     </div>
-                    
                     <div class="header-right">
                         <div class="header-actions">
                             <button class="action-button">
-                                <i class="fas fa-bell"></i>
+                                <i class="far fa-bell"></i>
                                 <span class="badge">3</span>
-                            </button>
-                            <button class="action-button">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span class="badge">2</span>
                             </button>
                             <div class="dropdown">
                                 <button class="dropdown-toggle">
-                                    <img src="/images/user-avatar.jpg" alt="User" class="user-avatar-small" onerror="this.src='/images/default-avatar.png'">
-                                    <span class="d-none d-md-inline">@User.Identity.Name</span>
+                                    <div class="user-avatar-small">
+                                        <span>@(userName?.Substring(0, 1).ToUpper())</span>
+                                    </div>
+                                    <span>@userName</span>
                                     <i class="fas fa-chevron-down"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a href="/Account/Profile" class="dropdown-item">
-                                        <i class="fas fa-user"></i> Perfil
+                                    <a href="/CustomerApp/Profile" class="dropdown-item">
+                                        <i class="fas fa-user"></i> Meu Perfil
                                     </a>
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <a href="/Settings/Index" class="dropdown-item">
-                                            <i class="fas fa-cog"></i> Configurações
-                                        </a>
-                                    }
+                                    <a href="/Settings" class="dropdown-item">
+                                        <i class="fas fa-cog"></i> Configurações
+                                    </a>
                                     <div class="dropdown-divider"></div>
                                     <a href="/Account/Logout" class="dropdown-item">
                                         <i class="fas fa-sign-out-alt"></i> Sair
@@ -148,62 +135,35 @@
                             </div>
                         </div>
                     </div>
-                </header>
+                </div>
             }
 
-            <div class="content @(User.Identity.IsAuthenticated ? "" : "no-header")">
+            <!-- Content -->
+            <div class="content @(isAuthenticated ? "" : "no-header")">
                 @RenderBody()
             </div>
-            
-            <footer class="footer">
+
+            <!-- Footer -->
+            <div class="footer">
                 <div class="container">
                     <div class="footer-content">
                         <div class="copyright">
                             &copy; @DateTime.Now.Year - VCommerce - Todos os direitos reservados
                         </div>
                         <div class="footer-links">
-                            <a href="/terms">Termos</a>
-                            <a href="/privacy">Privacidade</a>
-                            <a href="/help">Ajuda</a>
+                            <a href="/About">Sobre</a>
+                            <a href="/Privacy">Privacidade</a>
+                            <a href="/Terms">Termos</a>
+                            <a href="/Contact">Contato</a>
                         </div>
                     </div>
                 </div>
-            </footer>
-        </main>
+            </div>
+        </div>
     </div>
-    
-    <script src="/lib/jquery/dist/jquery.min.js"></script>
-    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/site.js" asp-append-version="true"></script>
-    
-    <script>
-        $(document).ready(function() {
-            $('#mobile-toggle, #sidebar-toggle').on('click', function() {
-                $('.sidebar').toggleClass('show');
-                $('.main-content').toggleClass('sidebar-open');
-            });
-            
-            $('.dropdown-toggle').on('click', function() {
-                $(this).next('.dropdown-menu').toggleClass('show');
-            });
-            
-            $(document).on('click', function(e) {
-                if (!$(e.target).closest('.dropdown').length) {
-                    $('.dropdown-menu').removeClass('show');
-                }
-            });
-            
-            $(document).on('click', function(e) {
-                if ($(window).width() < 768) {
-                    if (!$(e.target).closest('.sidebar').length && !$(e.target).closest('#mobile-toggle').length) {
-                        $('.sidebar').removeClass('show');
-                        $('.main-content').removeClass('sidebar-open');
-                    }
-                }
-            });
-        });
-    </script>
-    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/js/site.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
