@@ -21,7 +21,7 @@ public class ProductsController : ControllerBase
         var productsDto = await _productService.GetProducts();
         if (productsDto == null!)
         {
-            return BadRequest("No products found");
+            return BadRequest("Nenhum produto encontrado");
         }
         return Ok(productsDto);
     }
@@ -33,7 +33,7 @@ public class ProductsController : ControllerBase
 
         if (product == null!)
         {
-            return BadRequest("No products found");            
+            return BadRequest($"produto do id {id} nao existe");            
         }
         return Ok(product);
     }

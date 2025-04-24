@@ -61,7 +61,7 @@ public class CustomerController : ControllerBase
         var customer = await _customerService.GetCustomerById(id);
         if (customer == null!)
         {
-            return NotFound("Customer does not exist");
+            return NotFound("Cliente nao existe");
         } 
         await _customerService.DeleteCustomer(id);
         return Ok(customer);

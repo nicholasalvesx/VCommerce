@@ -8,10 +8,10 @@ public class CustomerDTO
     public int Id { get; set; }
     
     [EmailAddress]
-    [Required(ErrorMessage = "Email is required")]
+    [Required(ErrorMessage = "Email é obrigatorio")]
     public string? Email { get; set; }
     
-    [Required(ErrorMessage =  "Name is required")]
+    [Required(ErrorMessage =  "O nome é obrigatorio")]
     [MinLength(3, ErrorMessage =  "Name must be at least 3 characters")]
     [MaxLength(100, ErrorMessage =  "Name cannot exceed 100 characters")]
     public string? Name { get; set; }

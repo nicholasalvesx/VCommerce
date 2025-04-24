@@ -20,7 +20,7 @@ public class TokenService : ITokenService
         var key = _configuration["JWT:SecretKey"];
         if (key == null)
         {
-            throw new InvalidOperationException("JWT secret key is invalid");
+            throw new InvalidOperationException("Chave secreta invalida");
         }
         
         var privateKey = Encoding.UTF8.GetBytes(key);
@@ -67,7 +67,7 @@ public class TokenService : ITokenService
         var secretKey = _configuration["JWT:SecretKey"];
         if (secretKey == null)
         {
-            throw new InvalidOperationException("JWT secret key is invalid");
+            throw new InvalidOperationException("Chave secreta invalida");
         }
 
         var tokenValidateParams = new TokenValidationParameters
@@ -86,7 +86,7 @@ public class TokenService : ITokenService
             !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256,
                 StringComparison.InvariantCultureIgnoreCase))
         {
-            throw new SecurityTokenException("Invalid token");
+            throw new SecurityTokenException("Token invalido");
         }
         
         return tokenPrincipal;

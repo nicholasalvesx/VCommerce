@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Api.DTOs;
@@ -37,7 +38,7 @@ public class AuthController : ControllerBase
         var userExists = await _userManager.FindByNameAsync(dto.Name!);
         if (userExists == null)
         {
-            return BadRequest("User does not exist");
+            return BadRequest("Usuario nao existe");
         }
         
         var user = await _userManager.FindByNameAsync(dto.Name!);
@@ -74,7 +75,6 @@ public class AuthController : ControllerBase
             RefreshToken = refreshToken,
             ExpirationToken = token.ValidTo
         });
-
     }
 
     [HttpPost]
@@ -133,7 +133,7 @@ public class AuthController : ControllerBase
     {
         if (dto == null)
         {
-            return BadRequest("Invalid request");
+            return BadRequest("Token nao existe");
         }
 
         var acessToken = dto.AcessToken;
@@ -151,7 +151,7 @@ public class AuthController : ControllerBase
         var tokenPrincipal = _tokenService.GetPrincipalFromExpiredToken(acessToken, _configuration);
         if (tokenPrincipal == null!)
         {
-            return BadRequest("Invalid access token/refresh token");
+            return BadRequest("Token invalido");
         }
 
         var userName = tokenPrincipal.Identity!.Name;
@@ -159,7 +159,7 @@ public class AuthController : ControllerBase
         var user = await _userManager.FindByNameAsync(userName!);
         if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiry < DateTime.UtcNow)
         {
-            return BadRequest("Invalid access token/refresh token");
+            return BadRequest("Token invalido");
         }
 
         var newAcessToken = _tokenService.GenerateAcessToken(tokenPrincipal.Claims.ToList(), _configuration);
@@ -183,7 +183,7 @@ public class AuthController : ControllerBase
         var user = await _userManager.FindByNameAsync(userName);
         if (user == null)
         {
-            return BadRequest("User does not exist");
+            return BadRequest("Usuario nao econtrado");
         }
         
         user.RefreshToken = null;

@@ -6,22 +6,15 @@ namespace VCommerce.Api.Controllers;
 
 [ApiController]
 [Route("api/v1/categories")]
-public class CategoriesController : ControllerBase
+public class CategoriesController(ICategoryService categoryService) : ControllerBase
 {
-    private readonly ICategoryService _categoryService;
-
-    public CategoriesController(ICategoryService categoryService)
-    {
-        _categoryService = categoryService;
-    }
-
     [HttpGet]
     public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories()
     {
-        var categoriesDto = await _categoryService.GetCategories();
+        var categoriesDto = await categoryService.GetCategories();
         if (categoriesDto == null!)
         {
-            return NotFound("Categories not found");    
+            return NotFound("Categorias nao encontradas");    
         }
         return Ok(categoriesDto);
     }
@@ -29,10 +22,10 @@ public class CategoriesController : ControllerBase
     [HttpGet("products")]
     public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategoriesProducts()
     {
-        var categoriesDto = await _categoryService.GetCategoriesProduct();
+        var categoriesDto = await categoryService.GetCategoriesProduct();
         if (categoriesDto == null!)
         {
-            return NotFound("Categories not found");
+            return NotFound("Categorias e seus respectivos produtos nao foram encontradas");
         }
         return Ok(categoriesDto);
     }
@@ -40,10 +33,10 @@ public class CategoriesController : ControllerBase
     [HttpGet("{id:int}", Name = "GetCategory")]
     public async Task<ActionResult<CategoryDTO>> GetCategoryById(int id)
     {
-        var categoryDto = await _categoryService.GetCategoryById(id);
+        var categoryDto = await categoryService.GetCategoryById(id);
         if (categoryDto == null!)
         {
-            return NotFound("Category not found");
+            return NotFound("Categoria nao encontrada");
         }
         return Ok(categoryDto);
     }
@@ -53,10 +46,10 @@ public class CategoriesController : ControllerBase
     {
         if (categoryDto == null!)
         {
-            return BadRequest("Category object is null");
+            return BadRequest("A categoria desse item nao existe");
         }
         
-        await _categoryService.AddCategory(categoryDto);
+        await categoryService.AddCategory(categoryDto);
         
         return new CreatedAtRouteResult("GetCategory", new { id = categoryDto.CategoryId }, categoryDto);
     }
@@ -74,20 +67,20 @@ public class CategoriesController : ControllerBase
             return BadRequest();
         }
             
-        await _categoryService.UpdateCategory(categoryDto);
+        await categoryService.UpdateCategory(categoryDto);
         return Ok(categoryDto);
     }
 
     [HttpDelete("{id:int}")]
     public async Task<ActionResult<CategoryDTO>> DeleteCategory(int id)
     {
-        var categoryDto = await _categoryService.GetCategoryById(id);
+        var categoryDto = await categoryService.GetCategoryById(id);
         if (categoryDto == null!)
         {
-            return NotFound("Category not found");
+            return NotFound("Categoria nao encontrada");
         }
         
-        await _categoryService.DeleteCategory(id);
+        await categoryService.DeleteCategory(id);
         return Ok(categoryDto);
     }
     

@@ -11,7 +11,7 @@ using VCommerce.Api.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 var secretKey = builder.Configuration["JWT:SecretKey"] 
-                ?? throw new ArgumentException("Invalid secret key");
+                ?? throw new ArgumentException("Chave secreta invalida");
 
 builder.Services.AddAuthentication(options =>
 {

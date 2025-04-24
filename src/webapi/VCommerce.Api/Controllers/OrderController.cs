@@ -57,7 +57,7 @@ public class OrderController : ControllerBase
         
         if (id != order.Id)
         {
-            return BadRequest("Invalid order id");
+            return BadRequest("Id do pedido invalido");
         }
         
         await _orderService.UpdateOrder(order);
@@ -68,7 +68,7 @@ public class OrderController : ControllerBase
     public async Task<IActionResult> DeleteOrder(int id, OrderDTO? order)
     {
         if (order != null && id != order.Id)
-            return NotFound("Invalid order id");
+            return NotFound("id do pedido invalido");
         
         await _orderService.GetOrderById(id);
         
