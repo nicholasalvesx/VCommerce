@@ -101,10 +101,9 @@ public class AuthController : ControllerBase
             LastName = customerDto.LastName,
             UserName = Regex.Replace(customerDto.Name!, "[^a-zA-Z0-9]", ""),
             CreatedAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,    
             EmailConfirmed = true
         };
-        
         
         if (customerDto.Password != customerDto.ConfirmPassword)
         {
@@ -118,6 +117,8 @@ public class AuthController : ControllerBase
             
             return BadRequest(result.Errors);
         }
+
+        await _userManager.AddToRoleAsync(user, "Client");
         
         return Ok(new AuthResult
         {

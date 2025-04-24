@@ -8,14 +8,14 @@ public class OrderDTO
     [Key]
     public int Id { get; set; }
 
-    [Required(ErrorMessage = "CustomerId is required")]
+    [Required(ErrorMessage = "Id do cliente <UNK> obrigatorio")]
     public int CustomerId { get; set; }
 
-    [Required(ErrorMessage = "Order date is required")]
+    [Required(ErrorMessage = "Data do pedido é obrigatoria")]
     public DateTime OrderDate { get; set; } = DateTime.UtcNow;
 
-    [Required(ErrorMessage = "Total amount is required")]
-    [Range(0.01, double.MaxValue, ErrorMessage = "Total must be greater than zero")]
+    [Required(ErrorMessage = "O total da conta é necessario")]
+    [Range(0.01, double.MaxValue, ErrorMessage = "Total precisa ser maior do que 0")]
     public decimal TotalAmount { get; set; }
 
     public List<OrderItem>? Items { get; set; }

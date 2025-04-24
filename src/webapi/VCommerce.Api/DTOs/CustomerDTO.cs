@@ -12,20 +12,22 @@ public class CustomerDTO
     public string? Email { get; set; }
     
     [Required(ErrorMessage =  "O nome é obrigatorio")]
-    [MinLength(3, ErrorMessage =  "Name must be at least 3 characters")]
-    [MaxLength(100, ErrorMessage =  "Name cannot exceed 100 characters")]
+    [MinLength(3, ErrorMessage =  "Precisa de no minimo 3 caracteres")]
+    [MaxLength(100, ErrorMessage =  "Precisa de 100 caracteres no maximo")]
     public string? Name { get; set; }
 
-    [Required(ErrorMessage = "Last name is required")]
-    [MinLength(3, ErrorMessage =  "Last name must be at least 3 characters")]
-    [MaxLength(100, ErrorMessage =  "Last name cannot exceed 100 characters")]
+    [Required(ErrorMessage = "Sobrenome é obrigatorio")]
+    [MinLength(3, ErrorMessage =  "Precisa de no minimo 3 caracteres")]
+    [MaxLength(100, ErrorMessage =  "Precisa de 100 caracteres no maximo")]
     public string? LastName { get; set; }
     
-    [Required(ErrorMessage = "Password is required")]
+    [Required(ErrorMessage = "Senha é obrigatoria")]
     public string? Password { get; set; }
     
-    [Compare("Password", ErrorMessage = "Passwords do not match")]
-    [Required(ErrorMessage = "ConfirmPassword is required")]
+    [Compare("Password", ErrorMessage = "As senhas nao conicidem")]
+    [Required(ErrorMessage = "Confirme a senha")]
     public string? ConfirmPassword { get; set; }
+
+    public bool IsAdm { get; set; }
     
 }

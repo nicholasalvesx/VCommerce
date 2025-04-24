@@ -8,20 +8,20 @@ public class ProductDTO
 {
     public int Id { get; set; }
     
-    [Required(ErrorMessage =  "Name is required")]
-    [MinLength(3, ErrorMessage =  "Name must be at least 3 characters")]
-    [MaxLength(100, ErrorMessage =  "Name cannot exceed 100 characters")]
+    [Required(ErrorMessage =  "Nome do produto é obrigatorio")]
+    [MinLength(3, ErrorMessage =  "Precisa de 3 caracteres no minimo")]
+    [MaxLength(100, ErrorMessage =  "Nao pode exceder de 100 caracteres")]
     public string? Name { get; set; }
     
-    [Required(ErrorMessage =  "Price is required")]
+    [Required(ErrorMessage =  "O preço do produto <UNK> é obrigatorio")]
     public decimal Price { get; set; }
     
-    [Required(ErrorMessage =  "Description is required")]
-    [MinLength(3, ErrorMessage =  "Description must be at least 3 characters")]
-    [MaxLength(500, ErrorMessage =  "Description cannot exceed 500 characters")]
+    [Required(ErrorMessage =  "Descriçao do produto é obrigatoria")]
+    [MinLength(3, ErrorMessage =  "No minimo 3 caracteres")]
+    [MaxLength(500, ErrorMessage =  "Nao pode exceder de 500 caracteres")]
     public string? Description { get; set; }
     
-    [Required(ErrorMessage =  "Stock is required")]
+    [Required(ErrorMessage =  "Estoque é obrigatorio")]
     [Range(1, 999)]
     public long Stock { get; set; }
     
