@@ -28,7 +28,8 @@ public class Worker : IHostedService
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             
             string[] roles = [
-                "Admin"
+                "Admin",
+                "Client"
             ];
             
             foreach (var role in roles)
@@ -41,14 +42,14 @@ public class Worker : IHostedService
             
             var leader = new ApplicationUser
             {
-                UserName = "leader@vcommerce.com.br",
+                UserName = "admin",
                 Email = "leader@vcommerce.com.br",
                 EmailConfirmed = true,
             };
 
             if (await userManager.FindByEmailAsync(leader.Email) == null)
             {
-                var result = await userManager.CreateAsync(leader, "S3cur3P@ssw0rd2024!");
+                var result = await userManager.CreateAsync(leader, "@Qwe123");
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(leader, "Admin");
