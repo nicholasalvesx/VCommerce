@@ -39,27 +39,27 @@ public class AccountController : Controller
     public async Task<IActionResult> Login(LoginViewModel model)
     {
         if (!ModelState.IsValid)
-            return View(model);
+            return View(ModelState);
 
         var result = await _authService.LoginAsync(model);
         
         var user = await _userManager.FindByNameAsync(model.Name!);
         if (user == null)
         {
-            ModelState.AddModelError(string.Empty, "Tentativa de login invalida");
+            ModelState.AddModelError(string.Empty, "Esse cliente nao existe");
             return View(model);
         }
 
         var passwordValid = await _userManager.CheckPasswordAsync(user, model.Password!);
         if (!passwordValid)
         {
-            await _userManager.AccessFailedAsync(user);
-            ModelState.AddModelError(string.Empty, "Tentativa de login invalida");
+            ModelState.AddModelError(string.Empty, "A senha esta invalida");
             return View(model);
         }
 
         if (!result.Succeeded)
         {
+            await _userManager.AccessFailedAsync(user);
             ModelState.AddModelError(string.Empty, "Nao foi possivel realizar o login");
             return View(model);
         }
@@ -143,7 +143,7 @@ public class AccountController : Controller
     public async Task<IActionResult> Logout()
     {
         _authService.Logout();
-        await HttpContext.SignOutAsync(JwtBearerDefaults.AuthenticationScheme);
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         return RedirectToAction("Index", "Home");
     }
 }

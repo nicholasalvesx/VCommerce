@@ -1,0 +1,34 @@
+@{
+    ViewData["Title"] = "Confirmar Logout";
+}
+
+<link rel="stylesheet" href="/css/logout.css" asp-append-version="true" />
+
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+        </div>
+
+        <h1>Confirmar Logout</h1>
+        <p class="subheading">Tem certeza que deseja sair do sistema?</p>
+
+        <form method="post" asp-controller="Account" asp-action="Logout">
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions">
+                <button type="submit" class="cta-button">
+                    <i class="fas fa-sign-out-alt"></i> Confirmar Logout
+                </button>
+                <a href="@(string.IsNullOrEmpty(Context.Request.Headers["Referer"]) ? "/" : Context.Request.Headers["Referer"])" class="btn btn-outline-secondary mt-3">
+                    <i class="fas fa-arrow-left"></i> Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+

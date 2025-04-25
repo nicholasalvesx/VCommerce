@@ -16,12 +16,14 @@ public class OrdersAppController : Controller
         _orderService = orderService;
     }
 
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
         var orders = await _orderService.GetAllOrders(await GetAccessToken());
         return View(orders);
     }
 
+    [HttpGet]
     public async Task<ActionResult<IEnumerable<OrderViewModel>>> Details(int id)
     {
         var order = await _orderService.GetOrderById(id, await GetAccessToken());
@@ -34,6 +36,7 @@ public class OrdersAppController : Controller
         return View(order);
     }
 
+    [HttpGet]
     public IActionResult CreateOrder()
     {
         var order = new OrderViewModel
@@ -77,6 +80,7 @@ public class OrdersAppController : Controller
         return View(order);
     }
         
+    [HttpGet]
     public async Task<IActionResult> EditOrder(int id)
     {
         var order = await _orderService.GetOrderById(id, await GetAccessToken());
@@ -89,7 +93,7 @@ public class OrdersAppController : Controller
         return View(order);
     }
 
-    [HttpPost]
+    [HttpPut]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> EditOrder(int id, OrderViewModel order)
     {
@@ -120,6 +124,7 @@ public class OrdersAppController : Controller
         return View(order);
     }
 
+    [HttpGet]
     public async Task<IActionResult> DeleteOrder(int id)
     {
         var order = await _orderService.GetOrderById(id, await GetAccessToken());
@@ -132,7 +137,7 @@ public class OrdersAppController : Controller
         return View(order);
     }
 
-    [HttpPost, ActionName("DeleteConfirmed")]
+    [HttpDelete, ActionName("DeleteConfirmed")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
@@ -146,7 +151,7 @@ public class OrdersAppController : Controller
         return RedirectToAction(nameof(Index));
     }
         
-    [HttpPost]
+    [HttpPut]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> UpdateStatus(int id, string status)
     {

@@ -89,7 +89,7 @@ public class AuthService : IAuthService
     
     public void Logout()
     {
-        _httpContextAccessor.HttpContext?.Session.Remove("JWT:SecretKey");
+        _httpContextAccessor.HttpContext?.Session.Remove("JWTToken");
         
         _httpContextAccessor.HttpContext?.Session.Clear();
     }

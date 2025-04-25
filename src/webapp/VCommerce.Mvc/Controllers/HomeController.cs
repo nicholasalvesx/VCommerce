@@ -21,9 +21,7 @@ public class HomeController : Controller
         _authService = authService;
     }
     
-    [Authorize]
     [HttpGet]
-    [AllowAnonymous]
     public async Task<IActionResult> Index()
     {
         var products = await _productService.GetAllProducts(string.Empty);
