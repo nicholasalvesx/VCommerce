@@ -60,6 +60,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"w78jdlxtc4"},{"Name":"integrity","Value":"sha256-pF6bMrzXBbnLO9XYFhYxqShTWcE6sosnGJp7E9mWmOs="},{"Name":"label","Value":"_content/VCommerce.Mvc/css/login.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2776"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022pF6bMrzXBbnLO9XYFhYxqShTWcE6sosnGJp7E9mWmOs=\u0022"},{"Name":"Last-Modified","Value":"Tue, 15 Apr 2025 13:33:05 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/VCommerce.Mvc/css/logout.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\logout.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-sOJZGWrDx/SH6dCMLPPL1vzi\u002BtEioH0U49tCHKySghQ="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1485"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022sOJZGWrDx/SH6dCMLPPL1vzi\u002BtEioH0U49tCHKySghQ=\u0022"},{"Name":"Last-Modified","Value":"Fri, 25 Apr 2025 14:40:45 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/VCommerce.Mvc/css/logout.gkjhkfrnvv.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\logout.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"gkjhkfrnvv"},{"Name":"integrity","Value":"sha256-sOJZGWrDx/SH6dCMLPPL1vzi\u002BtEioH0U49tCHKySghQ="},{"Name":"label","Value":"_content/VCommerce.Mvc/css/logout.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1485"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022sOJZGWrDx/SH6dCMLPPL1vzi\u002BtEioH0U49tCHKySghQ=\u0022"},{"Name":"Last-Modified","Value":"Fri, 25 Apr 2025 14:40:45 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VCommerce.Mvc/css/order.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\order.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

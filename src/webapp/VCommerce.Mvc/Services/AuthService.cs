@@ -89,9 +89,23 @@ public class AuthService : IAuthService
     
     public void Logout()
     {
-        _httpContextAccessor.HttpContext?.Session.Remove("JWTToken");
+        var httpContext = _httpContextAccessor.HttpContext;
+    
+        if (httpContext != null)
+        {
+            httpContext.Session.Remove("JWTToken");
         
-        _httpContextAccessor.HttpContext?.Session.Clear();
+            httpContext.Session.Clear();
+        
+            var cookieOptions = new CookieOptions
+            {
+                Expires = DateTime.Now.AddDays(-1),
+                HttpOnly = true,
+                Secure = true 
+            };
+        
+            httpContext.Response.Cookies.Delete("AuthCookie", cookieOptions);
+        }
     }
 }
     

@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets/css/login.css"
     },
     {
+      "Id": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/logout.css",
+      "PackagePath": "staticwebassets/css/logout.css"
+    },
+    {
       "Id": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/order.css",
       "PackagePath": "staticwebassets/css/order.css"
     },

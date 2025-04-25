@@ -138,12 +138,27 @@ public class AccountController : Controller
         return RedirectToAction("Login", "Account");
     }
 
+    [HttpGet]
+    public IActionResult Logout()
+    {
+        if (User.Identity != null && !User.Identity.IsAuthenticated)
+        {
+            return RedirectToAction("Login", "Account");
+        }
+    
+        return View();
+    }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Logout()
+    public async Task<IActionResult> Logout(string? returnUrl = null!)
     {
         _authService.Logout();
+    
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        return RedirectToAction("Index", "Home");
+    
+        TempData["SuccessMessage"] = "Logout realizado com sucesso!";
+    
+        return RedirectToAction("Login", "Account");
     }
 }

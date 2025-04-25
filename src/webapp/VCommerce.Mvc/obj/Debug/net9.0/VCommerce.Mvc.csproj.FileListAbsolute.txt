@@ -278,3 +278,4 @@
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/ac98zdmivl-rvobl7ieq5.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-mfujql76mc.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0t6tbmo9xi-haoyqjsvkr.gz
+/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/6r57fj556d-gkjhkfrnvv.gz
