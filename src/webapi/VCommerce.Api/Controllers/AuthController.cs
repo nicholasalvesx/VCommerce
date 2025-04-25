@@ -1,7 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Api.DTOs;
@@ -75,6 +74,7 @@ public class AuthController : ControllerBase
             RefreshToken = refreshToken,
             ExpirationToken = token.ValidTo
         });
+
     }
 
     [HttpPost]
@@ -101,9 +101,10 @@ public class AuthController : ControllerBase
             LastName = customerDto.LastName,
             UserName = Regex.Replace(customerDto.Name!, "[^a-zA-Z0-9]", ""),
             CreatedAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow,    
+            UpdatedAt = DateTime.UtcNow,
             EmailConfirmed = true
         };
+        
         
         if (customerDto.Password != customerDto.ConfirmPassword)
         {
@@ -117,8 +118,6 @@ public class AuthController : ControllerBase
             
             return BadRequest(result.Errors);
         }
-
-        await _userManager.AddToRoleAsync(user, "Client");
         
         return Ok(new AuthResult
         {
