@@ -96,6 +96,7 @@ public class AuthController : ControllerBase
         
         var user = new ApplicationUser
         {
+            CustomerId = null,
             Email = customerDto.Email,
             Name = customerDto.Name,
             LastName = customerDto.LastName,
