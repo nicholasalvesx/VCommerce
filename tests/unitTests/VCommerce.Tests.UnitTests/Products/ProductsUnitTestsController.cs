@@ -3,13 +3,16 @@ using Microsoft.EntityFrameworkCore;
 using VCommerce.Api.Data;
 using VCommerce.Api.DTOs.Mappings;
 using VCommerce.Api.Repositores;
+using VCommerce.Api.Services;
 
 namespace VCommerce.Tests.UnitTests.Products;
 
 public class ProductsUnitTestsController
 {
-    public IProductRepository productRepository;  
-    public IMapper mapper;
+    public IProductRepository Repository { get; }
+    public IMapper Mapper { get; }
+    public IProductService productService;
+    
     private static DbContextOptions<AppDbContext> dbContextOptions { get; }
 
     private static string connectionString =
@@ -28,8 +31,8 @@ public class ProductsUnitTestsController
             cfg.AddProfile(new MappingProfile());
         });
         
-        mapper = config.CreateMapper();
+        Mapper = config.CreateMapper();
         var context = new AppDbContext(dbContextOptions);
-        productRepository = new ProductRepository(context);
+        Repository = new ProductRepository(context);
     }
 }
