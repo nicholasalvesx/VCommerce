@@ -34,5 +34,6 @@ public class ProductsUnitTestsController
         Mapper = config.CreateMapper();
         var context = new AppDbContext(dbContextOptions);
         Repository = new ProductRepository(context);
+        productService = new ProductService(Mapper, Repository);
     }
 }

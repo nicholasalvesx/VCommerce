@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Api.Controllers;
+using VCommerce.Api.DTOs;
 
 namespace VCommerce.Tests.UnitTests.Products.GetProductsUnitTests;
 
@@ -30,20 +31,52 @@ public class GetProductsUnitTests : IClassFixture<ProductsUnitTestsController>
     [Fact]
     public async Task GetProductById_Return_NotFoundResult()
     {
+        //arrange
+        var prodId = 100;
+
+        //act
+        var data = await _productsController.GetProductById(prodId);
+        
+        //assert
+        data.Result.Should().BeOfType<NotFoundResult>()
+            .Which.StatusCode.Should().Be(404);
+        
     }
 
     [Fact]
     public async Task GetProductById_Return_BadRequestResult()
     {
+        //arrange 
+        var prodId = -1;
+
+        //act
+        var data = await _productsController.GetProductById(prodId);
+        
+        //assert
+        data.Result.Should().BeOfType<BadRequestObjectResult>()
+            .Which.StatusCode.Should().Be(400);
     }
 
     [Fact]
     public async Task GetProducts_Return_ListOfProductsDto()
     {
+        //act
+        var data = await _productsController.GetProducts();
+        
+        //assert
+        data.Result.Should().BeOfType<OkObjectResult>()
+            .Which.Value.Should()
+            .BeAssignableTo<IEnumerable<ProductDTO>>()
+            .And.NotBeNull();
     }
 
     [Fact]
     public async Task GetProducts_Return_BadRequest()
     {
+        //act
+        var data = await _productsController.GetProducts();
+        
+        //assert
+        data.Result.Should().BeOfType<BadRequestObjectResult>();
     }
 }
