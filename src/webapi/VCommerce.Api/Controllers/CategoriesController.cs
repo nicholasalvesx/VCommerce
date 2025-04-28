@@ -57,16 +57,11 @@ public class CategoriesController(ICategoryService categoryService) : Controller
     [HttpPut("{id:int}")]
     public async Task<ActionResult<CategoryDTO>> UpdateCategory(int id, CategoryDTO categoryDto)
     {
-        if (id != categoryDto.CategoryId)
+        if (id != categoryDto.CategoryId || categoryDto == null!)
         {
             return BadRequest();
         }
 
-        if (categoryDto == null!)
-        {
-            return BadRequest();
-        }
-            
         await categoryService.UpdateCategory(categoryDto);
         return Ok(categoryDto);
     }
@@ -83,6 +78,4 @@ public class CategoriesController(ICategoryService categoryService) : Controller
         await categoryService.DeleteCategory(id);
         return Ok(categoryDto);
     }
-    
-    
 }

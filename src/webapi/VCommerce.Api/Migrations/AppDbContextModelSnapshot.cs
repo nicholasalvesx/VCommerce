@@ -252,7 +252,7 @@ namespace VCommerce.Api.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("CategoriesApp");
                 });
 
             modelBuilder.Entity("VCommerce.Api.Models.Customer", b =>

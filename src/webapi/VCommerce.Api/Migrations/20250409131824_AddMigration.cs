@@ -30,12 +30,12 @@ namespace VCommerce.Api.Migrations
                 keyValue: 3);
 
             migrationBuilder.DeleteData(
-                table: "Categories",
+                table: "CategoriesApp",
                 keyColumn: "CategoryId",
                 keyValue: 1);
 
             migrationBuilder.DeleteData(
-                table: "Categories",
+                table: "CategoriesApp",
                 keyColumn: "CategoryId",
                 keyValue: 2);
 
@@ -76,7 +76,7 @@ namespace VCommerce.Api.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
-                table: "Categories",
+                table: "CategoriesApp",
                 type: "text",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -333,7 +333,7 @@ namespace VCommerce.Api.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
-                table: "Categories",
+                table: "CategoriesApp",
                 type: "character varying(100)",
                 maxLength: 100,
                 nullable: false,
@@ -343,7 +343,7 @@ namespace VCommerce.Api.Migrations
                 oldNullable: true);
 
             migrationBuilder.InsertData(
-                table: "Categories",
+                table: "CategoriesApp",
                 columns: new[] { "CategoryId", "Name" },
                 values: new object[,]
                 {

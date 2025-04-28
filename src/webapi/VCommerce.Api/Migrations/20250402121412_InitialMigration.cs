@@ -14,7 +14,7 @@ namespace VCommerce.Api.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "CategoriesApp",
                 columns: table => new
                 {
                     CategoryId = table.Column<int>(type: "integer", nullable: false)
@@ -45,13 +45,13 @@ namespace VCommerce.Api.Migrations
                     table.ForeignKey(
                         name: "FK_Products_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Categories",
+                        principalTable: "CategoriesApp",
                         principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "Categories",
+                table: "CategoriesApp",
                 columns: new[] { "CategoryId", "Name" },
                 values: new object[,]
                 {
@@ -72,7 +72,7 @@ namespace VCommerce.Api.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "CategoriesApp");
         }
     }
 }

@@ -61,7 +61,7 @@ public class ProductsController : ControllerBase
         var productDto = await _productService.GetProductById(id);
         if (productDto == null!)
         {
-            return BadRequest();
+            return NotFound("Nenhum produto foi encontrado");
         }
         await _productService.DeleteProduct(id);
         return Ok(productDto);
