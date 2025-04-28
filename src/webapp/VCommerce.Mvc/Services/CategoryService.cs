@@ -12,7 +12,6 @@ public class CategoryService : ICategoryService
     private readonly JsonSerializerOptions _options;
     private const string apiEndpoint = "/api/v1/categories/";
     private CategoryViewModel? _categoryVm;
-    private IEnumerable<CategoryViewModel>? _categoriesVm;
 
     public CategoryService(IHttpClientFactory clientFactory)
     {
@@ -27,20 +26,18 @@ public class CategoryService : ICategoryService
 
         IEnumerable<CategoryViewModel>? categories;
 
-        using (var response = await client.GetAsync(apiEndpoint))
+        using var response = await client.GetAsync(apiEndpoint);
+        if (response.IsSuccessStatusCode)
         {
-
-            if (response.IsSuccessStatusCode)
-            {
-                var apiResponse = await response.Content.ReadAsStreamAsync();
-                categories = await JsonSerializer
-                          .DeserializeAsync<IEnumerable<CategoryViewModel>>(apiResponse, _options);
-            }
-            else
-            {
-                throw new HttpRequestException(response.ReasonPhrase);
-            }
+            var apiResponse = await response.Content.ReadAsStreamAsync();
+            categories = await JsonSerializer
+                .DeserializeAsync<IEnumerable<CategoryViewModel>>(apiResponse, _options);
         }
+        else
+        {
+            throw new HttpRequestException(response.ReasonPhrase);
+        }
+
         return categories;
     }
     
@@ -90,12 +87,12 @@ public class CategoryService : ICategoryService
 
     public async Task<CategoryViewModel?> UpdateCategory(CategoryViewModel? categoryVm, string? token)
     {
-        var customer = _clientFactory.CreateClient("Api");
-        PutTokenInHeaderAuthorization(token, customer);
+        var category = _clientFactory.CreateClient("Api");
+        PutTokenInHeaderAuthorization(token, category);
 
         CategoryViewModel? categoryUpdated;
 
-        using var response = await customer.PutAsJsonAsync("/api/v1/categories/", categoryVm);
+        using var response = await category.PutAsJsonAsync("/api/v1/categories/", categoryVm);
         if (response.IsSuccessStatusCode)
         {
             var apiResponse = await response.Content.ReadAsStreamAsync();
@@ -109,27 +106,6 @@ public class CategoryService : ICategoryService
 
         return categoryUpdated;
     }
-    
-    public async Task<CategoryViewModel?> GetCategoriesProducts(ProductViewModel product, string? token)
-    {
-        var category = _clientFactory.CreateClient("Api");
-        PutTokenInHeaderAuthorization(token, category);
-        
-        using var response = await category.PutAsJsonAsync("/api/v1/categories/products", product);
-        if (response.IsSuccessStatusCode)
-        {
-            var apiResponse = await response.Content.ReadAsStreamAsync();
-            _categoryVm = await JsonSerializer
-                .DeserializeAsync<CategoryViewModel>(apiResponse, _options);
-        }
-        else
-        {
-            return null;
-        }
-
-        return _categoryVm;
-    }
-
     
     public async Task<bool> DeleteCategory(int id, string? token)
     {

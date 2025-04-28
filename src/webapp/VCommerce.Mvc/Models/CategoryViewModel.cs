@@ -1,16 +1,28 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using VCommerce.Api.Models;
 
-namespace VCommerce.Mvc.Models;
-
-public class CategoryViewModel
+namespace VCommerce.Mvc.Models
 {
-    public int CategoryId { get; set; }
-    
-    [Required(ErrorMessage = "O nome da categoria é obrigatório")]
-    [StringLength(100, ErrorMessage = "O nome deve ter no máximo {1} caracteres")]
-    [Display(Name = "Nome")]
-    public string? Name { get; set; }
-    
-    public ICollection<Product>? Products { get; set; }
+    public class CategoryViewModel
+    {
+        public int Id { get; set; }
+        
+        [Required(ErrorMessage = "O nome da categoria é obrigatório")]
+        [StringLength(100, ErrorMessage = "O nome deve ter no máximo {1} caracteres")]
+        [Display(Name = "Nome")]
+        public string? Name { get; set; }
+        
+        [Display(Name = "Descrição")]
+        public string? Description { get; set; }
+        
+        [Display(Name = "Ativo")]
+        public bool IsActive { get; set; } = true;
+        
+        [Display(Name = "Ordem de Exibição")]
+        public int DisplayOrder { get; set; }
+        
+        [Display(Name = "Ícone")]
+        public string? IconClass { get; set; }
+        
+        public int ProductCount { get; set; }
+    }
 }

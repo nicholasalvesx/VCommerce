@@ -1,16 +1,17 @@
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Mvc.Models;
 using VCommerce.Mvc.Services.Contracts;
-using CategoryService = VCommerce.Mvc.Services.CategoryService;
 
 namespace VCommerce.Mvc.Controllers;
 
+[Authorize]
 public class CategoriesAppController : Controller
 {
     private readonly ICategoryService _service;
 
-    public CategoriesAppController(CategoryService service)
+    public CategoriesAppController(ICategoryService service)
     {
         _service = service;
     }
@@ -39,23 +40,12 @@ public class CategoriesAppController : Controller
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<CategoryViewModel>>> GetCategoriesProducts(ProductViewModel? model)
-    {
-        if (model == null) 
-            return RedirectToAction(nameof(Index));
-        
-        var result = await _service.GetCategoriesProducts(model, await GetAccessToken());
-        return View(result);
-
-    }
-    
-    [HttpGet]
     public Task<ActionResult<IEnumerable<CategoryViewModel>>> EditCategory(int id)
     {
         return Task.FromResult<ActionResult<IEnumerable<CategoryViewModel>>>(View());
     }
 
-    [HttpPut]
+    [HttpPost]
     public async Task<ActionResult<CategoryViewModel>> EditCategory(CategoryViewModel? model)
     {
         if (!ModelState.IsValid)
@@ -72,7 +62,7 @@ public class CategoriesAppController : Controller
         return View(result);
     }
     
-    [HttpDelete, ActionName("DeleteCategory")]
+    [HttpPost, ActionName("DeleteCategory")]
     public async Task<ActionResult<IEnumerable<CategoryViewModel>>> DeleteCategoryConfirmed(int id)
     {
         var result = await _service.DeleteCategory(id, await GetAccessToken());

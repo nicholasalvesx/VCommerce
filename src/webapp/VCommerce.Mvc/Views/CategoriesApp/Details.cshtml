@@ -1,0 +1,159 @@
+@model VCommerce.Mvc.Models.CategoryViewModel
+
+@{
+    ViewData["Title"] = "Detalhes da Categoria";
+}
+
+<div class="content-header">
+    <h1 class="content-title">Detalhes da Categoria</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+        <li class="breadcrumb-item"><a href="/CategoriesApp/Index">Categorias</a></li>
+        <li class="breadcrumb-item active">Detalhes</li>
+    </ol>
+</div>
+
+<div class="dashboard-section">
+    <div class="section-header">
+        <div class="section-title">
+            <h2>@Model.Name</h2>
+            <p>Informações detalhadas da categoria</p>
+        </div>
+        <div class="section-actions">
+            <a asp-action="EditCategory" asp-route-id="@Model.Id" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Editar
+            </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="category-details">
+                <div class="category-icon">
+                    <i class="@(string.IsNullOrEmpty(Model.IconClass) ? "fas fa-folder" : "fas " + Model.IconClass)"></i>
+                </div>
+                
+                <div class="category-info">
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <div class="detail-label">ID</div>
+                            <div class="detail-value">@Model.Id</div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Nome</div>
+                            <div class="detail-value">@Model.Name</div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Status</div>
+                            <div class="detail-value">
+                                @if (Model.IsActive)
+                                {
+                                    <span class="badge badge-success">Ativa</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-secondary">Inativa</span>
+                                }
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Ordem de Exibição</div>
+                            <div class="detail-value">@Model.DisplayOrder</div>
+                        </div>
+                        
+                        <div class="detail-item detail-item-full">
+                            <div class="detail-label">Descrição</div>
+                            <div class="detail-value">
+                                @if (string.IsNullOrEmpty(Model.Description))
+                                {
+                                    <span class="text-muted">Sem descrição</span>
+                                }
+                                else
+                                {
+                                    @Model.Description
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            @if (ViewBag.Products != null && ViewBag.Products.Count > 0)
+            {
+                <div class="category-products mt-4">
+                    <h3>Produtos nesta Categoria (@ViewBag.Products.Count)</h3>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th style="width: 60px;"></th>
+                                    <th>Nome</th>
+                                    <th>Preço</th>
+                                    <th>Estoque</th>
+                                    <th style="width: 100px;">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var product in ViewBag.Products)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="/images/@product.ImageURL" alt="@product.Name" class="product-thumbnail" onerror="this.src='/images/product-placeholder.jpg'" />
+                                        </td>
+                                        <td>@product.Name</td>
+                                        <td>@product.Price.ToString("C")</td>
+                                        <td>@product.Stock</td>
+                                        <td>
+                                            <a href="/ProductsApp/EditProduct/@product.Id" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="text-center mt-3">
+                        <a href="/ProductsApp/Index?categoryId=@Model.Id" class="btn btn-outline-primary">
+                            <i class="fas fa-list"></i> Ver Todos os Produtos
+                        </a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="empty-state mt-4">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3>Nenhum produto nesta categoria</h3>
+                    <p>Adicione produtos a esta categoria para vê-los aqui.</p>
+                    <a href="/ProductsApp/CreateProduct" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Adicionar Produto
+                    </a>
+                </div>
+            }
+            
+            <div class="form-actions mt-4">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Voltar para Lista
+                </a>
+                <a asp-action="DeleteCategory" asp-route-id="@Model.Id" class="btn btn-outline-danger">
+                    <i class="fas fa-trash"></i> Excluir
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+        });
+    </script>
+}

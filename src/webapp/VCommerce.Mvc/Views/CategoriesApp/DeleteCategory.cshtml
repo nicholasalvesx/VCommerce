@@ -4,14 +4,12 @@
     ViewData["Title"] = "Excluir Categoria";
 }
 
-<link rel="stylesheet" href="/css/category.css" asp-append-version="true" />
-
 <div class="content-header">
     <h1 class="content-title">Excluir Categoria</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
-        <li class="breadcrumb-item"><a asp-action="Index">Categorias</a></li>
-        <li class="breadcrumb-item active">Excluir</li>
+        <li class="breadcrumb-item"><a href="/CategoriesApp/Index">Categorias</a></li>
+        <li class="breadcrumb-item active">Excluir Categoria</li>
     </ol>
 </div>
 
@@ -22,42 +20,151 @@
             <p>Tem certeza que deseja excluir esta categoria?</p>
         </div>
     </div>
-
-    <div class="card">
-        <div class="card-body">
-            <div class="delete-confirmation">
-                <div class="warning-message">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <div>
-                        <h4>Atenção!</h4>
-                        <p>Esta ação não pode ser desfeita. A exclusão desta categoria pode afetar produtos associados a ela.</p>
-                    </div>
+    
+    <div class="delete-confirmation">
+        <div class="category-details">
+            <div class="category-icon">
+                <i class="@(string.IsNullOrEmpty(Model.IconClass) ? "fas fa-folder" : "fas " + Model.IconClass)"></i>
+            </div>
+            
+            <div class="category-info">
+                <h3 class="category-name">@Model.Name</h3>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Descrição:</span>
+                    <span class="detail-value">@(string.IsNullOrEmpty(Model.Description) ? "Sem descrição" : Model.Description)</span>
                 </div>
                 
-                <div class="details-grid mt-4">
-                    <div class="detail-item">
-                        <div class="detail-label">ID</div>
-                        <div class="detail-value">@Model.CategoryId</div>
-                    </div>
-                    
-                    <div class="detail-item">
-                        <div class="detail-label">Nome</div>
-                        <div class="detail-value">@Model.Name</div>
-                    </div>
+                <div class="detail-row">
+                    <span class="detail-label">Status:</span>
+                    <span class="detail-value">
+                        @if (Model.IsActive)
+                        {
+                            <span class="badge badge-success">Ativa</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-secondary">Inativa</span>
+                        }
+                    </span>
                 </div>
                 
-                <form asp-action="DeleteCategory" method="post" class="mt-4">
-                    <input type="hidden" asp-for="CategoryId" />
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-danger">
-                            <i class="fas fa-trash"></i> Confirmar Exclusão
-                        </button>
-                        <a asp-action="Index" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left"></i> Cancelar
-                        </a>
+                <div class="detail-row">
+                    <span class="detail-label">Ordem de Exibição:</span>
+                    <span class="detail-value">@Model.DisplayOrder</span>
+                </div>
+                
+                @if (ViewBag.ProductCount != null)
+                {
+                    <div class="detail-row">
+                        <span class="detail-label">Produtos Associados:</span>
+                        <span class="detail-value">@ViewBag.ProductCount</span>
                     </div>
-                </form>
+                }
             </div>
         </div>
+        
+        <div class="warning-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <h4>Atenção!</h4>
+                <p>Esta ação não pode ser desfeita. A exclusão desta categoria pode afetar produtos associados a ela.</p>
+                @if (ViewBag.ProductCount > 0)
+                {
+                    <p class="text-danger"><strong>Esta categoria possui @ViewBag.ProductCount produtos associados.</strong> Considere reatribuir esses produtos a outra categoria antes de excluir.</p>
+                }
+            </div>
+        </div>
+        
+        <form asp-action="DeleteCategory" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-actions">
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-trash-alt"></i> Confirmar Exclusão
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Cancelar
+                </a>
+            </div>
+        </form>
     </div>
 </div>
+
+<style>
+    .delete-confirmation {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+    }
+    
+    .category-details {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .category-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 8px;
+        background-color: rgba(67, 97, 238, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        font-size: 32px;
+    }
+    
+    .category-info {
+        flex: 1;
+    }
+    
+    .category-name {
+        margin: 0 0 15px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    
+    .detail-row {
+        margin-bottom: 10px;
+    }
+    
+    .detail-label {
+        font-weight: 600;
+        color: #6c757d;
+        margin-right: 5px;
+    }
+    
+    .warning-message {
+        background-color: rgba(244, 67, 54, 0.1);
+        border-left: 4px solid #f44336;
+        padding: 15px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        border-radius: 4px;
+    }
+    
+    .warning-message i {
+        font-size: 24px;
+        color: #f44336;
+        margin-top: 3px;
+    }
+    
+    .warning-message h4 {
+        margin: 0 0 10px;
+        color: #f44336;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    
+    .warning-message p {
+        margin: 0 0 10px;
+        color: #333;
+    }
+    
+    .warning-message p:last-child {
+        margin-bottom: 0;
+    }
+</style>

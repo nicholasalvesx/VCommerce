@@ -1,14 +1,14 @@
 @model VCommerce.Mvc.Models.CategoryViewModel
 
 @{
-ViewData["Title"] = "Editar Categoria";
+    ViewData["Title"] = "Editar Categoria";
 }
 
 <div class="content-header">
     <h1 class="content-title">Editar Categoria</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
-        <li class="breadcrumb-item"><a asp-action="Index">Categorias</a></li>
+        <li class="breadcrumb-item"><a href="/CategoriesApp/Index">Categorias</a></li>
         <li class="breadcrumb-item active">Editar Categoria</li>
     </ol>
 </div>
@@ -17,54 +17,101 @@ ViewData["Title"] = "Editar Categoria";
     <div class="section-header">
         <div class="section-title">
             <h2>Informações da Categoria</h2>
-            <p>Edite os dados da categoria</p>
+            <p>Atualize os dados da categoria</p>
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-body">
-            <form asp-action="EditCategory">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="CategoryId" />
+    <form asp-action="EditCategory" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label">Nome da Categoria</label>
-                    <input asp-for="Name" class="form-control" placeholder="Digite o nome da categoria" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
+        <div class="form-grid">
+            <div class="form-group form-group-full">
+                <label asp-for="Name">Nome da Categoria</label>
+                <input asp-for="Name" class="form-control" placeholder="Digite o nome da categoria" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-group-full">
+                <label asp-for="Description">Descrição</label>
+                <textarea asp-for="Description" class="form-control" rows="4" placeholder="Digite a descrição da categoria"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IsActive">Status</label>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="isActive" asp-for="IsActive">
+                    <label class="custom-control-label" for="isActive">Categoria Ativa</label>
                 </div>
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
 
-                @if (ViewBag.ProductCount != null)
-                {
-                <div class="info-box mb-4">
-                    <div class="info-box-icon">
-                        <i class="fas fa-box"></i>
+            <div class="form-group">
+                <label asp-for="DisplayOrder">Ordem de Exibição</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-sort-numeric-down"></i>
+                    <input asp-for="DisplayOrder" class="form-control" placeholder="0" />
+                </div>
+                <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                <small class="form-text text-muted">Categorias com números menores serão exibidas primeiro</small>
+            </div>
+
+            <div class="form-group form-group-full">
+                <label asp-for="IconClass">Ícone</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i id="icon-preview" class="@(string.IsNullOrEmpty(Model.IconClass) ? "fas fa-folder" : "fas " + Model.IconClass)"></i></span>
                     </div>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Produtos nesta categoria</span>
-                        <span class="info-box-number">@ViewBag.ProductCount</span>
-                        @if (ViewBag.ProductCount > 0)
-                        {
-                        <a href="/ProductsApp/Index?categoryId=@Model.CategoryId" class="btn btn-sm btn-info mt-2">
+                    <input asp-for="IconClass" class="form-control" placeholder="fa-folder" id="iconClass" />
+                </div>
+                <span asp-validation-for="IconClass" class="text-danger"></span>
+                <small class="form-text text-muted">Digite o nome do ícone FontAwesome (ex: fa-shopping-cart)</small>
+            </div>
+        </div>
+
+        @if (ViewBag.ProductCount != null)
+        {
+            <div class="info-box mb-4">
+                <div class="info-box-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <div class="info-box-content">
+                    <span class="info-box-text">Produtos nesta categoria</span>
+                    <span class="info-box-number">@ViewBag.ProductCount</span>
+                    @if (ViewBag.ProductCount > 0)
+                    {
+                        <a href="/ProductsApp/Index?categoryId=@Model.Id" class="btn btn-sm btn-info mt-2">
                             <i class="fas fa-eye"></i> Ver Produtos
                         </a>
-                        }
-                    </div>
+                    }
                 </div>
-                }
+            </div>
+        }
 
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i> Salvar Alterações
-                    </button>
-                    <a asp-action="Index" class="btn btn-outline-secondary">
-                        <i class="fas fa-arrow-left"></i> Voltar para Lista
-                    </a>
-                </div>
-            </form>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Salvar Alterações
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
         </div>
-    </div>
+    </form>
 </div>
 
 @section Scripts {
-<partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            $('#iconClass').on('change keyup', function() {
+                var iconClass = $(this).val();
+                if (iconClass) {
+                    $('#icon-preview').attr('class', 'fas ' + iconClass);
+                } else {
+                    $('#icon-preview').attr('class', 'fas fa-folder');
+                }
+            });
+        });
+    </script>
 }

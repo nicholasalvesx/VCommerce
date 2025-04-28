@@ -4,13 +4,11 @@
     ViewData["Title"] = "Nova Categoria";
 }
 
-<link rel="stylesheet" href="/css/category.css" asp-append-version="true" />
-
 <div class="content-header">
     <h1 class="content-title">Nova Categoria</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
-        <li class="breadcrumb-item"><a asp-action="Index">Categorias</a></li>
+        <li class="breadcrumb-item"><a href="/CategoriesApp/Index">Categorias</a></li>
         <li class="breadcrumb-item active">Nova Categoria</li>
     </ol>
 </div>
@@ -23,30 +21,77 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-body">
-            <form asp-action="CreteCategory">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" placeholder="Digite o nome da categoria" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
+    <form method="post" asp-action="CreateCategory">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="form-grid">
+            <div class="form-group form-group-full">
+                <label asp-for="Name">Nome da Categoria</label>
+                <input asp-for="Name" class="form-control" placeholder="Digite o nome da categoria" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-group-full">
+                <label asp-for="Description">Descrição</label>
+                <textarea asp-for="Description" class="form-control" rows="4" placeholder="Digite a descrição da categoria"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IsActive">Status</label>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="isActive" asp-for="IsActive" checked>
+                    <label class="custom-control-label" for="isActive">Categoria Ativa</label>
                 </div>
-                
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i> Salvar
-                    </button>
-                    <a asp-action="Index" class="btn btn-outline-secondary">
-                        <i class="fas fa-arrow-left"></i> Voltar
-                    </a>
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DisplayOrder">Ordem de Exibição</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-sort-numeric-down"></i>
+                    <input asp-for="DisplayOrder" class="form-control" placeholder="0" />
                 </div>
-            </form>
+                <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                <small class="form-text text-muted">Categorias com números menores serão exibidas primeiro</small>
+            </div>
+
+            <div class="form-group form-group-full">
+                <label asp-for="IconClass">Ícone</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i id="icon-preview" class="fas fa-folder"></i></span>
+                    </div>
+                    <input asp-for="IconClass" class="form-control" placeholder="fa-folder" id="iconClass" />
+                </div>
+                <span asp-validation-for="IconClass" class="text-danger"></span>
+                <small class="form-text text-muted">Digite o nome do ícone FontAwesome (ex: fa-shopping-cart)</small>
+            </div>
         </div>
-    </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Salvar Categoria
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+        </div>
+    </form>
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            $('#iconClass').on('change keyup', function() {
+                var iconClass = $(this).val();
+                if (iconClass) {
+                    $('#icon-preview').attr('class', 'fas ' + iconClass);
+                } else {
+                    $('#icon-preview').attr('class', 'fas fa-folder');
+                }
+            });
+        });
+    </script>
 }
