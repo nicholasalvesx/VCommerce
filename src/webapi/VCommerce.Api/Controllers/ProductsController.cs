@@ -19,10 +19,6 @@ public class ProductsController : ControllerBase
     public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts()
     {
         var productsDto = await _productService.GetProducts();
-        if (productsDto == null!)
-        {
-            return BadRequest("Nenhum produto encontrado");
-        }
         return Ok(productsDto);
     }
 
@@ -31,17 +27,13 @@ public class ProductsController : ControllerBase
     {
         var product = await _productService.GetProductById(id);
 
-        if (product == null!)
-        {
-            return BadRequest($"produto do id {id} nao existe");            
-        }
         return Ok(product);
     }
 
     [HttpPost]
-    public async Task<ActionResult<ProductDTO>> CreateProduct(ProductDTO product)
+    public async Task<ActionResult<ProductDTO>> CreateProduct(ProductDTO? product)
     {
-        if (product == null!)
+        if (product == null)
         {
             return BadRequest();
         }
@@ -59,10 +51,6 @@ public class ProductsController : ControllerBase
             return BadRequest();
         }
 
-        if (product == null!)
-        {
-            return BadRequest();
-        }
         await _productService.UpdateProduct(product);
         return Ok(product);
     }

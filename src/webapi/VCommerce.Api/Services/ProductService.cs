@@ -28,7 +28,7 @@ public class ProductService : IProductService
         return _mapper.Map<ProductDTO>(productEntities);
     }
 
-    public async Task AddProduct(ProductDTO product)
+    public async Task AddProduct(ProductDTO? product)
     {
         var productEntity = _mapper.Map<Product>(product);
         await _productRepository.CreateProduct(productEntity);
