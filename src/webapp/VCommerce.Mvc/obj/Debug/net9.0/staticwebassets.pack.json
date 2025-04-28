@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets/assets/vcommerce.jpg"
     },
     {
+      "Id": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/category.css",
+      "PackagePath": "staticwebassets/css/category.css"
+    },
+    {
       "Id": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/customer.css",
       "PackagePath": "staticwebassets/css/customer.css"
     },

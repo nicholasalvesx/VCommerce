@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OqOvbaeMQVn+QgViDrZVmUMrHw+j97Z63K1mme3zO4k=",
+  "Hash": "CPyaS22U0frDdiqxBkdpAzhI/i0+27dOa8WT6/rSXWw=",
   "Source": "VCommerce.Mvc",
   "BasePath": "_content/VCommerce.Mvc",
   "Mode": "Default",
@@ -69,6 +69,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css"
+    },
+    {
+      "Identity": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0jle182m2y-u4xo9dkrg9.gz",
+      "SourceId": "VCommerce.Mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/",
+      "BasePath": "_content/VCommerce.Mvc",
+      "RelativePath": "css/category#[.{fingerprint=u4xo9dkrg9}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/category.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "i32gh08ndz",
+      "Integrity": "nl+IFcj/6wtfRW4WpZkmvZMEXjOLCxI6CDnbckNHUBk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/category.css"
     },
     {
       "Identity": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0t6tbmo9xi-haoyqjsvkr.gz",
@@ -2295,6 +2316,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/vcommerce.jpg"
+    },
+    {
+      "Identity": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/category.css",
+      "SourceId": "VCommerce.Mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/",
+      "BasePath": "_content/VCommerce.Mvc",
+      "RelativePath": "css/category#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "u4xo9dkrg9",
+      "Integrity": "QkWLjZpgEJT/95nbqAwdbz52K+r93zTmeQXY/heEMWU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/category.css"
     },
     {
       "Identity": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/customer.css",
@@ -4729,6 +4771,304 @@
         {
           "Name": "integrity",
           "Value": "sha256-8tuk2ONAs9cmsjwX+SRMsQHzjxSp3WYG0fkxtyZVMw4="
+        }
+      ]
+    },
+    {
+      "Route": "css/category.css",
+      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0jle182m2y-u4xo9dkrg9.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001633986928"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "611"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nl+IFcj/6wtfRW4WpZkmvZMEXjOLCxI6CDnbckNHUBk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 17:09:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"QkWLjZpgEJT/95nbqAwdbz52K+r93zTmeQXY/heEMWU=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-QkWLjZpgEJT/95nbqAwdbz52K+r93zTmeQXY/heEMWU="
+        }
+      ]
+    },
+    {
+      "Route": "css/category.css",
+      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/category.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1785"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QkWLjZpgEJT/95nbqAwdbz52K+r93zTmeQXY/heEMWU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 17:09:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-QkWLjZpgEJT/95nbqAwdbz52K+r93zTmeQXY/heEMWU="
+        }
+      ]
+    },
+    {
+      "Route": "css/category.css.gz",
+      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0jle182m2y-u4xo9dkrg9.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "611"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nl+IFcj/6wtfRW4WpZkmvZMEXjOLCxI6CDnbckNHUBk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 17:09:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nl+IFcj/6wtfRW4WpZkmvZMEXjOLCxI6CDnbckNHUBk="
+        }
+      ]
+    },
+    {
+      "Route": "css/category.u4xo9dkrg9.css",
+      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0jle182m2y-u4xo9dkrg9.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001633986928"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "611"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nl+IFcj/6wtfRW4WpZkmvZMEXjOLCxI6CDnbckNHUBk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 17:09:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"QkWLjZpgEJT/95nbqAwdbz52K+r93zTmeQXY/heEMWU=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "u4xo9dkrg9"
+        },
+        {
+          "Name": "label",
+          "Value": "css/category.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-QkWLjZpgEJT/95nbqAwdbz52K+r93zTmeQXY/heEMWU="
+        }
+      ]
+    },
+    {
+      "Route": "css/category.u4xo9dkrg9.css",
+      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/category.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1785"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QkWLjZpgEJT/95nbqAwdbz52K+r93zTmeQXY/heEMWU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 17:09:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "u4xo9dkrg9"
+        },
+        {
+          "Name": "label",
+          "Value": "css/category.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-QkWLjZpgEJT/95nbqAwdbz52K+r93zTmeQXY/heEMWU="
+        }
+      ]
+    },
+    {
+      "Route": "css/category.u4xo9dkrg9.css.gz",
+      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0jle182m2y-u4xo9dkrg9.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "611"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nl+IFcj/6wtfRW4WpZkmvZMEXjOLCxI6CDnbckNHUBk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 17:09:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "u4xo9dkrg9"
+        },
+        {
+          "Name": "label",
+          "Value": "css/category.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nl+IFcj/6wtfRW4WpZkmvZMEXjOLCxI6CDnbckNHUBk="
         }
       ]
     },

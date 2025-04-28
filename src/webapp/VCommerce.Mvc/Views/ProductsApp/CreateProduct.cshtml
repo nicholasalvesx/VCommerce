@@ -39,12 +39,21 @@
 
             <div class="form-group">
                 <label asp-for="CategoryId">Categoria</label>
-                <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.CategoryId">
-                    <option value="">Selecione uma categoria</option>
-                </select>
+                <div class="input-group">
+                    <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.CategoryId" id="categorySelect">
+                        <option value="">Selecione uma categoria</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#addCategoryModal">
+                            <a href="/CategoriesApp/Index">
+                                <i class="fas fa-plus-plus"></i>
+                                <span>Nova</span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Price">Preço</label>
                 <div class="input-with-icon">
@@ -88,19 +97,3 @@
         </div>
     </form>
 </div>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-    <script>
-        $(document).ready(function() {
-            $('#ImageURL').on('change keyup', function() {
-                var imageUrl = $(this).val();
-                if (imageUrl) {
-                    $('#image-preview').attr('src', '/images/' + imageUrl);
-                } else {
-                    $('#image-preview').attr('src', '/images/product-placeholder.jpg');
-                }
-            });
-        });
-    </script>
-}

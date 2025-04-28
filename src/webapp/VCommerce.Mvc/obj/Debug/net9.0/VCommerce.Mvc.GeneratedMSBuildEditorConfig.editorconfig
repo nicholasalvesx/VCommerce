@@ -104,6 +104,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/CategoriesApp/CreateCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2F0ZWdvcmllc0FwcC9DcmVhdGVDYXRlZ29yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/CategoriesApp/DeleteCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2F0ZWdvcmllc0FwcC9EZWxldGVDYXRlZ29yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/CategoriesApp/EditCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2F0ZWdvcmllc0FwcC9FZGl0Q2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/CategoriesApp/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2F0ZWdvcmllc0FwcC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Views/CustomerApp/CreateCustomer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXJBcHAvQ3JlYXRlQ3VzdG9tZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

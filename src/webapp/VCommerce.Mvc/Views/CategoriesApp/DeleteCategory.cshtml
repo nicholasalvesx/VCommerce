@@ -1,0 +1,63 @@
+@model VCommerce.Mvc.Models.CategoryViewModel
+
+@{
+    ViewData["Title"] = "Excluir Categoria";
+}
+
+<link rel="stylesheet" href="/css/category.css" asp-append-version="true" />
+
+<div class="content-header">
+    <h1 class="content-title">Excluir Categoria</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Categorias</a></li>
+        <li class="breadcrumb-item active">Excluir</li>
+    </ol>
+</div>
+
+<div class="dashboard-section">
+    <div class="section-header">
+        <div class="section-title">
+            <h2>Confirmação de Exclusão</h2>
+            <p>Tem certeza que deseja excluir esta categoria?</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="delete-confirmation">
+                <div class="warning-message">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <h4>Atenção!</h4>
+                        <p>Esta ação não pode ser desfeita. A exclusão desta categoria pode afetar produtos associados a ela.</p>
+                    </div>
+                </div>
+                
+                <div class="details-grid mt-4">
+                    <div class="detail-item">
+                        <div class="detail-label">ID</div>
+                        <div class="detail-value">@Model.CategoryId</div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-label">Nome</div>
+                        <div class="detail-value">@Model.Name</div>
+                    </div>
+                </div>
+                
+                <form asp-action="DeleteCategory" method="post" class="mt-4">
+                    <input type="hidden" asp-for="CategoryId" />
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Confirmar Exclusão
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left"></i> Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

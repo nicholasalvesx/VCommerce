@@ -1,0 +1,85 @@
+@model IEnumerable<VCommerce.Mvc.Models.CategoryViewModel>
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<link rel="stylesheet" href="/css/category.css" asp-append-version="true" />
+
+<div class="content-header">
+    <h1 class="content-title">Categorias</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+        <li class="breadcrumb-item active">Categorias</li>
+    </ol>
+</div>
+
+<div class="dashboard-section">
+    <div class="section-header">
+        <div class="section-title">
+            <h2>Lista de Categorias</h2>
+            <p>Gerencie as categorias de produtos</p>
+        </div>
+        <div class="section-actions">
+            <a asp-action="CreateCategory" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Nova Categoria
+            </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Produtos</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.CategoryId</td>
+                                <td>@item.Name</td>
+                                <td>
+                                    <a href="/ProductsApp/Index?categoryId=@item.CategoryId" class="btn btn-sm btn-info">
+                                        <i class="fas fa-box"></i> Ver Produtos
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a asp-action="EditCategory" asp-route-id="@item.CategoryId" class="btn btn-sm btn-primary" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a asp-action="DeleteCategory" asp-route-id="@item.CategoryId" class="btn btn-sm btn-danger" title="Excluir">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            
+            @if (!Model.Any())
+            {
+                <div class="empty-state">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <h3>Nenhuma categoria encontrada</h3>
+                    <p>Comece criando uma nova categoria para seus produtos.</p>
+                    <a asp-action="CreateCategory" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Nova Categoria
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -15,18 +15,18 @@ public class ProductViewModel
     [Range(1,9999)]
     public decimal Price { get; set; }
     [Required]
-    [Display(Name = "Image URL")]
+    [Display(Name = "Imagem URL")]
     public string? ImageURL { get; set; }
     [Required]
     [Range(1,9999)]
     public long Stock { get; set; }
-    [Display(Name = "Category Name")]
+    [Display(Name = "Nome da categoria")]
     public string? CategoryName { get; set; }
 
     [Range(1, 100)]
     public int Quantity { get; set; } = 1;
     
     [JsonIgnore]
-    [Display(Name="Category")]
+    [Display(Name="CategoriaId")]
     public int CategoryId { get; set; }
 }

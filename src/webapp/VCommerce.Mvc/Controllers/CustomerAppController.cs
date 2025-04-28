@@ -57,7 +57,7 @@ public class CustomerAppController : Controller
         
         var result = await _customerService.UpdateCustomer(model, await GetAccessToken());
 
-        if (result == null)
+        if (result != null)
             return RedirectToAction(nameof(Index));
         
         return View(model);

@@ -1,0 +1,70 @@
+@model VCommerce.Mvc.Models.CategoryViewModel
+
+@{
+ViewData["Title"] = "Editar Categoria";
+}
+
+<div class="content-header">
+    <h1 class="content-title">Editar Categoria</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Categorias</a></li>
+        <li class="breadcrumb-item active">Editar Categoria</li>
+    </ol>
+</div>
+
+<div class="dashboard-section">
+    <div class="section-header">
+        <div class="section-title">
+            <h2>Informações da Categoria</h2>
+            <p>Edite os dados da categoria</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="EditCategory">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="CategoryId" />
+
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Nome da Categoria</label>
+                    <input asp-for="Name" class="form-control" placeholder="Digite o nome da categoria" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                @if (ViewBag.ProductCount != null)
+                {
+                <div class="info-box mb-4">
+                    <div class="info-box-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Produtos nesta categoria</span>
+                        <span class="info-box-number">@ViewBag.ProductCount</span>
+                        @if (ViewBag.ProductCount > 0)
+                        {
+                        <a href="/ProductsApp/Index?categoryId=@Model.CategoryId" class="btn btn-sm btn-info mt-2">
+                            <i class="fas fa-eye"></i> Ver Produtos
+                        </a>
+                        }
+                    </div>
+                </div>
+                }
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Salvar Alterações
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i> Voltar para Lista
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
