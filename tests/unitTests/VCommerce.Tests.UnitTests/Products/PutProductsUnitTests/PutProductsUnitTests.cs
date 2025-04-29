@@ -25,7 +25,6 @@ public class PutProductsUnitTests : IClassFixture<ProductsUnitTestsController>
             Id = prodId,
             Name = "Produto atualizado",
             Description = "Produto atualizado",
-            ImageUrl = "atualizado.jpeg",
             CategoryId = 6
         };
         
@@ -48,7 +47,6 @@ public class PutProductsUnitTests : IClassFixture<ProductsUnitTestsController>
             Id = 16,
             Name = "Produto atualizado",
             Description = "Produto atualizado",
-            ImageUrl = "atualizado.jpeg",
             CategoryId = 6
         };
         

@@ -23,7 +23,6 @@ public class PostProductsUnitTests : IClassFixture<ProductsUnitTestsController>
             Name = "Novo produto",
             Description = "Novo produto",
             Price = 100,
-            ImageUrl = "novoProdutoFake.jpeg",
             CategoryId = 5
         };
         
