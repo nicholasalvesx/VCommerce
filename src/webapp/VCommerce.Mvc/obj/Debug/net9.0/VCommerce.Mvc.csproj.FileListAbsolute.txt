@@ -176,7 +176,6 @@
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.genruntimeconfig.cache
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/ref/VCommerce.Mvc.dll
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/libman.json
-/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/6nwebfwvgz-gcmj52d0ni.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/u9v3lwi1w9-gnp3jwhdyo.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/hljl27mgwu-4nfuka1izj.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/2f0i498h4m-1bo06tqmgd.gz
@@ -279,4 +278,5 @@
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-mfujql76mc.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0t6tbmo9xi-haoyqjsvkr.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/6r57fj556d-gkjhkfrnvv.gz
-/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0jle182m2y-gkbljl323u.gz
+/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0jle182m2y-wxdxfz47yb.gz
+/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/6nwebfwvgz-3b1rikzkow.gz

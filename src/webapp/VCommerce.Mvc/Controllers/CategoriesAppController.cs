@@ -40,9 +40,10 @@ public class CategoriesAppController : Controller
     }
 
     [HttpGet]
-    public Task<ActionResult<IEnumerable<CategoryViewModel>>> EditCategory(int id)
+    public async Task<ActionResult<IEnumerable<CategoryViewModel>>> EditCategory(int id)
     {
-        return Task.FromResult<ActionResult<IEnumerable<CategoryViewModel>>>(View());
+        await _service.FindCategoryById(id, await GetAccessToken());
+        return View(new CategoryViewModel());
     }
 
     [HttpPost]
@@ -58,8 +59,8 @@ public class CategoriesAppController : Controller
     [HttpGet]
     public async Task<ActionResult<IEnumerable<CategoryViewModel>>> DeleteCategory(int id)
     {
-        var result = await _service.FindCategoryById(id, await GetAccessToken());
-        return View(result);
+        await _service.FindCategoryById(id, await GetAccessToken());
+        return View();
     }
     
     [HttpPost, ActionName("DeleteCategory")]

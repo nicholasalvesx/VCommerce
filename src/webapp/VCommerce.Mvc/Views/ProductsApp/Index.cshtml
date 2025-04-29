@@ -15,34 +15,64 @@
 <div class="dashboard-section">
     <div class="section-header">
         <div class="section-title">
-            <h2>Lista de Produtos</h2>
+            <h2><i class="fas fa-boxes text-primary mr-2"></i>Lista de Produtos</h2>
             <p>Gerencie seu catálogo de produtos</p>
         </div>
         <div class="section-actions">
             <a asp-action="CreateProduct" class="btn btn-primary">
-                <i class="fas fa-plus"></i> Novo Produto
+                <i class="fas fa-plus mr-1"></i> Novo Produto
             </a>
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-body">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchProducts" class="form-control" placeholder="Buscar produtos...">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex justify-content-end">
+                <div class="form-group mb-0">
+                    <select id="categoryFilter" class="form-control">
+                        <option value="">Todas as categorias</option>
+                        @foreach (var category in ViewBag.Categories ?? new List<SelectListItem>())
+                        {
+                            <option value="@category.Value">@category.Text</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group mb-0 ml-2">
+                    <select id="stockFilter" class="form-control">
+                        <option value="">Todos os estoques</option>
+                        <option value="in-stock">Em estoque</option>
+                        <option value="low-stock">Estoque baixo</option>
+                        <option value="out-of-stock">Sem estoque</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
+                <table class="table table-hover product-table mb-0">
+                    <thead class="thead-light">
                     <tr>
                         <th>Produto</th>
                         <th>Categoria</th>
                         <th>Preço</th>
                         <th>Estoque</th>
                         <th>Status</th>
-                        <th>Ações</th>
+                        <th class="text-center">Ações</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
+                        <tr data-category="@item.CategoryId" data-stock="@(item.Stock > 10 ? "in-stock" : (item.Stock > 0 ? "low-stock" : "out-of-stock"))">
                             <td>
                                 <div class="product-info">
                                     <div>
@@ -51,26 +81,39 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>@item.CategoryName</td>
-                            <td>@item.Price.ToString("C")</td>
                             <td>
-                                    <span class="@(item.Stock > 10 ? "text-success" : (item.Stock > 0 ? "text-warning" : "text-danger"))">
+                                <span class="badge badge-light">@item.CategoryName</span>
+                            </td>
+                            <td>
+                                <span class="product-price">@item.Price.ToString("C")</span>
+                            </td>
+                            <td>
+                                <div class="stock-indicator">
+                                    <div class="progress">
+                                        @{
+                                            var stockPercentage = item.Stock > 100 ? 100 : item.Stock;
+                                            var stockClass = item.Stock > 10 ? "bg-success" : (item.Stock > 0 ? "bg-warning" : "bg-danger");
+                                        }
+                                        <div class="progress-bar @stockClass" role="progressbar" style="width: @stockPercentage%"></div>
+                                    </div>
+                                    <span class="stock-text @(item.Stock > 10 ? "text-success" : (item.Stock > 0 ? "text-warning" : "text-danger"))">
                                         @item.Stock unidades
                                     </span>
+                                </div>
                             </td>
                             <td>
                                 @if (item.Stock > 0)
                                 {
-                                    <span class="status-badge completed">Disponível</span>
+                                    <span class="status-badge available">Disponível</span>
                                 }
                                 else
                                 {
-                                    <span class="status-badge cancelled">Esgotado</span>
+                                    <span class="status-badge unavailable">Esgotado</span>
                                 }
                             </td>
                             <td>
                                 <div class="action-buttons">
-                                    <a asp-action="UpdateProduct" asp-route-id="@item.Id" class="btn btn-sm btn-warning" title="Editar">
+                                    <a asp-action="UpdateProduct" asp-route-id="@item.Id" class="btn btn-sm btn-primary" title="Editar">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <a asp-action="DeleteProduct" asp-route-id="@item.Id" class="btn btn-sm btn-danger" title="Excluir">
@@ -86,6 +129,53 @@
                     </tbody>
                 </table>
             </div>
+            
+            @if (!Model.Any())
+            {
+                <div class="empty-state">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3>Nenhum produto encontrado</h3>
+                    <p>Comece adicionando produtos ao seu catálogo.</p>
+                    <a asp-action="CreateProduct" class="btn btn-primary">
+                        <i class="fas fa-plus mr-1"></i> Novo Produto
+                    </a>
+                </div>
+            }
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#searchProducts').on('keyup', function() {
+                var value = $(this).val().toLowerCase();
+                $('.product-table tbody tr').filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+            
+            $('#categoryFilter').on('change', function() {
+                var value = $(this).val();
+                if (value === '') {
+                    $('.product-table tbody tr').show();
+                } else {
+                    $('.product-table tbody tr').hide();
+                    $('.product-table tbody tr[data-category="' + value + '"]').show();
+                }
+            });
+            
+            $('#stockFilter').on('change', function() {
+                var value = $(this).val();
+                if (value === '') {
+                    $('.product-table tbody tr').show();
+                } else {
+                    $('.product-table tbody tr').hide();
+                    $('.product-table tbody tr[data-stock="' + value + '"]').show();
+                }
+            });
+        });
+    </script>
+}

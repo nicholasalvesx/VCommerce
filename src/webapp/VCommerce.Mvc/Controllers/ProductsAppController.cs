@@ -25,35 +25,40 @@ public class ProductsAppController : Controller
         
         var result = await _productService.GetAllProducts(await GetAccessToken());
 
-        if (result is null)
-            return View("Error");
-
-        return View(result);
+        return result is null ? View("Error") : View(result);
     }
 
     [HttpGet]
     public async Task<IActionResult> CreateProduct()
     {
-        ViewBag.CategoryId = new SelectList(await _categoryService.GetAllCategories(await GetAccessToken()), "CategoryId", "Name");
+        ViewBag.CategoryId = new SelectList(await _categoryService.GetAllCategories(await GetAccessToken()), "Id", "Name");
         return View();
     }
+
 
     [HttpPost]
     public async Task<IActionResult> CreateProduct(ProductViewModel? productVm)
     {
-        if (!ModelState.IsValid) 
+        if (!ModelState.IsValid)
+        {
+            var categories = await _categoryService.GetAllCategories(await GetAccessToken());
+            ViewBag.CategoryId = new SelectList(categories, "Id", "Name");
             return View(productVm);
-        
+        }
+
         var result = await _productService.CreateProduct(productVm, await GetAccessToken());
 
-        if (result!.Id > 0)
+        if (result != null && result.Id > 0)
             return RedirectToAction(nameof(Index));
-        
-        ViewBag.CategoryId = new SelectList(await
-            _categoryService.GetAllCategories(await GetAccessToken()), "CategoryId", "Name");
 
-        return RedirectToAction(nameof(Index));
+        var fallbackCategories = await _categoryService.GetAllCategories(await GetAccessToken());
+        ViewBag.CategoryId = new SelectList(fallbackCategories, "Id", "Name");
+
+        ViewBag.ErrorMessage = "Erro ao criar o produto. Tente novamente.";
+
+        return View(productVm);
     }
+
 
     [HttpGet]
     public async Task<IActionResult> UpdateProduct(int id)  

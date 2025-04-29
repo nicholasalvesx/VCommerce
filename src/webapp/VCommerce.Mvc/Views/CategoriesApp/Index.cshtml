@@ -15,41 +15,65 @@
 <div class="dashboard-section">
     <div class="section-header">
         <div class="section-title">
-            <h2>Lista de Categorias</h2>
+            <h2><i class="fas fa-folder text-primary mr-2"></i>Lista de Categorias</h2>
             <p>Gerencie as categorias de produtos</p>
         </div>
         <div class="section-actions">
             <a asp-action="CreateCategory" class="btn btn-primary">
-                <i class="fas fa-plus"></i> Nova Categoria
+                <i class="fas fa-plus mr-1"></i> Nova Categoria
             </a>
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-body">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchCategories" class="form-control" placeholder="Buscar categorias...">
+            </div>
+        </div>
+        <div class="col-md-6 text-right">
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary active" data-filter="all">Todas</button>
+                <button type="button" class="btn btn-outline-secondary" data-filter="active">Ativas</button>
+                <button type="button" class="btn btn-outline-secondary" data-filter="inactive">Inativas</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
+                <table class="table table-hover category-table mb-0">
+                    <thead class="thead-light">
                         <tr>
                             <th style="width: 60px;"></th>
                             <th>Nome</th>
                             <th>Descrição</th>
-                            <th style="width: 100px;">Ordem</th>
-                            <th style="width: 100px;">Status</th>
-                            <th style="width: 100px;">Produtos</th>
-                            <th style="width: 150px;">Ações</th>
+                            <th style="width: 100px;" class="text-center">Ordem</th>
+                            <th style="width: 100px;" class="text-center">Status</th>
+                            <th style="width: 100px;" class="text-center">Produtos</th>
+                            <th style="width: 150px;" class="text-center">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
+                            <tr data-status="@(item.IsActive ? "active" : "inactive")">
                                 <td class="text-center">
-                                    <i class="@(string.IsNullOrEmpty(item.IconClass) ? "fas fa-folder" : "fas " + item.IconClass)" style="font-size: 20px; color: var(--primary-color);"></i>
+                                    <div class="category-icon">
+                                        <i class="@(string.IsNullOrEmpty(item.IconClass) ? "fas fa-folder" : "fas " + item.IconClass)"></i>
+                                    </div>
                                 </td>
-                                <td>@item.Name</td>
-                                <td>@(string.IsNullOrEmpty(item.Description) ? "-" : item.Description)</td>
-                                <td class="text-center">@item.DisplayOrder</td>
+                                <td>
+                                    <span class="category-name">@item.Name</span>
+                                </td>
+                                <td>
+                                    <span class="category-description">@(string.IsNullOrEmpty(item.Description) ? "-" : (item.Description.Length > 50 ? item.Description.Substring(0, 50) + "..." : item.Description))</span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge badge-light">@item.DisplayOrder</span>
+                                </td>
                                 <td class="text-center">
                                     @if (item.IsActive)
                                     {
@@ -100,7 +124,7 @@
                     <h3>Nenhuma categoria encontrada</h3>
                     <p>Comece criando uma nova categoria para seus produtos.</p>
                     <a asp-action="CreateCategory" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> Nova Categoria
+                        <i class="fas fa-plus mr-1"></i> Nova Categoria
                     </a>
                 </div>
             }
@@ -113,8 +137,32 @@
     {
         <script>
             $(document).ready(function() {
-                alert('@TempData["SuccessMessage"]');
+                toastr.success('@TempData["SuccessMessage"]');
             });
         </script>
     }
+    
+    <script>
+        $(document).ready(function() {
+            $('.btn-group .btn').click(function() {
+                $('.btn-group .btn').removeClass('active');
+                $(this).addClass('active');
+                
+                var filter = $(this).data('filter');
+                if (filter === 'all') {
+                    $('.category-table tbody tr').show();
+                } else {
+                    $('.category-table tbody tr').hide();
+                    $('.category-table tbody tr[data-status="' + filter + '"]').show();
+                }
+            });
+            
+            $('#searchCategories').on('keyup', function() {
+                var value = $(this).val().toLowerCase();
+                $('.category-table tbody tr').filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
 }
