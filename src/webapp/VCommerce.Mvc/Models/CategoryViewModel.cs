@@ -18,9 +18,6 @@ namespace VCommerce.Mvc.Models
         [Display(Name = "Ativo")]
         public bool IsActive { get; set; } = true;
         
-        [Display(Name = "Ordem de Exibição")]
-        public int DisplayOrder { get; set; }
-        
         [Display(Name = "Ícone")]
         public string? IconClass { get; set; }
         
