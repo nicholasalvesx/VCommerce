@@ -4,6 +4,8 @@
     ViewData["Title"] = "Excluir Categoria";
 }
 
+<link rel="stylesheet" href="/css/category.css" asp-append-version="true" />
+
 <div class="content-header">
     <h1 class="content-title">Excluir Categoria</h1>
     <ol class="breadcrumb">
@@ -77,7 +79,7 @@
         </div>
         
         <form asp-action="DeleteCategory" method="post">
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="CategoryId" />
             <div class="form-actions">
                 <button type="submit" class="btn btn-danger">
                     <i class="fas fa-trash-alt"></i> Confirmar Exclusão

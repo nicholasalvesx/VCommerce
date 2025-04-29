@@ -4,6 +4,8 @@
     ViewData["Title"] = "Editar Categoria";
 }
 
+<link rel="stylesheet" href="/css/category.css" asp-append-version="true" />
+
 <div class="content-header">
     <h1 class="content-title">Editar Categoria</h1>
     <ol class="breadcrumb">
@@ -22,7 +24,7 @@
     </div>
 
     <form asp-action="EditCategory" method="post">
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CategoryId" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="form-grid">
@@ -81,7 +83,7 @@
                     <span class="info-box-number">@ViewBag.ProductCount</span>
                     @if (ViewBag.ProductCount > 0)
                     {
-                        <a href="/ProductsApp/Index?categoryId=@Model.Id" class="btn btn-sm btn-info mt-2">
+                        <a href="/ProductsApp/Index?categoryId=@Model.CategoryId" class="btn btn-sm btn-info mt-2">
                             <i class="fas fa-eye"></i> Ver Produtos
                         </a>
                     }

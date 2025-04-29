@@ -4,7 +4,8 @@ namespace VCommerce.Mvc.Models
 {
     public class CategoryViewModel
     {
-        public int Id { get; set; }
+        [Key]
+        public int CategoryId { get; set; }
         
         [Required(ErrorMessage = "O nome da categoria é obrigatório")]
         [StringLength(100, ErrorMessage = "O nome deve ter no máximo {1} caracteres")]

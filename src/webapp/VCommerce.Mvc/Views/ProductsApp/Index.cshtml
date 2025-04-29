@@ -4,6 +4,8 @@
     ViewData["Title"] = "Produtos";
 }
 
+<link rel="stylesheet" href="/css/product.css" asp-append-version="true" />
+
 <div class="content-header">
     <h1 class="content-title">Produtos</h1>
     <ol class="breadcrumb">
@@ -77,7 +79,7 @@
                                 <div class="product-info">
                                     <div>
                                         <h5 class="product-name">@item.Name</h5>
-                                        <p class="product-description">@(item.Description?.Length > 50 ? item.Description.Substring(0, 50) + "..." : item.Description)</p>
+                                        <p class="product-description">@(item.Description?.Length > 50 ? item.Description[..50] + "..." : item.Description)</p>
                                     </div>
                                 </div>
                             </td>

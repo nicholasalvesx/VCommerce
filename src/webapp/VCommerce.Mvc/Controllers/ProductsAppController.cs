@@ -31,7 +31,7 @@ public class ProductsAppController : Controller
     [HttpGet]
     public async Task<IActionResult> CreateProduct()
     {
-        ViewBag.CategoryId = new SelectList(await _categoryService.GetAllCategories(await GetAccessToken()), "Id", "Name");
+        ViewBag.CategoryId = new SelectList(await _categoryService.GetAllCategories(await GetAccessToken()), "CategoryId", "Name");
         return View();
     }
 
@@ -42,7 +42,7 @@ public class ProductsAppController : Controller
         if (!ModelState.IsValid)
         {
             var categories = await _categoryService.GetAllCategories(await GetAccessToken());
-            ViewBag.CategoryId = new SelectList(categories, "Id", "Name");
+            ViewBag.CategoryId = new SelectList(categories, "CategoryId", "Name");
             return View(productVm);
         }
 
@@ -52,7 +52,7 @@ public class ProductsAppController : Controller
             return RedirectToAction(nameof(Index));
 
         var fallbackCategories = await _categoryService.GetAllCategories(await GetAccessToken());
-        ViewBag.CategoryId = new SelectList(fallbackCategories, "Id", "Name");
+        ViewBag.CategoryId = new SelectList(fallbackCategories, "CategoryId", "Name");
 
         ViewBag.ErrorMessage = "Erro ao criar o produto. Tente novamente.";
 

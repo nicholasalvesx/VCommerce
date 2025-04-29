@@ -4,6 +4,8 @@
     ViewData["Title"] = "Editar Produto";
 }
 
+<link rel="stylesheet" href="/css/product.css" asp-append-version="true" />
+
 <div class="content-header">
     <h1 class="content-title">Editar Produto</h1>
     <ol class="breadcrumb">
@@ -89,20 +91,4 @@
         </div>
     </form>
 </div>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-    <script>
-        $(document).ready(function() {
-            // Preview da imagem quando o usuário digitar a URL
-            $('#ImageURL').on('change keyup', function() {
-                var imageUrl = $(this).val();
-                if (imageUrl) {
-                    $('#image-preview').attr('src', '/images/' + imageUrl);
-                } else {
-                    $('#image-preview').attr('src', '/images/product-placeholder.jpg');
-                }
-            });
-        });
-    </script>
 }

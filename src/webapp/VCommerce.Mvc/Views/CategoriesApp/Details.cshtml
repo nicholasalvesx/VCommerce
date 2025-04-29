@@ -4,6 +4,8 @@
     ViewData["Title"] = "Detalhes da Categoria";
 }
 
+<link rel="stylesheet" href="/css/category.css" asp-append-version="true" />
+
 <div class="content-header">
     <h1 class="content-title">Detalhes da Categoria</h1>
     <ol class="breadcrumb">
@@ -16,33 +18,49 @@
 <div class="dashboard-section">
     <div class="section-header">
         <div class="section-title">
-            <h2>@Model.Name</h2>
-            <p>Informações detalhadas da categoria</p>
+            <h2><i class="fas fa-info-circle text-primary mr-2"></i>Informações da Categoria</h2>
+            <p>Visualize os detalhes completos da categoria</p>
         </div>
         <div class="section-actions">
-            <a asp-action="EditCategory" asp-route-id="@Model.Id" class="btn btn-primary">
-                <i class="fas fa-edit"></i> Editar
+            <a asp-action="EditCategory" asp-route-id="@Model.CategoryId" class="btn btn-primary">
+                <i class="fas fa-edit mr-1"></i> Editar
+            </a>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left mr-1"></i> Voltar
             </a>
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-body">
-            <div class="category-details">
-                <div class="category-icon">
-                    <i class="@(string.IsNullOrEmpty(Model.IconClass) ? "fas fa-folder" : "fas " + Model.IconClass)"></i>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-transparent">
+                    <h5 class="card-title mb-0">Dados Básicos</h5>
                 </div>
-                
-                <div class="category-info">
+                <div class="card-body">
                     <div class="details-grid">
                         <div class="detail-item">
                             <div class="detail-label">ID</div>
-                            <div class="detail-value">@Model.Id</div>
+                            <div class="detail-value">@Model.CategoryId</div>
                         </div>
                         
                         <div class="detail-item">
                             <div class="detail-label">Nome</div>
                             <div class="detail-value">@Model.Name</div>
+                        </div>
+                        
+                        <div class="detail-item detail-item-full">
+                            <div class="detail-label">Descrição</div>
+                            <div class="detail-value">
+                                @if (string.IsNullOrEmpty(Model.Description))
+                                {
+                                    <span class="text-muted">Nenhuma descrição fornecida</span>
+                                }
+                                else
+                                {
+                                    @Model.Description
+                                }
+                            </div>
                         </div>
                         
                         <div class="detail-item">
@@ -63,97 +81,65 @@
                             <div class="detail-label">Ordem de Exibição</div>
                             <div class="detail-value">@Model.DisplayOrder</div>
                         </div>
-                        
-                        <div class="detail-item detail-item-full">
-                            <div class="detail-label">Descrição</div>
-                            <div class="detail-value">
-                                @if (string.IsNullOrEmpty(Model.Description))
-                                {
-                                    <span class="text-muted">Sem descrição</span>
-                                }
-                                else
-                                {
-                                    @Model.Description
-                                }
-                            </div>
-                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-transparent">
+                    <h5 class="card-title mb-0">Ícone</h5>
+                </div>
+                <div class="card-body text-center">
+                    <div class="category-icon-large">
+                        <i class="@(string.IsNullOrEmpty(Model.IconClass) ? "fas fa-folder" : "fas " + Model.IconClass)"></i>
+                    </div>
+                    <div class="mt-3">
+                        <code>@(string.IsNullOrEmpty(Model.IconClass) ? "fa-folder" : Model.IconClass)</code>
                     </div>
                 </div>
             </div>
             
-            @if (ViewBag.Products != null && ViewBag.Products.Count > 0)
-            {
-                <div class="category-products mt-4">
-                    <h3>Produtos nesta Categoria (@ViewBag.Products.Count)</h3>
-                    
-                    <div class="table-responsive">
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th style="width: 60px;"></th>
-                                    <th>Nome</th>
-                                    <th>Preço</th>
-                                    <th>Estoque</th>
-                                    <th style="width: 100px;">Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var product in ViewBag.Products)
-                                {
-                                    <tr>
-                                        <td>
-                                            <img src="/images/@product.ImageURL" alt="@product.Name" class="product-thumbnail" onerror="this.src='/images/product-placeholder.jpg'" />
-                                        </td>
-                                        <td>@product.Name</td>
-                                        <td>@product.Price.ToString("C")</td>
-                                        <td>@product.Stock</td>
-                                        <td>
-                                            <a href="/ProductsApp/EditProduct/@product.Id" class="btn btn-sm btn-primary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <div class="text-center mt-3">
-                        <a href="/ProductsApp/Index?categoryId=@Model.Id" class="btn btn-outline-primary">
-                            <i class="fas fa-list"></i> Ver Todos os Produtos
-                        </a>
+            <div class="card shadow-sm">
+                <div class="card-header bg-transparent">
+                    <h5 class="card-title mb-0">Produtos</h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center py-3">
+                        @if (Model.ProductCount > 0)
+                        {
+                            <div class="product-count">@Model.ProductCount</div>
+                            <p>produtos nesta categoria</p>
+                            <a href="/ProductsApp/Index?categoryId=@Model.CategoryId" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-eye mr-1"></i> Ver Produtos
+                            </a>
+                        }
+                        else
+                        {
+                            <div class="empty-products">
+                                <i class="fas fa-box-open"></i>
+                                <p>Nenhum produto nesta categoria</p>
+                            </div>
+                            <a href="/ProductsApp/CreateProduct" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-plus mr-1"></i> Adicionar Produto
+                            </a>
+                        }
                     </div>
                 </div>
-            }
-            else
-            {
-                <div class="empty-state mt-4">
-                    <div class="empty-state-icon">
-                        <i class="fas fa-box-open"></i>
-                    </div>
-                    <h3>Nenhum produto nesta categoria</h3>
-                    <p>Adicione produtos a esta categoria para vê-los aqui.</p>
-                    <a href="/ProductsApp/CreateProduct" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> Adicionar Produto
-                    </a>
-                </div>
-            }
-            
-            <div class="form-actions mt-4">
-                <a asp-action="Index" class="btn btn-outline-secondary">
-                    <i class="fas fa-arrow-left"></i> Voltar para Lista
-                </a>
-                <a asp-action="DeleteCategory" asp-route-id="@Model.Id" class="btn btn-outline-danger">
-                    <i class="fas fa-trash"></i> Excluir
-                </a>
             </div>
         </div>
     </div>
+    
+    <div class="form-actions mt-4">
+        <a asp-action="EditCategory" asp-route-id="@Model.CategoryId" class="btn btn-primary">
+            <i class="fas fa-edit mr-1"></i> Editar Categoria
+        </a>
+        <a asp-action="DeleteCategory" asp-route-id="@Model.CategoryId" class="btn btn-danger">
+            <i class="fas fa-trash mr-1"></i> Excluir Categoria
+        </a>
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left mr-1"></i> Voltar para Lista
+        </a>
+    </div>
 </div>
-
-@section Scripts {
-    <script>
-        $(document).ready(function() {
-        });
-    </script>
-}

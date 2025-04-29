@@ -278,5 +278,5 @@
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-mfujql76mc.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0t6tbmo9xi-haoyqjsvkr.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/6r57fj556d-gkjhkfrnvv.gz
-/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0jle182m2y-wxdxfz47yb.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/6nwebfwvgz-3b1rikzkow.gz
+/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0jle182m2y-cyd6nv2nmd.gz
