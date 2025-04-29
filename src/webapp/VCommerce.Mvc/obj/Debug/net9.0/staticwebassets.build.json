@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9ktOZaORhWJi2bmh1ZPvj2mCekzoISLkmpPmgqbqp+0=",
+  "Hash": "dnMysRTEG+5tG+8VriUb+y0ReTuFCAFipVu63oVIRSg=",
   "Source": "VCommerce.Mvc",
   "BasePath": "_content/VCommerce.Mvc",
   "Mode": "Default",
@@ -1163,12 +1163,12 @@
       "OriginalItemSpec": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/customer.css"
     },
     {
-      "Identity": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-mfujql76mc.gz",
+      "Identity": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-uqq2jesm7r.gz",
       "SourceId": "VCommerce.Mvc",
       "SourceType": "Discovered",
       "ContentRoot": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/",
       "BasePath": "_content/VCommerce.Mvc",
-      "RelativePath": "css/dashboard#[.{fingerprint=mfujql76mc}]?.css.gz",
+      "RelativePath": "css/dashboard#[.{fingerprint=uqq2jesm7r}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -1177,8 +1177,8 @@
       "RelatedAsset": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/dashboard.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "8r09cmzx06",
-      "Integrity": "FICRXqaGHKx+yYid9ezJP1NW/bdGmf5aHoUZ5B1Kz6M=",
+      "Fingerprint": "tvjygqw0fn",
+      "Integrity": "164rGLPK0nX+cSuTpY6SoZYGbimfTwQ+eZJxGVSflfQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/dashboard.css"
@@ -2374,8 +2374,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "mfujql76mc",
-      "Integrity": "0t786VJq/3N0VsptNuH+bwK10SZ9LIa7G2GwpG6Dwq8=",
+      "Fingerprint": "uqq2jesm7r",
+      "Integrity": "GuFf1pOHViTSd/pHguk4o1O2M+t0SLM8D8SJryqMGHE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/dashboard.css"
@@ -5372,12 +5372,12 @@
     },
     {
       "Route": "css/dashboard.css",
-      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-mfujql76mc.gz",
+      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-uqq2jesm7r.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000275406224"
+          "Quality": "0.000262674022"
         }
       ],
       "ResponseHeaders": [
@@ -5387,15 +5387,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3630"
+          "Value": "3806"
         },
         {
           "Name": "ETag",
-          "Value": "\"FICRXqaGHKx+yYid9ezJP1NW/bdGmf5aHoUZ5B1Kz6M=\""
+          "Value": "\"164rGLPK0nX+cSuTpY6SoZYGbimfTwQ+eZJxGVSflfQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 23 Apr 2025 20:57:55 GMT"
+          "Value": "Tue, 29 Apr 2025 16:59:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5415,13 +5415,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"0t786VJq/3N0VsptNuH+bwK10SZ9LIa7G2GwpG6Dwq8=\""
+          "Value": "W/\"GuFf1pOHViTSd/pHguk4o1O2M+t0SLM8D8SJryqMGHE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0t786VJq/3N0VsptNuH+bwK10SZ9LIa7G2GwpG6Dwq8="
+          "Value": "sha256-GuFf1pOHViTSd/pHguk4o1O2M+t0SLM8D8SJryqMGHE="
         }
       ]
     },
@@ -5436,7 +5436,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "21006"
+          "Value": "21913"
         },
         {
           "Name": "Content-Type",
@@ -5444,11 +5444,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0t786VJq/3N0VsptNuH+bwK10SZ9LIa7G2GwpG6Dwq8=\""
+          "Value": "\"GuFf1pOHViTSd/pHguk4o1O2M+t0SLM8D8SJryqMGHE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 23 Apr 2025 20:57:55 GMT"
+          "Value": "Tue, 29 Apr 2025 16:59:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5458,13 +5458,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0t786VJq/3N0VsptNuH+bwK10SZ9LIa7G2GwpG6Dwq8="
+          "Value": "sha256-GuFf1pOHViTSd/pHguk4o1O2M+t0SLM8D8SJryqMGHE="
         }
       ]
     },
     {
       "Route": "css/dashboard.css.gz",
-      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-mfujql76mc.gz",
+      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-uqq2jesm7r.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5473,7 +5473,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3630"
+          "Value": "3806"
         },
         {
           "Name": "Content-Type",
@@ -5481,11 +5481,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"FICRXqaGHKx+yYid9ezJP1NW/bdGmf5aHoUZ5B1Kz6M=\""
+          "Value": "\"164rGLPK0nX+cSuTpY6SoZYGbimfTwQ+eZJxGVSflfQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 23 Apr 2025 20:57:55 GMT"
+          "Value": "Tue, 29 Apr 2025 16:59:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5503,18 +5503,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-FICRXqaGHKx+yYid9ezJP1NW/bdGmf5aHoUZ5B1Kz6M="
+          "Value": "sha256-164rGLPK0nX+cSuTpY6SoZYGbimfTwQ+eZJxGVSflfQ="
         }
       ]
     },
     {
-      "Route": "css/dashboard.mfujql76mc.css",
-      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-mfujql76mc.gz",
+      "Route": "css/dashboard.uqq2jesm7r.css",
+      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-uqq2jesm7r.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000275406224"
+          "Quality": "0.000262674022"
         }
       ],
       "ResponseHeaders": [
@@ -5524,15 +5524,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3630"
+          "Value": "3806"
         },
         {
           "Name": "ETag",
-          "Value": "\"FICRXqaGHKx+yYid9ezJP1NW/bdGmf5aHoUZ5B1Kz6M=\""
+          "Value": "\"164rGLPK0nX+cSuTpY6SoZYGbimfTwQ+eZJxGVSflfQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 23 Apr 2025 20:57:55 GMT"
+          "Value": "Tue, 29 Apr 2025 16:59:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5552,13 +5552,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"0t786VJq/3N0VsptNuH+bwK10SZ9LIa7G2GwpG6Dwq8=\""
+          "Value": "W/\"GuFf1pOHViTSd/pHguk4o1O2M+t0SLM8D8SJryqMGHE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "mfujql76mc"
+          "Value": "uqq2jesm7r"
         },
         {
           "Name": "label",
@@ -5566,12 +5566,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-0t786VJq/3N0VsptNuH+bwK10SZ9LIa7G2GwpG6Dwq8="
+          "Value": "sha256-GuFf1pOHViTSd/pHguk4o1O2M+t0SLM8D8SJryqMGHE="
         }
       ]
     },
     {
-      "Route": "css/dashboard.mfujql76mc.css",
+      "Route": "css/dashboard.uqq2jesm7r.css",
       "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot/css/dashboard.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -5581,7 +5581,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "21006"
+          "Value": "21913"
         },
         {
           "Name": "Content-Type",
@@ -5589,11 +5589,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0t786VJq/3N0VsptNuH+bwK10SZ9LIa7G2GwpG6Dwq8=\""
+          "Value": "\"GuFf1pOHViTSd/pHguk4o1O2M+t0SLM8D8SJryqMGHE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 23 Apr 2025 20:57:55 GMT"
+          "Value": "Tue, 29 Apr 2025 16:59:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5603,7 +5603,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "mfujql76mc"
+          "Value": "uqq2jesm7r"
         },
         {
           "Name": "label",
@@ -5611,13 +5611,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-0t786VJq/3N0VsptNuH+bwK10SZ9LIa7G2GwpG6Dwq8="
+          "Value": "sha256-GuFf1pOHViTSd/pHguk4o1O2M+t0SLM8D8SJryqMGHE="
         }
       ]
     },
     {
-      "Route": "css/dashboard.mfujql76mc.css.gz",
-      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-mfujql76mc.gz",
+      "Route": "css/dashboard.uqq2jesm7r.css.gz",
+      "AssetFile": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-uqq2jesm7r.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5626,7 +5626,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3630"
+          "Value": "3806"
         },
         {
           "Name": "Content-Type",
@@ -5634,11 +5634,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"FICRXqaGHKx+yYid9ezJP1NW/bdGmf5aHoUZ5B1Kz6M=\""
+          "Value": "\"164rGLPK0nX+cSuTpY6SoZYGbimfTwQ+eZJxGVSflfQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 23 Apr 2025 20:57:55 GMT"
+          "Value": "Tue, 29 Apr 2025 16:59:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5656,7 +5656,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "mfujql76mc"
+          "Value": "uqq2jesm7r"
         },
         {
           "Name": "label",
@@ -5664,7 +5664,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-FICRXqaGHKx+yYid9ezJP1NW/bdGmf5aHoUZ5B1Kz6M="
+          "Value": "sha256-164rGLPK0nX+cSuTpY6SoZYGbimfTwQ+eZJxGVSflfQ="
         }
       ]
     },

@@ -22,7 +22,6 @@
         <div class="product-details-container">
             <div class="product-image-container">
                 <div class="product-image-wrapper">
-                    <img src="/images/@Model.ImageURL" alt="@Model.Name" class="product-image" onerror="this.src='/images/product-placeholder.jpg'">
 
                     @if (Model.Stock <= 0)
                     {
@@ -36,7 +35,6 @@
 
                 <div class="product-thumbnails">
                     <div class="thumbnail active">
-                        <img src="/images/@Model.ImageURL" alt="@Model.Name" onerror="this.src='/images/product-placeholder.jpg'">
                     </div>
                 </div>
             </div>

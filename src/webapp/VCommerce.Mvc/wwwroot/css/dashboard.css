@@ -1229,3 +1229,50 @@ textarea.form-control {
         overflow: hidden;
     }
 }
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar, .main-content {
+    transition: margin-left 0.3s ease;
+}
+
+.dropdown-menu {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.product-badge.premium {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.product-badge.sale {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.summary-icon {
+    font-size: 2rem;
+    padding: 15px;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.bg-primary { background-color: #007bff; }
+.bg-success { background-color: #28a745; }
+.bg-warning { background-color: #ffc107; color: #212529; }
+.bg-info    { background-color: #17a2b8; }
+

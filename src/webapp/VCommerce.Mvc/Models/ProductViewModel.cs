@@ -14,9 +14,7 @@ public class ProductViewModel
     [Required]
     [Range(1,9999)]
     public decimal Price { get; set; }
-    [Required]
-    [Display(Name = "Imagem URL")]
-    public string? ImageURL { get; set; }
+
     [Required]
     [Range(1,9999)]
     public long Stock { get; set; }

@@ -42,19 +42,19 @@
                     <li>
                         <a href="/ProductsApp/Index">
                             <i class="fas fa-box"></i>
-                            <span>Products</span>
+                            <span>Produtos</span>
                         </a>
                     </li>
                     <li>
                         <a href="/CustomerApp/Index">
                             <i class="fas fa-users"></i>
-                            <span>Customers</span>
+                            <span>Clientes</span>
                         </a>
                     </li>
                     <li>
                         <a href="/OrdersApp/Index">
                             <i class="fas fa-handshake"></i>
-                            <span>Orders</span>
+                            <span>Pedidos</span>
                         </a>
                     </li>
                 </ul>
@@ -66,13 +66,13 @@
                     <li>
                         <a href="/CustomerApp/Profile">
                             <i class="fas fa-user-cog"></i>
-                            <span>Profile</span>
+                            <span>Perfil</span>
                         </a>
                     </li>
                     <li>
                         <a href="/Account/Logout">
                             <i class="fas fa-sign-out-alt"></i>
-                            <span>Logout</span>
+                            <span>Sair</span>
                         </a>
                     </li>
                 </ul>
@@ -220,7 +220,36 @@
                                     {
                                         <span class="product-badge sale">Sale</span>
                                     }
-                                    <i class="fas fa-shirt"></i>
+                                    @{
+                                        string icon = "fa-box"; 
+                                        var name = product.Name?.ToLower();
+                                        if (name!.Contains("camisa") || name.Contains("blusa") || name.Contains("jaqueta"))
+                                        {
+                                            icon = "fa-shirt";
+                                        }
+                                        else if (name.Contains("fone") || name.Contains("headphone"))
+                                        {
+                                            icon = "fa-headphones";
+                                        }
+                                        else if (name.Contains("celular") || name.Contains("smartphone"))
+                                        {
+                                            icon = "fa-mobile-alt";
+                                        }
+                                        else if (name.Contains("notebook") || name.Contains("laptop"))
+                                        {
+                                            icon = "fa-laptop";
+                                        }
+                                        else if (name.Contains("sapato") || name.Contains("tenis") || name.Contains("bota"))
+                                        {
+                                            icon = "fa-shoe-prints";
+                                        }
+                                        else if (name.Contains("livro"))
+                                        {
+                                            icon = "fa-book";
+                                        }
+                                    }
+                                    <i class="fas @icon"></i>
+
                                 </div>
                                 <div class="product-info">
                                     <h3 class="product-name">@product.Name</h3>
