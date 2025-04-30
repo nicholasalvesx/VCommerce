@@ -10,7 +10,7 @@ namespace VCommerce.Mvc.Models
         [Required(ErrorMessage = "O nome da categoria é obrigatório")]
         [StringLength(100, ErrorMessage = "O nome deve ter no máximo {1} caracteres")]
         [Display(Name = "Nome")]
-        public string? Name { get; set; }
+        public string? CategoryName { get; set; }
         
         [Display(Name = "Descrição")]
         public string? Description { get; set; }

@@ -317,39 +317,6 @@
                     $('#customerAddresses').hide();
                 }
             });
-
-            $('#shippingAddressId').on('change', function() {
-                var addressId = $(this).val();
-                if (addressId) {
-                    if (addressId === "1") {
-                        $('[name="ShippingAddress.RecipientName"]').val("João Silva");
-                        $('[name="ShippingAddress.Street"]').val("Rua das Flores");
-                        $('[name="ShippingAddress.Number"]').val("123");
-                        $('[name="ShippingAddress.Complement"]').val("Apto 101");
-                        $('[name="ShippingAddress.Neighborhood"]').val("Jardim Primavera");
-                        $('[name="ShippingAddress.City"]').val("São Paulo");
-                        $('[name="ShippingAddress.State"]').val("SP");
-                        $('[name="ShippingAddress.ZipCode"]').val("01234-567");
-                    } else {
-                        $('[name="ShippingAddress.RecipientName"]').val("João Silva");
-                        $('[name="ShippingAddress.Street"]').val("Av. Paulista");
-                        $('[name="ShippingAddress.Number"]').val("1000");
-                        $('[name="ShippingAddress.Complement"]').val("Sala 1010");
-                        $('[name="ShippingAddress.Neighborhood"]').val("Bela Vista");
-                        $('[name="ShippingAddress.City"]').val("São Paulo");
-                        $('[name="ShippingAddress.State"]').val("SP");
-                        $('[name="ShippingAddress.ZipCode"]').val("01310-100");
-                    }
-                }
-            });
-
-            $('#sameAsShipping').on('change', function() {
-                if ($(this).is(':checked')) {
-                    $('#billingAddressFields').hide();
-                } else {
-                    $('#billingAddressFields').show();
-                }
-            });
             
             $('#searchProductBtn').on('click', function() {
                 var searchTerm = $('#productSearch').val();
