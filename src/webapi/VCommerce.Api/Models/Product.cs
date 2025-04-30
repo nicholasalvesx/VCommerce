@@ -7,6 +7,6 @@ public class Product
     public decimal Price { get; set; }
     public string? Description { get; set; }
     public long Stock { get; set; }
-    public Category? Category { get; set; }
+    public Category? CategoryName { get; set; }
     public int CategoryId { get; set; }
 }
