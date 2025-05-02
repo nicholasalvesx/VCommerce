@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-    </PropertyGroup>
+      <UserSecretsId>03831179-44c6-47df-a982-69ba9f0bad91</UserSecretsId>
+  </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\webapi\VCommerce.Api\VCommerce.Api.csproj" />
@@ -15,6 +16,7 @@
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.4" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="SendGrid" Version="9.29.3" />
+      <PackageReference Include="SendGrid.Extensions.DependencyInjection" Version="1.0.1" />
     </ItemGroup>
 
     <ItemGroup>

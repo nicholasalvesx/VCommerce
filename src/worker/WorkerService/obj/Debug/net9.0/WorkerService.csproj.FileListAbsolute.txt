@@ -88,3 +88,6 @@
 /home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/bin/Debug/net9.0/System.Diagnostics.EventLog.dll
 /home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/bin/Debug/net9.0/runtimes/win/lib/net9.0/System.Diagnostics.EventLog.dll
 /home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/bin/Debug/net9.0/Newtonsoft.Json.dll
+/home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/bin/Debug/net9.0/SendGrid.dll
+/home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/bin/Debug/net9.0/SendGrid.Extensions.DependencyInjection.dll
+/home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/bin/Debug/net9.0/StarkbankEcdsa.dll

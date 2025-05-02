@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SendGrid.Helpers.Mail;
 using VCommerce.Api.DTOs;
 using VCommerce.Api.Models;
 using VCommerce.Api.Repositores;
@@ -41,7 +42,7 @@ public class AuthController : ControllerBase
         }
         
         var user = await _userManager.FindByNameAsync(dto.Name!);
-
+        
         if (user == null || !await _userManager.CheckPasswordAsync(user, dto.Password!)) 
             return Unauthorized();
         
@@ -63,9 +64,14 @@ public class AuthController : ControllerBase
             ,out var tokenExpirationInMinutes);
             
         user.RefreshTokenExpiry = DateTime.UtcNow.AddMinutes(tokenExpirationInMinutes);
-            
+
         user.RefreshToken = refreshToken;
-            
+        
+        if (!user.EmailConfirmed)
+        {
+            return Unauthorized(new { message = "É necessário confirmar seu e-mail antes de fazer login." });
+        }
+        
         await _userManager.UpdateAsync(user);
             
         return Ok(new 
@@ -83,17 +89,20 @@ public class AuthController : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
-        
+
+        if (customerDto.Password != customerDto.ConfirmPassword)
+            return BadRequest(new { message = "As senhas não coincidem." });
+
         var cliente = new Customer(
             customerDto.Email,
             customerDto.Name,
             customerDto.Password,
             customerDto.ConfirmPassword,
             customerDto.LastName
-            );
-        
+        );
+
         await _customerRepository.CreateCustomer(cliente);
-        
+
         var user = new ApplicationUser
         {
             CustomerId = null,
@@ -103,22 +112,28 @@ public class AuthController : ControllerBase
             UserName = Regex.Replace(customerDto.Name!, "[^a-zA-Z0-9]", ""),
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
-            EmailConfirmed = true
+            EmailConfirmed = false
         };
-        
-        
-        if (customerDto.Password != customerDto.ConfirmPassword)
-        {
-            return BadRequest(new { message = "As senhas não coincidem." });
-        }
 
         var result = await _userManager.CreateAsync(user, customerDto.Password!);
         if (!result.Succeeded)
         {
             await _customerRepository.DeleteCustomer(customerDto.Id);
-            
             return BadRequest(result.Errors);
         }
+
+        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        var callbackUrl = Url.Action("ConfirmEmail", "Account",
+            new { userId = user.Id, code }, protocol: Request.Scheme);
+
+        var from = new EmailAddress("nicholas.alves2007@gmail.com", "Nicholas Alves");
+
+        var to = new EmailAddress(customerDto.Email);
+
+        var subject = "Confirme seu e-mail";
+        var plainTextContent = $"Por favor, confirme seu e-mail clicando aqui: {callbackUrl}";
+        var htmlContent = $"<strong>Por favor, confirme seu e-mail clicando aqui: <a href='{callbackUrl}'>Confirmar</a></strong>";
+        var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
         
         return Ok(new AuthResult
         {
@@ -126,7 +141,8 @@ public class AuthController : ControllerBase
             Token = null,
             Expiration = DateTime.UtcNow.AddHours(1)
         });
-    }
+    }   
+
 
     [HttpPost]
     [Route("refresh-token")]
@@ -192,4 +208,25 @@ public class AuthController : ControllerBase
         await _userManager.UpdateAsync(user);
         return NoContent();
     }
+    
+    [HttpGet]
+    [Route("confirm-email")]
+    public async Task<IActionResult> ConfirmEmail(string userId, string code)
+    {
+        if (userId == null || code == null)
+            return BadRequest(new { message = "Parâmetros inválidos." });
+
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+            return NotFound(new { message = "Usuário não encontrado." });
+
+        var result = await _userManager.ConfirmEmailAsync(user, code);
+        if (result.Succeeded)
+        {
+            return Ok("Email confirmado, volte ao site!");
+        }
+        
+        return BadRequest(new { message = "Erro ao enviar email." });
+    }
+
 } 

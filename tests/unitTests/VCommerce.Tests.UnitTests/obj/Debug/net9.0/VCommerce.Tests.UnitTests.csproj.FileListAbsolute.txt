@@ -140,3 +140,5 @@
 /home/nicholas/Documentos/workspace/VCommerce/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.pdb
 /home/nicholas/Documentos/workspace/VCommerce/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.genruntimeconfig.cache
 /home/nicholas/Documentos/workspace/VCommerce/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/ref/VCommerce.Tests.UnitTests.dll
+/home/nicholas/Documentos/workspace/VCommerce/tests/unitTests/VCommerce.Tests.UnitTests/bin/Debug/net9.0/SendGrid.dll
+/home/nicholas/Documentos/workspace/VCommerce/tests/unitTests/VCommerce.Tests.UnitTests/bin/Debug/net9.0/StarkbankEcdsa.dll

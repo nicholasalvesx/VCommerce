@@ -440,13 +440,13 @@ namespace VCommerce.Api.Migrations
 
             modelBuilder.Entity("VCommerce.Api.Models.Product", b =>
                 {
-                    b.HasOne("VCommerce.Api.Models.Category", "CategoryName")
+                    b.HasOne("VCommerce.Api.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CategoryName");
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("VCommerce.Api.Models.Category", b =>

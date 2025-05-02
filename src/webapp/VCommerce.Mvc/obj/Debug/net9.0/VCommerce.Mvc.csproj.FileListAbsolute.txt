@@ -280,3 +280,6 @@
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/6nwebfwvgz-3b1rikzkow.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/0jle182m2y-cyd6nv2nmd.gz
 /home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/gry3sn895y-uqq2jesm7r.gz
+/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/SendGrid.dll
+/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/SendGrid.Extensions.DependencyInjection.dll
+/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/StarkbankEcdsa.dll

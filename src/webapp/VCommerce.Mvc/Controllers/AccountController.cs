@@ -160,4 +160,24 @@ public class AccountController : Controller
     
         return RedirectToAction("Login", "Account");
     }
+    
+    [HttpGet]
+    [Route("confirm-email")]
+    public async Task<IActionResult> ConfirmEmail(string userId, string code)
+    {
+        if (userId == null || code == null)
+            return BadRequest(new { message = "Parâmetros inválidos." });
+
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+            return NotFound(new { message = "Usuário não encontrado." });
+
+        var result = await _userManager.ConfirmEmailAsync(user, code);
+        if (result.Succeeded)
+        {
+            return Ok("Email confirmado, volte ao site!");
+        }
+        
+        return BadRequest(new { message = "Erro ao enviar email." });
+    }
 }

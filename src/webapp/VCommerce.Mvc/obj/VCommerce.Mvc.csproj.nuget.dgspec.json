@@ -183,6 +183,10 @@
             "SendGrid": {
               "target": "Package",
               "version": "[9.29.3, )"
+            },
+            "SendGrid.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[1.0.1, )"
             }
           },
           "imports": [

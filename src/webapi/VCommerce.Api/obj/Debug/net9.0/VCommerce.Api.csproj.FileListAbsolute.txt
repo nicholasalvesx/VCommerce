@@ -421,3 +421,6 @@
 /home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
 /home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll
+/home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/bin/Debug/net9.0/Newtonsoft.Json.dll
+/home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/bin/Debug/net9.0/SendGrid.dll
+/home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/bin/Debug/net9.0/StarkbankEcdsa.dll

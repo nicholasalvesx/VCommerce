@@ -84,7 +84,7 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="badge badge-light">@item.CategoryName</span>
+                                <span class="badge badge-light">@item.Category</span>
                             </td>
                             <td>
                                 <span class="product-price">@item.Price.ToString("C")</span>
@@ -121,7 +121,7 @@
                                     <a asp-action="DeleteProduct" asp-route-id="@item.Id" class="btn btn-sm btn-danger" title="Excluir">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
-                                    <a href="#" class="btn btn-sm btn-info" title="Visualizar">
+                                    <a asp-controller="Home" asp-action="ProductDetails" class="btn btn-sm btn-info" title="Visualizar">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                 </div>
@@ -180,4 +180,4 @@
             });
         });
     </script>
-}
+    }

@@ -26,7 +26,7 @@ public class ProductDTO
     public long Stock { get; set; }
     
     [JsonIgnore]
-    public Category? CategoryName { get; set; }
+    public string? CategoryName { get; set; }
     
     public int CategoryId { get; set; }
 }

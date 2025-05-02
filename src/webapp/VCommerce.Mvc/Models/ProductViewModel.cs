@@ -19,7 +19,7 @@ public class ProductViewModel
     [Range(1,9999)]
     public long Stock { get; set; }
     [Display(Name = "Nome da categoria")]
-    public CategoryViewModel? CategoryName { get; set; }
+    public CategoryViewModel? Category { get; set; }
 
     [Range(1, 100)]
     public int Quantity { get; set; } = 1;

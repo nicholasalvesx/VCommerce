@@ -8,12 +8,15 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<Customer, CustomerDTO>().ReverseMap();
+        
         CreateMap<Category, CategoryDTO>().ReverseMap();
-        CreateMap<Product, ProductDTO>().ReverseMap();
-        CreateMap<Product, ProductDTO>()
-            .ForMember(x => x.CategoryName, opt => 
-                opt.MapFrom(src => src.CategoryName!.CategoryName));
+        CreateMap<Category, CategoryDTO>().ForMember(x => x.CategoryName,
+            opt => opt.MapFrom(src => src.CategoryName));
 
+        CreateMap<Product, ProductDTO>()
+            .ForMember(dest => dest.CategoryName,
+                opt => opt.MapFrom(src => src.Category!.CategoryName));
+        
         CreateMap<Order, OrderDTO>()
             .ForMember(dest => dest.CustomerId, opt =>
                 opt.MapFrom(src => src.Customer!.Id))
