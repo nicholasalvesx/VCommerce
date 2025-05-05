@@ -3,11 +3,11 @@ using System.Security.Claims;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SendGrid.Helpers.Mail;
 using VCommerce.Api.DTOs;
 using VCommerce.Api.Models;
 using VCommerce.Api.Repositores;
 using VCommerce.Api.Services;
+using VCommerce.Api.Extensions;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
 namespace VCommerce.Api.Controllers;
@@ -20,15 +20,17 @@ public class AuthController : ControllerBase
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly ICustomerRepository _customerRepository;
     private readonly IConfiguration _configuration;
+    private readonly IEmailSender _emailSender;
 
     public AuthController(ITokenService tokenService, 
         UserManager<ApplicationUser> userManager,
-        IConfiguration configuration, ICustomerRepository customerRepository)
+        IConfiguration configuration, ICustomerRepository customerRepository, IEmailSender emailSender)
     {
         _tokenService = tokenService;
         _userManager = userManager;
         _configuration = configuration;
         _customerRepository = customerRepository;
+        _emailSender = emailSender;
     }
 
     [HttpPost]
@@ -114,6 +116,11 @@ public class AuthController : ControllerBase
             UpdatedAt = DateTime.UtcNow,
             EmailConfirmed = false
         };
+        
+        var code = _userManager.GenerateEmailConfirmationTokenAsync(user).Result;
+        var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+        if (customerDto.Email != null) 
+            await _emailSender.SendEmailConfirmation(customerDto.Email, callbackUrl);
 
         var result = await _userManager.CreateAsync(user, customerDto.Password!);
         if (!result.Succeeded)

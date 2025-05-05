@@ -10,6 +10,9 @@
     <projectFile>WorkerService/WorkerService.csproj</projectFile>
     <projectFile>src/VCommerce.Api/VCommerce.Api.csproj</projectFile>
     <projectFile>src/VCommerce.Mvc/VCommerce.Mvc.csproj</projectFile>
+    <projectFile profileName="http">src/webapi/VCommerce.Api/VCommerce.Api.csproj</projectFile>
+    <projectFile profileName="http">src/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj</projectFile>
+    <projectFile profileName="https">src/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj</projectFile>
     <projectFile profileName="VShop.Web">src/webapp/Vcommerce.Test/VShop.Web/Vcommerce.Test.csproj</projectFile>
     <projectFile profileName="WorkerService">src/worker/WorkerService/WorkerService.csproj</projectFile>
   </component>
@@ -17,24 +20,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="First first commit">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="fixed sendemail&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.VCommerce/.idea/workspace.xml">
+      <change afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Extensions/EmailSenderExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Extensions/UrlHelperExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/WorkerService/obj/Debug/net9.0/WorkerService.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/worker/WorkerService/obj/Debug/net9.0/WorkerService.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/WorkerService/obj/Debug/net9.0/WorkerService.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/worker/WorkerService/obj/Debug/net9.0/WorkerService.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/WorkerService/obj/Debug/net9.0/WorkerService.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/worker/WorkerService/obj/Debug/net9.0/WorkerService.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/WorkerService/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/worker/WorkerService/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/EmailSender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/EmailSender.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/IEmailSender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/IEmailSender.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/VCommerce.Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/VCommerce.Api.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/VCommerce.Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/VCommerce.Api.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/VCommerce.Api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/VCommerce.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/VCommerce.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/VCommerce.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/VCommerce.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/VCommerce.Api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/VCommerce.Api.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/VCommerce.Api.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/ref/VCommerce.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/ref/VCommerce.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/refint/VCommerce.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/refint/VCommerce.Api.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,12 +67,14 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73d48fd0bfcb40aea91c91ac7e91ba7e1de400/34/ba45c463/ActionMethodExecutor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/22647a7960d2619ab733924a2acfee09d32a8827c8c680a37cc4863678abec/LateBoundTestFramework.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2bc11a42069f9763241157f68b3dffdebbffa5703fa240cd5ca89388b82222/UserManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/db7395f4add94e6d10e515b3e55373f2821f8323de7dc8e314d78feefacf5584/ActionMethodExecutor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/eb8b15bbf6ed38ef49b0b77ac383bba3c22ce8dbcff5a4798cdebe3013d9ea/AuthenticationHttpContextExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/Contracts/IProductService.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -92,36 +94,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.VCommerce.Api: http.executor": "Run",
-    ".NET Launch Settings Profile.VCommerce.Mvc: http.executor": "Run",
-    ".NET Launch Settings Profile.Vcommerce.Test: VShop.Web.executor": "Run",
-    ".NET Launch Settings Profile.WorkerService.executor": "Run",
-    "378af771-79ac-408f-83b6-c3a57767408f.executor": "Debug",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "b043bab9-f444-439b-9982-b816f641b0ba.executor": "Debug",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "Rebasing main",
-    "last_opened_file_path": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "0d570cb2-96df-43cc-80da-7f777e6d0afe",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.VCommerce.Api: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.VCommerce.Mvc: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.Vcommerce.Test: VShop.Web.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.WorkerService.executor&quot;: &quot;Run&quot;,
+    &quot;378af771-79ac-408f-83b6-c3a57767408f.executor&quot;: &quot;Debug&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;b043bab9-f444-439b-9982-b816f641b0ba.executor&quot;: &quot;Debug&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Rebasing main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;0d570cb2-96df-43cc-80da-7f777e6d0afe&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.VCommerce.Mvc: http">
     <configuration name="VCommerce.Api" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />

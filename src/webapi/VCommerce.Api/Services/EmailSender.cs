@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
@@ -12,7 +13,12 @@ public class EmailSender : IEmailSender
         _configuration = configuration;
     }
 
-    public async Task<Response> SendEmail(string email, string subject, string message)
+    public Task SendEmail(string email, string? subject, string message)
+    {
+        return Execute( email, subject, message);
+    }
+    
+    public async Task<Response> Execute(string email, string? subject, string message)
     {
         var key = _configuration["SendGridKey"];
 

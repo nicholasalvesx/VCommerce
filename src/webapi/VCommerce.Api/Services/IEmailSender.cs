@@ -4,5 +4,5 @@ namespace VCommerce.Api.Services;
 
 public interface IEmailSender
 {
-    Task<Response> SendEmail(string email, string subject, string message);
+    Task SendEmail(string email, string? subject, string message);
 }
