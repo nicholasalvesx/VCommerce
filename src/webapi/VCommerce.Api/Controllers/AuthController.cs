@@ -142,8 +142,7 @@ public class AuthController : ControllerBase
             Expiration = DateTime.UtcNow.AddHours(1)
         });
     }   
-
-
+    
     [HttpPost]
     [Route("refresh-token")]
     public async Task<IActionResult> RefreshToken(TokenDTO? dto)
