@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VCommerce.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af6763267fdfe3bac4f0edf8b8a2d93de92506d9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d153e057d2be44f9ac37ace2bb55593f1a1916e6")]
 [assembly: System.Reflection.AssemblyProductAttribute("VCommerce.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VCommerce.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
