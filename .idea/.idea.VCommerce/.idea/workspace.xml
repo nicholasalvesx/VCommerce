@@ -18,30 +18,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Account/AwaitingEmailConfirmation.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/3wj77ixaeo-bjnh2e2q8c.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.staticwebassets.endpoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.staticwebassets.endpoints.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.staticwebassets.runtime.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.staticwebassets.runtime.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/3wj77ixaeo-3q2w1v4fs7.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/ref/VCommerce.Mvc.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/ref/VCommerce.Mvc.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/refint/VCommerce.Mvc.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/refint/VCommerce.Mvc.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.build.endpoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.build.endpoints.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets/msbuild.VCommerce.Mvc.Microsoft.AspNetCore.StaticWebAssetEndpoints.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets/msbuild.VCommerce.Mvc.Microsoft.AspNetCore.StaticWebAssetEndpoints.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets/msbuild.VCommerce.Mvc.Microsoft.AspNetCore.StaticWebAssets.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets/msbuild.VCommerce.Mvc.Microsoft.AspNetCore.StaticWebAssets.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/email.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/email.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapi/VCommerce.Api/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/DeleteProductsUnitTests/DeleteProductsUnitTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/DeleteProductsUnitTests/DeleteProductsUnitTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/GetProductsUnitTests/GetProductsUnitTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/GetProductsUnitTests/GetProductsUnitTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/PostProductsUnitTests/PostProductsUnitTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/PostProductsUnitTests/PostProductsUnitTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/PutProductsUnitTests/PutProductsUnitTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/PutProductsUnitTests/PutProductsUnitTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +41,19 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -95,6 +90,8 @@
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/bin/Debug/net9.0/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/obj/Debug/net9.0/VCommerce.Api.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Controllers/AccountController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/Contracts/IProductService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -108,6 +105,8 @@
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/appsettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/appsettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/appsettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
@@ -125,6 +124,18 @@
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/obj/Debug/net9.0/WorkerService.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/obj/Debug/net9.0/WorkerService.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/obj/Debug/net9.0/WorkerService.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/worker/WorkerService/obj/Debug/net9.0/WorkerService.sourcelink.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.sourcelink.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///usr/share/dotnet/sdk/9.0.203/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -145,7 +156,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;.NET Launch Settings Profile.VCommerce.Api: http.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.VCommerce.Mvc: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.VCommerce.Mvc: http.executor&quot;: &quot;Debug&quot;,
     &quot;.NET Launch Settings Profile.Vcommerce.Test: VShop.Web.executor&quot;: &quot;Run&quot;,
     &quot;.NET Launch Settings Profile.WorkerService.executor&quot;: &quot;Run&quot;,
     &quot;378af771-79ac-408f-83b6-c3a57767408f.executor&quot;: &quot;Debug&quot;,
@@ -155,7 +166,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;b043bab9-f444-439b-9982-b816f641b0ba.executor&quot;: &quot;Debug&quot;,
     &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Rebasing main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -172,6 +183,9 @@
     ]
   }
 }</component>
+  <component name="Push.Settings">
+    <option name="SHOW_DETAILS_PANEL" value="false" />
+  </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.VCommerce.Mvc: http">
     <configuration name="VCommerce.Api" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -415,6 +429,8 @@
       <workItem from="1745926582557" duration="270000" />
       <workItem from="1745926867892" duration="16172000" />
       <workItem from="1746186543204" duration="8070000" />
+      <workItem from="1746443971347" duration="11682000" />
+      <workItem from="1746466378995" duration="5356000" />
     </task>
     <task id="LOCAL-00001" summary="First first commit">
       <option name="closed" value="true" />
@@ -424,7 +440,47 @@
       <option name="project" value="LOCAL" />
       <updated>1743773796816</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add .gitignore">
+      <option name="closed" value="true" />
+      <created>1746474817460</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1746474817460</updated>
+    </task>
+    <task id="LOCAL-00003" summary="delete generated files">
+      <option name="closed" value="true" />
+      <created>1746475158597</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746475158597</updated>
+    </task>
+    <task id="LOCAL-00004" summary="delete generated files">
+      <option name="closed" value="true" />
+      <created>1746475313354</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1746475313354</updated>
+    </task>
+    <task id="LOCAL-00005" summary="delete generated files">
+      <option name="closed" value="true" />
+      <created>1746475380140</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746475380140</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add .gitignore in tests/">
+      <option name="closed" value="true" />
+      <created>1746475392654</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1746475392654</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,7 +507,10 @@
     <MESSAGE value="First first commit" />
     <MESSAGE value="fixed" />
     <MESSAGE value="fix commits" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix commits" />
+    <MESSAGE value="add .gitignore" />
+    <MESSAGE value="delete generated files" />
+    <MESSAGE value="add .gitignore in tests/" />
+    <option name="LAST_COMMIT_MESSAGE" value="add .gitignore in tests/" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
