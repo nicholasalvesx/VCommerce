@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Api.Controllers;
 using VCommerce.Api.Models;
+using Xunit;
 
 namespace VCommerce.Tests.UnitTests.Products.DeleteProductsUnitTests;
 
