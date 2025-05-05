@@ -57,3 +57,122 @@
         padding: 30px 20px;
     }
 }
+
+.email-confirmation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.confirmation-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+.confirmation-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.confirmation-icon.pending {
+    background-color: rgba(67, 97, 238, 0.1);
+}
+
+.confirmation-icon.pending i {
+    font-size: 36px;
+    color: #4361ee;
+}
+
+.confirmation-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.confirmation-message {
+    margin-bottom: 30px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.email-address {
+    font-weight: 700;
+    color: #4361ee;
+    font-size: 18px;
+    margin: 10px 0;
+    word-break: break-all;
+}
+
+.confirmation-info {
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-item i {
+    color: #6c757d;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.confirmation-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.confirmation-help {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.confirmation-help a {
+    color: #4361ee;
+    text-decoration: none;
+}
+
+.confirmation-help a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+    .confirmation-card {
+        padding: 30px 20px;
+    }
+
+    .confirmation-actions {
+        flex-direction: column;
+    }
+
+    .confirmation-actions .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

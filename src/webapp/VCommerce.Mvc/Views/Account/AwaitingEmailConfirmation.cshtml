@@ -1,0 +1,47 @@
+@model string
+
+@{
+    ViewData["Title"] = "Confirme seu Email";
+}
+
+<link rel="stylesheet" href="/css/email.css" asp-append-version="true" />
+
+<div class="email-confirmation-container">
+    <div class="confirmation-card">
+        <div class="confirmation-icon pending">
+            <i class="fas fa-envelope"></i>
+        </div>
+        
+        <h1 class="confirmation-title">Verifique seu Email</h1>
+        
+        <div class="confirmation-message">
+            <p>Enviamos um email de confirmação para:</p>
+            <p class="email-address">@Model</p>
+            <p>Por favor, verifique sua caixa de entrada e clique no link de confirmação para ativar sua conta.</p>
+        </div>
+        
+        <div class="confirmation-info">
+            <div class="info-item">
+                <i class="fas fa-info-circle"></i>
+                <span>O email pode levar alguns minutos para chegar.</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>Verifique também sua pasta de spam ou lixo eletrônico.</span>
+            </div>
+        </div>
+        
+        <div class="confirmation-actions">
+            <a href="@Url.Action("ResendConfirmationEmail", "Account", new { email = Model })" class="btn btn-outline-primary">
+                <i class="fas fa-paper-plane"></i> Reenviar Email
+            </a>
+            <a href="@Url.Action("Login", "Account")" class="btn btn-primary">
+                <i class="fas fa-sign-in-alt"></i> Ir para Login
+            </a>
+        </div>
+        
+        <div class="confirmation-help">
+            <p>Precisa de ajuda? <a href="@Url.Action("Contact", "Home")">Entre em contato com o suporte</a></p>
+        </div>
+    </div>
+</div>

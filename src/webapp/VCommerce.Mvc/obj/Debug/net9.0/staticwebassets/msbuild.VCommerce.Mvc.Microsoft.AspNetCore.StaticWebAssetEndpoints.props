@@ -60,17 +60,17 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"j1zrhwgvss"},{"Name":"integrity","Value":"sha256-2SQNBPFwZ5X6jK0l0\u002Bg2o6TFxln3CFcDipOrmKT7/qI="},{"Name":"label","Value":"_content/VCommerce.Mvc/css/details.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3624"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222SQNBPFwZ5X6jK0l0\u002Bg2o6TFxln3CFcDipOrmKT7/qI=\u0022"},{"Name":"Last-Modified","Value":"Tue, 15 Apr 2025 20:10:16 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/VCommerce.Mvc/css/email.3q2w1v4fs7.css">
+    <StaticWebAssetEndpoint Include="_content/VCommerce.Mvc/css/email.bjnh2e2q8c.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\email.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3q2w1v4fs7"},{"Name":"integrity","Value":"sha256-Na0rMkMdQkP\u002BjJxhteDCpEj1PzjkKiKkUeulW6gDrkg="},{"Name":"label","Value":"_content/VCommerce.Mvc/css/email.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1029"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022Na0rMkMdQkP\u002BjJxhteDCpEj1PzjkKiKkUeulW6gDrkg=\u0022"},{"Name":"Last-Modified","Value":"Mon, 05 May 2025 17:30:39 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"bjnh2e2q8c"},{"Name":"integrity","Value":"sha256-mZSCwS/3HjKHVYV3ojbTHQhZTyLissVMHxv6kG6UZ3o="},{"Name":"label","Value":"_content/VCommerce.Mvc/css/email.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3009"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022mZSCwS/3HjKHVYV3ojbTHQhZTyLissVMHxv6kG6UZ3o=\u0022"},{"Name":"Last-Modified","Value":"Mon, 05 May 2025 18:56:47 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VCommerce.Mvc/css/email.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\email.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Na0rMkMdQkP\u002BjJxhteDCpEj1PzjkKiKkUeulW6gDrkg="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1029"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022Na0rMkMdQkP\u002BjJxhteDCpEj1PzjkKiKkUeulW6gDrkg=\u0022"},{"Name":"Last-Modified","Value":"Mon, 05 May 2025 17:30:39 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-mZSCwS/3HjKHVYV3ojbTHQhZTyLissVMHxv6kG6UZ3o="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3009"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022mZSCwS/3HjKHVYV3ojbTHQhZTyLissVMHxv6kG6UZ3o=\u0022"},{"Name":"Last-Modified","Value":"Mon, 05 May 2025 18:56:47 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VCommerce.Mvc/css/login.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\login.css'))</AssetFile>

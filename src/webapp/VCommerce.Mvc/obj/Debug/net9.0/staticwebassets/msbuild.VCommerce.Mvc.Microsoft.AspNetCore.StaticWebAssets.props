@@ -102,8 +102,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>3q2w1v4fs7</Fingerprint>
-      <Integrity>Na0rMkMdQkP+jJxhteDCpEj1PzjkKiKkUeulW6gDrkg=</Integrity>
+      <Fingerprint>bjnh2e2q8c</Fingerprint>
+      <Integrity>mZSCwS/3HjKHVYV3ojbTHQhZTyLissVMHxv6kG6UZ3o=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\email.css'))</OriginalItemSpec>

@@ -24,7 +24,6 @@
         <div class="sidebar-user">
             <i class="fas fa-user-ninja"></i>
             <div class="user-info">
-                <h4>@User.Identity?.Name</h4>
                 <span>@(User.IsInRole("Admin") ? "Administrador" : "Cliente")</span>
             </div>
         </div>

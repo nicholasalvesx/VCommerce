@@ -10,9 +10,6 @@
     <projectFile>WorkerService/WorkerService.csproj</projectFile>
     <projectFile>src/VCommerce.Api/VCommerce.Api.csproj</projectFile>
     <projectFile>src/VCommerce.Mvc/VCommerce.Mvc.csproj</projectFile>
-    <projectFile profileName="http">src/webapi/VCommerce.Api/VCommerce.Api.csproj</projectFile>
-    <projectFile profileName="http">src/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj</projectFile>
-    <projectFile profileName="https">src/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj</projectFile>
     <projectFile profileName="VShop.Web">src/webapp/Vcommerce.Test/VShop.Web/Vcommerce.Test.csproj</projectFile>
     <projectFile profileName="WorkerService">src/worker/WorkerService/WorkerService.csproj</projectFile>
   </component>
@@ -20,18 +17,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="fixed sendemail&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.VCommerce/.idea/workspace.xml">
+    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Extensions/EmailSenderExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Extensions/UrlHelperExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/EmailSender.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Account/Email.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/compressed/3wj77ixaeo-3q2w1v4fs7.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/email.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Extensions/EmailSenderExtensions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Extensions/UrlHelperExtensions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/EmailSender.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/IEmailSender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/Contracts/IEmailSender.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Models/ErrorViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Models/ErrorViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.staticwebassets.endpoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.staticwebassets.endpoints.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.staticwebassets.runtime.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/VCommerce.Mvc.staticwebassets.runtime.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/ref/VCommerce.Mvc.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/ref/VCommerce.Mvc.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/refint/VCommerce.Mvc.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/refint/VCommerce.Mvc.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.build.endpoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.build.endpoints.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.pack.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets.pack.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets/msbuild.VCommerce.Mvc.Microsoft.AspNetCore.StaticWebAssetEndpoints.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets/msbuild.VCommerce.Mvc.Microsoft.AspNetCore.StaticWebAssetEndpoints.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets/msbuild.VCommerce.Mvc.Microsoft.AspNetCore.StaticWebAssets.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/staticwebassets/msbuild.VCommerce.Mvc.Microsoft.AspNetCore.StaticWebAssets.props" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,21 +91,40 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73d48fd0bfcb40aea91c91ac7e91ba7e1de400/34/ba45c463/ActionMethodExecutor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/22647a7960d2619ab733924a2acfee09d32a8827c8c680a37cc4863678abec/LateBoundTestFramework.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2bc11a42069f9763241157f68b3dffdebbffa5703fa240cd5ca89388b82222/UserManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c7afd9724cf757c4a8469dba2bdc22ab5ac111c91f431dbfefc992dacb3e8635/ControllerBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/db7395f4add94e6d10e515b3e55373f2821f8323de7dc8e314d78feefacf5584/ActionMethodExecutor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/eb8b15bbf6ed38ef49b0b77ac383bba3c22ce8dbcff5a4798cdebe3013d9ea/AuthenticationHttpContextExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/webapi/VCommerce.Api/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/Controllers/AccountController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/Contracts/IProductService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/appsettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/appsettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/bin/Debug/net9.0/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;030303ff&quot;,

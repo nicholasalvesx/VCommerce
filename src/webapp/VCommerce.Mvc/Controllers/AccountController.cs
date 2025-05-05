@@ -173,7 +173,7 @@ public class AccountController : Controller
         TempData["MSG_S"] = "Cadastro efetuado. Verifique seu email e confirme-o";
         ModelState.Clear();
     
-        return View("Email", model.Email);
+        return View("AwaitingEmailConfirmation", model.Email);
 }
 
     [HttpGet]
@@ -257,9 +257,18 @@ public class AccountController : Controller
 
         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
         var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-        await _emailSender.SendEmailConfirmation(email, callbackUrl);
-
-        TempData["MSG_S"] = "Email de confirmação reenviado com sucesso";
-        return View("Email", email);
+    
+        try
+        {
+            await _emailSender.SendEmailConfirmation(email, callbackUrl);
+            TempData["MSG_S"] = "Email de confirmação reenviado com sucesso";
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"Erro ao reenviar email de confirmação: {ex.Message}");
+            TempData["MSG_E"] = "Erro ao reenviar email de confirmação. Tente novamente mais tarde.";
+        }
+    
+        return View("AwaitingEmailConfirmation", email);
     }
 }
