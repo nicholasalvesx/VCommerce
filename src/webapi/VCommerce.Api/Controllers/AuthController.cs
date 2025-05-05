@@ -1,13 +1,11 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Api.DTOs;
 using VCommerce.Api.Models;
 using VCommerce.Api.Repositores;
 using VCommerce.Api.Services;
-using VCommerce.Api.Extensions;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
 namespace VCommerce.Api.Controllers;
@@ -20,17 +18,15 @@ public class AuthController : ControllerBase
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly ICustomerRepository _customerRepository;
     private readonly IConfiguration _configuration;
-    private readonly IEmailSender _emailSender;
 
     public AuthController(ITokenService tokenService, 
         UserManager<ApplicationUser> userManager,
-        IConfiguration configuration, ICustomerRepository customerRepository, IEmailSender emailSender)
+        IConfiguration configuration, ICustomerRepository customerRepository)
     {
         _tokenService = tokenService;
         _userManager = userManager;
         _configuration = configuration;
         _customerRepository = customerRepository;
-        _emailSender = emailSender;
     }
 
     [HttpPost]
@@ -104,45 +100,8 @@ public class AuthController : ControllerBase
         );
 
         await _customerRepository.CreateCustomer(cliente);
-
-        var user = new ApplicationUser
-        {
-            CustomerId = null,
-            Email = customerDto.Email,
-            Name = customerDto.Name,
-            LastName = customerDto.LastName,
-            UserName = Regex.Replace(customerDto.Name!, "[^a-zA-Z0-9]", ""),
-            CreatedAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow,
-            EmailConfirmed = false
-        };
         
-        var code = _userManager.GenerateEmailConfirmationTokenAsync(user).Result;
-        var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-        if (customerDto.Email != null) 
-            await _emailSender.SendEmailConfirmation(customerDto.Email, callbackUrl);
-
-        var result = await _userManager.CreateAsync(user, customerDto.Password!);
-        if (!result.Succeeded)
-        {
-            await _customerRepository.DeleteCustomer(customerDto.Id);
-            return BadRequest(result.Errors);
-        }
-
-        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-        var callbackUrl = Url.Action("ConfirmEmail", "Account",
-            new { userId = user.Id, code }, protocol: Request.Scheme);
-
-        var from = new EmailAddress("nicholas.alves2007@gmail.com", "Nicholas Alves");
-
-        var to = new EmailAddress(customerDto.Email);
-
-        var subject = "Confirme seu e-mail";
-        var plainTextContent = $"Por favor, confirme seu e-mail clicando aqui: {callbackUrl}";
-        var htmlContent = $"<strong>Por favor, confirme seu e-mail clicando aqui: <a href='{callbackUrl}'>Confirmar</a></strong>";
-        var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-        
-        return Ok(new AuthResult
+        return Ok(new AuthResult    
         {
             Succeeded = true,
             Token = null,
