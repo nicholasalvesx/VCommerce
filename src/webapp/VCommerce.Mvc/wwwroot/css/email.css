@@ -1,0 +1,59 @@
+.email-confirmation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.confirmation-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+.confirmation-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.confirmation-icon.success {
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+.confirmation-icon.success i {
+    font-size: 36px;
+    color: #28a745;
+}
+
+.confirmation-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.confirmation-message {
+    margin-bottom: 30px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.confirmation-actions {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 576px) {
+    .confirmation-card {
+        padding: 30px 20px;
+    }
+}

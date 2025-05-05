@@ -1,10 +1,12 @@
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using VCommerce.Api.Models;
+using VCommerce.Mvc.Extensions;
 using VCommerce.Mvc.Models;
 using VCommerce.Mvc.Services.Contracts;
 
@@ -12,14 +14,18 @@ namespace VCommerce.Mvc.Controllers;
 
 public class AccountController : Controller
 {
+    private readonly ILogger<AccountController> _logger;
     private readonly IAuthService _authService;
     private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IEmailSender _emailSender;
 
     public AccountController(IAuthService authService,
-        UserManager<ApplicationUser> userManager)
+        UserManager<ApplicationUser> userManager, IEmailSender emailSender, ILogger<AccountController> logger)
     {
         _authService = authService;
         _userManager = userManager;
+        _emailSender = emailSender;
+        _logger = logger;
     }
 
     [HttpGet]
@@ -114,33 +120,66 @@ public class AccountController : Controller
             ModelState.AddModelError(string.Empty, "Usuario ja existe");
             return View(model);
         }
-        
+    
+        var user = new ApplicationUser
+        {
+            CustomerId = null,
+            Email = model.Email,
+            Name = model.Name,
+            LastName = model.LastName,
+            UserName = model.Email, 
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
+            EmailConfirmed = false
+        };
+    
+        var result = await _userManager.CreateAsync(user, model.Password!);
+        if (!result.Succeeded)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+            return View(model);
+        }
+    
+        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+    
+        _logger.LogInformation($"Link de confirmação gerado: {callbackUrl}");
+    
+        if (model.Email != null) 
+        {
+            try
+            {
+                await _emailSender.SendEmailConfirmation(model.Email, callbackUrl);
+                _logger.LogInformation("Email de confirmação enviado para: {ModelEmail}", model.Email);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao enviar email de confirmação: {ExMessage}", ex.Message);
+            }
+        }
+    
         var customerResponse = await _authService.RegisterAsync(model);
         if (customerResponse is { Succeeded: false })
         {
             ModelState.AddModelError(string.Empty, "Tentativa de registro invalida");
             return View(model);
         }
-        
-        var createdUser = await _userManager.FindByEmailAsync(model.Email!);
-        if (createdUser == null)
-        {
-            ModelState.AddModelError(string.Empty, "Erro ao encontrar usuário criado.");
-            return View(model);
-        }
+    
+        await _userManager.AddToRoleAsync(user, "Client");
 
-        await _userManager.AddToRoleAsync(createdUser, "Client");
-
-        TempData["MSG_S"] = "Cadastro efetuado";
+        TempData["MSG_S"] = "Cadastro efetuado. Verifique seu email e confirme-o";
         ModelState.Clear();
-        
-        return RedirectToAction("Login", "Account");
-    }
+    
+        return View("Email", model.Email);
+}
 
     [HttpGet]
     public IActionResult Logout()
     {
-        if (User.Identity != null && !User.Identity.IsAuthenticated)
+        if (User.Identity is { IsAuthenticated: false })
         {
             return RedirectToAction("Login", "Account");
         }
@@ -162,22 +201,65 @@ public class AccountController : Controller
     }
     
     [HttpGet]
+    [AllowAnonymous]
     [Route("confirm-email")]
     public async Task<IActionResult> ConfirmEmail(string userId, string code)
     {
-        if (userId == null || code == null)
-            return BadRequest(new { message = "Parâmetros inválidos." });
+        if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(code))
+        {
+            _logger.LogWarning("Tentativa de confirmação de email com parâmetros inválidos");
+            return View("Error", new ErrorViewModel { ErrorMessage = "Parâmetros inválidos para confirmação de email." });
+        }
 
         var user = await _userManager.FindByIdAsync(userId);
         if (user == null)
-            return NotFound(new { message = "Usuário não encontrado." });
+        {
+            _logger.LogWarning("Usuário não encontrado para ID: {UserId}", userId);
+            return View("Error", new ErrorViewModel { ErrorMessage = "Usuário não encontrado." });
+        }
 
+        code = code.Replace(" ", "+");
+    
         var result = await _userManager.ConfirmEmailAsync(user, code);
         if (result.Succeeded)
         {
-            return Ok("Email confirmado, volte ao site!");
+            _logger.LogInformation($"Email confirmado com sucesso para usuário: {user.Email}");
+            return View("Email");
         }
+    
+        _logger.LogWarning("Falha ao confirmar email para usuário: {UserEmail}. Erros: {Join}", user.Email, 
+            string.Join(", ", result.Errors.Select(e => e.Description)));
         
-        return BadRequest(new { message = "Erro ao enviar email." });
+        return View("Error", new ErrorViewModel { ErrorMessage = "Erro ao confirmar email. O link pode ter expirado." });
+    }
+    
+    [HttpGet]
+    [AllowAnonymous]
+    public async Task<IActionResult> ResendConfirmationEmail(string email)
+    {
+        if (string.IsNullOrEmpty(email))
+        {
+            return BadRequest("Email não fornecido");
+        }
+
+        var user = await _userManager.FindByEmailAsync(email);
+        if (user == null)
+        {
+            TempData["MSG_E"] = "Usuário não encontrado";
+            return RedirectToAction("Login");
+        }
+
+        if (user.EmailConfirmed)
+        {
+            TempData["MSG_S"] = "Seu email já foi confirmado. Faça login para continuar.";
+            return RedirectToAction("Login");
+        }
+
+        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+        await _emailSender.SendEmailConfirmation(email, callbackUrl);
+
+        TempData["MSG_S"] = "Email de confirmação reenviado com sucesso";
+        return View("Email", email);
     }
 }

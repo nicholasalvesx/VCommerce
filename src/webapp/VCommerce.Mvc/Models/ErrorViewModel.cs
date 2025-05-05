@@ -4,5 +4,6 @@ namespace VCommerce.Mvc.Models
     {
         public string? RequestId { get; set; }
         public string? ErrorMessage { get; set; }
+        
     }
 }

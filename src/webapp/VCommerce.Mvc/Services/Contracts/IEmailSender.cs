@@ -1,6 +1,4 @@
-using SendGrid;
-
-namespace VCommerce.Api.Services;
+namespace VCommerce.Mvc.Services.Contracts;
 
 public interface IEmailSender
 {
