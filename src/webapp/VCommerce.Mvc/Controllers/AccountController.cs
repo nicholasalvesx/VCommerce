@@ -146,7 +146,7 @@ public class AccountController : Controller
         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
         var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
     
-        _logger.LogInformation($"Link de confirmação gerado: {callbackUrl}");
+        _logger.LogInformation("Link de confirmação gerado: {CallbackUrl}", callbackUrl);
     
         if (model.Email != null) 
         {
@@ -223,7 +223,7 @@ public class AccountController : Controller
         var result = await _userManager.ConfirmEmailAsync(user, code);
         if (result.Succeeded)
         {
-            _logger.LogInformation($"Email confirmado com sucesso para usuário: {user.Email}");
+            _logger.LogInformation("Email confirmado com sucesso para usuário: {UserEmail}", user.Email);
             return View("Email");
         }
     

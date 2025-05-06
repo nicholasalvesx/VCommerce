@@ -89,7 +89,7 @@ public class CustomerService : ICustomerService
 
             CustomerViewModel? customerUpdated;
 
-            using var response = await customer.PutAsJsonAsync("/api/v1/customers/", customerVm);
+            using var response = await customer.PutAsJsonAsync($"/api/v1/customers/{customerVm!.Id}", customerVm);
             if (response.IsSuccessStatusCode)
             {
                 var apiResponse = await response.Content.ReadAsStreamAsync();

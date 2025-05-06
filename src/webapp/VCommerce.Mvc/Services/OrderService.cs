@@ -92,7 +92,7 @@ public class OrderService : IOrderService
 
             OrderViewModel? orderUpdated;
 
-            using var response = await order.PutAsJsonAsync("/api/v1/orders/", _orderVm);
+            using var response = await order.PutAsJsonAsync($"/api/v1/orders/{model.Id}", _orderVm);
             if (response.IsSuccessStatusCode)
             {
                 var apiResponse = await response.Content.ReadAsStreamAsync();

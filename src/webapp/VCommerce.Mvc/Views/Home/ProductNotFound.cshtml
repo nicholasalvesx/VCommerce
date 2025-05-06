@@ -1,0 +1,70 @@
+@{
+    ViewData["Title"] = "Produto não encontrado";
+}
+
+<link rel="stylesheet" href="/css/notfound.css" asp-append-version="true" />
+
+<div class="content-header">
+    <h1 class="content-title">Produto não encontrado</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+        <li class="breadcrumb-item"><a href="/ProductsApp/Index">Produtos</a></li>
+        <li class="breadcrumb-item active">Produto não encontrado</li>
+    </ol>
+</div>
+
+<div class="dashboard-section">
+    <div class="not-found-container">
+        <div class="not-found-icon">
+            <i class="fas fa-search"></i>
+        </div>
+        
+        <h2 class="not-found-title">Produto não encontrado</h2>
+        
+        <div class="not-found-message">
+            <p>O produto que você está procurando não foi encontrado ou não está mais disponível.</p>
+            <p>Verifique se o link está correto ou tente buscar por outro produto.</p>
+        </div>
+        
+        <div class="search-container">
+            <form action="/ProductsApp/Search" method="get" class="search-form">
+                <div class="input-group">
+                    <input type="text" name="query" class="form-control" placeholder="Buscar produtos..." aria-label="Buscar produtos">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="not-found-actions">
+            <a href="/ProductsApp/Index" class="btn btn-primary">
+                <i class="fas fa-list mr-1"></i> Ver todos os produtos
+            </a>
+            <a href="/Home/Index" class="btn btn-outline-secondary">
+                <i class="fas fa-home mr-1"></i> Ir para página inicial
+            </a>
+        </div>
+        
+        @if (ViewBag.SuggestedProducts != null && ViewBag.SuggestedProducts.Count > 0)
+        {
+            <div class="suggested-products">
+                <h3>Você pode se interessar por</h3>
+                <div class="product-grid">
+                    @foreach (var product in ViewBag.SuggestedProducts)
+                    {
+                        <div class="product-card">
+                            <div class="product-info">
+                                <h4 class="product-name">@product.Name</h4>
+                                <p class="product-price">@product.Price.ToString("C")</p>
+                                <a href="/ProductsApp/Details/@product.Id" class="btn btn-sm btn-outline-primary">Ver detalhes</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

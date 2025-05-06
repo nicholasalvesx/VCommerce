@@ -92,7 +92,7 @@ public class CategoryService : ICategoryService
 
         CategoryViewModel? categoryUpdated;
 
-        using var response = await category.PutAsJsonAsync("/api/v1/categories/", categoryVm);
+        using var response = await category.PutAsJsonAsync($"/api/v1/categories/{categoryVm!.CategoryId}", categoryVm);
         if (response.IsSuccessStatusCode)
         {
             var apiResponse = await response.Content.ReadAsStreamAsync();

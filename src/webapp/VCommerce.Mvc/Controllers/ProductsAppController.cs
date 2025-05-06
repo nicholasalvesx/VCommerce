@@ -48,10 +48,11 @@ public class ProductsAppController : Controller
 
         var result = await _productService.CreateProduct(productVm, await GetAccessToken());
 
-        if (result is { Id: > 0 })
+        if (result != null && result.Id > 0)
             return RedirectToAction(nameof(Index));
 
-        await _categoryService.GetAllCategories(await GetAccessToken());
+        var fallbackCategories = await _categoryService.GetAllCategories(await GetAccessToken());
+        ViewBag.CategoryId = new SelectList(fallbackCategories, "CategoryId", "CategoryName");
 
         ViewBag.ErrorMessage = "Erro ao criar o produto. Tente novamente.";
 
