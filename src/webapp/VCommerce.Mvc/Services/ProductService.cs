@@ -90,20 +90,20 @@ public class ProductService : IProductService
         PutTokenInHeaderAuthorization(token, client);
 
         ProductViewModel? productUpdated;
+
+        using var response = await client.PutAsJsonAsync("/api/v1/products/", productVm);
         
-        using (var response = await client.PutAsJsonAsync("/api/v1/products/", productVm))
+        if (response.IsSuccessStatusCode)
         {
-            if (response.IsSuccessStatusCode)
-            {
-                var apiResponse = await response.Content.ReadAsStreamAsync();
-                productUpdated = await JsonSerializer
-                                  .DeserializeAsync<ProductViewModel>(apiResponse, _options);
-            }
-            else
-            {
-                return null;
-            }
+            var apiResponse = await response.Content.ReadAsStreamAsync();
+            productUpdated = await JsonSerializer
+                .DeserializeAsync<ProductViewModel>(apiResponse, _options);
         }
+        else
+        {
+            return null;
+        }
+
         return productUpdated;
     }
 
@@ -112,14 +112,8 @@ public class ProductService : IProductService
         var client = _clientFactory.CreateClient("Api");
         PutTokenInHeaderAuthorization(token, client);
 
-        using (var response = await client.DeleteAsync("/api/v1/products/" + id))
-        {
-            if (response.IsSuccessStatusCode)
-            {
-                return true;
-            }
-        }
-        return false;
+        using var response = await client.DeleteAsync("/api/v1/products/" + id);
+        return response.IsSuccessStatusCode;
     }
 
     private static void PutTokenInHeaderAuthorization(string? token, HttpClient client)

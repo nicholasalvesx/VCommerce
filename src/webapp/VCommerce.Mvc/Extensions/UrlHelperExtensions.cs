@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using VCommerce.Api.Controllers;
 
 namespace VCommerce.Mvc.Extensions;
 
