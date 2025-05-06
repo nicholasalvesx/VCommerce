@@ -265,7 +265,7 @@ public class AccountController : Controller
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Erro ao reenviar email de confirmação: {ex.Message}");
+            _logger.LogError(ex, "Erro ao reenviar email de confirmação: {ExMessage}", ex.Message);
             TempData["MSG_E"] = "Erro ao reenviar email de confirmação. Tente novamente mais tarde.";
         }
     

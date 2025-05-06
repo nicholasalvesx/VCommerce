@@ -20,7 +20,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="changes&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.VCommerce/.idea/workspace.xml" />
+    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="changes&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.VCommerce/.idea/workspace.xml">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.csproj.AssemblyReference.cache" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
