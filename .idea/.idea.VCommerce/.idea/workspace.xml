@@ -10,6 +10,9 @@
     <projectFile>WorkerService/WorkerService.csproj</projectFile>
     <projectFile>src/VCommerce.Api/VCommerce.Api.csproj</projectFile>
     <projectFile>src/VCommerce.Mvc/VCommerce.Mvc.csproj</projectFile>
+    <projectFile profileName="http">src/webapi/VCommerce.Api/VCommerce.Api.csproj</projectFile>
+    <projectFile profileName="http">src/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj</projectFile>
+    <projectFile profileName="https">src/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj</projectFile>
     <projectFile profileName="VShop.Web">src/webapp/Vcommerce.Test/VShop.Web/Vcommerce.Test.csproj</projectFile>
     <projectFile profileName="WorkerService">src/worker/WorkerService/WorkerService.csproj</projectFile>
   </component>
@@ -17,9 +20,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="changes&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.VCommerce/.idea/workspace.xml" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
