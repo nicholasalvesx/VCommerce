@@ -21,7 +21,5 @@ public class HttpClientAuthorizationDelegatingHandler : DelegatingHandler
         }
 
         return await base.SendAsync(request, cancellationToken);
-        
-        
     }
 }

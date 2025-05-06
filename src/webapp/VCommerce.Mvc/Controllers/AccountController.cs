@@ -271,4 +271,11 @@ public class AccountController : Controller
     
         return View("AwaitingEmailConfirmation", email);
     }
+    
+    [HttpGet]
+    //[Route("access-denied")]
+    public IActionResult AccessDenied()
+    {
+        return View();
+    }
 }

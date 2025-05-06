@@ -40,28 +40,65 @@ public class HomeController : Controller
                 return RedirectToAction(nameof(Index));
             }
 
-            var token = await HttpContext.GetTokenAsync("access_token");
-            if (string.IsNullOrEmpty(token))
+            var token = await HttpContext.GetTokenAsync("access_token") 
+                        ?? await HttpContext.GetTokenAsync("acess_token") 
+                        ?? await HttpContext.GetTokenAsync("Bearer");
+
+            _logger.LogInformation("Tentando acessar detalhes do produto ID: {ProductId}. Token obtido: {TokenStatus}", 
+                id, !string.IsNullOrEmpty(token) ? "Sim" : "Não");
+
+            if (string.IsNullOrEmpty(token) && User.Identity?.IsAuthenticated == true)
             {
-                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("ProductDetails", new { id }) });
+                _logger.LogWarning("Usuário autenticado, mas token não encontrado. Tentando alternativas.");
+            
+                token = Request.Cookies["access_token"] ?? HttpContext.Session.GetString("access_token");
+            
+                if (string.IsNullOrEmpty(token))
+                {
+                    _logger.LogWarning("Token não encontrado em cookies ou sessão. Tentando prosseguir sem token.");
+                }
             }
 
-            var product = await _productService.FindProductById(id, token);
+            ProductViewModel? product;
+        
+            if (string.IsNullOrEmpty(token))
+            {
+                _logger.LogInformation("Tentando buscar produto sem token de autenticação");
+                try
+                {
+                    product = await _productService.FindProductById(id, null);
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    _logger.LogWarning("Acesso não autorizado ao tentar buscar produto sem token");
+                    return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("ProductDetails", new { id }) });
+                }
+            }
+            else
+            {
+                product = await _productService.FindProductById(id, token);
+            }
 
             if (product is null)
             {
                 TempData["Error"] = "Produto não encontrado.";
-                return View();
+                return View("ProductNotFound"); 
             }
 
             product.Quantity = 1;
-
             return View(product);
         }
-        
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "Erro ao comunicar com a API de produtos. ID: {ProductId}", id);
+            _logger.LogError(ex, "Erro ao comunicar com a API de produtos. ID: {ProductId}. Status: {Status}", 
+                id, ex.StatusCode);
+            
+            if (ex.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                TempData["Error"] = "Sua sessão expirou ou você não tem permissão para acessar este produto.";
+                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("ProductDetails", new { id }) });
+            }
+        
             TempData["Error"] = "Não foi possível conectar ao serviço de produtos. Tente novamente mais tarde.";
             return View("Error");
         }
@@ -71,7 +108,7 @@ public class HomeController : Controller
             TempData["Error"] = "Ocorreu um erro inesperado. Por favor, tente novamente.";
             return View("Error");
         }
-    }
+}
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error(string message)
