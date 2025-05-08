@@ -10,7 +10,7 @@
 *.sln.docstates
 .vscode/
 .__vscode/
-.idea/
+.idea/.idea.VCommerce/.idea/dataSources
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
