@@ -8,7 +8,7 @@ using VCommerce.Modules.Core.Infra;
 
 #nullable disable
 
-namespace VCommerce.Api.Migrations
+namespace VCommerce.Modules.Core.Infra.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot

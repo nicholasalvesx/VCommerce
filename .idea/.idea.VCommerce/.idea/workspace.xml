@@ -10,6 +10,7 @@
     <projectFile>WorkerService/WorkerService.csproj</projectFile>
     <projectFile>src/VCommerce.Api/VCommerce.Api.csproj</projectFile>
     <projectFile>src/VCommerce.Mvc/VCommerce.Mvc.csproj</projectFile>
+    <projectFile>src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj</projectFile>
     <projectFile>src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj</projectFile>
     <projectFile profileName="http">src/webapi/VCommerce.Api/VCommerce.Api.csproj</projectFile>
     <projectFile profileName="http">src/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj</projectFile>
@@ -22,296 +23,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="changes&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.VCommerce/.idea/workspace.xml">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VCommerce.sln" beforeDir="false" afterPath="$PROJECT_DIR$/VCommerce.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VCommerce.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/VCommerce.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Configuration/IdentityConfig.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Controllers/AuthController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Controllers/CategoriesController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Controllers/CustomerController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Controllers/OrderController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Controllers/ProductsController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/DTOs/CategoryDTO.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/DTOs/CustomerDTO.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/DTOs/LoginDTO.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/DTOs/Mappings/MappingProfile.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/DTOs/OrderDTO.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/DTOs/ProductDTO.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/DTOs/TokenDTO.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Data/AppDbContext.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250402121412_InitialMigration.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250402121412_InitialMigration.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250403124555_SeedProducts.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250403124555_SeedProducts.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250403144946_SecondMigration.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250403144946_SecondMigration.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250409131824_AddMigration.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250409131824_AddMigration.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250409143023_RefactIdentity.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250409143023_RefactIdentity.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250415122524_AddingFilds.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250415122524_AddingFilds.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250415123504_Refact.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250415123504_Refact.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250415173152_FeatureCustomer.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250415173152_FeatureCustomer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250415180235_RefactCustomer.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250415180235_RefactCustomer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250422174601_Order.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250422174601_Order.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250422210120_AddingClientId.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250422210120_AddingClientId.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250423183851_UpdateUserIdentity.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250423183851_UpdateUserIdentity.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250424190727_FixCustomerDto.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250424190727_FixCustomerDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250430182445_RefactCategories.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250430182445_RefactCategories.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250502125533_ProductsFixed.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250502125533_ProductsFixed.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250502140511_RefactProdutcs.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/20250502140511_RefactProdutcs.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Models/ApplicationUser.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Models/AuthResult.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Models/Category.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Models/Customer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Models/Order.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Models/Product.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Properties/launchSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Repositores/CategoryRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Repositores/CustomerRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Repositores/ICategoryRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Repositores/ICustomerRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Repositores/IOrderRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Repositores/IProductRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Repositores/OrderRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Repositores/ProductRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/CategoryService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/CustomerService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/ICategoryService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/ICustomerService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/IOrderService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/IProductService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/ITokenService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/OrderService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/ProductService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/Services/TokenService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/VCommerce.Api.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapi/VCommerce.Api/appsettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Configuration/HttpClientAuthorizationDelegatingHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/AccountController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/CategoriesAppController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/CustomerAppController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/HomeController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/OrdersAppController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Controllers/ProductsAppController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Extensions/EmailSenderExtensions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Extensions/UrlHelperExtensions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Models/AuthResult.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Models/CategoryViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Models/CustomerViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Models/ErrorResponse.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Models/ErrorResult.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Models/ErrorViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Models/LoginViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Models/OrderViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Models/ProductViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Models/RegisterViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Properties/launchSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/AuthService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/CategoryService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/Contracts/IAuthService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/Contracts/ICategoryService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/Contracts/ICustomerService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/Contracts/IEmailSender.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/Contracts/IOrderService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/Contracts/IProductService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/CustomerService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/EmailSender.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/OrderService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Services/ProductService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj.DotSettings.user" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Account/AccessDenied.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Account/AwaitingEmailConfirmation.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Account/Email.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Account/Login.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Account/Logout.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Account/Register.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/CategoriesApp/CreateCategory.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/CategoriesApp/DeleteCategory.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/CategoriesApp/Details.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/CategoriesApp/EditCategory.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/CategoriesApp/Index.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/CustomerApp/CreateCustomer.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/CustomerApp/DeleteCustomer.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/CustomerApp/EditCustomer.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/CustomerApp/Index.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/CustomerApp/Profile.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Home/Index.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Home/ProductDetails.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Home/ProductNotFound.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/OrdersApp/CreateOrder.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/OrdersApp/DeleteOrder.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/OrdersApp/Details.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/OrdersApp/EditOrder.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/OrdersApp/Index.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/ProductsApp/CreateProduct.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/ProductsApp/DeleteProduct.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/ProductsApp/Index.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/ProductsApp/UpdateProduct.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Shared/Error.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Shared/_Layout.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Shared/_Layout.cshtml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Shared/_LoginPartial.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/Shared/_ValidationScriptsPartial.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/_ViewImports.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/Views/_ViewStart.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/appsettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/libman.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/obj/Debug/net9.0/VCommerce.Mvc.AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/assets/vcommerce.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/category.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/customer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/dashboard.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/details.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/email.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/logout.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/notfound.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/order.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/product.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/profile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/register.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/css/site.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/all.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/all.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/brands.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/brands.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/fontawesome.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/fontawesome.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/regular.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/regular.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/solid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/solid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/svg-with-js.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/svg-with-js.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/v4-font-face.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/v4-font-face.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/v4-shims.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/v4-shims.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/v5-font-face.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/css/v5-font-face.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/all.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/all.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/brands.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/brands.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/conflict-detection.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/conflict-detection.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/fontawesome.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/fontawesome.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/regular.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/regular.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/solid.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/solid.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/v4-shims.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/js/v4-shims.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/sprites/brands.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/sprites/regular.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/sprites/solid.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/webfonts/fa-brands-400.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/webfonts/fa-brands-400.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/webfonts/fa-regular-400.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/webfonts/fa-regular-400.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/webfonts/fa-solid-900.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/webfonts/fa-solid-900.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/webfonts/fa-v4compatibility.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/font-awesome/webfonts/fa-v4compatibility.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/js/site.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/jquery-validation/LICENSE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/jquery-validation/dist/additional-methods.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/jquery-validation/dist/additional-methods.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/jquery-validation/dist/jquery.validate.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/jquery/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/jquery/dist/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/jquery/dist/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/VCommerce.Mvc/wwwroot/lib/jquery/dist/jquery.min.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/WorkerService/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/WorkerService/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/WorkerService/Properties/launchSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/WorkerService/Worker.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/WorkerService/WorkerService.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/WorkerService/appsettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/DeleteProductsUnitTests/DeleteProductsUnitTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/DeleteProductsUnitTests/DeleteProductsUnitTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/GetProductsUnitTests/GetProductsUnitTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/GetProductsUnitTests/GetProductsUnitTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/PostProductsUnitTests/PostProductsUnitTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/PostProductsUnitTests/PostProductsUnitTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/ProductsUnitTestsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/ProductsUnitTestsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/PutProductsUnitTests/PutProductsUnitTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/Products/PutProductsUnitTests/PutProductsUnitTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/VCommerce.Tests.UnitTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/VCommerce.Tests.UnitTests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/VCommerce.Tests.UnitTests.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/VCommerce.Tests.UnitTests.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/rider.project.restore.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Configuration/CategoryConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Configuration/CustomerConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Configuration/ProductConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Domain/Entities/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Domain/Entities/Order.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/AppDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/Views/OrdersApp/CreateOrder.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/Views/OrdersApp/CreateOrder.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/wwwroot/css/order.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/wwwroot/css/order.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -342,6 +62,11 @@
         </map>
       </branch-storage>
     </excluded-from-favorite>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -365,6 +90,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/db7395f4add94e6d10e515b3e55373f2821f8323de7dc8e314d78feefacf5584/ActionMethodExecutor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/eb8b15bbf6ed38ef49b0b77ac383bba3c22ce8dbcff5a4798cdebe3013d9ea/AuthenticationHttpContextExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/services/webapi/VCommerce.Api/Configuration/DependecyInjectionConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///usr/share/dotnet/sdk/9.0.203/Sdks/Microsoft.NET.Sdk/Sdk/Sdk.props" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///usr/share/dotnet/sdk/9.0.203/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -416,7 +142,7 @@
   <component name="Push.Settings">
     <option name="SHOW_DETAILS_PANEL" value="false" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.VCommerce.Api: http">
+  <component name="RunManager" selected=".NET Launch Settings Profile.VCommerce.Mvc: http">
     <configuration name="VCommerce.Api" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -431,6 +157,29 @@
       <option name="AUTO_ATTACH_CHILDREN" value="0" />
       <option name="MIXED_MODE_DEBUG" value="0" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/src/VCommerce.Api/VCommerce.Api.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="VCommerce.Modules.Core.Application" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
@@ -622,6 +371,7 @@
       <item itemvalue=".NET Launch Settings Profile.VCommerce.Mvc: https" />
       <item itemvalue=".NET Launch Settings Profile.VCommerce.Api: http" />
       <item itemvalue=".NET Launch Settings Profile.VCommerce.Api: https" />
+      <item itemvalue=".NET Project.VCommerce.Modules.Core.Application" />
       <item itemvalue=".NET Project.VCommerce.Modules.Core.Infra" />
       <item itemvalue=".NET Project.WorkerService" />
       <item itemvalue=".NET Project.VCommerce.Mvc" />
@@ -688,6 +438,7 @@
       <workItem from="1746541432259" duration="14405000" />
       <workItem from="1746617877414" duration="8262000" />
       <workItem from="1746703295501" duration="5581000" />
+      <workItem from="1746708884658" duration="14518000" />
     </task>
     <task id="LOCAL-00001" summary="First first commit">
       <option name="closed" value="true" />
@@ -791,14 +542,14 @@
           <option name="timeStamp" value="4" />
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Repositores/ProductRepository.cs</url>
-          <line>29</line>
+          <url>file://$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Repositories/ProductRepository.cs</url>
+          <line>28</line>
           <properties documentPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Repositores/ProductRepository.cs" containingFunctionPresentation="Method 'CreateProduct'">
             <startOffsets>
-              <option value="803" />
+              <option value="801" />
             </startOffsets>
             <endOffsets>
-              <option value="837" />
+              <option value="835" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />

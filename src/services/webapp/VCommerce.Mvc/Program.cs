@@ -61,6 +61,7 @@ builder.Services.AddAuthentication(options =>
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
     {
         options.LoginPath = "/Account/Login";
+        options.LogoutPath = "/auth/logout";
         options.AccessDeniedPath = "/Account/AccessDenied";
     });
 
