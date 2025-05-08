@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net9.0": {
-      "AutoMapper/11.0.0": {
+      "AutoMapper/12.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0"
@@ -18,10 +18,10 @@
           }
         }
       },
-      "AutoMapper.Extensions.Microsoft.DependencyInjection/11.0.0": {
+      "AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.1": {
         "type": "package",
         "dependencies": {
-          "AutoMapper": "11.0.0",
+          "AutoMapper": "[12.0.1]",
           "Microsoft.Extensions.Options": "6.0.0"
         },
         "compile": {
@@ -248,6 +248,26 @@
         },
         "runtime": {
           "lib/net9.0/Microsoft.Extensions.Caching.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration/9.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.4",
+          "Microsoft.Extensions.Primitives": "9.0.4"
+        },
+        "compile": {
+          "lib/net9.0/Microsoft.Extensions.Configuration.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Configuration.dll": {
             "related": ".xml"
           }
         },
@@ -1072,34 +1092,86 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "VCommerce.Modules.Core.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.4",
+          "VCommerce.Modules.Core.Domain": "1.0.0",
+          "VCommerce.Modules.Core.Infra": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/VCommerce.Modules.Core.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VCommerce.Modules.Core.Application.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "VCommerce.Modules.Core.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "9.0.4"
+        },
+        "compile": {
+          "bin/placeholder/VCommerce.Modules.Core.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VCommerce.Modules.Core.Domain.dll": {}
+        }
+      },
+      "VCommerce.Modules.Core.Infra/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.4",
+          "Microsoft.EntityFrameworkCore": "9.0.4",
+          "Microsoft.Extensions.Configuration": "9.0.4",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
+          "VCommerce.Modules.Core.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/VCommerce.Modules.Core.Infra.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VCommerce.Modules.Core.Infra.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
   "libraries": {
-    "AutoMapper/11.0.0": {
-      "sha512": "+596AnKykYCk9RxXCEF4GYuapSebQtFVvIA1oVG1rrRkCLAC7AkWehJ0brCfYUbdDW3v1H/p0W3hob7JoXGjMw==",
+    "AutoMapper/12.0.1": {
+      "sha512": "hvV62vl6Hp/WfQ24yzo3Co9+OPl8wH8hApwVtgWpiAynVJkUcs7xvehnSftawL8Pe8FrPffBRM3hwzLQqWDNjA==",
       "type": "package",
-      "path": "automapper/11.0.0",
+      "path": "automapper/12.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "automapper.11.0.0.nupkg.sha512",
+        "automapper.12.0.1.nupkg.sha512",
         "automapper.nuspec",
         "icon.png",
         "lib/netstandard2.1/AutoMapper.dll",
         "lib/netstandard2.1/AutoMapper.xml"
       ]
     },
-    "AutoMapper.Extensions.Microsoft.DependencyInjection/11.0.0": {
-      "sha512": "0asw5WxdCFh2OTi9Gv+oKyH9SzxwYQSnO8TV5Dd0GggovILzJW4UimP26JAcxc3yB5NnC5urooZ1BBs8ElpiBw==",
+    "AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.1": {
+      "sha512": "+g/K+Vpe3gGMKGzjslMOdqNlkikScDjWfVvmWTayrDHaG/n2pPmFBMa+jKX1r/h6BDGFdkyRjAuhFE3ykW+r1g==",
       "type": "package",
-      "path": "automapper.extensions.microsoft.dependencyinjection/11.0.0",
+      "path": "automapper.extensions.microsoft.dependencyinjection/12.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+        "automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "icon.png",
         "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
@@ -1533,6 +1605,34 @@
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.xml",
         "microsoft.extensions.caching.memory.9.0.4.nupkg.sha512",
         "microsoft.extensions.caching.memory.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration/9.0.4": {
+      "sha512": "KIVBrMbItnCJDd1RF4KEaE8jZwDJcDUJW5zXpbwQ05HNYTK1GveHxHK0B3SjgDJuR48GRACXAO+BLhL8h34S7g==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration/9.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Configuration.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net8.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Configuration.targets",
+        "lib/net462/Microsoft.Extensions.Configuration.dll",
+        "lib/net462/Microsoft.Extensions.Configuration.xml",
+        "lib/net8.0/Microsoft.Extensions.Configuration.dll",
+        "lib/net8.0/Microsoft.Extensions.Configuration.xml",
+        "lib/net9.0/Microsoft.Extensions.Configuration.dll",
+        "lib/net9.0/Microsoft.Extensions.Configuration.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
+        "microsoft.extensions.configuration.9.0.4.nupkg.sha512",
+        "microsoft.extensions.configuration.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
@@ -2532,6 +2632,21 @@
       "type": "project",
       "path": "../../../src/webapi/VCommerce.Api/VCommerce.Api.csproj",
       "msbuildProject": "../../../src/webapi/VCommerce.Api/VCommerce.Api.csproj"
+    },
+    "VCommerce.Modules.Core.Application/1.0.0": {
+      "type": "project",
+      "path": "../../../src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj",
+      "msbuildProject": "../../../src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj"
+    },
+    "VCommerce.Modules.Core.Domain/1.0.0": {
+      "type": "project",
+      "path": "../../../src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Domain.csproj",
+      "msbuildProject": "../../../src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Domain.csproj"
+    },
+    "VCommerce.Modules.Core.Infra/1.0.0": {
+      "type": "project",
+      "path": "../../../src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj",
+      "msbuildProject": "../../../src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2540,6 +2655,7 @@
       "Microsoft.NET.Test.Sdk >= 17.12.0",
       "SendGrid >= 9.29.3",
       "VCommerce.Api >= 1.0.0",
+      "VCommerce.Modules.Core.Application >= 1.0.0",
       "coverlet.collector >= 6.0.2",
       "xunit >= 2.9.2",
       "xunit.runner.visualstudio >= 2.8.2"
@@ -2570,6 +2686,12 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
+            "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj": {
+              "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj"
+            },
+            "/home/nicholas/Documentos/workspace/VCommerce/src/services/webapi/VCommerce.Api/VCommerce.Api.csproj": {
+              "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/services/webapi/VCommerce.Api/VCommerce.Api.csproj"
+            },
             "/home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/VCommerce.Api.csproj": {
               "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/VCommerce.Api.csproj"
             }

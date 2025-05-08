@@ -21,6 +21,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\src\modules\core\VCommerce.Modules.Core.Application\VCommerce.Modules.Core.Application.csproj" />
+      <ProjectReference Include="..\..\..\src\services\webapi\VCommerce.Api\VCommerce.Api.csproj" />
       <ProjectReference Include="..\..\..\src\webapi\VCommerce.Api\VCommerce.Api.csproj" />
     </ItemGroup>
 

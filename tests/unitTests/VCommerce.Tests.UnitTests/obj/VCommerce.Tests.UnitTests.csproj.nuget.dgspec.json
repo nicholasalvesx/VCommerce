@@ -4,6 +4,318 @@
     "/home/nicholas/Documentos/workspace/VCommerce/tests/unitTests/VCommerce.Tests.UnitTests/VCommerce.Tests.UnitTests.csproj": {}
   },
   "projects": {
+    "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj",
+        "projectName": "VCommerce.Modules.Core.Application",
+        "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj",
+        "packagesPath": "/home/nicholas/.nuget/packages/",
+        "outputPath": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/nicholas/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Domain.csproj": {
+                "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Domain.csproj"
+              },
+              "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj": {
+                "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Domain.csproj",
+        "projectName": "VCommerce.Modules.Core.Domain",
+        "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Domain.csproj",
+        "packagesPath": "/home/nicholas/.nuget/packages/",
+        "outputPath": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/nicholas/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj",
+        "projectName": "VCommerce.Modules.Core.Infra",
+        "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj",
+        "packagesPath": "/home/nicholas/.nuget/packages/",
+        "outputPath": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Infra/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/nicholas/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Domain.csproj": {
+                "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/nicholas/Documentos/workspace/VCommerce/src/services/webapi/VCommerce.Api/VCommerce.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/nicholas/Documentos/workspace/VCommerce/src/services/webapi/VCommerce.Api/VCommerce.Api.csproj",
+        "projectName": "VCommerce.Api",
+        "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/services/webapi/VCommerce.Api/VCommerce.Api.csproj",
+        "packagesPath": "/home/nicholas/.nuget/packages/",
+        "outputPath": "/home/nicholas/Documentos/workspace/VCommerce/src/services/webapi/VCommerce.Api/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/nicholas/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj": {
+                "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "/home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/VCommerce.Api.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -146,6 +458,12 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
+              "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj": {
+                "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj"
+              },
+              "/home/nicholas/Documentos/workspace/VCommerce/src/services/webapi/VCommerce.Api/VCommerce.Api.csproj": {
+                "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/services/webapi/VCommerce.Api/VCommerce.Api.csproj"
+              },
               "/home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/VCommerce.Api.csproj": {
                 "projectPath": "/home/nicholas/Documentos/workspace/VCommerce/src/webapi/VCommerce.Api/VCommerce.Api.csproj"
               }

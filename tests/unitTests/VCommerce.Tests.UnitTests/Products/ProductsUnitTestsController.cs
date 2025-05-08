@@ -1,9 +1,10 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using VCommerce.Api.Data;
-using VCommerce.Api.DTOs.Mappings;
-using VCommerce.Api.Repositores;
-using VCommerce.Api.Services;
+using VCommerce.Modules.Core.Application.DTOs.Mappings;
+using VCommerce.Modules.Core.Application.Interfaces;
+using VCommerce.Modules.Core.Application.Services;
+using VCommerce.Modules.Core.Infra;
+using VCommerce.Modules.Core.Infra.Repositories;
 
 namespace VCommerce.Tests.UnitTests.Products;
 
@@ -11,7 +12,7 @@ public class ProductsUnitTestsController
 {
     public IProductRepository Repository { get; }
     public IMapper Mapper { get; }
-    public IProductService productService;
+    public readonly IProductService ProductService;
     
     private static DbContextOptions<AppDbContext> dbContextOptions { get; }
 
@@ -34,6 +35,6 @@ public class ProductsUnitTestsController
         Mapper = config.CreateMapper();
         var context = new AppDbContext(dbContextOptions);
         Repository = new ProductRepository(context);
-        productService = new ProductService(Mapper, Repository);
+        ProductService = new ProductService(Mapper, Repository);
     }
 }

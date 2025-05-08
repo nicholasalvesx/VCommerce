@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using VCommerce.Api.Controllers;
-using VCommerce.Api.DTOs;
+using VCommerce.Modules.Core.Application.DTOs;
 using Xunit;
 
 namespace VCommerce.Tests.UnitTests.Products.PutProductsUnitTests;
@@ -13,7 +13,7 @@ public class PutProductsUnitTests : IClassFixture<ProductsUnitTestsController>
 
     public PutProductsUnitTests(ProductsUnitTestsController productsController)
     {
-        _productsController = new ProductsController(productsController.productService);
+        _productsController = new ProductsController(productsController.ProductService);
     }
 
     [Fact]
