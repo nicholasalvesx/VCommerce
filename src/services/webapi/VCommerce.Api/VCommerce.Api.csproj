@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
       <UserSecretsId>1b8d2b7d-db62-4e7e-a99d-105cef26116a</UserSecretsId>
+      <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
     
     <ItemGroup>
@@ -17,6 +18,12 @@
     
     <ItemGroup>
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.4" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Content Include="..\..\..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>

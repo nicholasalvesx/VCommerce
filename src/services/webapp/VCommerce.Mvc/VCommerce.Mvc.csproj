@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
       <UserSecretsId>03831179-44c6-47df-a982-69ba9f0bad91</UserSecretsId>
+      <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
     <ItemGroup>
@@ -47,6 +48,12 @@
       <AdditionalFiles Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
       <AdditionalFiles Include="Views\_ViewImports.cshtml" />
       <AdditionalFiles Include="Views\_ViewStart.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>
