@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Identity;
-using VCommerce.Modules.Core.Domain.Entities;
+using VCommerce.Modules.Core.Infra.Models;
 
 namespace WorkerService;
 

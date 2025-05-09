@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using VCommerce.Modules.Core.Domain.Entities;
 using VCommerce.Modules.Core.Infra;
+using VCommerce.Modules.Core.Infra.Models;
 using WorkerService;
 
 var builder = Host.CreateApplicationBuilder(args);

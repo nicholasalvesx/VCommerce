@@ -1,11 +1,10 @@
 using System.Security.Claims;
-using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using VCommerce.Modules.Core.Domain.Entities;
+using VCommerce.Modules.Core.Infra.Models;
 using VCommerce.Mvc.Extensions;
 using VCommerce.Mvc.Models;
 using VCommerce.Mvc.Services.Contracts;

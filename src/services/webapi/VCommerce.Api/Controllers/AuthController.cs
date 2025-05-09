@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using VCommerce.Modules.Core.Application.DTOs;
 using VCommerce.Modules.Core.Application.Interfaces;
 using VCommerce.Modules.Core.Domain.Entities;
+using VCommerce.Modules.Core.Infra.Models;
 using VCommerce.Modules.Core.Infra.Repositories;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using VCommerce.Modules.Core.Domain.Entities;
+using VCommerce.Modules.Core.Infra.Models;
 
 namespace VCommerce.Modules.Core.Infra;
 

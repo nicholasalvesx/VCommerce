@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using VCommerce.Modules.Core.Domain.Entities;
+using VCommerce.Modules.Core.Infra.Models;
 
 namespace VCommerce.Modules.Core.Infra.Configuration;
 

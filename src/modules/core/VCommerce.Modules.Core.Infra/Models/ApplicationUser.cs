@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace VCommerce.Modules.Core.Domain.Entities;
+namespace VCommerce.Modules.Core.Infra.Models;
 
 public class ApplicationUser : IdentityUser
 {
