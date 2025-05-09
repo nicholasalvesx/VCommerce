@@ -20,6 +20,8 @@ FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./VCommerce.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
+ENV JWT__SecretKey="x0HhzrgVfOJgG3V6Hpl9Ev9ccojN+bfZxPxX5TWi6uY="
+
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
