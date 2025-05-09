@@ -24,5 +24,8 @@ ENV SecretKey="x0HhzrgVfOJgG3V6Hpl9Ev9ccojN+bfZxPxX5TWi6uY="
 
 FROM base AS final
 WORKDIR /app
+
+ENV JWT__SecretKey="x0HhzrgVfOJgG3V6Hpl9Ev9ccojN+bfZxPxX5TWi6uY="
+
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "VCommerce.Api.dll"]
