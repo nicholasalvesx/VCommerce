@@ -15,7 +15,9 @@ COPY ["src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infr
 
 RUN dotnet restore "src/services/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj"
 
-COPY src/modules /src/src/modules
+COPY src/modules/core/VCommerce.Modules.Core.Application /src/src/modules/core/VCommerce.Modules.Core.Application
+COPY src/modules/core/VCommerce.Modules.Core.Domain /src/src/modules/core/VCommerce.Modules.Core.Domain
+COPY src/modules/core/VCommerce.Modules.Core.Infra /src/src/modules/core/VCommerce.Modules.Core.Infra
 COPY src/services/webapp/VCommerce.Mvc /src/src/services/webapp/VCommerce.Mvc
 
 WORKDIR "/src/src/services/webapp/VCommerce.Mvc"
