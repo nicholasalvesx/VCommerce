@@ -16,7 +16,7 @@ public class Order
     public IList<OrderItem>? Items { get; set; }
 }
 
-public abstract class OrderItem
+public class OrderItem
 {
     [Key]
     public int Id { get; set; }

@@ -23,15 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="changes&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.VCommerce/.idea/workspace.xml">
-      <change afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Configuration/CategoryConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Configuration/CustomerConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Configuration/ProductConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Domain/Entities/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Domain/Entities/Order.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/AppDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/Views/OrdersApp/CreateOrder.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/Views/OrdersApp/CreateOrder.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/wwwroot/css/order.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/wwwroot/css/order.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Repositories/CategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Repositories/CategoryRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Repositories/CustomerRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Repositories/CustomerRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +92,7 @@
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="SWEA" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;030303ff&quot;,
@@ -438,7 +435,8 @@
       <workItem from="1746541432259" duration="14405000" />
       <workItem from="1746617877414" duration="8262000" />
       <workItem from="1746703295501" duration="5581000" />
-      <workItem from="1746708884658" duration="14518000" />
+      <workItem from="1746708884658" duration="16480000" />
+      <workItem from="1746789757419" duration="3251000" />
     </task>
     <task id="LOCAL-00001" summary="First first commit">
       <option name="closed" value="true" />
@@ -541,19 +539,6 @@
           </properties>
           <option name="timeStamp" value="4" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Repositories/ProductRepository.cs</url>
-          <line>28</line>
-          <properties documentPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Repositores/ProductRepository.cs" containingFunctionPresentation="Method 'CreateProduct'">
-            <startOffsets>
-              <option value="801" />
-            </startOffsets>
-            <endOffsets>
-              <option value="835" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>

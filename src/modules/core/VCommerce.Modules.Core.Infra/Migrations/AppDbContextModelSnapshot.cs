@@ -154,7 +154,7 @@ namespace VCommerce.Modules.Core.Infra.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("VCommerce.Api.Entities.ApplicationUser", b =>
+            modelBuilder.Entity("VCommerce.Modules.Core.Domain.Entities.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
@@ -239,7 +239,7 @@ namespace VCommerce.Modules.Core.Infra.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("VCommerce.Api.Entities.Category", b =>
+            modelBuilder.Entity("VCommerce.Modules.Core.Domain.Entities.Category", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -255,7 +255,7 @@ namespace VCommerce.Modules.Core.Infra.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("VCommerce.Api.Entities.Customer", b =>
+            modelBuilder.Entity("VCommerce.Modules.Core.Domain.Entities.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -283,7 +283,7 @@ namespace VCommerce.Modules.Core.Infra.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("VCommerce.Api.Entities.Order", b =>
+            modelBuilder.Entity("VCommerce.Modules.Core.Domain.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -310,7 +310,7 @@ namespace VCommerce.Modules.Core.Infra.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("VCommerce.Api.Entities.OrderItem", b =>
+            modelBuilder.Entity("VCommerce.Modules.Core.Domain.Entities.OrderItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -337,7 +337,7 @@ namespace VCommerce.Modules.Core.Infra.Migrations
                     b.ToTable("OrderItem");
                 });
 
-            modelBuilder.Entity("VCommerce.Api.Entities.Product", b =>
+            modelBuilder.Entity("VCommerce.Modules.Core.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -378,7 +378,7 @@ namespace VCommerce.Modules.Core.Infra.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("VCommerce.Api.Entities.ApplicationUser", null)
+                    b.HasOne("VCommerce.Modules.Core.Domain.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -387,7 +387,7 @@ namespace VCommerce.Modules.Core.Infra.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("VCommerce.Api.Entities.ApplicationUser", null)
+                    b.HasOne("VCommerce.Modules.Core.Domain.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -402,7 +402,7 @@ namespace VCommerce.Modules.Core.Infra.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VCommerce.Api.Entities.ApplicationUser", null)
+                    b.HasOne("VCommerce.Modules.Core.Domain.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -411,16 +411,16 @@ namespace VCommerce.Modules.Core.Infra.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("VCommerce.Api.Entities.ApplicationUser", null)
+                    b.HasOne("VCommerce.Modules.Core.Domain.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VCommerce.Api.Entities.Order", b =>
+            modelBuilder.Entity("VCommerce.Modules.Core.Domain.Entities.Order", b =>
                 {
-                    b.HasOne("VCommerce.Api.Entities.Customer", "Customer")
+                    b.HasOne("VCommerce.Modules.Core.Domain.Entities.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -429,32 +429,32 @@ namespace VCommerce.Modules.Core.Infra.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("VCommerce.Api.Entities.OrderItem", b =>
+            modelBuilder.Entity("VCommerce.Modules.Core.Domain.Entities.OrderItem", b =>
                 {
-                    b.HasOne("VCommerce.Api.Entities.Order", null)
+                    b.HasOne("VCommerce.Modules.Core.Domain.Entities.Order", null)
                         .WithMany("Items")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VCommerce.Api.Entities.Product", b =>
+            modelBuilder.Entity("VCommerce.Modules.Core.Domain.Entities.Product", b =>
                 {
-                    b.HasOne("VCommerce.Api.Entities.Category", "Category")
+                    b.HasOne("VCommerce.Modules.Core.Domain.Entities.Category", "CategoryName")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.Navigation("CategoryName");
                 });
 
-            modelBuilder.Entity("VCommerce.Api.Entities.Category", b =>
+            modelBuilder.Entity("VCommerce.Modules.Core.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("VCommerce.Api.Entities.Order", b =>
+            modelBuilder.Entity("VCommerce.Modules.Core.Domain.Entities.Order", b =>
                 {
                     b.Navigation("Items");
                 });
