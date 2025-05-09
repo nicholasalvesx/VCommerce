@@ -13,7 +13,6 @@ public static class EmailSenderExtensions
     private static string GetEmailConfirmationTemplate(string email, string? link)
     {
         return $$"""
-
                  <!DOCTYPE html>
                  <html>
                  <head>
@@ -24,29 +23,48 @@ public static class EmailSenderExtensions
                          body, html {
                              margin: 0;
                              padding: 0;
-                             font-family: Arial, Helvetica, sans-serif;
+                             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                              color: #333;
-                             background-color: #f5f5f5;
+                             background-color: transparent;
                          }
                          .email-container {
                              max-width: 600px;
-                             margin: 0 auto;
-                             background-color: #ffffff;
-                             border-radius: 8px;
+                             margin: 20px auto;
+                             background-color: rgba(255, 255, 255, 0.95);
+                             border-radius: 12px;
                              overflow: hidden;
+                             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
                          }
                          .email-header {
                              background-color: #4361ee;
                              padding: 30px;
                              text-align: center;
+                             position: relative;
                          }
-                         .email-header img {
-                             max-width: 180px;
-                             height: auto;
+                         .email-logo {
+                             display: inline-block;
+                             background-color: white;
+                             border-radius: 50px;
+                             padding: 12px 20px;
+                             font-weight: bold;
+                             font-size: 22px;
+                             color: #4361ee;
+                         }
+                         .email-logo-icon {
+                             display: inline-block;
+                             background-color: #4361ee;
+                             color: white;
+                             border-radius: 50%;
+                             width: 28px;
+                             height: 28px;
+                             line-height: 28px;
+                             text-align: center;
+                             margin-right: 5px;
                          }
                          .email-body {
                              padding: 40px 30px;
                              text-align: center;
+                             background-color: transparent;
                          }
                          .email-title {
                              font-size: 24px;
@@ -66,11 +84,15 @@ public static class EmailSenderExtensions
                              background-color: #4361ee;
                              color: #ffffff;
                              text-decoration: none;
-                             padding: 14px 30px;
-                             border-radius: 4px;
+                             padding: 16px 32px;
+                             border-radius: 50px;
                              font-weight: bold;
                              font-size: 16px;
                              margin-bottom: 30px;
+                             transition: background-color 0.2s;
+                         }
+                         .email-button:hover {
+                             background-color: #3a53d0;
                          }
                          .email-note {
                              font-size: 14px;
@@ -82,28 +104,35 @@ public static class EmailSenderExtensions
                              color: #4361ee;
                          }
                          .email-footer {
-                             background-color: #f8f9fa;
+                             background-color: rgba(248, 249, 250, 0.7);
                              padding: 20px 30px;
                              text-align: center;
                              font-size: 14px;
                              color: #777;
-                             border-top: 1px solid #eee;
+                             border-top: 1px solid rgba(238, 238, 238, 0.5);
+                         }
+                         .divider {
+                             height: 1px;
+                             background-color: rgba(0, 0, 0, 0.05);
+                             margin: 20px 0;
                          }
                      </style>
                  </head>
                  <body>
                      <div class='email-container'>
                          <div class='email-header'>
-                             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                             <div class='email-logo'>
+                                 <span class='email-logo-icon'>V</span>commerce
+                             </div>
                          </div>
                          <div class='email-body'>
-                             <h1 class='email-title'>Confirme seu Email</h1>
+                             <h1 class='email-title'>Confirme sua identidade</h1>
                              <div class='email-message'>
                                  <p>Olá,</p>
-                                 <p>Obrigado por se cadastrar na VCommerce! Para ativar sua conta e começar a usar nossa plataforma, 
-                                 por favor confirme seu endereço de email clicando no botão abaixo:</p>
+                                 <p>Agradecemos o registro. Para confirmar sua identidade, verifique seu e-mail clicando no botão abaixo:</p>
                              </div>
-                             <a href='{{link}}' class='email-button'>Confirmar meu Email</a>
+                             <a href='{{link}}' class='email-button'>Verificar meu e-mail</a>
+                             <div class='divider'></div>
                              <p class='email-note'>
                                  Se o botão acima não funcionar, copie e cole o link abaixo no seu navegador:
                              </p>
@@ -114,7 +143,7 @@ public static class EmailSenderExtensions
                          </div>
                          <div class='email-footer'>
                              <p>© 2025 VCommerce. Todos os direitos reservados.</p>
-                             <p>Se você tiver alguma dúvida, entre em contato com nosso suporte: <a href='mailto:suporte@vcommerce.com.br'>suporte@vcommerce.com.br</a></p>
+                             <p>Se você tiver alguma dúvida, entre em contato com nosso suporte: <a href='mailto:suporte@vcommerce.com.br' style='color: #4361ee;'>suporte@vcommerce.com.br</a></p>
                          </div>
                      </div>
                  </body>
