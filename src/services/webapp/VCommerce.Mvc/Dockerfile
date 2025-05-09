@@ -8,14 +8,16 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-# Copia somente o VCommerce.Mvc e seus módulos dependentes
 COPY ["src/services/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj", "src/services/webapp/VCommerce.Mvc/"]
 COPY ["src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj", "src/modules/core/VCommerce.Modules.Core.Application/"]
 COPY ["src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Domain.csproj", "src/modules/core/VCommerce.Modules.Core.Domain/"]
 COPY ["src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj", "src/modules/core/VCommerce.Modules.Core.Infra/"]
 
 RUN dotnet restore "src/services/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj"
-COPY . .
+
+COPY src/modules /src/src/modules
+COPY src/services/webapp/VCommerce.Mvc /src/src/services/webapp/VCommerce.Mvc
+
 WORKDIR "/src/src/services/webapp/VCommerce.Mvc"
 RUN dotnet build "./VCommerce.Mvc.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
