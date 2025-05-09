@@ -1,16 +1,18 @@
-Exemplo de migration usando o comando dotnet ef
+# VCommerce
 
-Criando a migração
+### Exemplo de migration usando o comando `dotnet ef`
 
-Core: dotnet ef migrations add [migrationName] \ 
-  --context AppDbContext \
-  --project src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj \
-  --startup-project src/services/webapi/VCommerce.Api/VCommerce.Api.csproj \
-  --output-dir Migrations
+**Criando a migração**
 
-Atualizando o banco com a migração criada
-
-Core: dotnet ef database update \
+<b>Core:</b>  
+```bash
+dotnet ef migrations add [migration_name] \
   --context AppDbContext \
   --project src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj \
   --startup-project src/services/webapi/VCommerce.Api/VCommerce.Api.csproj
+
+dotnet ef database update \
+  --context AppDbContext \
+  --project src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj \
+  --startup-project src/services/webapi/VCommerce.Api/VCommerce.Api.csproj
+
