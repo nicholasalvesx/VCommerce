@@ -4,7 +4,7 @@ using VCommerce.Mvc.Services.Contracts;
 
 namespace VCommerce.Mvc.Services;
 
-public class EmailSender : IEmailSender
+public partial class EmailSender : IEmailSender
 {
     private readonly IConfiguration _configuration;
     private readonly ILogger<EmailSender> _logger;
@@ -54,7 +54,7 @@ public class EmailSender : IEmailSender
 
     private async Task<Response> Execute(string email, string? subject, string message)
     {
-        var apiKey = _configuration["SendGrid:SendGridKey"];
+        var apiKey = _configuration["SENDGRID_API_KEY"];
         
         if (string.IsNullOrEmpty(apiKey))
         {
@@ -90,12 +90,15 @@ public class EmailSender : IEmailSender
         return await client.SendEmailAsync(msg);
     }
     
-    private string StripHtml(string html)
+    private static string StripHtml(string html)
     {
-        return System.Text.RegularExpressions.Regex.Replace(html, "<.*?>", string.Empty)
+        return MyRegex().Replace(html, string.Empty)
             .Replace("&nbsp;", " ")
             .Replace("&amp;", "&")
             .Replace("&lt;", "<")
             .Replace("&gt;", ">");
     }
+
+    [System.Text.RegularExpressions.GeneratedRegex("<.*?>")]
+    private static partial System.Text.RegularExpressions.Regex MyRegex();
 }
