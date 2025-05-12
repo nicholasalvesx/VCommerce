@@ -31,5 +31,5 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-ENV SendGridKey="BtzK20QlQGqtwHN7Ed8hQQ"
+ENV SENDGRID_API_KEY="BtzK20QlQGqtwHN7Ed8hQQ"
 ENTRYPOINT ["dotnet", "VCommerce.Mvc.dll"]

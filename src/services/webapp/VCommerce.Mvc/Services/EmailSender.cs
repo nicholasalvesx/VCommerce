@@ -14,7 +14,7 @@ public class EmailSender : IEmailSender
         _configuration = configuration;
         _logger = logger;
         
-        var apiKey = _configuration["SendGrid:SendGridKey"];
+        var apiKey = _configuration["SENDGRID_API_KEY"];
         if (string.IsNullOrEmpty(apiKey))
         {
             _logger.LogError("SendGrid API Key não configurada");
