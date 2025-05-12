@@ -20,11 +20,6 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-builder.Logging.AddConsole(options =>
-{
-    options.LogToStandardErrorThreshold = LogLevel.Debug;
-});
-
 builder.Services.AddControllersWithViews()
     .AddSessionStateTempDataProvider();
 builder.Services.AddRazorPages()
@@ -90,11 +85,6 @@ builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsProduction())
-{
-    app.UseHttpsRedirection();
-}
-
 app.UseStaticFiles();
 
 app.UseRouting();
