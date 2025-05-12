@@ -22,7 +22,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="changes&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.VCommerce/.idea/workspace.xml" />
+    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="changes&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.VCommerce/.idea/workspace.xml">
+      <change beforePath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -354,6 +356,52 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="VCommerce.Api/Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="vcommerce.api" />
+          <option name="containerName" value="vcommerce.api" />
+          <option name="contextFolderPath" value="$PROJECT_DIR$" />
+          <option name="portBindings">
+            <list>
+              <DockerPortBindingImpl>
+                <option name="containerPort" value="8080" />
+                <option name="hostIp" value="127.0.0.1" />
+                <option name="hostPort" value="8080" />
+              </DockerPortBindingImpl>
+            </list>
+          </option>
+          <option name="sourceFilePath" value="src/services/webapi/VCommerce.Api/Dockerfile" />
+        </settings>
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="VCommerce.Mvc/Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="vcommerce.mvc" />
+          <option name="containerName" value="vcommerce.mvc" />
+          <option name="contextFolderPath" value="$PROJECT_DIR$" />
+          <option name="portBindings">
+            <list>
+              <DockerPortBindingImpl>
+                <option name="containerPort" value="8080" />
+                <option name="hostIp" value="127.0.0.1" />
+                <option name="hostPort" value="8080" />
+              </DockerPortBindingImpl>
+            </list>
+          </option>
+          <option name="sourceFilePath" value="src/services/webapp/VCommerce.Mvc/Dockerfile" />
+        </settings>
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue=".NET Launch Settings Profile.Vcommerce.Test: http" />
       <item itemvalue=".NET Launch Settings Profile.Vcommerce.Test: https" />
@@ -367,6 +415,8 @@
       <item itemvalue=".NET Project.WorkerService" />
       <item itemvalue=".NET Project.VCommerce.Mvc" />
       <item itemvalue=".NET Project.VCommerce.Api" />
+      <item itemvalue="Docker.VCommerce.Api/Dockerfile" />
+      <item itemvalue="Docker.VCommerce.Mvc/Dockerfile" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -430,7 +480,7 @@
       <workItem from="1746617877414" duration="8262000" />
       <workItem from="1746703295501" duration="5581000" />
       <workItem from="1746708884658" duration="16480000" />
-      <workItem from="1746789757419" duration="10809000" />
+      <workItem from="1746789757419" duration="16861000" />
     </task>
     <task id="LOCAL-00001" summary="First first commit">
       <option name="closed" value="true" />

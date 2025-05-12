@@ -1,12 +1,8 @@
-version: "3.8"
-
 services:
   vcommerce-db-server:
     image: bitnami/postgresql
     container_name: vcommerce-db-server
     hostname: vcommerce-db-server
-    ports:
-      - 5432:5432
     environment:
       - POSTGRESQL_USERNAME=postgres
       - POSTGRESQL_PASSWORD=postgres
@@ -22,10 +18,10 @@ services:
     depends_on:
       - vcommerce-db-server
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - ConnectionStrings__DefaultConnection=Host=vcommerce-db-server;Port=5432;Database=vcommerce_db;Username=postgres;Password=postgres
     ports:
-      - 5000:80
+      - "5000:80"
 
   vcommerce-mvc:
     build:
@@ -38,7 +34,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ApiBaseUrl=http://vcommerce-api:80
     ports:
-      - 5001:80
+      - "5001:80"
 
 volumes:
   vcommerce_db_data:

@@ -7,22 +7,15 @@
       <UserSecretsId>03831179-44c6-47df-a982-69ba9f0bad91</UserSecretsId>
       <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\modules\core\VCommerce.Modules.Core.Application\VCommerce.Modules.Core.Application.csproj" />
-    <ProjectReference Include="..\..\modules\core\VCommerce.Modules.Core.Domain\VCommerce.Modules.Core.Domain.csproj" />
-    <ProjectReference Include="..\..\modules\core\VCommerce.Modules.Core.Infra\VCommerce.Modules.Core.Infra.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-      <ProjectReference Include="..\..\webapi\VCommerce.Api\VCommerce.Api.csproj" />
+  
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\modules\core\VCommerce.Modules.Core.Infra\VCommerce.Modules.Core.Infra.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.3.0" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.4" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.4" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="SendGrid" Version="9.29.3" />
       <PackageReference Include="SendGrid.Extensions.DependencyInjection" Version="1.0.1" />
     </ItemGroup>
