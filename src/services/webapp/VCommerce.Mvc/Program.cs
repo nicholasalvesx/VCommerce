@@ -31,14 +31,23 @@ builder.Services.AddRazorPages()
     .AddSessionStateTempDataProvider();
 
 builder.Services.AddHttpClient("Api", client =>
-{
-    client.BaseAddress = new Uri(builder.Configuration["ServiceUri:Api"]!);
-    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-})
-.AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+    {
+        var apiUrl = Environment.GetEnvironmentVariable("API_URL") ?? 
+                     builder.Configuration["ServiceUri:Api"] ?? 
+                     "http://localhost:5000";
+                 
+        client.BaseAddress = new Uri(apiUrl);
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+    })
+    .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? 
+                           builder.Configuration.GetConnectionString("DefaultConnection");
+                          
+    options.UseNpgsql(connectionString);
+});
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     {

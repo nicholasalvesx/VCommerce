@@ -38,6 +38,16 @@ builder.Services.AddInfraServices();
 
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowMvcApp", policy =>
+    {
+        policy.WithOrigins(Environment.GetEnvironmentVariable("MVC_URL") ?? "http://localhost:5001")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddIdentityConfiguration(builder.Configuration);
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -45,6 +55,9 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+app.UseCors("AllowMvcApp");
+
 //app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
