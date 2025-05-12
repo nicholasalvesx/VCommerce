@@ -81,15 +81,9 @@ builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (builder.Environment.IsDevelopment())
+if (!app.Environment.IsProduction())
 {
-    app.UseDeveloperExceptionPage();
-}
-else
-{
-    app.UseExceptionHandler("/error/500");
-    app.UseStatusCodePagesWithRedirects("/error/{0}");
-    app.UseHsts();
+    app.UseHttpsRedirection();
 }
 
 app.UseStaticFiles();
