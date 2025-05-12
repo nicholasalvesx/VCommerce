@@ -2,8 +2,6 @@
 
 ### Exemplo de migration usando o comando `dotnet ef`
 
-**Criando a migração**
-
 Core:  
 ```bash
 dotnet ef migrations add [migration_name] \
