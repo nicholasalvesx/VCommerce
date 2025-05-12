@@ -12,7 +12,7 @@ using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegiste
 namespace VCommerce.Api.Controllers;
 
 [ApiController]
-[Route("api/v1/[controller]")]
+[Route("/api/v1/[controller]")]
 public class AuthController : ControllerBase
 {
     private readonly ITokenService _tokenService;

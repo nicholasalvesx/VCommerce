@@ -26,7 +26,7 @@ public class AuthService : IAuthService
                 password = loginModel.Password
             }), Encoding.UTF8, "application/json");
         
-        var response = await _httpClient.PostAsync("/api/v1/auth/login", loginContent);
+        var response = await _httpClient.PostAsync("https://vcommerce-api-xd5k.onrender.com/api/v1/auth/login", loginContent);
 
         if (!response.IsSuccessStatusCode)
             return new AuthResult { Succeeded = false };
