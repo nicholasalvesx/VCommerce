@@ -8,6 +8,8 @@ using VCommerce.Mvc.Configuration;
 using VCommerce.Mvc.Services;
 using VCommerce.Mvc.Services.Contracts;
 
+AppContext.SetSwitch("Npgsql.EnablePrepare", false);
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -39,7 +41,7 @@ builder.Services.AddHttpClient("Api", client =>
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? 
-                           builder.Configuration.GetConnectionString("DefaultConnection");
+                           builder.Configuration.GetConnectionString("SupabaseConnection");
                           
     options.UseNpgsql(connectionString);
 });

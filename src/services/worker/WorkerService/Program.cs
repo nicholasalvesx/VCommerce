@@ -9,7 +9,7 @@ var builder = Host.CreateApplicationBuilder(args);
 var configuration = builder.Configuration;
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(configuration.GetConnectionString("SupabaseConnection")));
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
     {

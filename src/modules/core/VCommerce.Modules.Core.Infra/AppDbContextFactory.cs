@@ -9,7 +9,7 @@ public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
         var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
         optionsBuilder.UseNpgsql(
-            "Server=localhost;Port=5432;Database=vcommerce_db;Username=postgres;Password=qwe123;CommandTimeout=20");
+            "User Id=postgres.zhqwiofzfpgjbaxoyogt;Password=YW6F6kHabr7raGa7;Server=aws-0-sa-east-1.pooler.supabase.com;Port=5432;Database=postgres");
         
         return new AppDbContext(optionsBuilder.Options);
     }
