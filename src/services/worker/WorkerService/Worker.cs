@@ -42,6 +42,8 @@ public class Worker : IHostedService
             
             var leader = new ApplicationUser
             {
+                Name = "admin",
+                LastName = "vcommerce",
                 UserName = "admin",
                 Email = "leader@vcommerce.com.br",
                 EmailConfirmed = true,

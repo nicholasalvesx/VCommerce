@@ -228,9 +228,9 @@ public class AccountController : Controller
 
     [HttpGet]
     [AllowAnonymous]
-    public IActionResult AwaitingEmailConfirmation(string email)
+    public IActionResult AwaitingEmailConfirmation()
     {
-        return View(email);
+        return View("AwaitingEmailConfirmation");
     }
 
     [HttpGet]
