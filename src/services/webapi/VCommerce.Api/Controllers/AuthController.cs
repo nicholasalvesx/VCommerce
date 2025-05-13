@@ -177,7 +177,7 @@ public class AuthController : ControllerBase
     
     [HttpGet]
     [Route("confirm-email")]
-    public async Task<IActionResult> ConfirmEmail(string userId, string code)
+    public async Task<IActionResult> ConfirmEmail(string? userId, string? code)
     {
         if (userId == null || code == null)
             return BadRequest(new { message = "Parâmetros inválidos." });

@@ -297,7 +297,7 @@ public class AccountController : Controller
         {
             _logger.LogInformation("Email confirmado com sucesso para usuário: {UserEmail}", user.Email);
             TempData["SuccessMessage"] = "Email confirmado com sucesso! Agora você pode fazer login.";
-            return View("EmailConfirmed");
+            return View("Email");
         }
 
         _logger.LogWarning("Falha ao confirmar email para usuário: {UserEmail}. Erros: {Errors}", 
