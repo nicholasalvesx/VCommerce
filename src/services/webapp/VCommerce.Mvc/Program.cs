@@ -23,8 +23,8 @@ builder.WebHost.ConfigureKestrel(options =>
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDataProtection()
-    .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(builder.Environment.ContentRootPath, "DataProtectionKeys")))
-    .SetApplicationName("VCommerce");
+    .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(builder.Environment.ContentRootPath, "/webapp/VCommerce.Mvc/DataProtectionKeys")))
+    .SetApplicationName("VCommerce-Mvc");
 
 builder.Services.AddSession(options =>
 {
