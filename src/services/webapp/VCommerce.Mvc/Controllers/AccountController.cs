@@ -176,6 +176,7 @@ public class AccountController : Controller
             {
                 foreach (var error in result.Errors)
                 {
+                    await _userManager.DeleteAsync(user);
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
                 return View(model);
