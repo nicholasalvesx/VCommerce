@@ -22,7 +22,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="changes&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.VCommerce/.idea/workspace.xml" />
+    <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="changes&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.VCommerce/.idea/workspace.xml">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/webapi/VCommerce.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapi/VCommerce.Api/Program.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -532,7 +535,7 @@
       <workItem from="1747057432924" duration="1049000" />
       <workItem from="1747061338540" duration="278000" />
       <workItem from="1747061696562" duration="13259000" />
-      <workItem from="1747135353009" duration="10078000" />
+      <workItem from="1747135353009" duration="11385000" />
     </task>
     <task id="LOCAL-00001" summary="First first commit">
       <option name="closed" value="true" />
