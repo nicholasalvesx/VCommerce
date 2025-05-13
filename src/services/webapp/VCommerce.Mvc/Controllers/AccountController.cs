@@ -174,9 +174,10 @@ public class AccountController : Controller
             var result = await _userManager.CreateAsync(user, model.Password!);
             if (!result.Succeeded)
             {
+                await _userManager.DeleteAsync(user);
+                
                 foreach (var error in result.Errors)
                 {
-                    await _userManager.DeleteAsync(user);
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
                 return View(model);
