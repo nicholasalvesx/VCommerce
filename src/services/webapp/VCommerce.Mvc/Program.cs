@@ -13,6 +13,12 @@ AppContext.SetSwitch("Npgsql.EnablePrepare", false);
 
 var builder = WebApplication.CreateBuilder(args);
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(int.Parse(port));
+});
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -36,7 +42,7 @@ builder.Services.AddHttpClient("Api", client =>
     {
         var apiUrl = Environment.GetEnvironmentVariable("API_URL") ?? 
                      builder.Configuration["ServiceUri:Api"] ?? 
-                     "http://localhost:5000";
+                     "https://vcommerce-api-xd5k.onrender.com";
                  
         client.BaseAddress = new Uri(apiUrl);
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
