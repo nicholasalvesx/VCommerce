@@ -10,7 +10,7 @@ public static class IdentityConfig
         IConfiguration configuration)
     {
         services.AddDbContext<AppDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+            options.UseNpgsql(configuration.GetConnectionString("SupabaseConnection")));
 
         services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {

@@ -6,7 +6,7 @@ public static class EmailSenderExtensions
 {
     public static Task SendEmailConfirmation(this IEmailSender emailSender, string email, string? link)
     {
-        string emailTemplate = GetEmailConfirmationTemplate(email, link);
+        var emailTemplate = GetEmailConfirmationTemplate(email, link);
         return emailSender.SendEmail(email, "Confirme seu email - VCommerce", emailTemplate);
     }
     
