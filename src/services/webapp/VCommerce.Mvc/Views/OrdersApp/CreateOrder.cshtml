@@ -32,7 +32,7 @@ var customers = ViewBag.Customers as IEnumerable<CustomerViewModel> ?? new List<
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="customerId">Selecionar Cliente</label>
-                            <select id="customerId" name="CustomerId" class="form-control" required>
+                            <select id="customerId" name="CustomerName" class="form-control" required>
                                 <option value="">Selecione um cliente...</option>
                                 @foreach (var customer in customers)
                                 {

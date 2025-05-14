@@ -53,9 +53,7 @@ public class OrderController : ControllerBase
     [HttpPut("{id:int}")]
     public async Task<IActionResult> UpdateOrder(int id, OrderDTO? order)
     {
-        Debug.Assert(order != null, nameof(order) + " != null");
-        
-        if (id != order.Id)
+        if (id != order!.Id)
         {
             return BadRequest("Id do pedido invalido");
         }

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Pedidos";
+    var customers = ViewBag.Customers as IEnumerable<CustomerViewModel> ?? new List<CustomerViewModel>();
 }
 
 <link rel="stylesheet" href="/css/order.css" asp-append-version="true" />

@@ -61,6 +61,8 @@ namespace VCommerce.Mvc.Models
         
         [Display(Name = "Histórico do Pedido")]
         public List<OrderHistoryViewModel> OrderHistory { get; set; }
+
+        public ProductViewModel? ProductName { get; set; }
     }
     
     public class OrderItemViewModel
