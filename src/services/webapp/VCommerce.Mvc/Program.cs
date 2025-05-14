@@ -42,7 +42,7 @@ builder.Services.AddHttpClient("Api", client =>
     {
         var apiUrl = Environment.GetEnvironmentVariable("API_URL") ?? 
                      builder.Configuration["ServiceUri:Api"] ?? 
-                     "https://vcommerce-api-xd5k.onrender.com";
+                     "https://vcommerce-webapi.fly.dev/";
                  
         client.BaseAddress = new Uri(apiUrl);
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
