@@ -51,4 +51,8 @@
       <AdditionalFiles Include="Views\_ViewStart.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="data\" />
+    </ItemGroup>
+
 </Project>
