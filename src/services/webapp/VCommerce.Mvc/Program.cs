@@ -20,7 +20,6 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
 
 builder.Services.AddDataProtection()
     .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(builder.Environment.ContentRootPath, "/webapp/VCommerce.Mvc/DataProtectionKeys")))
@@ -100,6 +99,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.UseStaticFiles();
 
+app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseSession();

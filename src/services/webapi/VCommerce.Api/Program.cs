@@ -58,5 +58,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Urls.Add($"http://0.0.0.0:{port}");
+app.Urls.Add($"https://0.0.0.0:{port}");
 app.Run();
