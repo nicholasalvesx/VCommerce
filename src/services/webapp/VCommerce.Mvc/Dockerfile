@@ -19,6 +19,8 @@ FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./VCommerce.Mvc.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
+RUN mkdir -p /data/protection-keys && chown -R appuser:appuser /data
+
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
