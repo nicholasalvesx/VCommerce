@@ -8,10 +8,10 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-COPY ["src/services/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj", "src/services/webapp/VCommerce.Mvc/"]
-COPY ["src/modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj", "src/modules/core/VCommerce.Modules.Core.Application/"]
-COPY ["src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Domain.csproj", "src/modules/core/VCommerce.Modules.Core.Domain/"]
-COPY ["src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj", "src/modules/core/VCommerce.Modules.Core.Infra/"]
+COPY ["../../webapp/VCommerce.Mvc/VCommerce.Mvc.csproj", "src/services/webapp/VCommerce.Mvc/"]
+COPY ["../modules/core/VCommerce.Modules.Core.Application/VCommerce.Modules.Core.Application.csproj", "../modules/core/VCommerce.Modules.Core.Application/"]
+COPY ["src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Domain.csproj", "../modules/core/VCommerce.Modules.Core.Domain/"]
+COPY ["src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj", "../modules/core/VCommerce.Modules.Core.Infra/"]
 
 RUN dotnet restore "src/services/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj"
 

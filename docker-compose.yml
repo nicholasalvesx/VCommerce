@@ -1,16 +1,43 @@
 services:
   vcommerce-db-server:
     image: bitnami/postgresql
-    container_name: vcommerce-db-server
-    hostname: vcommerce-db-server
+    container_name: vcommerce-db
+    hostname: vcommerce-db
     ports:
       - "5432:5432"
     environment:
-      - POSTGRESQL_USERNAME=postgres
-      - POSTGRESQL_PASSWORD=postgres
-      - POSTGRESQL_DATABASE=vcommerce_db
+      - POSTGRESQL_USERNAME=postgres.zhqwiofzfpgjbaxoyogt
+      - POSTGRESQL_PASSWORD=W6F6kHabr7raGa7
+      - POSTGRESQL_DATABASE=postgres
     volumes:
       - vcommerce_db_data:/bitnami/postgresql
+
+  vcommerce-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vcommerce-api
+    depends_on:
+      - vcommerce-db-server
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__SupabaseConnection=User Id=postgres.zhqwiofzfpgjbaxoyogt;Password=YW6F6kHabr7raGa7;Server=aws-0-sa-east-1.pooler.supabase.com;Port=5432;Database=postgres
+    command: ["dotnet", "api/VCommerce.Api.dll"]
+    ports:
+      - "8080:8080"
+
+  vcommerce-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vcommerce-web
+    depends_on:
+      - vcommerce-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    command: ["dotnet", "web/VCommerce.Mvc.dll"]
+    ports:
+      - "8081:8081"
 
 volumes:
   vcommerce_db_data:
