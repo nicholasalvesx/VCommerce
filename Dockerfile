@@ -2,8 +2,8 @@
 ARG APP_UID=1000
 USER $APP_UID
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 8080  
+EXPOSE 8081    
 
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build-api
 ARG BUILD_CONFIGURATION=Release
@@ -15,16 +15,9 @@ COPY ["src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Dom
 COPY ["src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj", "src/modules/core/VCommerce.Modules.Core.Infra/"]
 
 RUN dotnet restore "src/services/webapi/VCommerce.Api/VCommerce.Api.csproj"
-
 COPY . .
-
 WORKDIR "/src/src/services/webapi/VCommerce.Api"
-RUN dotnet build "./VCommerce.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
-
-FROM build-api AS publish-api
-ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./VCommerce.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish-api /p:UseAppHost=false
-
 
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build-web
 ARG BUILD_CONFIGURATION=Release
@@ -36,14 +29,8 @@ COPY ["src/modules/core/VCommerce.Modules.Core.Domain/VCommerce.Modules.Core.Dom
 COPY ["src/modules/core/VCommerce.Modules.Core.Infra/VCommerce.Modules.Core.Infra.csproj", "src/modules/core/VCommerce.Modules.Core.Infra/"]
 
 RUN dotnet restore "src/services/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj"
-
 COPY . .
-
-WORKDIR "/src/src/services/webapp/VCommerce.Mvc"
-RUN dotnet build "./VCommerce.Mvc.csproj" -c $BUILD_CONFIGURATION -o /app/build
-
-FROM build-web AS publish-web
-ARG BUILD_CONFIGURATION=Release
+WORKDIR "/src/services/webapp/VCommerce.Mvc"
 RUN dotnet publish "./VCommerce.Mvc.csproj" -c $BUILD_CONFIGURATION -o /app/publish-web /p:UseAppHost=false
 
 FROM base AS final
@@ -51,7 +38,10 @@ WORKDIR /app
 
 ENV JWT__SecretKey="x0HhzrgVfOJgG3V6Hpl9Ev9ccojN+bfZxPxX5TWi6uY="
 
-COPY --from=publish-api /app/publish-api ./api
-COPY --from=publish-web /app/publish-web ./web
+COPY --from=build-api /app/publish-api ./api
+COPY --from=build-web /app/publish-web ./web
 
-ENTRYPOINT ["dotnet", "api/VCommerce.Api.dll"]
+COPY --chown=$APP_UID:$APP_UID entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+ENTRYPOINT ["/app/entrypoint.sh"]
