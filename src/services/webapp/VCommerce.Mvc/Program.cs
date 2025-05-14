@@ -10,19 +10,20 @@ using VCommerce.Mvc.Services;
 using VCommerce.Mvc.Services.Contracts;
 
 AppContext.SetSwitch("Npgsql.EnablePrepare", false);
-
 var builder = WebApplication.CreateBuilder(args);
-
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(int.Parse(port));
 });
 
-// Add services to the container.
+var keyStorageLocation = Path.Combine(builder.Environment.ContentRootPath, "App_Data", "protection-keys");
+
+Directory.CreateDirectory(keyStorageLocation);
 
 builder.Services.AddDataProtection()
-    .PersistKeysToFileSystem(new DirectoryInfo("/data/protection-keys"))
+    .PersistKeysToFileSystem(new DirectoryInfo(keyStorageLocation))
     .SetApplicationName("VCommerce.Mvc");
 
 builder.Services.AddSession(options =>
@@ -34,15 +35,15 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddControllersWithViews()
     .AddSessionStateTempDataProvider();
+
 builder.Services.AddRazorPages()
     .AddSessionStateTempDataProvider();
 
 builder.Services.AddHttpClient("Api", client =>
     {
-        var apiUrl = Environment.GetEnvironmentVariable("API_URL") ?? 
-                     builder.Configuration["ServiceUri:Api"] ?? 
-                     "https://vcommerce-webapi.fly.dev/";
-                 
+        var apiUrl = Environment.GetEnvironmentVariable("API_URL") ??
+                      builder.Configuration["ServiceUri:Api"] ??
+                      "https://vcommerce-webapi.fly.dev/";                         
         client.BaseAddress = new Uri(apiUrl);
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     })
@@ -50,9 +51,8 @@ builder.Services.AddHttpClient("Api", client =>
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? 
-                           builder.Configuration.GetConnectionString("SupabaseConnection");
-                          
+    var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ??
+                            builder.Configuration.GetConnectionString("SupabaseConnection");                              
     options.UseNpgsql(connectionString);
 });
 
@@ -86,11 +86,8 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-
 builder.Services.AddTransient<IEmailSender, EmailSender>();
-
 builder.Services.AddDistributedMemoryCache();
-
 builder.Services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 builder.Services.AddHttpContextAccessor();
 
@@ -98,17 +95,13 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.UseStaticFiles();
-
 app.UseHttpsRedirection();
 app.UseRouting();
-
 app.UseSession();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
-
 app.MapControllerRoute(
         name: "default",
         pattern: "{controller=Account}/{action=Register}/{id?}")
