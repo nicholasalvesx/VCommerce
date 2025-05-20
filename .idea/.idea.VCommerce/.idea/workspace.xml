@@ -23,14 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="changes&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.VCommerce/.idea/workspace.xml">
-      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fly.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/webapi/VCommerce.Api/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/webapi/VCommerce.Api/VCommerce.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapi/VCommerce.Api/VCommerce.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/webapi/VCommerce.Api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapi/VCommerce.Api/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/VCommerce.Mvc.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -543,6 +537,13 @@
       <workItem from="1747061696562" duration="13259000" />
       <workItem from="1747135353009" duration="19051000" />
       <workItem from="1747221906096" duration="8926000" />
+      <workItem from="1747307588602" duration="522000" />
+      <workItem from="1747308408286" duration="1898000" />
+      <workItem from="1747393942314" duration="635000" />
+      <workItem from="1747394772287" duration="690000" />
+      <workItem from="1747402273777" duration="139000" />
+      <workItem from="1747405169082" duration="679000" />
+      <workItem from="1747418639634" duration="3122000" />
     </task>
     <task id="LOCAL-00001" summary="First first commit">
       <option name="closed" value="true" />
