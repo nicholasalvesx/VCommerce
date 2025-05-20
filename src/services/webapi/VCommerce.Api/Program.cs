@@ -8,12 +8,6 @@ using VCommerce.Modules.Core.Infra.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(int.Parse(port));
-});
-
 var secretKey = builder.Configuration["JWT:SecretKey"] 
                 ?? throw new ArgumentException("Chave secreta invalida");
 
@@ -58,5 +52,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Urls.Add($"https://0.0.0.0:{port}");
 app.Run();
