@@ -24,8 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b8d8174c-b232-4eb7-bebb-8a147fe5bf6c" name="Changes" comment="changes&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.VCommerce/.idea/workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VCommerce/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Application/DTOs/LoginDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Application/DTOs/LoginDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Repositories/CustomerRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Repositories/CustomerRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/webapi/VCommerce.Api/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapi/VCommerce.Api/Controllers/AuthController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/webapi/VCommerce.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapi/VCommerce.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitTests/VCommerce.Tests.UnitTests/obj/Debug/net9.0/VCommerce.Tests.UnitTests.csproj.AssemblyReference.cache" afterDir="false" />
@@ -87,7 +89,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c7afd9724cf757c4a8469dba2bdc22ab5ac111c91f431dbfefc992dacb3e8635/ControllerBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/db7395f4add94e6d10e515b3e55373f2821f8323de7dc8e314d78feefacf5584/ActionMethodExecutor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/eb8b15bbf6ed38ef49b0b77ac383bba3c22ce8dbcff5a4798cdebe3013d9ea/AuthenticationHttpContextExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Application/DTOs/LoginDTO.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/modules/core/VCommerce.Modules.Core.Infra/Repositories/CustomerRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/services/webapi/VCommerce.Api/Configuration/DependecyInjectionConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/services/webapi/VCommerce.Api/Controllers/AuthController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/services/webapi/VCommerce.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/services/webapp/VCommerce.Mvc/Controllers/AccountController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file:///usr/share/dotnet/sdk/9.0.203/Sdks/Microsoft.NET.Sdk/Sdk/Sdk.props" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///usr/share/dotnet/sdk/9.0.203/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -107,38 +114,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.VCommerce.Api: http.executor": "Run",
-    ".NET Launch Settings Profile.VCommerce.Mvc: http.executor": "Debug",
-    ".NET Launch Settings Profile.Vcommerce.Test: VShop.Web.executor": "Run",
-    ".NET Launch Settings Profile.WorkerService.executor": "Run",
-    "378af771-79ac-408f-83b6-c3a57767408f.executor": "Debug",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Docker.docker-compose.yml.vcommerce-api: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.vcommerce-mvc: Compose Deployment.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "b043bab9-f444-439b-9982-b816f641b0ba.executor": "Debug",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "0d570cb2-96df-43cc-80da-7f777e6d0afe",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.VCommerce.Api: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.VCommerce.Mvc: http.executor&quot;: &quot;Debug&quot;,
+    &quot;.NET Launch Settings Profile.Vcommerce.Test: VShop.Web.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.WorkerService.executor&quot;: &quot;Run&quot;,
+    &quot;378af771-79ac-408f-83b6-c3a57767408f.executor&quot;: &quot;Debug&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Docker.docker-compose.yml.vcommerce-api: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.vcommerce-mvc: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;b043bab9-f444-439b-9982-b816f641b0ba.executor&quot;: &quot;Debug&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nicholas/Documentos/workspace/VCommerce/src/webapp/VCommerce.Mvc/wwwroot&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="Push.Settings">
     <option name="SHOW_DETAILS_PANEL" value="false" />
   </component>
@@ -548,7 +555,14 @@
       <workItem from="1747402273777" duration="139000" />
       <workItem from="1747405169082" duration="679000" />
       <workItem from="1747418639634" duration="3122000" />
-      <workItem from="1747739608184" duration="653000" />
+      <workItem from="1747739608184" duration="6425000" />
+      <workItem from="1747831231529" duration="12994000" />
+      <workItem from="1747912637761" duration="14000" />
+      <workItem from="1747999630086" duration="288000" />
+      <workItem from="1747999922008" duration="497000" />
+      <workItem from="1748001736568" duration="1902000" />
+      <workItem from="1748009439499" duration="246000" />
+      <workItem from="1748009721766" duration="1386000" />
     </task>
     <task id="LOCAL-00001" summary="First first commit">
       <option name="closed" value="true" />

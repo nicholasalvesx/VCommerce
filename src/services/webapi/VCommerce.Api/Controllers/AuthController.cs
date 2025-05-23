@@ -34,13 +34,13 @@ public class AuthController : ControllerBase
     [Route("login")]
     public async Task<IActionResult> Login([FromBody] LoginDTO dto)
     {
-        var userExists = await _userManager.FindByNameAsync(dto.Name!);
+        var userExists = await _userManager.FindByEmailAsync(dto.Email!);
         if (userExists == null)
         {
             return BadRequest("Usuario nao existe");
         }
         
-        var user = await _userManager.FindByNameAsync(dto.Name!);
+        var user = await _userManager.FindByEmailAsync(dto.Email!);
         
         if (user == null || !await _userManager.CheckPasswordAsync(user, dto.Password!)) 
             return Unauthorized();
@@ -49,7 +49,7 @@ public class AuthController : ControllerBase
             
         var authClaims = new List<Claim>
         {
-            new(ClaimTypes.Name, user.UserName!),
+            new(ClaimTypes.Email, user.Email!),
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
             
@@ -91,7 +91,32 @@ public class AuthController : ControllerBase
 
         if (customerDto.Password != customerDto.ConfirmPassword)
             return BadRequest(new { message = "As senhas não coincidem." });
+        
+        var user = new ApplicationUser
+        {
+            CustomerId = null,
+            Email = customerDto.Email,
+            Name = customerDto.Name,
+            LastName = customerDto.LastName,
+            UserName = customerDto.Email,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
+            //Development
+            EmailConfirmed = true
+        };
 
+        var result = await _userManager.CreateAsync(user, customerDto.Password!);
+        if (!result.Succeeded)
+        {
+            await _userManager.DeleteAsync(user);
+                
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+            return Ok(customerDto);
+        }
+        
         var cliente = new Customer(
             customerDto.Email,
             customerDto.Name,

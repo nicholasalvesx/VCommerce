@@ -11,6 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 var secretKey = builder.Configuration["JWT:SecretKey"] 
                 ?? throw new ArgumentException("Chave secreta invalida");
 
+builder.Services.AddCors(options => options.AddPolicy("EnableCors", corsPolicyBuilder =>
+{
+    corsPolicyBuilder.WithOrigins("http://localhost:3000")
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+}));
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -45,8 +52,8 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseCors("EnableCors");
 
-//app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 

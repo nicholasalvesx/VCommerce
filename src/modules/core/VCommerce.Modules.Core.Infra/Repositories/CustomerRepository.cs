@@ -15,7 +15,6 @@ public class CustomerRepository : ICustomerRepository
     public async Task<IEnumerable<Customer?>> GetCustomers()
     {
         return await _context.Customers
-            .AsNoTracking()
             .ToListAsync();
     }
 
