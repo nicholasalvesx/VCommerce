@@ -26,18 +26,5 @@ services:
     ports:
       - "8080:8080"
 
-  vcommerce-web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: vcommerce-web
-    depends_on:
-      - vcommerce-api
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-    command: ["dotnet", "web/VCommerce.Mvc.dll"]
-    ports:
-      - "8081:8081"
-
 volumes:
   vcommerce_db_data:

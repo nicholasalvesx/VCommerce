@@ -22,10 +22,9 @@ public class ProductDTO
     
     [Required(ErrorMessage =  "Estoque é obrigatorio")]
     [Range(1, 999)]
-    public long Stock { get; set; }
+    public int Stock { get; set; }
     
     [JsonIgnore]
     public string? CategoryName { get; set; }
-    
     public int CategoryId { get; set; }
 }
