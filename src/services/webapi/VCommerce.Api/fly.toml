@@ -1,13 +1,13 @@
-# fly.toml app configuration file generated for vcommerce-webapi on 2025-05-14T14:37:42-03:00
+# fly.toml app configuration file generated for vcommerce-api on 2025-05-27T09:00:49-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'vcommerce-webapi'
+app = 'vcommerce-api'
 primary_region = 'gig'
 
 [build]
-dockerfile = "./Dockerfile"
+  dockerfile = 'Dockerfile'
 
 [http_service]
   internal_port = 8080

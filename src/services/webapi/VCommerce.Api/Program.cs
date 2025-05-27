@@ -13,7 +13,7 @@ var secretKey = builder.Configuration["JWT:SecretKey"]
 
 builder.Services.AddCors(options => options.AddPolicy("EnableCors", corsPolicyBuilder =>
 {
-    corsPolicyBuilder.WithOrigins("http://localhost:3000")
+    corsPolicyBuilder.WithOrigins("https://vcommerce-app.fly.dev")
         .AllowAnyMethod()
         .AllowAnyHeader();
 }));
