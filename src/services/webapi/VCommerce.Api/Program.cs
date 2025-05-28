@@ -15,7 +15,8 @@ builder.Services.AddCors(options => options.AddPolicy("EnableCors", corsPolicyBu
 {
     corsPolicyBuilder.WithOrigins("https://vcommerce-app.fly.dev")
         .AllowAnyMethod()
-        .AllowAnyHeader();
+        .AllowAnyHeader()
+        .AllowCredentials();
 }));
 
 builder.Services.AddAuthentication(options =>
